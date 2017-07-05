@@ -12,14 +12,14 @@ import org.springframework.stereotype.Repository;
 import com.hyh.entity.UserInfo;
 
 @Repository
-public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
-	ArrayList<UserInfo> findByName(String name);
+public interface UserInfoDao extends JpaRepository<UserInfo, Long> {
+	ArrayList<UserInfo> findByName(String Name);
 	
-	ArrayList<UserInfo> findByMailAndPassword(String mail,String password);
+	ArrayList<UserInfo> findByMailAndPassword(String Mail,String Password);
 	
 	//分页
-	Page<UserInfo> findByNameNot(String name,Pageable pageable);
+	Page<UserInfo> findByNameNot(String Name,Pageable pageable);
 	
-	@Query("from UserInfo u where u.name=:name")
-    UserInfo findUser(@Param("name") String name);
+	//@Query("from UserInfo u where u.name=:name")
+    //UserInfo findUser(@Param("name") String name);
 }

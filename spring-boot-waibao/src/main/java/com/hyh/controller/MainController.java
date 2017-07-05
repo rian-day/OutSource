@@ -7,33 +7,48 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.hyh.entity.UserInfo;
-import com.hyh.repository.UserInfoRepository;
+import com.hyh.repository.UserInfoDao;
 import com.hyh.service.LoginService;
 
 @Controller
-@ResponseBody
 public class MainController {
 	
 	@Autowired
 	LoginService loginservice;
 	@Autowired
-	UserInfoRepository userDao;
+	UserInfoDao userDao;
 	
 	@RequestMapping("/login")
-	public String CheckLogin(@RequestParam(value = "mail", defaultValue = "null") String mail,
-			@RequestParam(value = "password", defaultValue = "null") String password){
+	public String CheckLogin(@RequestParam(value = "mail", defaultValue = "null") String mail
+			,@RequestParam(value = "password", defaultValue = "null") String password){
 		boolean IsUser=loginservice.CheckLogin(mail, password);
 		if(IsUser)
-			return "welcome"+mail;
+			return "index";
+		return "index";
+	}
+	
+	@PostMapping("/register")
+	@ResponseBody
+	public String Register( 
+			@RequestParam(value = "mail", defaultValue = "null") String mail
+			,@RequestParam(value = "password", defaultValue = "null") String password
+			,@RequestParam(value = "name", defaultValue = "null") String name
+			,@RequestParam(value = "sex", defaultValue = "null") char sex){
+		//ModelAndView mvd=new ModelAndView();
+		UserInfo user=loginservice.Register(mail, password, name, sex);
+		if(user!=null)
+			return user.toString();
 		return "fail";
+		
 	}
 	
 	/**

@@ -12,6 +12,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.1.RELEASE</version>
 	</parent>
+	
   
   <properties>
     <webVersion>3.0</webVersion>
@@ -19,7 +20,13 @@
   </properties>
   
 	<dependencies>
-	
+		
+		<dependency>
+	        <groupId>commons-codec</groupId>
+	        <artifactId>commons-codec</artifactId>
+	        <version>1.6</version>
+	    </dependency>
+		
 		<dependency>
 	      <groupId>junit</groupId>
 	      <artifactId>junit</artifactId>

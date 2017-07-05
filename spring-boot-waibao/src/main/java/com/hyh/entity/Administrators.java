@@ -6,28 +6,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * 用户信息表
+ * 管理员表
  * @author 10513
  *
  */
 @Entity
-public class UserInfo {
+public class Administrators {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	//邮箱
 	private String mail;
+	//用户名
 	private String name;
-	private String password;
+	//密码
+	private String passowrd;
+	//性别
 	private char sex;
-	
-	public UserInfo(String mail,String name,String password,char sex){
-		this.mail=mail;
-		this.name=name;
-		this.password=password;
-		this.sex=sex;
-	}
+	//是否为超级管理员
+	private char boss;
 	public int getId() {
 		return id;
 	}
@@ -46,11 +45,11 @@ public class UserInfo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPassword() {
-		return password;
+	public String getPassowrd() {
+		return passowrd;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassowrd(String passowrd) {
+		this.passowrd = passowrd;
 	}
 	public char getSex() {
 		return sex;
@@ -58,13 +57,13 @@ public class UserInfo {
 	public void setSex(char sex) {
 		this.sex = sex;
 	}
-	@Override
-	public String toString() {
-		String result="";
-		final String BR="<br/>";
-		result+=this.getMail()+BR+this.getName()+BR+this.getPassword()+BR+this.getSex();
-		return result;
+	public char getBoss() {
+		return boss;
 	}
+	public void setBoss(char boss) {
+		this.boss = boss;
+	}
+	
 	
 	
 }

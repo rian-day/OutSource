@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.hyh.service.KnowledgeService;
+import com.hyh.service.ExcelService;
 import com.hyh.utils.ExcelImportUtils;
 
 import reactor.rx.action.Control;
@@ -24,7 +24,7 @@ import reactor.rx.action.Control;
 public class ExcelController {
 	
 	@Autowired
-	KnowledgeService knowledgeService;
+	ExcelService knowledgeService;
 	
 	//导入  
 	@PostMapping("/excel")

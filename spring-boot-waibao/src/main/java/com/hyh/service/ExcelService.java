@@ -22,7 +22,7 @@ import com.hyh.bean.UserKnowledgeBase;
 import com.hyh.utils.ExcelImportUtils;
 
 @Service
-public class KnowledgeService {
+public class ExcelService {
 	
 	/** 
 	 * 上传excel文件到临时目录后并开始解析 

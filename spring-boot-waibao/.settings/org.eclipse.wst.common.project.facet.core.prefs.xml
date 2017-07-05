@@ -9,4 +9,7 @@
   <facet id="jst.web.jstl"/>
   <facet id="jst.web"/>
   <facet id="maven"/>
+  <facet id="jpt.jaxb"/>
+  <facet id="jst.jaxws"/>
+  <facet id="me.hibernate"/>
 </root>
