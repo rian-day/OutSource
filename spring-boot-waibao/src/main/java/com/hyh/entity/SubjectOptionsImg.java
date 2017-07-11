@@ -1,9 +1,11 @@
 package com.hyh.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * 题目选项图片表
@@ -18,7 +20,8 @@ public class SubjectOptionsImg {
 	//选项图片地址
 	private String src;
 	//选项ID
-	private int selectOptionsId;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private SubjectOptions subjectOption;
 	public int getId() {
 		return id;
 	}
@@ -31,12 +34,13 @@ public class SubjectOptionsImg {
 	public void setSrc(String src) {
 		this.src = src;
 	}
-	public int getSelectOptionsId() {
-		return selectOptionsId;
+	public SubjectOptions getSubjectOption() {
+		return subjectOption;
 	}
-	public void setSelectOptionsId(int selectOptionsId) {
-		this.selectOptionsId = selectOptionsId;
+	public void setSubjectOption(SubjectOptions subjectOption) {
+		this.subjectOption = subjectOption;
 	}
+	
 	
 	
 }

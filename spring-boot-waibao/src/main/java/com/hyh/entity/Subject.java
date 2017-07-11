@@ -1,6 +1,6 @@
 package com.hyh.entity;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -35,13 +35,22 @@ public class Subject {
 	
 	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
-	private List<SubjectOptions> options;
-
+	private Set<SubjectOptions> options;
+	
+	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
+	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
+	private Set<SubjectImg> subjectImg;
+	
+	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
+	private Set<UserAnswer> userAnswer;
+	public Subject(){
+		
+	}
 	public Subject(String content
 			,String type
 			,String answer
 			,int professionId
-			,List<SubjectOptions> options){
+			,Set<SubjectOptions> options){
 		this.content=content;
 		this.type=type;
 		this.answer=answer;
@@ -89,12 +98,18 @@ public class Subject {
 		this.professionId = professionId;
 	}
 
-	public List<SubjectOptions> getOptions() {
+	public Set<SubjectOptions> getOptions() {
 		return options;
 	}
 
-	public void setOptions(List<SubjectOptions> options) {
+	public void setOptions(Set<SubjectOptions> options) {
 		this.options = options;
+	}
+	public Set<SubjectImg> getSubjectImg() {
+		return subjectImg;
+	}
+	public void setSubjectImg(Set<SubjectImg> subjectImg) {
+		this.subjectImg = subjectImg;
 	}
 	
 	

@@ -1,9 +1,11 @@
 package com.hyh.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 /**
@@ -17,7 +19,8 @@ public class SubjectImg {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	//题目ID
-	private int subjectId;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Subject subject;
 	//图片地址
 	private String src;
 	public int getId() {
@@ -26,11 +29,12 @@ public class SubjectImg {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getSubjectId() {
-		return subjectId;
+	
+	public Subject getSubject() {
+		return subject;
 	}
-	public void setSubjectId(int subjectId) {
-		this.subjectId = subjectId;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 	public String getSrc() {
 		return src;

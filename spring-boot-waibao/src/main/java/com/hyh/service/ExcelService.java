@@ -94,6 +94,7 @@ public class ExcelService {
 	       String errorMsg = "";  
 	       //得到第一个shell    
 	       Sheet sheet=wb.getSheetAt(0);  
+	       
 	       //得到Excel的行数  
 	       int totalRows=sheet.getPhysicalNumberOfRows();  
 	       //总列数  
@@ -101,7 +102,9 @@ public class ExcelService {
 	       //得到Excel的列数(前提是有行数)，从第二行算起  
 	       if(totalRows>=2 && sheet.getRow(1) != null){  
 	            totalCells=sheet.getRow(1).getPhysicalNumberOfCells();  
-	       }  
+	       }  else{
+	    	   errorMsg+="表内没有数据";
+	       }
 	       List<UserKnowledgeBase> userKnowledgeBaseList=new ArrayList<UserKnowledgeBase>();  
 	       UserKnowledgeBase tempUserKB;      
 	         

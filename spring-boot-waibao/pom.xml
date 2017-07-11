@@ -27,12 +27,6 @@
 	        <version>1.6</version>
 	    </dependency>
 		
-		<dependency>
-	      <groupId>junit</groupId>
-	      <artifactId>junit</artifactId>
-	      <version>3.8.1</version>
-	      <scope>test</scope>
-	    </dependency>
 	    
 	    <!-- 添加fastjson依赖包
 	    <dependency>
@@ -52,6 +46,12 @@
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        
+        <!-- AOP支持 -->
+        <dependency>    
+		 	<groupId>org.springframework.boot</groupId>    
+		 	<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
         
         <!-- tomcat的支持.-->
 		<dependency>
@@ -115,13 +115,17 @@
 		  <artifactId>qiniu-java-sdk</artifactId>
 		  <version>[7.2.0, 7.2.99]</version>
 		</dependency>
-	
+		<!-- 单元测试 -->
 	    <dependency>
 	      <groupId>junit</groupId>
 	      <artifactId>junit</artifactId>
-	      <version>3.8.1</version>
 	      <scope>test</scope>
 	    </dependency>
+	    <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	    <dependency>
 	    	<groupId>org.springframework.boot</groupId>
@@ -137,6 +141,10 @@
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-stream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 	</dependencies>
   

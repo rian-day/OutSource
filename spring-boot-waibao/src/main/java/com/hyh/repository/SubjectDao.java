@@ -1,9 +1,9 @@
 package com.hyh.repository;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.hyh.entity.Subject;
@@ -13,4 +13,6 @@ import com.hyh.entity.Subject;
 public interface SubjectDao extends JpaRepository<Subject, Long> {
 	
 	List<Subject> findByProfessionId(int professionId);
+	
+	List<Subject> findById(int id);
 }

@@ -1,9 +1,11 @@
 package com.hyh.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 /**
@@ -22,7 +24,8 @@ public class UserAnswer {
 	//用户答案
 	private String userAnswer;
 	//题目ID
-	private int subjectId;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Subject subject;
 	//题目状态（对、错、半对）
 	private char status;
 	//考试ID
@@ -45,11 +48,12 @@ public class UserAnswer {
 	public void setUserAnswer(String userAnswer) {
 		this.userAnswer = userAnswer;
 	}
-	public int getSubjectId() {
-		return subjectId;
+	
+	public Subject getSubject() {
+		return subject;
 	}
-	public void setSubjectId(int subjectId) {
-		this.subjectId = subjectId;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 	public char getStatus() {
 		return status;

@@ -1,5 +1,6 @@
 package com.hyh.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,10 +19,18 @@ public class UserInfo {
 	private int id;
 	
 	private String mail;
+	
 	private String name;
+	
 	private String password;
+	
+	private String head;
+	
 	private char sex;
 	
+	public UserInfo(){
+		
+	}
 	public UserInfo(String mail,String name,String password,char sex){
 		this.mail=mail;
 		this.name=name;
@@ -64,6 +73,12 @@ public class UserInfo {
 		final String BR="<br/>";
 		result+=this.getMail()+BR+this.getName()+BR+this.getPassword()+BR+this.getSex();
 		return result;
+	}
+	public String getHead() {
+		return head;
+	}
+	public void setHead(String head) {
+		this.head = head;
 	}
 	
 	
