@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.NotFound;
@@ -43,6 +44,9 @@ public class Subject {
 	
 	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	private Set<UserAnswer> userAnswer;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private SubjectGroup subjectGroup;
 	public Subject(){
 		
 	}

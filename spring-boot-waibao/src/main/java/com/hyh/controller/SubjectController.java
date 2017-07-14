@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +26,7 @@ public class SubjectController {
 		return "success";
 	}
 	
-	@PostMapping("/searchsubject")
+	@RequestMapping("/searchsubject")
 	@ResponseBody
 	public ModelAndView SearchSubject(@RequestParam(value="id") int id){
 		List<Subject> result=ss.SearchSubject(id);
