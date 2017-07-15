@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Free Bootstrap Themes by 365Bootstrap dot com - Free Responsive Html5 Templates">
+    
 
     <title>Design Studio</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 
     <!-- Custom CSS -->
-	<link rel="stylesheet" href="../static/css/reset.css"> <!-- CSS reset -->
-    <link rel="stylesheet" href="../static/css/style.css">
-	<link rel="stylesheet" href="../static/css/animated-logo.min.css"><!-- Logo -->
-	<link rel="stylesheet" href="../static/css/our-team.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="../static/css/reset.css" th:href="@{/css/reset.css}"/> <!-- CSS reset -->
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+	<link rel="stylesheet" href="../static/css/animated-logo.min.css" th:href="@{/css/animated-logo.min.css}"/><!-- Logo -->
+	<link rel="stylesheet" href="../static/css/our-team.css" th:href="@{/css/our-team.css}"/> <!-- Resource style -->
 	
 	<!-- Custom Fonts -->
-    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 	
 	<!-- Js -->
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
@@ -35,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="index.html" class="navbar-brand page-scroll" style="padding: 0px;"><img src="../static/images/1.png" style="width: 100%;height: 100%;"></a>
+                <a href="index.html" class="navbar-brand page-scroll" style="padding: 0px;"><img src="../static/images/1.png" style="width: 100%;height: 100%;"/></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -99,7 +97,7 @@
 				<div class="row heading">
 					<div class="col-lg-12">
 						<h2>考评方向</h2>
-						<hr>
+						<hr/>
 						<div class="intro">大数据时代的考评考试方向</div>
 					</div>
 				</div>
@@ -165,7 +163,7 @@
 				<div class="row heading">
 					<div class="col-lg-12">
 						<h2>历程</h2>
-						<hr>
+						<hr/>
 						<div class="intro"></div>
 					</div>
 				</div>
@@ -174,18 +172,18 @@
 						<ul class="timeline">
 							<li class="blue">
 								<div class="timeline-image">
-									<img class="img-circle img-responsive" src="../static/images/4.jpg" alt="">
+									<img class="img-circle img-responsive" src="../static/images/4.jpg" alt=""/>
 								</div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
 										<h4>Mature 2015</h4>
-										<br>
+										<br/>
 									</div>
 									<div class="timeline-body">
 										<p class="text-muted">
-											2015年3月 蓝鸥科技广州分中心正式成立。<br>
-											2015年3月 蓝鸥科技全国推出Apple Watch技术开发课。<br> 
-											2015年5月 蓝鸥科技获得苹果AATC认证，正式成为苹果官方授权培训机构。<br>
+											2015年3月 蓝鸥科技广州分中心正式成立。<br/>
+											2015年3月 蓝鸥科技全国推出Apple Watch技术开发课。<br/> 
+											2015年5月 蓝鸥科技获得苹果AATC认证，正式成为苹果官方授权培训机构。<br/>
 											2015年12月 蓝鸥科技荣获网易金翼奖“2015年度最受信赖职业教育品牌”。
 										</p>
 									</div>
@@ -193,18 +191,18 @@
 							</li>
 							<li class="timeline-inverted red">
 								<div class="timeline-image">
-									<img class="img-circle img-responsive" src="../static/images/5.jpg" alt="">
+									<img class="img-circle img-responsive" src="../static/images/5.jpg" alt=""/>
 								</div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
 										<h4>Expand 2014</h4>
-										<br>
+										<br/>
 									</div>
 									<div class="timeline-body">
 										<p class="text-muted">
-											2014年2月 中国软件行业协会教育与培训委员会授予蓝鸥科技“ETC认证培训中心”一级合作伙伴。<br>
-											2014年5月 北京蓝鸥科技迁至金五星商业大厦，面积近4500平方米。<br>
-											2014年6月 蓝鸥科技全国推出Swift公开课，并连续成功举办四期。<br>
+											2014年2月 中国软件行业协会教育与培训委员会授予蓝鸥科技“ETC认证培训中心”一级合作伙伴。<br/>
+											2014年5月 北京蓝鸥科技迁至金五星商业大厦，面积近4500平方米。<br/>
+											2014年6月 蓝鸥科技全国推出Swift公开课，并连续成功举办四期。<br/>
 											
 										</p>
 									</div>
@@ -212,17 +210,17 @@
 							</li>
 							<li class="green">
 								<div class="timeline-image">
-									<img class="img-circle img-responsive" src="../static/images/6.jpg" alt="">
+									<img class="img-circle img-responsive" src="../static/images/6.jpg" alt=""/>
 								</div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
 										<h4>Develop 2013</h4>
-										<br>
+										<br/>
 									</div>
 									<div class="timeline-body">
 										<p class="text-muted">
-											2013年4月-蓝鸥科技大连分中心在大连成立。<br>
-											2013年11月-蓝鸥科技郑州分中心在郑州成立。<br>
+											2013年4月-蓝鸥科技大连分中心在大连成立。<br/>
+											2013年11月-蓝鸥科技郑州分中心在郑州成立。<br/>
 											2013年12月-蓝鸥科技荣获“腾讯网十年最具创新力IT教育品牌”。蓝鸥科技荣获“51CTO学院年度金牌合作机构”。
 										</p>
 									</div>
@@ -230,12 +228,12 @@
 							</li>
 							<li class="timeline-inverted yellow">
 								<div class="timeline-image">
-									<img class="img-circle img-responsive" src="../static/images/7.jpg" alt="">
+									<img class="img-circle img-responsive" src="../static/images/7.jpg" alt=""/>
 								</div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
 										<h4>October 2012</h4>
-										<br>
+										<br/>
 									</div>
 									<div class="timeline-body">
 										<p class="text-muted">2012年10月 北京蓝鸥科技有限公司在京注册成立。</p>
@@ -245,8 +243,8 @@
 							<li class="timeline-inverted ">
 								<div class="timeline-image">
 									<h4>Be Part
-									<br>Of Our
-									<br>Story!</h4>
+									<br/>Of Our
+									<br/>Story!</h4>
 								</div>
 							</li>
 						</ul>
@@ -266,7 +264,7 @@
 								IT从业经验超过13年，具有多年的iPhone开发实战和培训管理经验，连续6年专注于3G技术领域，对iOS和Android的系统有深入研究。
 							</p>
 							<div class="cd-author">
-								<img src="../static/images/liuhui.jpg" alt="Author image">
+								<img src="../static/images/liuhui.jpg" alt="Author image"/>
 								<ul class="cd-author-info">
 									<li>刘辉</li>
 									<li>蓝鸥3G学院CEO</li>
@@ -278,7 +276,7 @@
 								14年的IT从业经验，8年的企业ERP软件开发经验。他开发过大型国企的ERP管理软件和电厂ERP软件，熟悉企业管理的业务流程
 							</p>
 							<div class="cd-author">
-								<img src="../static/images/lijinbo.jpg" alt="Author image">
+								<img src="../static/images/lijinbo.jpg" alt="Author image"/>
 								<ul class="cd-author-info">
 									<li>李静波</li>
 									<li>蓝鸥3G学院技术总监</li>
@@ -290,7 +288,7 @@
 								从事IT行业7年，专注移动互联网领域5年，4年iOS教学经验。曾就职于北京博看文思科技有限公司，先后任高级项目经理和iOS教学主管。
 							</p>
 							<div class="cd-author">
-								<img src="../static/images/cuiyunya.jpg" alt="Author image">
+								<img src="../static/images/cuiyunya.jpg" alt="Author image"/>
 								<ul class="cd-author-info">
 									<li>崔亚允</li>
 									<li>蓝鸥教育集团教学总监</li>
@@ -311,7 +309,7 @@
 								</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/liuhui.jpg" alt="Author image">
+									<img src="../static/images/liuhui.jpg" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>刘辉</li>
 										<li>蓝鸥3G学院CEO</li>
@@ -324,7 +322,7 @@
 								</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/cuiyunya.jpg" alt="Author image">
+									<img src="../static/images/cuiyunya.jpg" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>崔亚允</li>
 										<li>蓝鸥教育集团教学总监</li>
@@ -337,7 +335,7 @@
 								</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/lijinbo.jpg" alt="Author image">
+									<img src="../static/images/lijinbo.jpg" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>李静波</li>
 										<li>蓝鸥3G学院技术总监</li>
@@ -348,7 +346,7 @@
 								<p>从事IT行业5年，专注移动互联网开发3年，曾就职于国内知名美元VC创投团队火花无线（北京）科技有限公司任高级项目经理。张老师不但精通C、OC、C++、Java，更精通iOS和Android，同时，对后台也有一定了解。被学员称为“多面讲师”。</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/zhanghao.jpg" alt="Author image">
+									<img src="../static/images/zhanghao.jpg" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>张浩</li>
 										<li>蓝鸥教育集团教学副总监</li>
@@ -362,7 +360,7 @@
 								</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/yiyum.jpg" alt="Author image">
+									<img src="../static/images/yiyum.jpg" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>易荟云</li>
 										<li>蓝鸥3G学院北京校区教学总监</li>
@@ -376,7 +374,7 @@
 								</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/jiangxinfei.jpg" alt="Author image">
+									<img src="../static/images/jiangxinfei.jpg" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>蒋杏飞</li>
 										<li>蓝鸥3G学院大连校区教学总监</li>
@@ -389,7 +387,7 @@
 								</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/wangpengsheng.png" alt="Author image">
+									<img src="../static/images/wangpengsheng.png" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>王逢生</li>
 										<li>Java高级讲师</li>
@@ -402,7 +400,7 @@
 								</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/zhangjiarui.png" alt="Author image">
+									<img src="../static/images/zhangjiarui.png" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>张家瑞</li>
 										<li>大数据高级讲师</li>
@@ -415,7 +413,7 @@
 								</p>
 								
 								<div class="cd-author">
-									<img src="../static/images/tianxinqi.png" alt="Author image">
+									<img src="../static/images/tianxinqi.png" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>田兴起</li>
 										<li>VR/AR/游戏高级讲师</li>
@@ -425,7 +423,7 @@
 							<li class="cd-testimonials-item">
 								<p>多年JavaScript开发经验，精通React、Node.js、JQ等流行框架，对前端项目开发流程、H5移动端开发等事项具有全面深入的了解。</p>
 								<div class="cd-author">
-									<img src="../static/images/hanmingyang.png" alt="Author image">
+									<img src="../static/images/hanmingyang.png" alt="Author image"/>
 									<ul class="cd-author-info">
 										<li>韩明洋</li>
 										<li>HTML5高级讲师</li>
@@ -449,7 +447,7 @@
 				<div class="row">
 					<div class="col-md-4">
 						<!-- <p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">http://www.lanou3g.com/</a></p> -->
-						<img src="../static/images/1.png">
+						<img src="../static/images/1.png"/>
 					</div>
 					<div class="col-md-4">
 						<ul class="list-inline">

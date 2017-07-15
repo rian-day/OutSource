@@ -31,7 +31,7 @@ public class EmailTest {
     @Value("${spring.mail.username}")
     private String Sender; //读取配置文件中的参数
 
-    @Test
+    //@Test
     public void sendSimpleMail() throws Exception {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(Sender);

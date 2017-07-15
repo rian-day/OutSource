@@ -1,10 +1,15 @@
 package com.hyh.entity;
 
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * 用户信息表
@@ -27,6 +32,9 @@ public class UserInfo {
 	private String head;
 	
 	private char sex;
+	
+	@OneToMany(mappedBy="user",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
+	private Set<UserOperation> operations;
 	
 	public UserInfo(){
 		

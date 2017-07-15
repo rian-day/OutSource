@@ -47,6 +47,8 @@ public class Subject {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private SubjectGroup subjectGroup;
+	
+	
 	public Subject(){
 		
 	}

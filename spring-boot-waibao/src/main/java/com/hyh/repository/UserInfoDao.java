@@ -18,7 +18,7 @@ public interface UserInfoDao extends JpaRepository<UserInfo, Long> {
 	ArrayList<UserInfo> findByMailAndPassword(String Mail,String Password);
 	
 	//分页
-	Page<UserInfo> findByNameNot(String Name,Pageable pageable);
+	Page<UserInfo> findByName(String Name,Pageable pageable);
 	
 	//@Query("from UserInfo u where u.name=:name")
     //UserInfo findUser(@Param("name") String name);
