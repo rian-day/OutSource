@@ -8,15 +8,15 @@
 
 	
 
-	<link rel="stylesheet" href="../static/css/login.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/htools.select.skin.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+	<link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}>
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/htools.select.skin.css" th:href="@{/css/htools.select.skin.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css" th:href="@{/http://www.jq22.com/jquery/font-awesome.4.6.0.css}">
 
 
 	</head>
-	<body  id="gtco-header" class="gtco-cover" role="banner" style="background-image: url(../static/images/login.jpg);background-attachment: fixed;">
+	<body  id="gtco-header" class="gtco-cover" role="banner" style="background-image: url(/images/login.jpg);background-attachment: fixed;" >
 	
 	<div style="width: 100%;background:rgba(0, 0, 0, 0.5);"></div>
 
@@ -81,7 +81,7 @@
 								</div>
 								<div class="mima">
 									<label class="content-lable">Password</label>
-									<label class="content-lable2"><a href="forget.html">忘记密码</a><img src="../static/images/wenhao.png"></label>
+									<label class="content-lable2"><a href="forget.html">忘记密码</a><img src="../static/images/wenhao.png" th:href="@{/images/wenhao.png"}"></label>
 									<br>
 									<input type="text" name="Email" class="Passwords">
 								</div>
@@ -168,16 +168,14 @@
 
 	
 	<!-- jQuery -->
-	<script src="../static/js/jquery-2.1.1.js"></script>
+	<script src="../static/js/jquery-2.1.1.js" th:href="@{/js/login.css}"></script>
 
 	<!-- Bootstrap -->
-	<script src="../static/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../static/js/jquery.easing.min.js"></script>
-	<!-- Main -->
-<!-- 	<script src="js/login.js"></script> -->
-	<script type="text/javascript" src="../static/js/jquery.htools.select.js"></script>
-	<script src="../static/js/yanzheng.js"></script>
-	<script src="../static/js/login.js"></script>
+	<script src="../static/js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
+	<script src="../static/js/jquery.easing.min.js" th:href="@{/js/jquery.easing.min.js}"></script>
+	<script type="text/javascript" src="../static/js/jquery.htools.select.js" th:href="@{/css/jquery.htools.select.js}"></script>
+	<script src="../static/js/yanzheng.js" th:href="@{/js/yanzheng.js}"></script>
+	<script src="../static/js/login.js" th:href="@{/js/login.js}"></script>
 	</body>
 </html>
 
