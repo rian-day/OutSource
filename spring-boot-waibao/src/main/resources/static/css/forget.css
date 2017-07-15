@@ -1,0 +1,285 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td,
+a {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+ol,
+ul,
+li {
+    list-style: none
+}
+
+ul,
+li {
+    list-style-type: none;
+}
+
+#login {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(../images/forget.jpg);
+    background-size: cover;
+}
+
+.fl {
+    float: left
+}
+
+.tl {
+    text-align: left
+}
+
+.f-style1 {
+    font-size: 12px;
+    color: #ff6e33
+}
+
+.f-style2 {
+    color: #1b8eff
+}
+
+.f-style3 {
+    color: #ff6e33
+}
+
+.f-style4 {
+    color: #ff282d
+}
+
+.m-l-30 {
+    margin-left: 30px
+}
+
+.m-l-50 {
+    margin-left: 50px
+}
+
+.blue-link,
+.blue-link:hover {
+    color: #008aff
+}
+
+.main-page {
+    background-image: none;
+    background-color: #dbdbdb
+}
+
+#wrap {}
+
+#regWrap {
+    min-height: 100%x;
+    padding: 150px 0 0
+}
+
+.reg-box {
+    width: 386px;
+    margin: 0 auto
+}
+
+.reg-box h3 {
+    width: 386px;
+    height: 43px;
+    margin-bottom: 0;
+    line-height: 43px;
+    text-align: center;
+    background-color: #178dff;
+    -moz-border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    color: #fff;
+    font-size: 16px
+}
+
+#regLogo {
+    width: 386px;
+    margin: 10px auto
+}
+
+#regLogo a {
+    display: inline-block;
+    width: 386px;
+    height: 47px;
+    background: url(../images/logo.png) no-repeat;
+    background-size: auto 47px;
+}
+
+#top a,
+#top a:hover {
+    text-decoration: none;
+}
+
+.find_pwd_box h4 {
+    text-align: center;
+    padding: 16px 16px;
+    border-radius: 6px 6px 0 0;
+    color: white;
+    background-color: #178DFF;
+}
+
+.find_pwd_box2 h4 {
+    text-align: center;
+    padding: 16px 16px;
+    border-radius: 6px 6px 0 0;
+    color: white;
+    background-color: #178DFF;
+}
+
+.captcha input {
+    width: 178px;
+    font-size: 14px;
+    margin-left: 0px;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-image: none;
+    color: #555;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075)
+}
+
+span {
+    margin-left: 60px;
+    float: left;
+}
+
+input {
+    height: 32px;
+    width: 180px;
+    float: left;
+}
+
+.aa {
+    float: left;
+    color: red;
+    line-height: 32px;
+    height: 24px;
+    margin-left: 17%;
+    margin-bottom: 5px
+}
+
+#reset_pwd_btn {
+    width: 300px;
+    border: 0px;
+    background-color: #178DFF;
+    color: white;
+    border-radius: 2px;
+    font-size: 16px;
+    margin-left: 75px;
+}
+
+#reset_pwd_btn:visited {
+    background-color: #B5B5B5;
+}
+
+.input-new {
+    width: 300px;
+    margin: 0 auto
+}
+
+.validateCode {
+    width: 180px;
+}
+
+.yanzheng {
+    width: 35% !important;
+    margin-left: 5% !important;
+    border-radius: 4px !important;
+    background-color: rgb(23, 141, 255);
+    color: white !important;
+    font-size: 12px !important;
+    padding: 5px !important;
+}
+
+.find_pwd_box {
+    width: 450px;
+    height: 340px;
+    margin: 0 auto;
+    margin-top: 30px;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: #F6F8FA;
+    /*            text-align:center;*/
+}
+
+.find_pwd_box2 {
+    width: 450px;
+    height: 340px;
+    margin: 0 auto;
+    margin-top: 30px;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: #F6F8FA;
+    display: none;
+    animation: myfirst 2s;
+}
+
+@keyframes myfirst {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-moz-keyframes myfirst
+/* Firefox */
+
+{
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes myfirst
+/* Safari 和 Chrome */
+
+{
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-o-keyframes myfirst
+/* Opera */
+
+{
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}

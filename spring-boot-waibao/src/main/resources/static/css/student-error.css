@@ -1,0 +1,500 @@
+.showview-error {
+    background-color: #eaedf1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: calc(100vh - 70px);
+    height: auto;
+}
+
+.head-view {
+    height: 60px;
+    line-height: 30px;
+    font-size: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    margin-top: 15px;
+    background-color: white;
+    width: 80%；
+}
+
+.list-timu {
+    width: 80%;
+    margin-left: 10%;
+    height: 800px;
+    background-color: #fff;
+    margin-right: 0px;
+    float: left;
+}
+
+.timu-list {
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+
+.timu-fenxi {
+    width: 40%;
+    height: 100%;
+    margin-left: 60%;
+}
+
+.fenxitimu {
+    height: 46%;
+    width: 98%;
+    border: 1px solid #EAEDF1;
+    margin-top: 20px;
+}
+
+.fenxitimu div {
+    padding: 8px 0;
+}
+
+.fenxiHead {
+    margin-left: 2%;
+    color: rgb(255, 111, 110);
+    font-size: 20px
+}
+
+.fenxiHeadRight {
+    margin-left: 50%;
+}
+
+.answerStan {
+    color: green;
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+.fenxi {
+    margin-top: 2%;
+    height: 48%;
+    width: 98%;
+    border: 1px solid #EAEDF1;
+}
+
+.timu-list-title {
+    width: 90%;
+    height: 20px;
+    float: left;
+    background-color: white;
+    margin: 5%;
+    position: relative;
+}
+
+.timu-list-title a {
+    border: 1px solid #37B9AB;
+}
+
+.timu-list-titl-left {
+    padding: 12px 27px;
+    background-color: #ffffff;
+    color: #333333;
+    font-family: "arial", "Microsoft YaHei";
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 0.3em 0 0 0.3em;
+    margin-left: 15%;
+}
+
+.timu-list-titl-in {
+    padding: 12px 30px;
+    background-color: #ffffff;
+    color: #333333;
+    font-family: "arial", "Microsoft YaHei";
+    font-size: 16px;
+    text-decoration: none;
+    margin-left: -5px;
+}
+
+.timu-list-titl-right {
+    padding: 12px 27px;
+    background-color: #ffffff;
+    color: #333333;
+    font-family: "arial", "Microsoft YaHei";
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 0 0.3em 0.3em 0;
+    margin-left: -5px;
+}
+
+.timu-list-containt {
+    background-color: red;
+    width: 95%;
+    height: 600px;
+    background-color: white;
+    float: left;
+    margin-left: 2.5%;
+    margin-top: 20px;
+    border: 1px solid #EAEDF1;
+}
+
+.error-title {
+    width: 100%;
+    height: 40px;
+    float: left;
+    background-color: rgb(255, 111, 110);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    color: white;
+    text-align: center;
+}
+
+
+
+
+
+/*下拉列表*/
+
+.choose-problem {
+    cursor: pointer;
+    height: 34px;
+    line-height: 34px;
+    width: 180px;
+    text-indent: 10px;
+    position: relative;
+    margin-right: 50px;
+    display: block;
+    float: right;
+    margin-top: 3px;
+}
+
+.down {
+    background: url(../images/down.png);
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+.choose-problem .choose-value {
+    width: 100%;
+    height: 34px;
+    display: block;
+}
+
+.choose-problem .choose-list {
+    position: absolute;
+    top: 37px;
+    width: 100%;
+    display: none;
+    z-index: 2;
+    background: #fff;
+    border: 1px solid #d3d3d3;
+}
+
+.choose-problem .choose-list .choose-item {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: grey;
+    list-style: none;
+    margin-left: -15%;
+}
+
+.choose-problem .choose-list .choose-item:hover {
+    background-color: #EFEFEF;
+}
+
+
+.font-style {
+    font-size: 20px;
+    margin-left: 19%;
+    margin-top: 5px;
+    float: left;
+}
+
+.error-contain {
+    width: 100%;
+    float: left;
+    height: 540px;
+    margin-bottom: 20px;
+}
+
+.error-contain ul {
+    display: block;
+    margin: 0 12px;
+    padding: 12px 0;
+    margin-bottom: -1px;
+    list-style: none;
+}
+
+.error-contain ul i {
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    color: #FFF;
+    background: #4CB179;
+    border-radius: 3px;
+    font-family: "arial", "Microsoft YaHei";
+    margin: 0 10px 0 0;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+.error-contain ul li {
+    display: block;
+    margin: 0 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: -1px;
+    margin-left: 5px;
+    overflow: hidden;
+}
+
+.laji {
+    background: url(../images/laji.png);
+    width: 20px !important;
+    height: 20px !important;
+    background-size: 20px 20px;
+    float: right !important;
+    margin-right: 1%;
+}
+
+.error-contain ul li span {
+    cursor: pointer;
+    padding: 3px;
+    line-height: 15px;
+    font-size: 18px;
+    font-weight: normal;
+    margin-left: 1%;
+    overflow: hidden;
+    font-weight: lighter;
+    width: 80%;
+    float: left;
+}
+
+.error-contain ul li span:hover {
+    color: #4CB179;
+}
+
+.fenxitimu h3 {
+    margin-left: 2%;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+    color: #FF6F6E;
+    float: left;
+}
+
+.fenxitimu h4 {
+    color: rgb(193, 193, 193);
+    float: right;
+    margin-right: 5%;
+    margin-top: 4%;
+}
+
+.danxuan {
+    width: 100%;
+    float: left;
+    padding: 8px 3px;
+}
+
+.timus {
+    width: 14%;
+    font-size: 20px;
+    padding: 10px 10px;
+    float: left;
+    margin-left: 2%;
+    padding: 0px 5px !important;
+}
+
+.timus-content {
+    width: 80%;
+    height: 130px;
+    margin-right: 2%;
+    float: left;
+    border: 1px solid rgba(255, 111, 110, 0.5);
+    padding: 10px !important;
+    min-height: 130px;
+    position: relative;
+    display: inline-block;
+    overflow: auto;
+    /*background: -webkit-gradient(linear, 0% 20%, 0% 1000%, from(#fff), to(#fff), color-stop(.1,#f3f3f3));
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1) inset;
+    -webkit-border-bottom-right-radius: 6px 50px;   */
+}
+
+.analyse {
+    height: 220px;
+    min-height: 200px;
+}
+
+.timus-content:before {
+    content: '';
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    -webkit-box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    -webkit-transform: translate(-35px, -40px) skew(0deg, 30deg) rotate(-25deg);
+}
+
+.timus-content:after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: inline-block;
+    z-index: -1;
+    -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+}
+
+.fenxikuai {
+    width: 100%;
+    height: 120px;
+    float: left;
+}
+
+.fenxikuai-a1 {
+    width: 15%;
+    font-size: 15px;
+    margin-left: 2%;
+    margin-top: 2%;
+    float: left;
+}
+
+.fenxikuai-a2 {
+    width: 45%;
+    float: left;
+    height: 60px;
+    padding-left: 2%;
+}
+
+.fenxikuai-a3 {
+    width: 15%;
+    font-size: 15px;
+    padding: 10px 10px;
+    float: left;
+    margin-left: 30%;
+}
+
+.fenxikuai-a4 {
+    width: 45%;
+    float: left;
+    height: 60px;
+    padding-left: 2%;
+    margin-left: 2%;
+}
+
+.biaoti {
+    width: 100%;
+    height: 30px;
+}
+
+
+.fenxi h3 {
+    margin-left: 2%;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+    color: #FF6F6E;
+}
+
+.fenxi-a1 {
+    width: 10%;
+    float: left;
+    margin-left: 2%;
+}
+
+.fenxi-a4 {
+    width: 12%;
+    float: left;
+    margin-left: 2%;
+    margin-top: 20px;
+}
+
+
+.fenxi-a2 {
+    width: 80%;
+    float: left;
+    height: 145px;
+    border: 1px solid red;
+    margin-left: 3%;
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    background: -webkit-gradient(linear, 0% 20%, 0% 1000%, from(#fff), to(#fff), color-stop(.1, #f3f3f3));
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1) inset;
+    -webkit-border-bottom-right-radius: 6px 50px;
+}
+
+.fenxi-a2:before {
+    content: '';
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    -webkit-box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    -webkit-transform: translate(-35px, -40px) skew(0deg, 30deg) rotate(-25deg);
+}
+
+.fenxi-a2:after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: inline-block;
+    z-index: -1;
+    -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+}
+
+.fenxi-a3 {
+    width: 80%;
+    float: left;
+    margin-top: 20px;
+    height: 225px;
+    border: 1px solid red;
+    margin-left: 3%;
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    background: -webkit-gradient(linear, 0% 20%, 0% 1000%, from(#fff), to(#fff), color-stop(.1, #f3f3f3));
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1) inset;
+    -webkit-border-bottom-right-radius: 6px 50px;
+}
+
+.fenxi-a3:before {
+    content: '';
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    -webkit-box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    -webkit-transform: translate(-35px, -40px) skew(0deg, 30deg) rotate(-25deg);
+}
+
+.fenxi-a3:after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: inline-block;
+    z-index: -1;
+    -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+}
+
+.cuotibutton {
+    float: right;
+    margin-right: 5%;
+    padding: 5px 15px;
+}

@@ -1,30 +1,495 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free Bootstrap Themes by 365Bootstrap dot com - Free Responsive Html5 Templates">
 
+    <title>Design Studio</title>
 
-  <head>
-    <title>index.html</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+	<link rel="stylesheet" href="../static/css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="../static/css/animated-logo.min.css"><!-- Logo -->
+	<link rel="stylesheet" href="../static/css/our-team.css"> <!-- Resource style -->
 	
-    <meta name="keywords" content="keyword1,keyword2,keyword3">
-    <meta name="description" content="this is my page">
-    <meta name="content-type" content="text/html; charset=UTF-8">
-    
-    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<!-- Custom Fonts -->
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Js -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+</head>
+<body>
+	<!-- /////////////////////////////////////////Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand page-scroll" style="padding: 0px;"><img src="../static/images/1.png" style="width: 100%;height: 100%;"></a>
+            </div>
 
-  </head>
-  
-  <body>
-  	<img alt="" src="../static/images/userHead.jpg" th:src="@{/images/userHead.jpg}">
-    <table>
-    	<tr th:each="item : ${items}">
-    		<td th:text="${item.content}"></td>
-    		<td th:each="option : ${item.options}">
-    			<div th:text="${option.optionName}"></div>
-    			<div th:text="${option.content}"></div>
-    		</td>
-    	</tr>
-    </table> 
-    <p th:text="${name}"></p>
-    index
-  </body>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+					<li>
+                        <a class="page-scroll" href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">移动端</a>
+                    </li>
+					<li>
+                        <a class="page-scroll" href="student-alltest.html">开始考试</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="login.html">登陆|注册</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+	<!-- Navigation -->
+
+	<!-- /////////////////////////////////////////Header -->
+	<header id="page-top">
+	<canvas style="position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;right: 0;cursor: none;height: 650px;width: 100%;"></canvas>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="o-container">
+						<div class="c-slack">
+						  <span class="c-slack__dot c-slack__dot--a"></span>
+						  <span class="c-slack__dot c-slack__dot--b"></span>
+						  <span class="c-slack__dot c-slack__dot--c"></span>
+						  <span class="c-slack__dot c-slack__dot--d"></span>
+						</div>
+					</div>
+					<div class="intro-text">
+						<div class="intro-lead-in">Welcome To Our Lanou!</div>
+						<div class="intro-heading">Evaluation System</div>
+					</div>
+					<a class="btn btn-1 btn-sm" href="login.html" style="z-index: 2;">开始注册</a>
+					<!-- <a class="btn btn-1 btn-sm" href="#team" style="z-index: 2;">Our Team</a> -->
+				</div>
+			</div>
+		</div>
+		
+    </header>
+	<!-- Header -->
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content" class="index-page">
+		
+		<!-- ////////////Content Box 01 -->
+		<section id="services" class="box-content box-1">
+			<div class="container">
+				<div class="row heading">
+					<div class="col-lg-12">
+						<h2>考评方向</h2>
+						<hr>
+						<div class="intro">大数据时代的考评考试方向</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3 box-item">
+						<div class="wrap-img">
+							<img src="../static/images/java.png" />
+						</div>
+						<h3 class="blue">java</h3>
+						<p>
+							Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念.因此Java语言具有功能强大和简单易用两个特征。
+						</p>
+						<button type="submit" class="btn btn-2 ">More</button>
+					</div>
+					<div class="col-sm-3 box-item">
+						<div class="wrap-img">
+							<img src="../static/images/html5.png" />
+						</div>
+						<h3 class="yellow">html5</h3>
+						<p>
+							万维网的核心语言、标准通用标记语言下的一个应用超文本标记语言（HTML）的第五次重大修改（这是一项推荐标准、外语原文：W3C Recommendation
+						</p>
+						<button type="submit" class="btn btn-2 ">More</button>
+					</div>
+					<div class="col-sm-3 box-item">
+						<div class="wrap-img">
+							<img src="../static/images/android.png" />
+						</div>
+						<h3 class="red">android</h3>
+						<p>
+							Android是一种基于Linux的自由及开放源代码的操作系统，主要使用于移动设备，如智能手机和平板电脑，由Google公司和开放手机联盟领导及开发。
+						</p>
+						<button type="submit" class="btn btn-2 ">More</button>
+					</div>
+					<div class="col-sm-3 box-item">
+						<div class="wrap-img">
+							<img src="../static/images/PHP.png" />
+						</div>
+						<h3 class="green">php</h3>
+						<p>
+							PHP（外文名:PHP: Hypertext Preprocessor，中文名：“超文本预处理器”）是一种通用开源脚本语言。语法吸收了C语言、Java和Perl的特点。
+						</p>
+						<button type="submit" class="btn btn-2 ">More</button>
+					</div>
+				</div>		
+			</div>
+		</section>
+		
+		<!-- ////////////Content Box 02 -->
+		<section id="new" class="box-content box-2 box-style">
+			<div class="container">
+				<div class="row">
+					<blockquote>
+						勇敢，勤奋，进取，创新
+					</blockquote>
+				</div>		
+			</div>
+		</section>
+		
+		<!-- ////////////Content Box 03 -->
+		<section id="about" class="box-content box-3">
+			<div class="container">
+				<div class="row heading">
+					<div class="col-lg-12">
+						<h2>历程</h2>
+						<hr>
+						<div class="intro"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<ul class="timeline">
+							<li class="blue">
+								<div class="timeline-image">
+									<img class="img-circle img-responsive" src="../static/images/4.jpg" alt="">
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4>Mature 2015</h4>
+										<br>
+									</div>
+									<div class="timeline-body">
+										<p class="text-muted">
+											2015年3月 蓝鸥科技广州分中心正式成立。<br>
+											2015年3月 蓝鸥科技全国推出Apple Watch技术开发课。<br> 
+											2015年5月 蓝鸥科技获得苹果AATC认证，正式成为苹果官方授权培训机构。<br>
+											2015年12月 蓝鸥科技荣获网易金翼奖“2015年度最受信赖职业教育品牌”。
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="timeline-inverted red">
+								<div class="timeline-image">
+									<img class="img-circle img-responsive" src="../static/images/5.jpg" alt="">
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4>Expand 2014</h4>
+										<br>
+									</div>
+									<div class="timeline-body">
+										<p class="text-muted">
+											2014年2月 中国软件行业协会教育与培训委员会授予蓝鸥科技“ETC认证培训中心”一级合作伙伴。<br>
+											2014年5月 北京蓝鸥科技迁至金五星商业大厦，面积近4500平方米。<br>
+											2014年6月 蓝鸥科技全国推出Swift公开课，并连续成功举办四期。<br>
+											
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="green">
+								<div class="timeline-image">
+									<img class="img-circle img-responsive" src="../static/images/6.jpg" alt="">
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4>Develop 2013</h4>
+										<br>
+									</div>
+									<div class="timeline-body">
+										<p class="text-muted">
+											2013年4月-蓝鸥科技大连分中心在大连成立。<br>
+											2013年11月-蓝鸥科技郑州分中心在郑州成立。<br>
+											2013年12月-蓝鸥科技荣获“腾讯网十年最具创新力IT教育品牌”。蓝鸥科技荣获“51CTO学院年度金牌合作机构”。
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="timeline-inverted yellow">
+								<div class="timeline-image">
+									<img class="img-circle img-responsive" src="../static/images/7.jpg" alt="">
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4>October 2012</h4>
+										<br>
+									</div>
+									<div class="timeline-body">
+										<p class="text-muted">2012年10月 北京蓝鸥科技有限公司在京注册成立。</p>
+									</div>
+								</div>
+							</li>
+							<li class="timeline-inverted ">
+								<div class="timeline-image">
+									<h4>Be Part
+									<br>Of Our
+									<br>Story!</h4>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>		
+			</div>
+		</section>
+		
+		<!-- ////////////Content Box 04 -->
+		<section id="team" class="box-content box-4 box-style">
+		<div style="margin-left: 45%; font-size: 20px;"><h2>名师风采</h2></div>
+			<div class="clearfix">
+				<div class="cd-testimonials-wrapper cd-container">
+					<ul class="cd-testimonials">
+						<li>
+							<p>
+								IT从业经验超过13年，具有多年的iPhone开发实战和培训管理经验，连续6年专注于3G技术领域，对iOS和Android的系统有深入研究。
+							</p>
+							<div class="cd-author">
+								<img src="../static/images/liuhui.jpg" alt="Author image">
+								<ul class="cd-author-info">
+									<li>刘辉</li>
+									<li>蓝鸥3G学院CEO</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<p>
+								14年的IT从业经验，8年的企业ERP软件开发经验。他开发过大型国企的ERP管理软件和电厂ERP软件，熟悉企业管理的业务流程
+							</p>
+							<div class="cd-author">
+								<img src="../static/images/lijinbo.jpg" alt="Author image">
+								<ul class="cd-author-info">
+									<li>李静波</li>
+									<li>蓝鸥3G学院技术总监</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<p>
+								从事IT行业7年，专注移动互联网领域5年，4年iOS教学经验。曾就职于北京博看文思科技有限公司，先后任高级项目经理和iOS教学主管。
+							</p>
+							<div class="cd-author">
+								<img src="../static/images/cuiyunya.jpg" alt="Author image">
+								<ul class="cd-author-info">
+									<li>崔亚允</li>
+									<li>蓝鸥教育集团教学总监</li>
+								</ul>
+							</div>
+						</li>
+					</ul> <!-- cd-testimonials -->	
+				</div> <!-- cd-testimonials-wrapper -->
+				
+				<div class="cd-see-all"><a href="#0" class="btn btn-1">See all</a></div>
+				
+				<div class="cd-testimonials-all">
+					<div class="cd-testimonials-all-wrapper">
+						<ul>
+							<li class="cd-testimonials-item">
+								<p>
+									IT从业经验超过13年，具有多年的iPhone开发实战和培训管理经验，连续6年专注于3G技术领域，对iOS和Android的系统有深入研究。
+								</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/liuhui.jpg" alt="Author image">
+									<ul class="cd-author-info">
+										<li>刘辉</li>
+										<li>蓝鸥3G学院CEO</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>
+									从事IT行业7年，专注移动互联网领域5年，4年iOS教学经验。曾就职于北京博看文思科技有限公司，先后任高级项目经理和iOS教学主管。精通C、OC、C++、PHP、HTML、Lua等语言。对iOS有全方位的了解，对跨平台开发也颇有研究。同时，对学习方法、学习效率、学员心理辅导也有一定研究。累计培养iOS开发者近千人。
+								</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/cuiyunya.jpg" alt="Author image">
+									<ul class="cd-author-info">
+										<li>崔亚允</li>
+										<li>蓝鸥教育集团教学总监</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>
+									14年的IT从业经验，8年的企业ERP软件开发经验。他开发过大型国企的ERP管理软件和电厂ERP软件，熟悉企业管理的业务流程；2年的移动互联网产品经理。他是国内最早接触iOS开发和从事iOS教学的工程师。多年以来，一直致力于苹果应用软件及驱动的开发和研究及专业人才的培养工作。不仅如此，而且李老师产品经验丰富，对C、C++、JAVA、JAVASCRIPT、Cocos2d-x游戏引擎非常精通。
+								</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/lijinbo.jpg" alt="Author image">
+									<ul class="cd-author-info">
+										<li>李静波</li>
+										<li>蓝鸥3G学院技术总监</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>从事IT行业5年，专注移动互联网开发3年，曾就职于国内知名美元VC创投团队火花无线（北京）科技有限公司任高级项目经理。张老师不但精通C、OC、C++、Java，更精通iOS和Android，同时，对后台也有一定了解。被学员称为“多面讲师”。</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/zhanghao.jpg" alt="Author image">
+									<ul class="cd-author-info">
+										<li>张浩</li>
+										<li>蓝鸥教育集团教学副总监</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>
+									有多年的互联网工作经验，其中3年专注于iOS开发。曾就职于火花科技和蚕豆网。精通OC，UI，网络编程，多线程等，具有丰富的实战开发经验。
+易老师参与开发的项目涵盖杂志、办公、社交、LBS、娱乐、影视、教育等，如：VOGUE时尚杂志、自由行、辣妈秀、麻花美食、活动汇、某国企OA系统、Noodle。
+								</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/yiyum.jpg" alt="Author image">
+									<ul class="cd-author-info">
+										<li>易荟云</li>
+										<li>蓝鸥3G学院北京校区教学总监</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>
+									从事iOS开发5年，并且一直致力于企业级应用的开发。服务过文思海辉、云电同方科技有限公司、北京外智刊科技有限公司等企业，他对iOS有着非常深刻的研究。
+蒋老师所做的项目涵盖办公、社交、即时通信、娱乐等，其中“随逸”为企业级管理定制软件并担任ERP移动端架构师、即时通讯类社交软件“泡泡通”、韩国企业定制IM软件AirTalk以及基于VOIP的语音、视频通话类软件ComTalk、与双色球合作开发的“Q拍乐”摇奖项目等。
+								</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/jiangxinfei.jpg" alt="Author image">
+									<ul class="cd-author-info">
+										<li>蒋杏飞</li>
+										<li>蓝鸥3G学院大连校区教学总监</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>
+									精通Java、HTML、CSS、JavaScript等多种编程语言，精通面向对象程序设计、Java高级编程、Struts2、Spring、Hibernate、企业级框架技术，熟练使用JSP+Servlet+JDBC建站。
+								</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/wangpengsheng.png" alt="Author image">
+									<ul class="cd-author-info">
+										<li>王逢生</li>
+										<li>Java高级讲师</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>
+									毕业于中国财政学院MBA，拥有十五年软件研发与技术团队管理工作经验。精通Java企业级开发、MapReduce、Spark、Python数据挖据、R语言数据分析、机器学习算法、TensorFlow深度学习框架等。
+								</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/zhangjiarui.png" alt="Author image">
+									<ul class="cd-author-info">
+										<li>张家瑞</li>
+										<li>大数据高级讲师</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>
+									熟悉国内主流2D和3D游戏的制作流程和框架，参与指导过多款大型3D游戏的创作，并在百度、360、豌豆荚等平台上线。熟悉国内虚拟现实游戏和增强现实应用的制作，对VR和AR有深入的研究。
+								</p>
+								
+								<div class="cd-author">
+									<img src="../static/images/tianxinqi.png" alt="Author image">
+									<ul class="cd-author-info">
+										<li>田兴起</li>
+										<li>VR/AR/游戏高级讲师</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+							<li class="cd-testimonials-item">
+								<p>多年JavaScript开发经验，精通React、Node.js、JQ等流行框架，对前端项目开发流程、H5移动端开发等事项具有全面深入的了解。</p>
+								<div class="cd-author">
+									<img src="../static/images/hanmingyang.png" alt="Author image">
+									<ul class="cd-author-info">
+										<li>韩明洋</li>
+										<li>HTML5高级讲师</li>
+									</ul>
+								</div> <!-- cd-author -->
+							</li>
+
+						</ul>
+					</div>	<!-- cd-testimonials-all-wrapper -->
+					<a href="#0" class="close-btn">Close</a>
+				</div> <!-- cd-testimonials-all -->
+			</div>
+		</section>
+	</div>
+	
+	<!-- //Footer -->
+	<footer>
+
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<!-- <p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">http://www.lanou3g.com/</a></p> -->
+						<img src="../static/images/1.png">
+					</div>
+					<div class="col-md-4">
+						<ul class="list-inline">
+							<li><a href="#"><i class="fa fa-twitter"></i></a>
+							</li>
+							<li><a href="#"><i class="fa fa-facebook"></i></a>
+							</li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a>
+							</li>
+							<li><a href="#"><i class="fa fa-google"></i></a>
+                            </li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<ul class="list-inline">
+							<li><a href="#">Privacy Policy</a>
+							</li>
+							<li><a href="#">Terms of Use</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer -->
+
+	
+	<!-- jQuery -->
+	<script src="../static/js/jquery-2.1.1.js"></script>
+	<script src="../static/js/masonry.pkgd.min.js"></script>
+	<script src="../static/js/jquery.flexslider-min.js"></script>
+	<script src="../static/js/main.js"></script> <!-- Resource jQuery -->
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../static/js/bootstrap.min.js"></script>
+
+	<script src="../static/js/jquery.easing.min.js"></script>
+	<!--Headerjs-->
+	<script src="../static/js/cbpAnimatedHeader.js"></script>
+
+</body>
 </html>
