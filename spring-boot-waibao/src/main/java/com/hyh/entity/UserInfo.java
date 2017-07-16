@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -33,8 +36,14 @@ public class UserInfo {
 	
 	private char sex;
 	
+	@ManyToMany(cascade={CascadeType.REFRESH})
+	    @JoinTable(name="t_student_teacher",
+	            inverseJoinColumns=@JoinColumn(name="teacher_id"),
+	            joinColumns=@JoinColumn(name="student_id"))
+	private Set<Profession> profession;
+	
 	@OneToMany(mappedBy="user",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
-	private Set<UserOperation> operations;
+	private Set<UserOperation> operations;//用户操作
 	
 	public UserInfo(){
 		

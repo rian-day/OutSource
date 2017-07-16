@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+/**
+ * 用户操作表
+ * @author 10513
+ *
+ */
 @Entity
 public class UserOperation {
 	@Id

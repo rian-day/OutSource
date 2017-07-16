@@ -1,9 +1,12 @@
 package com.hyh.entity;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  * 职业表
@@ -17,7 +20,9 @@ public class Profession {
 	private int id;
 	//职业名
 	private String name;
-
+	
+	@ManyToMany(mappedBy = "profession")
+	private Set<UserInfo> user;
 
 	public String getName() {
 		return name;

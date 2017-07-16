@@ -1,7 +1,7 @@
 package com.hyh.bean;
 
 public class User {
-	private String username;
+	private String username; //mail
 	private String password;
 	private String name;
 	private String pro;

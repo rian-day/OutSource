@@ -36,13 +36,17 @@ public class MainController {
 	@ResponseBody
 	public String CheckLogin(@RequestParam(value = "username", defaultValue = "null") String mail
 			,@RequestParam(value = "password", defaultValue = "null") String password
-			,HttpSession httpSession
-			,HttpServletResponse response) throws IOException{
-		
-		boolean IsUser=loginservice.CheckLogin(mail, password);
+			,@RequestParam(value = "boss", defaultValue = "0") String boss
+			,HttpSession httpSession) throws IOException{
+		boolean IsUser=false;
+		if(boss.equals("1")){
+			
+		}else{
+			IsUser=loginservice.CheckLogin(mail, password);
+		}
 		if(IsUser)
-			response.getWriter().print("1");
-		return "1";
+			return "1";
+		return "0";
 	}
 	/**
 	 * 用户注册验证

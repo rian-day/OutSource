@@ -22,7 +22,7 @@ public class Administrators {
 	//用户名
 	private String name;
 	//密码
-	private String passowrd;
+	private String password;
 	//性别
 	private char sex;
 	//是否为超级管理员
@@ -45,12 +45,6 @@ public class Administrators {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPassowrd() {
-		return passowrd;
-	}
-	public void setPassowrd(String passowrd) {
-		this.passowrd = passowrd;
-	}
 	public char getSex() {
 		return sex;
 	}
@@ -63,6 +57,13 @@ public class Administrators {
 	public void setBoss(char boss) {
 		this.boss = boss;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	
 	
 	
