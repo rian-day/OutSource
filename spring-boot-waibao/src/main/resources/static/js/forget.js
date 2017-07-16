@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var success="";
+    var success="-1";
     var account_ok = false;
     var phone_ok = false;
     var captcha_ok = false;
@@ -124,32 +124,41 @@ $(document).ready(function () {
     })
 
 
-    $("#reset_pwd_btn").click(function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        if (account_ok == true && phone_ok == true && captcha_ok == true) {
-            time(this);
-            $.ajax({
-                url: "/account/sms_new_pwd",
-                data: { phone: $("input[name=phone]").val(), account: account},
-                dataType: "json",
-                success: function (msg) {
-                    if (msg.status == "success") {
-                        alert("新密码已发送到您的手机，请及时查收");
-                        window.location.href = msg.redirect_url;
-                    }else if (msg.status == "alert") {
-                        alert(msg.msg);
-                    }else {
-                        alert("发送失败，请稍候再试！");
-                    }
-                }
-            });
-        }
-        else {
-            account_ok == false;
-            phone_ok == false;
-            captcha_ok == false;
-            return;
+    $("#reset_pwd_btn").click(function () {
+    	if (success=="1") {
+            var resetPwd1 = $(".resetPwd1").val();
+            var resetPwd2 = $(".resetPwd2").val();
+            if(resetPwd1 == ""||resetPwd1 == null||resetPwd2 == ""||resetPwd2 == null)
+            	$("#account_check").html("密码不能为空");
+            else if(resetPwd1 != resetPwd2){
+            	$("#account_check").html("两次输入的密码不一致");
+            }else if(resetPwd1.length<6)
+            	$("#account_check").html("密码长度大于6");
+            else{
+            	var url = "edit.do"
+            	var args = {
+            			"mail":mail,
+            			"password":resetPwd1
+            	}	
+            	$.post(url,args,function(data){
+            		if(data == 0){
+            			$("#account_check").html("密码修改失败");
+            		}else if(data == 1)
+            			 window.location.href = 'student-info.html';
+            	})
+            }            
+        }else if(success == 0){
+        	 $(".find_pwd_box").css("display","none");
+             $(".find_pwd_box2").css("display","block");
+             success = "1";
+        }else{
+            if($(".validateCode").val() == "" || $(".validateCode").val() == null){
+                $("#account_check").html("邮箱不能为空");
+            }else if(!($(".validateCode").val()).match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/))
+                $("#account_check").html("邮箱格式不正确");
+            else{
+            	$("#account_check").html("验证码不正确");
+            }
         }
     });
 
@@ -161,25 +170,23 @@ $(document).ready(function () {
         }else if(!(mail).match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/))
             $("#account_check").html("邮箱格式不正确");
         else{
-            var url = "";
+            var url = "yzm.do";
             var args = {
                 "mail":mail
             }
             $.post(url,args,function(data){
                 if(data == "0"){//不能找到该用户
                     $("#account_check").html("该邮箱不存在");
-                }else{
+                }else if(data == 1){
                     //找到该用户
                     $("#account_check").html("验证码已经发送，请注意查收");
+                    success = "0";
                     //一分钟倒计时
                     countDown();
                 }
             })
         }
-        // if (success=="") {
-        //     $(".find_pwd_box").css("display","none");
-        //     $(".find_pwd_box2").css("display","block");
-        // }
+         
     });
 
     var countdowm = 60;
