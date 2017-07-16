@@ -15,7 +15,7 @@ public class RegisterService {
     private String Sender; //读取配置文件中的参数
 
     
-    public void sendSimpleMail(String mail,String yzm) throws Exception {
+    public void sendSimpleMail(String mail,String yzm){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(Sender);
         message.setTo(mail); //自己给自己发送邮件

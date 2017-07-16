@@ -1,5 +1,8 @@
 package com.hyh.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.crsh.console.jline.internal.Log;
@@ -29,14 +32,17 @@ public class MainController {
 	@Autowired
 	RegisterService rs;
 	
-	//@RequestMapping("/login")
-	public String CheckLogin(@RequestParam(value = "mail", defaultValue = "null") String mail
+	@RequestMapping("/login.do")
+	@ResponseBody
+	public String CheckLogin(@RequestParam(value = "username", defaultValue = "null") String mail
 			,@RequestParam(value = "password", defaultValue = "null") String password
-			,HttpSession httpSession){
+			,HttpSession httpSession
+			,HttpServletResponse response) throws IOException{
+		
 		boolean IsUser=loginservice.CheckLogin(mail, password);
 		if(IsUser)
-			return "index";
-		return "index";
+			response.getWriter().print("1");
+		return "1";
 	}
 	/**
 	 * 用户注册验证
@@ -72,11 +78,12 @@ public class MainController {
 	}
 	@PostMapping("/yzm.do")
 	public void YZM(
-			@RequestParam(value = "username", defaultValue = "null") String mail
+			@RequestParam(value = "mail", defaultValue = "null") String mail
 			,HttpSession httpSession) throws Exception{
 		String yzm="123545";
 		httpSession.setAttribute("yzm", yzm);
 		Log.warn("Session:"+httpSession.getAttribute("yzm"));
+		Log.warn("mail:"+mail);
 		rs.sendSimpleMail(mail,yzm);
 	}
 	

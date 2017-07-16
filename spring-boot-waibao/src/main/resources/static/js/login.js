@@ -215,6 +215,10 @@ $(document).ready(function() {
                 }
                 var url = "login.do";
                 $.post(url, args, function(data) {
+                	alert(data);
+                	if(data==1){
+                		alert("登录成功");
+                	}
                     $("#in").html(alertTxt[3]);
                 })
             }
@@ -248,9 +252,9 @@ $(document).ready(function() {
 
     })
     //
-    $(".yanzheng1").click(function(){
+    $("#yanzheng1").click(function(){
         var mail = $(".Email").val();
-        var url = "";
+        var url = "yzm.do";
         args = {
             "mail":mail
         }
@@ -292,7 +296,7 @@ function settime(obj,flag) {
         }
         
         setTimeout(function() {
-            settime(obj,"2")
+            settime(obj,"1")
         }, 1000)
     }
     $(".prompt2").html(al);
