@@ -76,7 +76,7 @@
 		
 		<!-- ;
 	    	spring-boot-stater-web: MVC,ADP的依赖包
-	     -->
+	     
 	    <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -86,7 +86,7 @@
 			        <artifactId>spring-boot-starter-tomcat</artifactId>  
 			    </exclusion>  
 			</exclusions>  
-	    </dependency>
+	    </dependency>-->
 	    <!-- 添加MySQL数据库依赖包 -->
 	    <dependency>
 	    	<groupId>mysql</groupId>
@@ -187,6 +187,12 @@
       </plugin>
     </plugins>
   </build>
+  <!-- <repositories>  
+        <repository>  
+            <id>spring-milestone</id>  
+            <url>http://repo.spring.io/libs-release</url>  
+        </repository>  
+  </repositories>   -->
   
   
 </project>

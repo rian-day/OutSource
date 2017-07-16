@@ -29,12 +29,6 @@ public class MainController {
 	@Autowired
 	RegisterService rs;
 	
-	@RequestMapping("/index")
-	public String index(){
-		return "index";
-	}
-	
-	
 	//@RequestMapping("/login")
 	public String CheckLogin(@RequestParam(value = "mail", defaultValue = "null") String mail
 			,@RequestParam(value = "password", defaultValue = "null") String password
