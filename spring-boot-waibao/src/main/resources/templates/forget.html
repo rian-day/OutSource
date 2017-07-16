@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
     <title>考试云平台</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
-    <link rel="stylesheet" type="text/css" href="../static/css/forget.css" th:href="@{/css/forget.css}">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/forget.css" th:href="@{/css/forget.css}"/>
 </head>
 
 <body id="login">
@@ -14,61 +15,54 @@
         <div id="regLogo">
             <a href="index.html" style="background-image: url(/images/1.png)"></a>
         </div>
-        
         <div class="find_pwd_box">
-            <h4>重置密码</h4><br/>            <!-- 邮箱验证 -->
+            <h4>重置密码</h4>
+            <br/>
+            <!-- 邮箱验证 -->
             <span id="account_check" class="aa"></span>
             <div style="margin-left: 17%;margin-bottom: 5px;clear: both;">Email</div>
             <div class="form-group form-new account">
                 <div class="input-group input-new">
-                    <input type="text" name="account" class="form-control" placeholder="邮箱">  
-                    
+                    <input type="text" name="account" class="form-control" placeholder="邮箱">
                 </div>
             </div>
-
             <div class="form-group form-new ">
                 <div class="input-group input-new captcha">
                     <input class="validateCode" type="text" name="captcha_text" placeholder="请输入验证码">
-                    <input type="button" value="发送验证码"  class="yanzheng"  id="ssss">
+                    <input type="button" value="发送验证码" class="yanzheng" id="ssss">
                 </div>
             </div>
-           <div class="form-group ">
-              <input type="button" class="btn " id="reset_pwd_btn" value="提交">
-           </div>
+            <div class="form-group ">
+                <input type="button" class="btn " id="reset_pwd_btn" value="提交">
+            </div>
         </div>
-
         <!-- 设置新密码 -->
         <div class="find_pwd_box2">
-            <h4>设置新密码</h4><br/><br/>
+            <h4>设置新密码</h4>
+            <br/>
+            <br/>
             <div style="margin-left: 17%;margin-bottom: 5px;">New Password</div>
             <div class="form-group form-new account">
                 <div class="input-group input-new">
-                    <input type="text" name="account" class="form-control" placeholder="新密码">  
+                    <input type="text" name="account" class="form-control" placeholder="新密码">
                     <span id="account_check" class="aa"></span>
                 </div>
             </div>
-
-
             <div style="margin-left: 17%;margin-bottom: 5px;">Confirm Password</div>
             <div class="form-group form-new account">
                 <div class="input-group input-new">
-                    <input type="text" name="account" class="form-control" placeholder="重复输入">  
+                    <input type="text" name="account" class="form-control" placeholder="重复输入">
                     <span id="account_check" class="aa"></span>
                 </div>
             </div>
-
-            
-           <div class="form-group ">
-              <input type="button" class="btn " id="reset_pwd_btn" value="提交">
-           </div>
+            <div class="form-group ">
+                <input type="button" class="btn " id="reset_pwd_btn" value="提交">
+            </div>
         </div>
-
     </div>
+    <script src="../static/js/jquery-2.1.1.js" th:src="@{/js/jquery-2.1.1.js}"></script>
+    <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="../static/js/forget.js" th:src="@{/js/forget.js}"></script>
+</body>
 
-
-    <script src="../static/js/jquery-2.1.1.js" th:href="@{/js/jquery-2.1.1.js}"></script>
-    <script src="../static/js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
-    <script src="../static/js/forget.js" th:href="@{/js/forget.js}"></script>
-
-
-</body></html>
+</html>
