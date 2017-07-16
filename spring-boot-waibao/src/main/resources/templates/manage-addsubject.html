@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>管理员界面</title>
+	<link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/manage.css" th:href="@{/css/manage.css}"/>
+	<script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+</head>
+<body class="home">
+<div class="move-right">
+	<div class="header">
+		<div class="box-left">
+			<span class="glyphicon glyphicon-th-list"></span>
+			<span>menu</span>
+		</div>
+		<div class="box-right">
+			<div class="search-info">
+				<span class="glyphicon glyphicon-search"></span>
+				<span>search for inspiration</span>
+			</div>
+			<div class="co-logo"></div>
+			<div class="login-btn">
+				<a class="totop-img" href="javascript:void(0);"><span class="glyphicon glyphicon-collapse-up"></span></a>
+				<a class="login-font" href=""><span>submit your site</span></a>
+			</div>
+			<div class="logo-header">
+				<img src="../static/images/logo.png"/>
+			</div>
+		</div>
+		<div class="box-right-search">
+			<div class="to-dropdown">
+				<span class="search-type">all</span><span class="glyphicon glyphicon-triangle-bottom"></span>
+				<div class="menu-dropdown">
+                    <ul>
+                        <li><strong><a href="#">ALL</a></strong></li>
+                        <li><strong><a href="#">Websites</a></strong></li>
+                        <li><strong><a href="#">Collections</a></strong></li>
+                        <li><strong><a href="#">Elements</a></strong></li>
+                        <li><strong><a href="#">Magazine</a></strong></li>
+                        <li><strong><a href="#">Jobs</a></strong></li>
+                        <li><strong><a href="#">Users</a></strong></li>
+                    </ul>
+                </div>
+			</div>
+			<input type="text" id="search-text" placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off" class="search-input" value=""/>
+			<div class="search-goto">
+	            <strong><a href="" class="link-1">SHOW FILTERS</a></strong>
+	        </div>
+	        <div class="box-close">
+			    <span class="glyphicon glyphicon-remove"></span>
+			</div>
+		</div>
+	</div>
+	<div class="overlay-content" style="display: block;"></div>
+
+	<div class="showview">
+		<div class="head-view">添加题目</div>
+		<div class="add-title">
+			<div>
+				<form action="" method="get"> 
+					<label>请选择职业：</label> 
+					<select name=""> 
+						<option value="1">职业1</option> 
+						<option value="2">职业2</option> 
+					</select> 
+				</form> 
+				<form action="" method="get"> 
+					<label>请选择题目类型：</label> 
+					<select class="title-select" name=""> 
+						<option class="title1" value="1">单选题</option> 
+						<option class="title2" value="2">多选题</option> 
+						<option class="title3" value="3">填空题</option> 
+						<option class="title4" value="4">判断题</option> 
+						<option class="title5" value="5">开放题</option> 
+					</select> 
+				</form>
+				<div class="clear"></div> 
+			</div>
+			<div class="box-title">
+				<div class="box-title1" style="display: block;">
+					<span class="box-tip">题目</span>
+					<span class="box-bewrite">这里填写题目描述</span>
+					<div class="textarea">
+						<div id="danxuan-timu-1"></div>
+						<div id="danxuan-timu"></div>
+					</div>
+					<span class="box-tip">题干</span>
+					<span class="box-bewrite">单/多选题的选项范围从 2 到 6 </span>
+					<br/>
+					<div class="keyList">
+						<div class="keyLeft">
+		                    <input type="radio" class="radioOrCheck" name="danxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="danxuan-daan1-1"></div>
+							<div id="danxuan-daan1"></div>
+						</div>
+					</div>
+					<div class="keyList">
+						<div class="keyLeft">
+		                    <input type="radio" class="radioOrCheck" name="danxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="danxuan-daan2-1"></div>
+							<div id="danxuan-daan2"></div>
+						</div>
+					</div>
+					<div class="keyList behide3" id="behide3">
+						<div class="keyLeft">
+		                    <input type="radio" class="radioOrCheck" name="danxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="danxuan-daan3-1"></div>
+							<div id="danxuan-daan3"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide4"  id="behide4">
+						<div class="keyLeft">
+		                    <input type="radio" class="radioOrCheck" name="danxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="danxuan-daan4-1"></div>
+							<div id="danxuan-daan4"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide5"  id="behide5">
+						<div class="keyLeft">
+		                    <input type="radio" class="radioOrCheck" name="danxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="danxuan-daan5-1"></div>
+							<div id="danxuan-daan5"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide6"  id="behide6">
+						<div class="keyLeft">
+		                    <input type="radio" class="radioOrCheck" name="danxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="danxuan-daan6-1"></div>
+							<div id="danxuan-daan6"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="q-submit">
+						<div class="danxuan-add-daan">添加选项</div>
+					</div>
+					<span class="box-tip">解析</span>
+					<span class="box-bewrite">这里填写该问题对应的答案解释</span>
+					<div class="textarea">
+						<div id="danxuan-jiexi-1"></div>
+						<div id="danxuan-jiexi"></div>
+					</div>
+					<div class="q-submit">
+						<input type="submit" value="录入"/>
+					</div>
+				</div>
+				<div class="box-title2">
+					<span class="box-tip">题目</span>
+					<span class="box-bewrite">这里填写题目描述</span>
+					<div class="textarea">
+						<div id="duoxuan-timu-1"></div>
+						<div id="duoxuan-timu"></div>
+					</div>
+					<span class="box-tip">题干</span>
+					<span class="box-bewrite">单/多选题的选项范围从 2 到 6 </span>
+					<div class="keyList">
+						<div class="keyLeft">
+		                    <input type="checkbox" class="radioOrCheck" name="duoxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="duoxuan-daan1-1"></div>
+							<div id="duoxuan-daan1"></div>
+						</div>
+					</div>
+					<div class="keyList">
+						<div class="keyLeft">
+		                    <input type="checkbox" class="radioOrCheck" name="duoxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="duoxuan-daan2-1"></div>
+							<div id="duoxuan-daan2"></div>
+						</div>
+					</div>
+					<div class="keyList behide3" id="behide3">
+						<div class="keyLeft">
+		                    <input type="checkbox" class="radioOrCheck" name="duoxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="duoxuan-daan3-1"></div>
+							<div id="duoxuan-daan3"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide4" id="behide4">
+						<div class="keyLeft">
+		                    <input type="checkbox" class="radioOrCheck" name="duoxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="duoxuan-daan4-1"></div>
+							<div id="duoxuan-daan4"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide5" id="behide5">
+						<div class="keyLeft">
+		                    <input type="checkbox" class="radioOrCheck" name="duoxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="duoxuan-daan5-1"></div>
+							<div id="duoxuan-daan5"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide6" id="behide6">
+						<div class="keyLeft">
+		                    <input type="checkbox" class="radioOrCheck" name="duoxuan" value=""/>
+		                </div>
+						<div class="textarea">
+							<div id="duoxuan-daan6-1"></div>
+							<div id="duoxuan-daan6"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="q-submit">
+						<div class="duoxuan-add-daan">添加选项</div>
+					</div>
+					<span class="box-tip">解析</span>
+					<span class="box-bewrite">这里填写该问题对应的答案解释</span>
+					<div class="textarea">
+						<div id="duoxuan-jiexi-1"></div>
+						<div id="duoxuan-jiexi"></div>
+					</div>
+					<div class="q-submit">
+						<input type="submit" value="录入"/>
+					</div>
+				</div>
+				<div class="box-title3">
+					<span class="box-tip">题目</span>
+					<span class="box-bewrite">这里填写题目描述</span>
+					<div class="textarea">
+						<div id="tiankong-timu-1"></div>
+						<div id="tiankong-timu"></div>
+					</div>
+					<span class="box-tip">答案</span>
+					<span class="box-bewrite"> 最多设置 6 个填空位置</span>
+					<div class="textarea">
+						<div id="tiankong-daan1-1"></div>
+						<div id="tiankong-daan1"></div>
+					</div>
+					<div class="keyList behide2" id="behide2">
+						<div class="textarea">
+							<div id="tiankong-daan2-1"></div>
+							<div id="tiankong-daan2"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide3" id="behide3">
+						<div class="textarea">
+							<div id="tiankong-daan3-1"></div>
+							<div id="tiankong-daan3"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide4" id="behide4">
+						<div class="textarea">
+							<div id="tiankong-daan4-1"></div>
+							<div id="tiankong-daan4"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide5" id="behide5">
+						<div class="textarea">
+							<div id="tiankong-daan5-1"></div>
+							<div id="tiankong-daan5"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="keyList behide6" id="behide6">
+						<div class="textarea">
+							<div id="tiankong-daan6-1"></div>
+							<div id="tiankong-daan6"></div>
+						</div>
+						<div class="glyphicon glyphicon-remove"></div>
+					</div>
+					<div class="q-submit">
+						<div class="tiankong-add-daan">添加答案</div>
+					</div>
+					<span class="box-tip">解析</span>
+					<span class="box-bewrite">这里填写该问题对应的答案解释</span>
+					<div class="textarea">
+						<div id="tiankong-jiexi-1"></div>
+						<div id="tiankong-jiexi"></div>
+					</div>
+					<div class="q-submit">
+						<input type="submit" value="录入"/>
+					</div>
+				</div>
+				<div class="box-title4">
+					<span class="box-tip">题目</span>
+					<span class="box-bewrite">这里填写题目描述</span>
+					<div class="textarea">
+						<div id="panduan-timu-1"></div>
+						<div id="panduan-timu"></div>
+					</div>
+					<div style="margin-left: 70px;">
+						对：<input type="radio" class="radioOrCheck" name="panduan"/>
+						错：<input type="radio" class="radioOrCheck" name="panduan"/>
+					</div>
+					<br/>
+					<span class="box-tip">解析</span>
+					<span class="box-bewrite">这里填写该问题对应的答案解释</span>
+					<div class="textarea">
+						<div id="panduan-jiexi-1"></div>
+						<div id="panduan-jiexi"></div>
+					</div>
+					
+					<div class="q-submit">
+						<input type="submit" value="录入"/>
+					</div>
+				</div>
+				<div class="box-title5">
+					<span class="box-tip">题目</span>
+					<span class="box-bewrite">这里填写题目描述</span>
+					<div class="textarea">
+						<div id="kaifang-timu-1"></div>
+						<div id="kaifang-timu"></div>
+					</div>
+					<span class="box-tip">答案</span>
+					<span class="box-bewrite">这里填写答案</span>
+					<div class="textarea">
+						<div id="kaifang-daan1-1"></div>
+						<div id="kaifang-daan1"></div>
+					</div>
+					<span class="box-tip">关键词</span>
+					<span class="box-bewrite">这里添加答案关键词</span>
+					<input type="text" name="key_word" class="guanjianci" placeholder="添加关键词"/>
+					<br/><br/>
+					<span class="box-tip">解析</span>
+					<span class="box-bewrite">这里填写该问题对应的答案解释</span>
+					<div class="textarea">
+						<div id="kaifang-jiexi-1"></div>
+						<div id="kaifang-jiexi"></div>
+					</div>
+					<div class="q-submit">
+						<input type="submit" value="录入"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="menu">
+	<div class="menu-in">
+		<div class="menu-top">
+			<div class="pull-left">
+				<span>setting</span>
+			</div>
+			<div class="pull-right">
+				<span>close</span>
+				<span class="glyphicon glyphicon-remove"></span>
+			</div>
+		</div>
+		<div class="second-menu">
+			<a href="manage-index.html"><div class="link"><span class="glyphicon glyphicon-home"></span>管理员主页</div></a>
+		</div>
+		<div class="second-menu">
+			<div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+			<ul class="second-menu-1">
+				<a href="manage-userlist.html"><li>用户列表</li></a>
+				<a href="manage-adduser.html"><li>添加用户</li></a>
+			</ul>
+		</div>
+		<div class="second-menu">
+			<div class="2">考题管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+			<ul class="second-menu-2">
+				<a href="manage-subjectlist.html"><li>题目列表</li></a>
+				<a href="manage-addsubject.html"><li>添加题目</li></a>
+			</ul>
+		</div>
+		<div class="second-menu">
+			<div class="3">试卷管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+			<ul class="second-menu-3">
+				<a href="manage-tplist.html"><li>试卷列表</li></a>
+				<a href="manage-addtp.html"><li>创建试卷</li></a>
+			</ul>
+		</div>
+		<div class="second-menu">
+			<div class="4">后台管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+			<ul class="second-menu-4">
+				<a href="manage-bbs.html"><li>信息发布</li></a>
+				<a href="manage-pro.html"><li>职业管理</li></a>
+				<a href="manage-info.html"><li>个人信息管理</li></a>
+			</ul>
+		</div>
+		<div class="menu-foot"></div>
+	</div>
+</div>
+
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
+<script type="text/javascript" src="../static/wangEditor/wangEditor.min.js" th:src="@{/wangEditor/wangEditor.min.js}"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+
+    var editor1 = new E('#danxuan-timu-1','#danxuan-timu')
+    editor1.create()
+
+    var editor2 = new E('#danxuan-daan1-1','#danxuan-daan1')
+    editor2.create()
+
+    var editor3 = new E('#danxuan-daan2-1','#danxuan-daan2')
+    editor3.create()
+
+    var editor4 = new E('#danxuan-daan3-1','#danxuan-daan3')
+    editor4.create()
+
+    var editor5 = new E('#danxuan-daan4-1','#danxuan-daan4')
+    editor5.create()
+
+    var editor6 = new E('#danxuan-daan5-1','#danxuan-daan5')
+    editor6.create()
+
+    var editor7 = new E('#danxuan-daan6-1','#danxuan-daan6')
+    editor7.create()
+
+    var editor8 = new E('#danxuan-jiexi-1','#danxuan-jiexi')
+    editor8.create()
+
+
+    var editor9 = new E('#duoxuan-timu-1','#duoxuan-timu')
+    editor9.create()
+
+    var editor10 = new E('#duoxuan-daan1-1','#duoxuan-daan1')
+    editor10.create()
+
+    var editor11 = new E('#duoxuan-daan2-1','#duoxuan-daan2')
+    editor11.create()
+
+    var editor12 = new E('#duoxuan-daan3-1','#duoxuan-daan3')
+    editor12.create()
+
+    var editor13 = new E('#duoxuan-daan4-1','#duoxuan-daan4')
+    editor13.create()
+
+    var editor14 = new E('#duoxuan-daan5-1','#duoxuan-daan5')
+    editor14.create()
+
+    var editor15 = new E('#duoxuan-daan6-1','#duoxuan-daan6')
+    editor15.create()
+
+    var editor16 = new E('#duoxuan-jiexi-1','#duoxuan-jiexi')
+    editor16.create()
+
+
+
+    var editor17 = new E('#tiankong-timu-1','#tiankong-timu')
+    editor17.create()
+
+    var editor18 = new E('#tiankong-daan1-1','#tiankong-daan1')
+    editor18.create()
+
+    var editor19 = new E('#tiankong-daan2-1','#tiankong-daan2')
+    editor19.create()
+
+    var editor20 = new E('#tiankong-daan3-1','#tiankong-daan3')
+    editor20.create()
+
+    var editor21 = new E('#tiankong-daan4-1','#tiankong-daan4')
+    editor21.create()
+
+    var editor22 = new E('#tiankong-daan5-1','#tiankong-daan5')
+    editor22.create()
+
+    var editor23 = new E('#tiankong-daan6-1','#tiankong-daan6')
+    editor23.create()
+
+    var editor24 = new E('#tiankong-jiexi-1','#tiankong-jiexi')
+    editor24.create()
+
+
+    var editor25 = new E('#panduan-timu-1','#panduan-timu')
+    editor25.create()
+
+    var editor26 = new E('#panduan-jiexi-1','#panduan-jiexi')
+    editor26.create()
+
+
+    var editor27 = new E('#kaifang-timu-1','#kaifang-timu')
+    editor27.create()
+
+    var editor28 = new E('#kaifang-daan1-1','#kaifang-daan1')
+    editor28.create()
+
+    var editor29 = new E('#kaifang-jiexi-1','#kaifang-jiexi')
+    editor29.create()
+</script>
+</body>
+</html>

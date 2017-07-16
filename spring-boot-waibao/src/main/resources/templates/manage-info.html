@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>管理员界面</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../static/css/manage.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/manage-info.css" th:href="@{/css/bootstrap.min.css}"/>
+    <script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+</head>
+
+<body class="home">
+    <div class="move-right">
+        <div class="header">
+            <div class="box-left">
+                <span class="glyphicon glyphicon-th-list"></span>
+                <span>menu</span>
+            </div>
+            <div class="box-right">
+                <div class="search-info">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span>search for inspiration</span>
+                </div>
+                <div class="co-logo"></div>
+                <div class="login-btn">
+                    <a class="totop-img" href="javascript:void(0);"><span class="glyphicon glyphicon-collapse-up"></span></a>
+                    <a class="login-font" href=""><span>submit your site</span></a>
+                </div>
+                <div class="logo-header">
+                    <img src="../static/images/logo.png"/>
+                </div>
+            </div>
+            <div class="box-right-search">
+                <div class="to-dropdown">
+                    <span class="search-type">all</span><span class="glyphicon glyphicon-triangle-bottom"></span>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li><strong><a href="#">ALL</a></strong></li>
+                            <li><strong><a href="#">Websites</a></strong></li>
+                            <li><strong><a href="#">Collections</a></strong></li>
+                            <li><strong><a href="#">Elements</a></strong></li>
+                            <li><strong><a href="#">Magazine</a></strong></li>
+                            <li><strong><a href="#">Jobs</a></strong></li>
+                            <li><strong><a href="#">Users</a></strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <input type="text" id="search-text" placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off" class="search-input" value="">
+                <div class="search-goto">
+                    <strong><a href="" class="link-1">SHOW FILTERS</a></strong>
+                </div>
+                <div class="box-close">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </div>
+            </div>
+        </div>
+        <div class="overlay-content" style="display: block;"></div>
+        <div class="showview">
+            <div class="head-view">基本信息</div>
+            <div class="list-view">
+                <ul class="nav nav-tabs">
+                    <li class="active" id="baseInfo">
+                        <a href="#">基本信息</a>
+                    </li>
+                    <li id="editInfo"><a href="#">修改信息  </a></li>
+                    <li id="pwd"><a href="#">密码管理</a></li>
+                </ul>
+                <div class="baseInfo showInfo">
+                    <div class="touxiang">
+
+<div class="img_show img_show1">
+  <img src="../static/images/moren.png" width="103" height="103" alt=""/>
+
+</div>
+ 
+                    </div>
+                    <div class="baseInfo-content">
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>姓名:</p>
+                                </li>
+                                <li>
+                                    <div class="name">张三</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>性别:</p>
+                                </li>
+                                <li>
+                                    <div class="sex">女</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>邮箱:</p>
+                                </li>
+                                <li>
+                                    <div class="mail">1140746132@qq.com</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>职业:</p>
+                                </li>
+                                <li>
+                                    <div class="pro">java工程师</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                     </div>
+                    <div class="editInfo showInfo">
+                        <div class="touxiang">
+                            <div class="img_show img_show1">
+                              <img src="../static/images/moren.png" width="103" height="103" alt=""/>
+                              <a href="javascript:;" class="a-upload">
+                              <input type="file" class="upfile" accept="*/*"/>点击上传头像
+                              </a>
+                            </div>
+                        </div>
+                        <div class="editInfo-content">
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>姓名:</p>
+                                </li>
+                                <li>
+                                    <div class="name">
+                                        <input type="text"/>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>性别:</p>
+                                </li>
+                                <li>
+                                    <div class="sex">
+                                        <select name="" id="">
+                                            <option value="男">男</option>
+                                            <option value="女">女</option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>邮箱:</p>
+                                </li>
+                                <li>
+                                    <div class="mail"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>职业:</p>
+                                </li>
+                                <li>
+                                    <div class="pro">
+                                        <select name="" id="">
+                                            <option value="web工程师">web工程师</option>
+                                            <option value="java工程师">java工程师</option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base wu">
+                            <ul><li></li>
+                                <li>
+                                     <button type="button" class="button green">确定修改</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="pwd showInfo">
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>旧密码:</p>
+                                </li>
+                                <li>
+                                    <div><input type="text" class="oldPwd"/></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>新密码:</p>
+                                </li>
+                                 <li>
+                                    <div><input type="text" class="oldPwd"/></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base">
+                            <ul>
+                                <li>
+                                    <p>确定新密码:</p>
+                                </li>
+                                <li>
+                                    <div><input type="text" class="newPwd"/></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base wu">
+                            <ul><li></li>
+                                <li>
+                                     <button type="button" class="button green">确定修改</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="menu">
+    <div class="menu-in">
+        <div class="menu-top">
+            <div class="pull-left">
+                <span>setting</span>
+            </div>
+            <div class="pull-right">
+                <span>close</span>
+                <span class="glyphicon glyphicon-remove"></span>
+            </div>
+        </div>
+        <div class="second-menu">
+            <a href="manage-index.html"><div class="link"><span class="glyphicon glyphicon-home"></span>管理员主页</div></a>
+        </div>
+        <div class="second-menu">
+            <div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+            <ul class="second-menu-1">
+                <a href="manage-userlist.html"><li>用户列表</li></a>
+                <a href="manage-adduser.html"><li>添加用户</li></a>
+            </ul>
+        </div>
+        <div class="second-menu">
+            <div class="2">考题管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+            <ul class="second-menu-2">
+                <a href="manage-subjectlist.html"><li>题目列表</li></a>
+                <a href="manage-addsubject.html"><li>添加题目</li></a>
+            </ul>
+        </div>
+        <div class="second-menu">
+            <div class="3">试卷管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+            <ul class="second-menu-3">
+                <a href="manage-tplist.html"><li>试卷列表</li></a>
+                <a href="manage-addtp.html"><li>创建试卷</li></a>
+            </ul>
+        </div>
+        <div class="second-menu">
+            <div class="4">后台管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+            <ul class="second-menu-4">
+                <a href="manage-bbs.html"><li>信息发布</li></a>
+                <a href="manage-pro.html"><li>职业管理</li></a>
+                <a href="manage-info.html"><li>个人信息管理</li></a>
+            </ul>
+        </div>
+        <div class="menu-foot"></div>
+    </div>
+</div>
+
+</body>
+
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
+<script type="text/javascript" src="../static/js/manage_info.js" th:src="@{/js/manage_info.js}"></script>
+
+</html>
