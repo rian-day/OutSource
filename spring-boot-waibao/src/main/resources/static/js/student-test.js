@@ -120,3 +120,14 @@ $(".gb").click(function(){
 	$(".datika").css("display","none");
 })
 
+$(".submitImg").click(function(){
+	var url = "";
+	alert(id + answer);
+	var args = {
+		"id":id,
+		"answer":answer
+	}
+	$.post(url,args,function(data){
+
+	})
+})
