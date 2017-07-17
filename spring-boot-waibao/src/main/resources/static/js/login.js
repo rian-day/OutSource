@@ -32,7 +32,10 @@ $(document).ready(function() {
         $("#signup").css("-webkit-animation-duration", "2s");
         $("#signup").css("-webkit-animation-iteration-count", "0");
         $("#signup").css("-webkit-animation-delay", "1s");
-
+        if ($(".ss").text() == "注册") {
+            $(".ss").children("span").text("登录");
+            $(".ss").attr("href","javascript:void(0)");
+        }
     });
     $(".ss").click(function(){
         $(".loginul").css("display", "none");
@@ -48,11 +51,14 @@ $(document).ready(function() {
             $(this).children("span").text("注册");
             $(this).attr("href","login.html");
         }
-    })
+    });
     $(".qqq").click(function() {
         $(".loginul").css("display", "block");
         $("#signup").css("display", "none");
-
+        if ($(".ss").text() == "登录") {
+            $(".ss").children("span").text("注册");
+            $(".ss").attr("login.html");
+        }
     });
 
 
