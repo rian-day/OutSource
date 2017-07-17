@@ -47,9 +47,11 @@ $(document).ready(function() {
         if ($(this).text() == "注册") {
             $(this).children("span").text("登录");
             $(this).attr("href","javascript:void(0)");
-        }else{
-            $(this).children("span").text("注册");
-            $(this).attr("href","login.html");
+        }else if($(this).text() == "登录"){
+        	$(".ss").children("span").text("注册");
+            $(".ss").attr("login.html");
+            $(".loginul").css("display", "block");
+            $("#signup").css("display", "none");
         }
     });
     $(".qqq").click(function() {
