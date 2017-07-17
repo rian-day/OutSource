@@ -1,10 +1,6 @@
 package com.hyh.service;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -14,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.hyh.bean.User;
 import com.hyh.entity.UserInfo;
 import com.hyh.repository.UserInfoDao;
 
@@ -32,6 +29,32 @@ public class UserService {
 	 private String webUploadPath;
 	 @Resource
 	 UserInfoDao userdao;
+	 
+	 public void updateUserInfo(String mail,User user){
+		 UserInfo userinfo=userdao.findByMail(mail).get(0);
+		 if(!"".equals(user.getName()))
+			 userinfo.setName(user.getName());
+		 if(!"".equals(user.getPassword()))
+			 userinfo.setPassword(user.getPassword());
+		 if(user.getSex()!='\0')
+			 userinfo.setSex(user.getSex());
+		 if(!"".equals(String.valueOf(user.getAge())))
+			 userinfo.setAge(user.getAge());
+		 userdao.save(userinfo);
+	 }
+	 
+	 public void updateAdimInfo(String mail,User user){
+		 UserInfo userinfo=userdao.findByMail(mail).get(0);
+		 if(!"".equals(user.getName()))
+			 userinfo.setName(user.getName());
+		 if(!"".equals(user.getPassword()))
+			 userinfo.setPassword(user.getPassword());
+		 if(user.getSex()!='\0')
+			 userinfo.setSex(user.getSex());
+		 if(!"".equals(String.valueOf(user.getAge())))
+			 userinfo.setAge(user.getAge());
+		 userdao.save(userinfo);
+	 }
 	 
 	public String UploadUserHead(MultipartFile file,int userId){
 //		int suffix_position=fileName.lastIndexOf(".");

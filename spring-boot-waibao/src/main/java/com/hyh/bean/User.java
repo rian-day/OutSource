@@ -6,7 +6,9 @@ public class User {
 	private String name;
 	private String pro;
 	private String yzm;
+	private int age;
 	private char sex;
+	private char boss;
 	public String getUsername() {
 		return username;
 	}
@@ -43,5 +45,18 @@ public class User {
 	public void setSex(char sex) {
 		this.sex = sex;
 	}
+	public char getBoss() {
+		return boss;
+	}
+	public void setBoss(char boss) {
+		this.boss = boss;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 	
 }

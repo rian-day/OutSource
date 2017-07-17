@@ -36,7 +36,9 @@ public class UserInfo {
 	
 	private char sex;
 	
-	@ManyToMany(cascade={CascadeType.REFRESH})
+	private int age;
+	
+	@ManyToMany(cascade={CascadeType.REFRESH},fetch=FetchType.LAZY)
 	    @JoinTable(name="t_student_teacher",
 	            inverseJoinColumns=@JoinColumn(name="teacher_id"),
 	            joinColumns=@JoinColumn(name="student_id"))
@@ -44,6 +46,14 @@ public class UserInfo {
 	
 	@OneToMany(mappedBy="user",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	private Set<UserOperation> operations;//用户操作
+	
+	public void addpro(Profession pro){
+		profession.add(pro);
+	}
+	
+	public void removepro(Profession pro){
+		profession.remove(pro);
+	}
 	
 	public UserInfo(){
 		
@@ -97,6 +107,28 @@ public class UserInfo {
 	public void setHead(String head) {
 		this.head = head;
 	}
-	
-	
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public Set<Profession> getProfession() {
+		return profession;
+	}
+
+	public void setProfession(Set<Profession> profession) {
+		this.profession = profession;
+	}
+
+	public Set<UserOperation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(Set<UserOperation> operations) {
+		this.operations = operations;
+	}
 }

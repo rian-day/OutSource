@@ -3,6 +3,7 @@ package com.hyh.entity;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class Profession {
 	//职业名
 	private String name;
 	
-	@ManyToMany(mappedBy = "profession")
+	@ManyToMany(mappedBy = "profession",fetch=FetchType.LAZY)
 	private Set<UserInfo> user;
 
 	public String getName() {

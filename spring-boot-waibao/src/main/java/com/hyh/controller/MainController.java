@@ -2,7 +2,6 @@ package com.hyh.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.crsh.console.jline.internal.Log;
@@ -38,14 +37,17 @@ public class MainController {
 			,@RequestParam(value = "password", defaultValue = "null") String password
 			,@RequestParam(value = "boss", defaultValue = "0") String boss
 			,HttpSession httpSession) throws IOException{
-		boolean IsUser=false;
+		boolean IsUser;
 		if(boss.equals("1")){
-			
+			IsUser=loginservice.CheckAdmin(mail, password);
 		}else{
 			IsUser=loginservice.CheckLogin(mail, password);
 		}
-		if(IsUser)
+		if(IsUser){
+			httpSession.setAttribute("Mail",mail);
 			return "1";
+		}
+			
 		return "0";
 	}
 	/**
@@ -73,7 +75,7 @@ public class MainController {
 			return mav;
 		}
 		mav.setViewName("index");
-		UserInfo result=loginservice.Register(userinfo);
+		UserInfo result=loginservice.Register(userinfo,user.getPro());
 		if(!result.equals("")){
 			mav.addObject("user",result);
 			return mav;

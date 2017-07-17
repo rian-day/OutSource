@@ -12,10 +12,10 @@ import com.hyh.entity.UserInfo;
 @Repository
 public interface AdministratorsDao extends JpaRepository<Administrators, Long> {
 	
-	ArrayList<UserInfo> findByName(String Name);
+	ArrayList<Administrators> findByName(String Name);
 	
-	ArrayList<UserInfo> findByMailAndPassword(String Mail,String Password);
+	ArrayList<Administrators> findByMailAndPassword(String Mail,String Password);
 	
 	//分页
-	Page<UserInfo> findByName(String Name,Pageable pageable);
+	Page<Administrators> findByName(String Name,Pageable pageable);
 }

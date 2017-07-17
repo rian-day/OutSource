@@ -1,6 +1,7 @@
 package com.hyh.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -10,8 +11,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.hyh.entity.Administrators;
+import com.hyh.entity.Profession;
 import com.hyh.entity.UserInfo;
 import com.hyh.repository.AdministratorsDao;
+import com.hyh.repository.ProfessionDao;
 import com.hyh.repository.UserInfoDao;
 import com.hyh.utils.MD5Util;
 
@@ -23,9 +27,11 @@ public class LoginService {
 	UserInfoDao uir;
 	@Resource
 	AdministratorsDao ad;
+	@Resource
+	ProfessionDao pd;
 	
 	public boolean CheckAdmin(String mail,String password){
-		ArrayList<UserInfo> list= uir.findByMailAndPassword(mail, password);
+		ArrayList<Administrators> list= ad.findByMailAndPassword(mail, password);
 		if(list.size()!=0)
 			return true;
 		else
@@ -43,8 +49,12 @@ public class LoginService {
 	public UserInfo Register(
 			//String mail,String password,String name,char sex
 			UserInfo user
+			,String pro
 			){
+		
 		String password=user.getPassword();
+		List<Profession> list=pd.FindByName(pro);
+		user.addpro(list.get(0));
 		password=md5.encode(password);
 		user.setPassword(password);
 		user=uir.save(user);
