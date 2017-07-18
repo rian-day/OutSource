@@ -53,7 +53,7 @@ public class LoginService {
 			){
 		
 		String password=user.getPassword();
-		List<Profession> list=pd.FindByName(pro);
+		List<Profession> list=pd.findByName(pro);
 		user.addpro(list.get(0));
 		password=md5.encode(password);
 		user.setPassword(password);

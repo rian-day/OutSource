@@ -1,9 +1,17 @@
 package com.hyh.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 public class Exam {
@@ -16,6 +24,19 @@ public class Exam {
 	private int professionId;
 	private String time;
 	private int userId;
+	@OneToMany(mappedBy="examId",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
+	@NotFound(action=NotFoundAction.IGNORE)
+	private Set<UserAnswer> useranswer;
+	
+	
+	
+	
+	public Set<UserAnswer> getUseranswer() {
+		return useranswer;
+	}
+	public void setUseranswer(Set<UserAnswer> useranswer) {
+		this.useranswer = useranswer;
+	}
 	public int getId() {
 		return id;
 	}

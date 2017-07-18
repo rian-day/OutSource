@@ -23,7 +23,7 @@ public class SubjectService {
 			sj=list.get(i);
 			if(sj.getContent().equals("")){
 				
-			}else if(sj.getAnswer().equals("")){
+			}else if(sj.getUserAnswer().equals("")){
 				
 			}else if(sj.getType().equals("")){
 				if(sj.getType().equals("选择题")){

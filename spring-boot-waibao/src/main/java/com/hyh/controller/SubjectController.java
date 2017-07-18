@@ -25,7 +25,6 @@ public class SubjectController {
 		ss.AddSubject(list);
 		return "success";
 	}
-	
 	@RequestMapping("/searchsubject")
 	@ResponseBody
 	public ModelAndView SearchSubject(@RequestParam(value="id") int id){

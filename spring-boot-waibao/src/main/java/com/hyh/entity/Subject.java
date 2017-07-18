@@ -30,7 +30,7 @@ public class Subject {
 	//题目类型（选择、填空、判断）
 	private String type;
 	//题目正确答案
-	private String answer;
+	private String realAnswer;
 	//职业ID
 	private int professionId;
 	
@@ -59,7 +59,7 @@ public class Subject {
 			,Set<SubjectOptions> options){
 		this.content=content;
 		this.type=type;
-		this.answer=answer;
+		this.realAnswer=answer;
 		this.professionId=professionId;
 		this.options=options;
 	}
@@ -88,14 +88,26 @@ public class Subject {
 		this.type = type;
 	}
 
-	public String getAnswer() {
-		return answer;
-	}
+	
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public String getRealAnswer() {
+		return realAnswer;
 	}
-
+	public void setRealAnswer(String realAnswer) {
+		this.realAnswer = realAnswer;
+	}
+	public Set<UserAnswer> getUserAnswer() {
+		return userAnswer;
+	}
+	public void setUserAnswer(Set<UserAnswer> userAnswer) {
+		this.userAnswer = userAnswer;
+	}
+	public SubjectGroup getSubjectGroup() {
+		return subjectGroup;
+	}
+	public void setSubjectGroup(SubjectGroup subjectGroup) {
+		this.subjectGroup = subjectGroup;
+	}
 	public int getProfessionId() {
 		return professionId;
 	}

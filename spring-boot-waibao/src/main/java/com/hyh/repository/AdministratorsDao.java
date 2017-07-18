@@ -15,7 +15,7 @@ public interface AdministratorsDao extends JpaRepository<Administrators, Long> {
 	ArrayList<Administrators> findByName(String Name);
 	
 	ArrayList<Administrators> findByMailAndPassword(String Mail,String Password);
-	
+	ArrayList<Administrators> findByMail(String Mail);
 	//分页
 	Page<Administrators> findByName(String Name,Pageable pageable);
 }

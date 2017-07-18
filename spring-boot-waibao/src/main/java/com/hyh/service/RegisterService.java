@@ -19,8 +19,8 @@ public class RegisterService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(Sender);
         message.setTo(mail); //自己给自己发送邮件
-        message.setSubject("主题：简单邮件");
-        message.setText("验证码为:"+yzm);
+        message.setSubject("Lanou考试系统");
+        message.setText("<center>您的验证码为:"+yzm+"</center>");
         mailSender.send(message);
     }
 }

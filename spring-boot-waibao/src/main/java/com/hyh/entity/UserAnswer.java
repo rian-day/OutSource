@@ -1,15 +1,18 @@
 package com.hyh.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 /**
- * 用户答案表
+ * 用户答案表(历史)
  * @author 10513
  *
  */
@@ -22,14 +25,22 @@ public class UserAnswer {
 	//用户ID
 	private int userId;
 	//用户答案
-	private String userAnswer;
+	private String Answer;
 	//题目ID
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Subject subject;
+	//用户自我分析
+	private String analyse;
 	//题目状态（对、错、半对）
 	private char status;
+	//是否收藏
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "useranswer")
+	private UserCollection collect;
 	//考试ID
-	private int examId;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Exam examId;
+	
 	public int getId() {
 		return id;
 	}
@@ -42,13 +53,14 @@ public class UserAnswer {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getUserAnswer() {
-		return userAnswer;
-	}
-	public void setUserAnswer(String userAnswer) {
-		this.userAnswer = userAnswer;
-	}
 	
+	
+	public String getAnswer() {
+		return Answer;
+	}
+	public void setAnswer(String answer) {
+		Answer = answer;
+	}
 	public Subject getSubject() {
 		return subject;
 	}
@@ -61,12 +73,26 @@ public class UserAnswer {
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	public int getExamId() {
+	public Exam getExamId() {
 		return examId;
 	}
-	public void setExamId(int examId) {
+	public void setExamId(Exam examId) {
 		this.examId = examId;
 	}
+	
+	public UserCollection getCollect() {
+		return collect;
+	}
+	public void setCollect(UserCollection collect) {
+		this.collect = collect;
+	}
+	public String getAnalyse() {
+		return analyse;
+	}
+	public void setAnalyse(String analyse) {
+		this.analyse = analyse;
+	}
+	
 	
 	
 	

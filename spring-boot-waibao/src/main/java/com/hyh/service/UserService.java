@@ -1,6 +1,7 @@
 package com.hyh.service;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
@@ -11,13 +12,19 @@ import org.springframework.util.ClassUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hyh.bean.User;
+import com.hyh.entity.Administrators;
+import com.hyh.entity.Profession;
 import com.hyh.entity.UserInfo;
+import com.hyh.repository.AdministratorsDao;
+import com.hyh.repository.ProfessionDao;
 import com.hyh.repository.UserInfoDao;
+import com.hyh.utils.MD5Util;
 
 
 
 @Service
 public class UserService {
+	MD5Util md5=new MD5Util();
 	private static String []suffix_arr={"gif","jpg","jpeg","png","bmp","tif","tiff"};
 	static Logger log = Logger.getLogger (UserService.class.getName ());
 	 /**
@@ -29,31 +36,49 @@ public class UserService {
 	 private String webUploadPath;
 	 @Resource
 	 UserInfoDao userdao;
+	 @Resource
+	 AdministratorsDao ad;
+	 @Resource
+	 ProfessionDao pd;
 	 
-	 public void updateUserInfo(String mail,User user){
-		 UserInfo userinfo=userdao.findByMail(mail).get(0);
-		 if(!"".equals(user.getName()))
-			 userinfo.setName(user.getName());
-		 if(!"".equals(user.getPassword()))
-			 userinfo.setPassword(user.getPassword());
-		 if(user.getSex()!='\0')
-			 userinfo.setSex(user.getSex());
-		 if(!"".equals(String.valueOf(user.getAge())))
-			 userinfo.setAge(user.getAge());
+	 //修改用户信息
+	 public String changeUserInfo(User user){
+		 String mail=user.getUsername();
+		 ArrayList<UserInfo> list=userdao.findByMail(mail);
+		 if(list.size()==0)
+			 return "0";
+		 UserInfo userinfo=list.get(0);
+		 userinfo.setName(user.getName());
+		 userinfo.setSex(user.getSex());
+		 String proName=user.getPro();
+		 Profession pro=pd.findByName(proName).get(0);
+		 userinfo.clearPro();
+		 userinfo.addpro(pro);
 		 userdao.save(userinfo);
+		 return "1";
+		 
 	 }
-	 
-	 public void updateAdimInfo(String mail,User user){
-		 UserInfo userinfo=userdao.findByMail(mail).get(0);
-		 if(!"".equals(user.getName()))
-			 userinfo.setName(user.getName());
-		 if(!"".equals(user.getPassword()))
-			 userinfo.setPassword(user.getPassword());
-		 if(user.getSex()!='\0')
-			 userinfo.setSex(user.getSex());
-		 if(!"".equals(String.valueOf(user.getAge())))
-			 userinfo.setAge(user.getAge());
-		 userdao.save(userinfo);
+	 //修改用户密码
+	 public String updateUserInfo(String mail,String password){
+		 ArrayList<UserInfo> list=userdao.findByMail(mail);
+		 if(list.size()==0){
+			 return "0";
+		 }
+		 UserInfo user=list.get(0);
+		 user.setPassword(md5.encode(password));
+		 userdao.save(user);
+		 return "1";
+	 }
+	 //修改管理员密码
+	 public String updateAdimInfo(String mail,String password){
+		 ArrayList<Administrators> list=ad.findByMail(mail);
+		 if(list.size()==0){
+			 return "0";
+		 }
+		 Administrators admin=list.get(0);
+		 admin.setPassword(md5.encode(password));
+		 ad.save(admin);
+		 return "1";
 	 }
 	 
 	public String UploadUserHead(MultipartFile file,int userId){

@@ -22,6 +22,6 @@ public class AppTest {
 		System.out.println("开始单元测试");
 		List<Subject> list=subjectservice.SearchSubject(1);
 		Subject sj=list.get(0);
-		System.out.println("content:"+sj.getContent()+"answer:"+sj.getAnswer());
+		System.out.println("content:"+sj.getContent()+"answer:"+sj.getRealAnswer());
 	}
 }

@@ -47,6 +47,10 @@ public class UserInfo {
 	@OneToMany(mappedBy="user",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	private Set<UserOperation> operations;//用户操作
 	
+	public void clearPro(){
+		this.profession.clear();
+	}
+	
 	public void addpro(Profession pro){
 		profession.add(pro);
 	}

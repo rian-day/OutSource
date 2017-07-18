@@ -1,7 +1,5 @@
 package com.hyh.controller;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpSession;
 
 import org.crsh.console.jline.internal.Log;
@@ -31,25 +29,7 @@ public class MainController {
 	@Autowired
 	RegisterService rs;
 	
-	@RequestMapping("/login.do")
-	@ResponseBody
-	public String CheckLogin(@RequestParam(value = "username", defaultValue = "null") String mail
-			,@RequestParam(value = "password", defaultValue = "null") String password
-			,@RequestParam(value = "boss", defaultValue = "0") String boss
-			,HttpSession httpSession) throws IOException{
-		boolean IsUser;
-		if(boss.equals("1")){
-			IsUser=loginservice.CheckAdmin(mail, password);
-		}else{
-			IsUser=loginservice.CheckLogin(mail, password);
-		}
-		if(IsUser){
-			httpSession.setAttribute("Mail",mail);
-			return "1";
-		}
-			
-		return "0";
-	}
+
 	/**
 	 * 用户注册验证
 	 * @param user
@@ -83,16 +63,30 @@ public class MainController {
 		return mav;
 	}
 	@PostMapping("/yzm.do")
-	public void YZM(
+	@ResponseBody
+	public String YZM(
 			@RequestParam(value = "mail", defaultValue = "null") String mail
 			,HttpSession httpSession) throws Exception{
-		String yzm="123545";
+		String yzm="h";
+		for(int i=0;i<5;i++){
+			yzm+=(int)(Math.random()*10);
+		}
 		httpSession.setAttribute("yzm", yzm);
 		Log.warn("Session:"+httpSession.getAttribute("yzm"));
 		Log.warn("mail:"+mail);
 		rs.sendSimpleMail(mail,yzm);
+		return "";
 	}
-	
+	@PostMapping("/checkYzm.do")
+	@ResponseBody
+	public String CheckYzm(
+			@RequestParam(value = "yzm") String yzm
+			, HttpSession session){
+		if(yzm.equals(session.getAttribute("session"))){
+			return "1";
+		}
+		return "0";
+	}
 	/**
 	 * 分页
 	 * @param name
