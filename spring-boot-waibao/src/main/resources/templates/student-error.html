@@ -70,10 +70,13 @@
                        
                     </div> -->
                     <div class="timu-list-containt">
-                        <div class="error-title">
-                        <span class="choose-problem" style="float: left;">
+                        <div class="error-title">                        
+                            <span class="font-style">我的错题集</span>                            
+                        </div>
+                        <div class="leftDiv">
+                        	<span class="choose-problem" style="float: left;">
                                 <span class="down"></span>
-                                <span class="choose-value" data-index="1">全选</span>
+                                <span class="choose-value queType" data-index="1">题型</span>
                                 <ul class="choose-list">
                                     <li class="choose-item" data-index="1">单选</li>
                                     <li class="choose-item" data-index="2">多选</li>
@@ -82,10 +85,9 @@
                                     <li class="choose-item" data-index="5">简答</li>
                                 </ul>
                             </span>
-                            <span class="font-style">我的错题集</span>
-                            <span class="choose-problem">
+                        	<span class="choose-problem">
                                 <span class="down"></span>
-                                <span class="choose-value" data-index="1">职业</span>
+                                <span class="choose-value proType" data-index="1">职业</span>
                                 <ul class="choose-list">
                                     <li class="choose-item" data-index="1">全部</li>
                                     <li class="choose-item" data-index="2">java工程师</li>
@@ -93,9 +95,12 @@
                                 </ul>
                             </span>
                         </div>
+                        <div class="rightDiv">
+                        	<button >筛选</button>
+                        </div>
                         <div class="error-contain">
                             <ul>
-                                <li><i>1</i><span>错题一</span><span class="laji"></span></li>
+                                <li><i>1</i><span>错题一</span><span class="hidespan">id<!--这里存题目的id--></span><span class="laji"></span></li>
                             </ul>
                         </div>
                         <div id="page"></div>
@@ -106,12 +111,12 @@
                         <div> 
                             <span class="fenxiHead">题目信息:</span>
                             <span class="fenxiHeadRight">参考答案:
-                                <span class="answerStan">A</span>
+                                <span class="answerStan testAnswer">A</span>
                             </span>
                         </div>
                         <div class="danxuan">
                             <div class="timus">题目:</div>
-                            <div class="timus-content">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
+                            <div class="timus-content content">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
                         </div>
                         <!-- <div class="fenxikuai">
                             <div class="biaoti">
@@ -125,24 +130,31 @@
                         </div> -->
                         <div class="danxuan">
                             <div class="timus">分析:</div>
-                            <div class="timus-content">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
+                            <div class="timus-content testAnalyse">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
                         </div>
                     </div>
                     <div class="fenxitimu">
                         <div> 
                             <span class="fenxiHead">答题信息:</span>
                             <span class="fenxiHeadRight">我的答案:
-                                <span class="answerStan">A</span>
+                                <span class="answerStan myAnswer">A</span>
                             </span>
                         </div>
                         <div class="danxuan">
                             
                             <div class="timus">笔记:</div>
                             <div class="rep">
-                                 <div class="timus-content analyse" >我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
+                            	 <textarea class='timus-content analyse textarea1' id="editTxt"></textarea>
+                                 <div class="timus-content analyse text" >我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
                             </div>
                            
-                            <div class="cuotibutton"><button type="button" class="btn btn-success edit">编辑</button>
+                            <div class="cuotibutton cuotibutton1" id="cuotibuttonId1">
+                            	<button type="button" class="btn btn-success edit">编辑</button>
+                            </div>
+                            <div class="cuotibutton" id="cuotibuttonId2">
+                            	<button type="button" class="btn btn-danger cancel">取消</button>
+                            	&nbsp;
+                            	<button type="button" class="btn btn-success save">保存</button>
                             </div>
                         </div>
                     </div>

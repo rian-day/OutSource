@@ -26,38 +26,119 @@ $(function() {
 			$(".choose-value").removeClass("active"); 
 		} 
 	});
-	$("#page").Page({
-          totalPages: 9,//分页总数
-          liNums: 7,//分页的数字按钮数(建议取奇数)
-          activeClass: 'activP', //active 类样式定义
-          callBack : function(page){
-          //console.log(page)
-          }
-    });
+	
     var str1 = '<button type="button" class="btn btn-success save">保存</button>';
     var str2 = '<button type="button" class="btn btn-danger cancel">取消</button>';
     var str3 = '<button type="button" class="btn btn-success edit">编辑</button>';
     var value = "";
-    $(".cuotibutton").click(function(){
-    	var obj = $(this).children("button");
-    	alert(obj.attr("class"));
-    	if("btn btn-success edit" == obj.attr("class")){
+    $(".btn").on("click",function(){
+    	$(".cuotibutton").css("display","none");   
+    	var value = "";
+    	if($(this).attr("class") == "btn btn-success edit"){
+    		//编辑
+    		$("#cuotibuttonId2").css("display","inline-block");
     		value = $(".analyse").text();
-    		$(this).html(str2+"&nbsp;"+str1);
-    		$(".rep").html("<textarea class='timus-content analyse'>"+value+"</textarea>");
-    	}else if("btn btn-danger cancel" == obj.attr("class")){
-    		$(this).html(str3);
-    		$(".rep").html("<div class='timus-content analyse'>"+value+"</div>");
+    		$(".analyse").css("display","none");
+    		$("#editTxt").css("display","inline-block");
+    		$("#editTxt").val(value);
     	}
-    	
-    	
+    	else if($(this).attr("class") == "btn btn-danger cancel"){
+    		$(".analyse").css("display","none");
+    		$(".text").css("display","inline-block");
+    	}else{
+    		var analyse = $(".textarea1").val();
+    		var url = "editAnalyse.do";
+    		var args = {
+    				"analyse":analyse
+    		}
+    		$.post(url,args,function(data){
+    			
+    		})
+    		$(".analyse").css("display","none");
+    		$(".text").css("display","inline-block");
+    		$("#cuotibuttonId1").css("display","inline-block");
+    	}   	
     })
+    var p ;
+    var array = new Array();
+ 	   	   
+    //错题题查询 带条件查询
+    $(".rightDiv button").click(function(){
+    	$(".choose-value").each(function(i){
+     		array[i] = $(this).text();
+     	});   	
+     	var args = {
+     			"type":array[0],
+     			"pro":array[1],
+     			"page":1
+     	}
+     	var url = "selectError.do";
+     	$.post(url,args,function(data){
+     		$("#page").Page({
+     	          totalPages: data,//分页总数
+     	          liNums: 7,//分页的数字按钮数(建议取奇数)
+     	          activeClass: 'activP', //active 类样式定义
+     	          callBack : function(page){}
+     		})
+     	})     	
+    })
+	// window.load = load();
+	    
+	    function load(){
+	    	$(".choose-value").each(function(i){
+	       		array[i] = $(this).text();
+	       	}); 
+	    	var url = "selectError.do";
+	      	var args = {
+	      			"type":array[0],
+	       			"pro":array[1],
+	       			"page":1
+	      	}
+	      	$.post(url,args,function(data){
+	     		p = data;
+	     	})  
+	    }
+  //分页
+	$("#page").Page({
+          totalPages: p,//分页总数
+          liNums: 7,//分页的数字按钮数(建议取奇数)
+          activeClass: 'activP', //active 类样式定义
+          callBack : function(page){
+        	$(".choose-value").each(function(i){
+           		array[i] = $(this).text();
+           	}); 
+        	var url = "selectError.do";
+          	var args = {
+          			"type":array[0],
+           			"pro":array[1],
+           			"page":page
+          	}
+          	$.post(url,args,function(data){
+         	})    
+          }
+    });
+	var queId;
+   /******/
+	$(".error-contain ul li").click(function(){
+		var queId = $(this).children(".hidespan").text();
+		var url = "queSelect.do";
+		var args = {
+			"queId":queId
+		}
+      	$.post(url,args,function(data){
+      		
+     	})  	
+	})
+	
+	
+
 });
 			
 			
-			function getValue(){
-				//使用html自定义的“data-”属性
-				var text = $(".choose-value").text();
-				var value = $(".choose-value").attr("data-index");
-				alert("值为："+value+";  文本为："+text);
-			}
+function getValue(){
+	//使用html自定义的“data-”属性
+	var text = $(".choose-value").text();
+	var value = $(".choose-value").attr("data-index");
+	alert("值为："+value+";  文本为："+text);
+}
+

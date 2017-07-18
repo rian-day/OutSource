@@ -1,18 +1,29 @@
 $(function() {
-
+	window.onload = a();
+	var page = "";
+	function a(){
+		var url = "selectAlltest.do";
+		var args = {
+				"page":1
+		}
+		$.post(url,args,function(data){
+			page = data;
+		})
+	}
     //分页
     $("#page").Page({
-        totalPages: 9, //分页总数
+        totalPages: page, //分页总数
         liNums: 7, //分页的数字按钮数(建议取奇数)
         activeClass: 'activP', //active 类样式定义
         callBack: function(page) {
             //console.log(page)
         }
     });
+    
     $(".pagingUl li").click(function() {
         var page = $(this).children("a").text();
         var id = $(".hidespan").text();
-        var url = "";
+        var url = "selectAlltest.do";
         var args = {
             "page": page
         }

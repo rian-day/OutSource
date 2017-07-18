@@ -1,20 +1,19 @@
-var number = "";
-var status = "";
+
+
 $(function() {
-	function getUrlParam(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-        if (r != null) return unescape(r[2]); return null; //返回参数值
-    }
-    var id = getUrlParam("id");//获取试卷id
-    var url = "";
-    var args = {"id":id};
-    $.post(url,args,function(data){
-    		//查找该试卷的考试时长
-    		number = data;
-    		status = "yes";
-    })
-	if(status == "yes"){
+	var number = 20;
+//	window.onload = a();
+//
+//	function a(){
+//		var url = "countdown.do";
+//		var id = $(".hidespan").text();
+//		var args = {
+//				"id":id
+//		}
+//		$.post(url,args,function(data){
+//			number  = data
+//		})
+//	}
 	var target_date = new Date().getTime() + (60000 * number); // set the countdown date
 	var days, hours, minutes, seconds; // variables for time units
 
@@ -39,11 +38,12 @@ $(function() {
 		seconds = pad( parseInt( seconds_left % 60 ) );
 
 		// format countdown string + set tag value
-		countdown.innerHTML = "<span>" + hours + ":</span><span>" + minutes + ":</span><span>" + seconds + "</span>"; 
+		countdown.innerHTML = "<span>" + hours + ":</span><span>" + minutes + ":</span><span>" + seconds + "</span>";
+
 	}
 
 	function pad(n) {
 		return (n < 10 ? '0' : '') + n;
 	}
-}
+
 });

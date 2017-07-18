@@ -310,4 +310,6 @@ function settime(obj,flag) {
     $(".prompt2").html(al);
 }
 
-
+$(".laji").click(function(){
+    $(this).parent().hide();
+});

@@ -18,7 +18,7 @@
     padding: 15px;
     margin-top: 15px;
     background-color: white;
-    width: 80%；
+    width: 80%锛�
 }
 
 .list-timu {
@@ -147,19 +147,22 @@
 
 
 
-/*下拉列表*/
+/*涓嬫媺鍒楄〃*/
 
 .choose-problem {
     cursor: pointer;
     height: 34px;
     line-height: 34px;
-    width: 180px;
+    width: 48%;
     text-indent: 10px;
     position: relative;
-    margin-right: 50px;
     display: block;
     float: right;
-    margin-top: 3px;
+    margin-top: 8px;
+    border:1px solid rgb(255,111,110);
+    margin-right:1%;
+    margin-left:1%;
+    border-radius:5px;
 }
 
 .down {
@@ -203,7 +206,7 @@
 
 .font-style {
     font-size: 20px;
-    margin-left: 19%;
+    margin-left: 45%;
     margin-top: 5px;
     float: left;
 }
@@ -275,7 +278,7 @@
 
 .fenxitimu h3 {
     margin-left: 2%;
-    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+    font-family: "Arial", "Microsoft YaHei", "榛戜綋", "瀹嬩綋", sans-serif;
     color: #FF6F6E;
     float: left;
 }
@@ -394,7 +397,7 @@
 
 .fenxi h3 {
     margin-left: 2%;
-    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+    font-family: "Arial", "Microsoft YaHei", "榛戜綋", "瀹嬩綋", sans-serif;
     color: #FF6F6E;
 }
 
@@ -497,4 +500,30 @@
     float: right;
     margin-right: 5%;
     padding: 5px 15px;
+}
+.leftDiv{
+	float:left;
+	width:93%
+}
+.rightDiv{
+	width:7%;
+	float:right;
+	padding: 2px 2px;
+	color:white;
+}
+.rightDiv button{
+	line-height:34px;
+	width: 100%;
+	background:rgb(255,111,110);
+	border:0px;
+	border-radius:3px;
+	margin-top:5px;
+}
+
+#cuotibuttonId2{
+	display:none
+}
+
+#editTxt{
+	display:none
 }

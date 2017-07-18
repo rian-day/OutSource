@@ -120,14 +120,24 @@ $(".gb").click(function(){
 	$(".datika").css("display","none");
 })
 
-$(".submitImg").click(function(){
-	var url = "";
-	alert(id + answer);
+$(".submitImg").on("click",submit());
+
+setInterval("sub()",1000);
+function sub(){
+	if($("#tiles").text() == "00:00:00"){
+		submit();
+	};
+}
+
+function submit(){
+	var url = "submitTest.do";
 	var args = {
 		"id":id,
 		"answer":answer
 	}
 	$.post(url,args,function(data){
-
+		window.location.href="student-history-test.html"
 	})
-})
+}
+
+

@@ -29,15 +29,13 @@ $("span[name='collect']").click(function(){
 		$(this).attr("class","collected");
 		$(this).attr("class","collected")
 		$(this).next().text("取消收藏");
-		url = "";
-
+		url = "collect.do";
 	}
 	else{
 		//取消收藏
 		$(this).attr("class","collect");
 		$(this).next().text("收藏");
-		url = "";
-
+		url = "cancelCollect.do";
 	}
 	var args = {
 		"id":id

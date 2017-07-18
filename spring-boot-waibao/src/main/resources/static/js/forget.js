@@ -50,58 +50,8 @@ $(document).ready(function () {
     //     };
     // })
 
-    //填写手机号
-    $("input[name=phone]").blur(function () {
-        if ($(this).val() == "") {
-            $("#phone_check").text("请输入手机号");
-        }
-        reg = /\d{11}/;
-        if (!reg.test($(this).val())) {
-            $("#phone_check").text("请填写11位数字");
-        }
-        else {
-            $.ajax({
-                data: { "account": account, "phone": $("input[name=phone]").val() },
-                url: "/account/check_account_phone_match",
-                success: function (msg) {
-                    if (msg == "0") {
-                        $("#phone_check").text("手机与账号不匹配");
-                    } else {
-                        $("#phone_check").text("");
-                        phone_ok = true;
-                    }
-                }
-            });
-        }
-    })
 
 
-    function checkVerify(o) {
-          $('.form-control:disabled')
-        var length = $(o).val().length;
-        if (length == 0) {
-            $('#captcha_check').text('请填写验证码!')
-        } else if (length == 4) {
-            $.ajax({
-                url: "/check_captcha",
-                data: { user_captcha_text: $("input[name=captcha_text]").val() },
-                success: function (msg) {
-                    if (msg == "success") {
-                        captcha_ok = true;
-                        $("#captcha_check").text("");
-
-                        $('.form-control').attr('disabled','true');
-                    }
-                    else {
-                        $("#captcha_check").text("验证码错误");
-                        $("#captcha_img").attr('src', "/gen_captcha?" + Math.random());
-                    }
-                }
-            });
-        } else {
-
-        }
-    }
     //点击获取验证码事件
     var wait = 60;
     function time(o) {
@@ -142,15 +92,29 @@ $(document).ready(function () {
             	}	
             	$.post(url,args,function(data){
             		if(data == 0){
-            			$("#account_check").html("密码修改失败");
+            			$("#account_check").html("密码重置失败");
             		}else if(data == 1)
             			 window.location.href = 'student-info.html';
             	})
             }            
         }else if(success == 0){
-        	 $(".find_pwd_box").css("display","none");
-             $(".find_pwd_box2").css("display","block");
-             success = "1";
+        	 var yzm = $(".yanzheng").val();
+        	 var url1 = "checkYzm.do";
+        	 var args ={
+        			 "yzm":yzm
+        	 }
+        	 
+        	 $.post(url1,args,function(data){
+        		 if(data == 1){
+        			 $(".find_pwd_box").css("display","none");
+        			 $(".find_pwd_box2").css("display","block");
+        			 success = "1";
+        		 }else if(data == 0){
+        			 $("#account_check").html("验证码错误");
+        		 }
+        	})
+        	 
+             
         }else{
             if($(".validateCode").val() == "" || $(".validateCode").val() == null){
                 $("#account_check").html("邮箱不能为空");
