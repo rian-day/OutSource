@@ -22,8 +22,6 @@ public class UserAnswer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	//用户ID
-	private int userId;
 	//用户答案
 	private String Answer;
 	//题目ID
@@ -46,12 +44,6 @@ public class UserAnswer {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 	
 	

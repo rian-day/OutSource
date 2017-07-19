@@ -27,6 +27,8 @@ public class Subject {
 	private int id;
 	//题目内容
 	private String content;
+	//分值
+	private int grade;
 	//题目类型（选择、填空、判断）
 	private String type;
 	//题目正确答案
@@ -128,6 +130,12 @@ public class Subject {
 	}
 	public void setSubjectImg(Set<SubjectImg> subjectImg) {
 		this.subjectImg = subjectImg;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 	
 	

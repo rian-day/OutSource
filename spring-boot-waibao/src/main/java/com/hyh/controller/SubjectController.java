@@ -1,5 +1,7 @@
 package com.hyh.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,19 +13,62 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hyh.bean.SubjectC;
+import com.hyh.entity.Exam;
 import com.hyh.entity.Subject;
+import com.hyh.service.ExamService;
 import com.hyh.service.SubjectService;
 
 @Controller
 public class SubjectController {
 	@Resource
 	SubjectService ss;
+	@Resource
+	ExamService es;
+
+	/**
+	 * 随机生成试卷
+	 * 
+	 * @param professionId
+	 * @param userId
+	 * @return
+	 */
+	@RequestMapping("/randomsubjects")
+	public ModelAndView randomSubjects(int professionId,int userId){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		String time=df.format(new Date());
+		List<Subject> list=ss.randomSubjects(professionId);
+		Exam exam=es.saveExam(time,userId,professionId,list);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("exam",exam);
+		mav.setViewName("");
+		return mav;
+	}
 	
 	@PostMapping("/addsubject")
 	@ResponseBody
 	public String AddSubject(@RequestParam(value="list") List<Subject> list){
 		ss.AddSubject(list);
 		return "success";
+	}
+	/**
+	 * 散题给分保存
+	 * @param list
+	 * @return
+	 */
+	@RequestMapping()
+	public ModelAndView CorrectSubjects(
+			List<SubjectC> list
+			,int userId
+			,int professionId
+			,int examId){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		String time=df.format(new Date());
+		int grade=ss.CorrectSubjects(examId,time,list);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("time",time);
+		mav.addObject("grade",grade);
+		return mav;
 	}
 	@RequestMapping("/searchsubject")
 	@ResponseBody

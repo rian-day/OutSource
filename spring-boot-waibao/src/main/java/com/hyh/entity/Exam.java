@@ -1,6 +1,6 @@
 package com.hyh.entity;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,21 +20,24 @@ public class Exam {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	private String grade;
+	private String name;
+	private int grade;
+	private int totalgrade;
 	private int professionId;
 	private String time;
 	private int userId;
 	@OneToMany(mappedBy="examId",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	@NotFound(action=NotFoundAction.IGNORE)
-	private Set<UserAnswer> useranswer;
+	private List<UserAnswer> useranswer;
 	
 	
 	
 	
-	public Set<UserAnswer> getUseranswer() {
+	
+	public List<UserAnswer> getUseranswer() {
 		return useranswer;
 	}
-	public void setUseranswer(Set<UserAnswer> useranswer) {
+	public void setUseranswer(List<UserAnswer> useranswer) {
 		this.useranswer = useranswer;
 	}
 	public int getId() {
@@ -42,12 +45,6 @@ public class Exam {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getGrade() {
-		return grade;
-	}
-	public void setGrade(String grade) {
-		this.grade = grade;
 	}
 	public int getProfessionId() {
 		return professionId;
@@ -67,6 +64,25 @@ public class Exam {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public int getTotalgrade() {
+		return totalgrade;
+	}
+	public void setTotalgrade(int totalgrade) {
+		this.totalgrade = totalgrade;
+	}
+
 	
 	
 }

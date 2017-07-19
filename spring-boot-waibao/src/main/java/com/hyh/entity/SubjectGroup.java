@@ -16,9 +16,11 @@ public class SubjectGroup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+	//创建时间
 	private String createTime;
-	
+	//限制时间
+	private int limitedTime;
+	//试卷名字
 	private String name;
 	
 	@OneToMany(mappedBy="subjectGroup",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
@@ -54,6 +56,14 @@ public class SubjectGroup {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+
+	public int getLimitedTime() {
+		return limitedTime;
+	}
+
+	public void setLimitedTime(int limitedTime) {
+		this.limitedTime = limitedTime;
 	}
 	
 	
