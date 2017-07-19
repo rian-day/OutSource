@@ -12,27 +12,8 @@ $("table tr").mouseenter(function() {
         "background-color": "none"
     })
 })
-
-var page = 0;
-window.onload=function(){
-    var studentuId = $(".spanhide").text();
-    var url = "selectHistory.do";
-    $.post(url,args,function(data){
-        page = data;
-    })
-}
-
-$(function(){
-	$("#page").Page({
-    totalPages: 9, //分页总数
-    liNums: 7, //分页的数字按钮数(建议取奇数)
-    activeClass: 'activP', //active 类样式定义
-    callBack: function(page) {
-        //console.log(page)
-    }
-});
 var id = "";
-
+//跳转到相应试卷的历史纪录页面 查看试题
 $(".chakan").on("click", function() {
     id = $(this).parent().prev().children(".hidespan").text();
     var url = "selectTest.do";
@@ -43,5 +24,24 @@ $(".chakan").on("click", function() {
     	
     })
 })
-})
+
+
+var pp = 0;
+window.onload=function p(){
+    pp = ($(".hidespan:last").text()) * 1;
+    $("#page").Page({
+        totalPages: pp,//分页总数
+        liNums: 7,//分页的数字按钮数(建议取奇数)
+        activeClass: 'activP', //active 类样式定义
+        callBack : function(page){            
+            var url = "selectHistory.do";
+            var args = {
+                "page":page
+            }
+            $.post(url, args, function(data) {
+                /*optional stuff to do after success */
+            });
+        }
+    });
+}
 

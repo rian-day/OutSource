@@ -3,20 +3,21 @@
 
 <head>
 <meta charset="UTF-8" />
-<title>试卷分析</title>
+<title>考试结束界面</title>
 <link rel="stylesheet" type="text/css"
 	href="../static/css/bootstrap.min.css"
 	th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" href="../static/css/base.css"
 	th:href="@{/css/base.css}" />
 <link rel="stylesheet" type="text/css"
-	href="../static/css/student-history-test.css"
-	th:href="@{/css/student-history-test.css}" />
+	href="../static/css/student-submit.css"
+	th:href="@{/css/student-submit.css}" />
 <script type="text/javascript" src="../static/js/jquery.js"
 	th:src="@{/js/jquery.js}"></script>
 </head>
 
 <body class="home">
+	
 	<div class="move-right">
 		<div class="header">
 			<div class="box-left">
@@ -34,7 +35,7 @@
 						class="login-font" href=""><span>submit your site</span></a>
 				</div>
 				<div class="logo-header">
-					<img src="../static/images/logo.png" th:src="@{/images/logo.png}" />
+					<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
 				</div>
 			</div>
 			<div class="box-right-search">
@@ -57,7 +58,7 @@
 					placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)"
 					data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)"
 					data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off"
-					class="search-input" value="" />
+					class="search-input" value=""/>
 				<div class="search-goto">
 					<strong><a href="" class="link-1">SHOW FILTERS</a></strong>
 				</div>
@@ -68,132 +69,42 @@
 		</div>
 		<div class="overlay-content" style="display: block;"></div>
 		<div class="showview">
-			<div class="head-view">试卷分析</div>
-			<div class="list-view">
-				<div class="qh">
-					<h5>
-						单选题 <span class="detail">共10题，合计100.0分</span>
-					</h5>
-				</div>
-				<dl>
-					<dt>
-						<div class="icon-block">
-							<label class="indexLabel"> <span class="index">1</span>
-							</label>
-						</div>
+			<div class="contentp">
+	            
+	            <div class="score-box">
+	                
+	                <div class="head">
+		                <span class="title">考试结果</span>
+		            </div>
+	                <div class="score">
+	                    <div class="exam-score ">
+	                    	0<span>分</span>
+	                    </div>
+	                </div>
+	                
 
-
-						<span class="qc"> <span class="score">(0&nbsp;分)<!-- 分值 --></span>
-							<span class="content"> <!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
-						</span>
-						<!-- 已经收藏过该题span中的class写成collected反之写成collect -->
-						</span> <span class="sqlIndex"> <!--  数据库中题号id -->
-						</span> <span class="collect" name="collect"> <!-- 是否收藏此题 -->
-						</span> <label class="star"> <!--  显示取消收藏的文字-->
-						</label>
-					</dt>
-					<dd class="answer">
-						<span class="radiu"><span></span></span> <label>
-							<span class="words"> <span class='ABCD'>A</span><span
-								class="ABCDContent"> 一种 </span>
-						</span>
-						</label>
-					</dd>
-
-
-					<dd class="answer">
-						 <label> <span class="words"> <span class='ABCD'>B</span><span
-								class="ABCDContent"> 两种 </span></span></label>
-					</dd>
-					<dd class="answer">
-						 <label> <span class="words"> <span class='ABCD'>C</span><span
-								class="ABCDContent"> 三种 </span></span></label>
-					</dd>
-					<dd class="answer">
-						 <label> <span class="words"> <span class='ABCD'>D</span><span
-								class="ABCDContent"> 四种 </span></span></label>
-					</dd>
-					
-					<div class="question_answer">
-						<div class="answerRight">
-							正确答案： <span class="a_rt">A</span> 考生答案： <span
-								class="a_wg hasError"> </span>
-						</div>
-						<div class="answerAnalysis">
-							答案解析： <span class="analyse">无</span>
-						</div>
-					</div>
-				</dl>
-				<dl>
-					<!-- 题干加分值 -->
-					<dt>
-						<div class="icon-block">
-							<label class="indexLabel"> <span class="index">2</span> <!-- 试卷中题号 -->
-
-							</label>
-						</div>
-						<span class="qc"> <span class="score">(0&nbsp;分)<!-- 分值 --></span>
-							<span class="content"> <!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
-						</span>
-						</span> <span class="sqlIndex">id</span>
-						<!--  数据库中题号id -->
-						<span class="collected" name="collect"> <!-- 是否收藏此题 -->
-						</span> <label class="star"> <!--  取消收藏-->
-						</label>
-
-					</dt>
-					<!-- A -->
-					<dd class="answer">
-						<label> 
-							<span class="words"> 
-								<span class='ABCD'>A</span>
-								<span class="ABCDContent"> 一种 </span>
-							</span>
-						</label>
-					</dd>
-
-					<!-- B -->
-					<dd class="answer">
-						<label> 
-							<span class="words"> 
-								<span class='ABCD'>B</span>
-								<span class="ABCDContent"> 二种 </span>
-							</span>
-						</label>
-					</dd>
-
-					<!-- c -->
-					<dd class="answer">
-						<label> 
-							<span class="words"> 
-								<span class='ABCD'>C</span>
-								<span class="ABCDContent"> 三种 </span>
-							</span>
-						</label>
-					</dd>
-
-					<!-- D -->
-					<dd class="answer">
-						<label> 
-							<span class="words"> 
-								<span class='ABCD'>D</span>
-								<span class="ABCDContent"> 四种 </span>
-							</span>
-						</label>
-					</dd>
-
-					<!-- 答案及其分析 -->
-					<div class="question_answer">
-						<div class="answerRight">
-							正确答案： <span class="a_rt">A</span> 考生答案： <span
-								class="a_wg hasError"> </span>
-						</div>
-						<div class="answerAnalysis">
-							答案解析： <span class="analyse">无</span>
-						</div>
-					</div>
-				</dl>
+	                <div class="release">
+	                    <div class="release-str">感谢您的作答！</div>
+	                    
+	                </div>
+	            </div>
+	            
+	            
+	            <div class="info-box clearfix">
+	                <div class="info-list">
+	                    <div class="title">正确率</div>
+	                    <div class="content">0.0%</div>
+	                </div>
+	                
+	            </div>
+	            <div class="footer-bar"></div>
 			</div>
+			<div class="footer clearfix">
+            
+            <a href="student-history.html" class="btn btn-blue btn-two">查看记录</a>
+            <a href="student-alltest.html" class="btn btn-red btn-two">退出</a>
+            
+        </div>
 		</div>
 	</div>
 	 <div class="menu">
@@ -246,8 +157,8 @@
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script src="../static/js/jquery.jqpagination.js"
 	th:src="@{/js/jquery.jqpagination.js}"></script>
-<script type="text/javascript"
-	src="../static/js/student-history-test.js"
-	th:src="@{/js/student-history-test.js}"></script>
+<script type="text/javascript" src="../static/js/student-submit.js"
+	th:src="@{/js/student-submit.js}"></script>
+
 
 </html>

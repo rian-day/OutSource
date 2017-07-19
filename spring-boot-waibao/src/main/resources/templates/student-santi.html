@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
     <title>套题</title>
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" href="../static/css/base.css"  th:href="@{/css/base.css}"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/student-history.css" th:href="@{/css/student-history.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/student-santi.css" th:href="@{/css/student-santi.css}"/>
     <link rel="stylesheet" type="text/css" href="../static/css/jquery.page.css" th:href="@{/css/jquery.page.css}"/>
     <script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
 </head>
@@ -59,33 +59,39 @@
         </div>
         <div class="overlay-content" style="display: block;"></div>
         <div class="showview">
-            <div class="head-view">套题</div>
+            <div class="head-view">随机选题开始考试</div>
             <div class="list-view">
-                <ul class="history-ul">
-                    <li class="history-li" th:>
-                        <div class="history-text">
-                            <span class="hidespan"><!--试卷id-->123</span>
-                            <p>web基础练习</p>
-                             <span class="timelong"><span >考试时长：</span><span>90</span>分钟</span>
-                            <span class="timelong"><span >试卷总分：</span>100分</span>
-                            <span class="timelong"><span >完成度：</span>未完成</span>
-                          
-                        </div>
-                        <div class="history-bottom">
-                            <span class="grade">98分</span>
-                            <span class="chakan"><a href='student-test.html'>开始考试</a></span>
-                        </div>
-                    </li>
-                    
-                </ul>
-                <br/>
-                <span class="hidespan">123<!-- 这里放总页数 --></span>
-                <div id="page"></div>
-               
+                <div class="window">
+                    <div class="window-title">请选择考试时间</div>
+                    <div class="window-fenshu">
+                        <label class="time">
+                            <span>60</span>分钟
+                        </label>
+                       <label class="time">
+                            <span>90</span>分钟
+                        </label>
+                       <label class="time">
+                            <span>120</span>分钟
+                        </label>
+                    </div>
+                    <div class="window-select">
+                        <span class="windowbutton1">
+                        取消</span>
+                        <span class="windowbutton1 windowbutton2">
+                        开始考试</span>
+                </div>
+                </div>
+                <div class="buttons">
+                    <p>
+                        <a href="#" class="a_demo_four">
+                            开始考试
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-     <div class="menu">
+    <div class="menu">
         <div class="menu-in">
             <div class="menu-top">
                 <div class="pull-left">
@@ -133,7 +139,7 @@
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script src="../static/js/jquery.jqpagination.js" th:src="@{js/jquery.jqpagination.js}"></script>
+<script src="../static/js/student-santi.js" th:src="@{/js/student-santii.js}"></script>
 <script src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
 <script src="../static/js/student-alltest.js" th:src="@{/js/student-alltest.js}"></script>
-
 </html>

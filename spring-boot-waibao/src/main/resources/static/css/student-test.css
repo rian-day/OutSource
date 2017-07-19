@@ -112,3 +112,58 @@ h3{
 	box-shadow:8px 8px 8px rgba(0,0,0,0.15) !important;
 	font-size: 20px;
 }
+.window{
+    position: absolute;
+    width: 500px;
+    height:200px;
+    border-radius: 4px;
+    top: -350px;
+    right: 37%;
+    background-color: #EAEDF1;
+}
+.window-title{
+    width: 100%;
+    background-color: #5D9CEC;
+    line-height: 40px;
+    position: absolute;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    text-align: center;
+    font-size: 22px;
+    color: white;
+}
+.window-fenshu{
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top:80px;
+    font-size: 22px;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+.window-select{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 35px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.windowbutton1{
+    position: absolute;
+    border-bottom-left-radius: 7px;
+    background-color:#F75F71  ;
+    width: 50%;
+    bottom: 0px;
+    font-size:18px;
+    color: white;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.windowbutton2{
+    right: 0;
+    border-bottom-left-radius: 0px;
+    background-color:#5D9CEC  ;
+    border-bottom-right-radius: 7px;
+}

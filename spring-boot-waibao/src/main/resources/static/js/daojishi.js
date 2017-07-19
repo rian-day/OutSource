@@ -1,19 +1,26 @@
 
+$(function () {
 
-$(function() {
-	var number = 20;
-//	window.onload = a();
-//
-//	function a(){
-//		var url = "countdown.do";
-//		var id = $(".hidespan").text();
-//		var args = {
-//				"id":id
-//		}
-//		$.post(url,args,function(data){
-//			number  = data
-//		})
-//	}
+            //方法二：
+    (function ($) {
+        $.getUrlParam = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    })(jQuery);
+
+    var xx = $.getUrlParam('time');
+    countdown(xx);
+});
+
+
+
+
+
+function countdown(time){
+	var number = time;
+
 	var target_date = new Date().getTime() + (60000 * number); // set the countdown date
 	var days, hours, minutes, seconds; // variables for time units
 
@@ -45,5 +52,4 @@ $(function() {
 	function pad(n) {
 		return (n < 10 ? '0' : '') + n;
 	}
-
-});
+}

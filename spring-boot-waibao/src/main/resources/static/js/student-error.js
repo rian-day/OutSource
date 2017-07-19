@@ -69,76 +69,52 @@ $(function() {
      	});   	
      	var args = {
      			"type":array[0],
-     			"pro":array[1],
-     			"page":1
+     			"pro":array[1]
      	}
      	var url = "selectError.do";
      	$.post(url,args,function(data){
+        var pp = data;
      		$("#page").Page({
-     	          totalPages: data,//分页总数
+     	          totalPages: pp,//分页总数
      	          liNums: 7,//分页的数字按钮数(建议取奇数)
      	          activeClass: 'activP', //active 类样式定义
-     	          callBack : function(page){}
-     		})
-     	})     	
+     	          callBack : function(page){
+                   var a = {
+                      "type":array[0],
+                      "pro":array[1],
+                      "page":data
+                   }
+                    $.post(url,args,function(data){})
+                }
+     		}) 
+        })  	
     })
-	// window.load = load();
-	    
-	    function load(){
-	    	$(".choose-value").each(function(i){
-	       		array[i] = $(this).text();
-	       	}); 
-	    	var url = "selectError.do";
-	      	var args = {
-	      			"type":array[0],
-	       			"pro":array[1],
-	       			"page":1
-	      	}
-	      	$.post(url,args,function(data){
-	     		p = data;
-	     	})  
-	    }
-  //分页
-	$("#page").Page({
-          totalPages: p,//分页总数
-          liNums: 7,//分页的数字按钮数(建议取奇数)
-          activeClass: 'activP', //active 类样式定义
-          callBack : function(page){
-        	$(".choose-value").each(function(i){
-           		array[i] = $(this).text();
-           	}); 
-        	var url = "selectError.do";
-          	var args = {
-          			"type":array[0],
-           			"pro":array[1],
-           			"page":page
-          	}
-          	$.post(url,args,function(data){
-         	})    
-          }
+	window.onload=p();
+  function p(){
+    var pp = ($(".hidespan:last").text()) * 1;
+    $("#page").Page({
+        totalPages: pp,//分页总数
+        liNums: 7,//分页的数字按钮数(建议取奇数)
+        activeClass: 'activP', //active 类样式定义
+        callBack : function(page){            
+            var url = "selectError.do";
+            var args = {
+                "page":page
+            }
+            $.post(url, args, function(data) {
+                /*optional stuff to do after success */
+            });
+        }
     });
+  }
 	var queId;
    /******/
 	$(".error-contain ul li").click(function(){
 		var queId = $(this).children(".hidespan").text();
-		var url = "queSelect.do";
-		var args = {
-			"queId":queId
-		}
-      	$.post(url,args,function(data){
-      		
-     	})  	
+		
 	})
 	
 	
 
 });
-			
-			
-function getValue(){
-	//使用html自定义的“data-”属性
-	var text = $(".choose-value").text();
-	var value = $(".choose-value").attr("data-index");
-	alert("值为："+value+";  文本为："+text);
-}
 

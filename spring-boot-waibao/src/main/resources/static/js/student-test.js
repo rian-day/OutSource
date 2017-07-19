@@ -1,3 +1,33 @@
+
+$.fn.smartFloat = function() {
+ var position = function(element) {
+  var top = element.position().top, pos = element.css("position");
+  $(window).scroll(function() {
+   var scrolls = $(this).scrollTop();
+   if (scrolls > top) {
+    if (window.XMLHttpRequest) {
+     element.css({
+      position: "fixed",
+      top: "30%"
+     }); 
+    } else {
+     element.css({
+      top: scrolls
+     }); 
+    }
+   }else {
+    element.css({
+     position: pos,
+     top: top
+    }); 
+   }
+  });
+ };
+ return $(this).each(function() {
+  position($(this));      
+ });
+};
+
 var answer = new Array();
 var id = new Array();
 var i = 0;
@@ -120,15 +150,16 @@ $(".gb").click(function(){
 	$(".datika").css("display","none");
 })
 
-$(".submitImg").on("click",submit());
+
 
 setInterval("sub()",1000);
 function sub(){
 	if($("#tiles").text() == "00:00:00"){
+    alert("考试时间已经到了");
 		submit();
-	};
+	}
 }
-
+ //$(".submitImg").on("click",submit());
 function submit(){
 	var url = "submitTest.do";
 	var args = {
@@ -136,8 +167,26 @@ function submit(){
 		"answer":answer
 	}
 	$.post(url,args,function(data){
-		window.location.href="student-history-test.html"
+    var grade = data.grade;
+    var correct = data.correct;
+		window.location.href="student-submit.html?grade='"+grade+"'&correct='"+correct+"'";
+  
+
 	})
 }
 
 
+$(".submitImg").click(function(){
+    $(".window").animate({"top":"20%"});
+    $(".window").smartFloat($(this));
+})
+$(".windowbutton1").click(function() {
+	/* Act on the event */
+	$(".window").animate({"top":"-350px"});
+});
+
+
+$(".windowbutton2").click(function() {
+  /* Act on the event */
+  submit();
+});

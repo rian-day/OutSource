@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>历史记录界面</title>
+    <title>错题集界面</title>
     <link rel="stylesheet" type="text/css" href="../static/css/jquery.page.css" th:href="@{/css/jquery.page.css}"/>
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}"/>
@@ -99,8 +99,8 @@
                         	<button >筛选</button>
                         </div>
                         <div class="error-contain">
-                            <ul>
-                                <li><i>1</i><span>错题一</span><span class="hidespan">id<!--这里存题目的id--></span><span class="laji"></span></li>
+                            <ul th:each="answer : ${answerlist}">
+                                <li><i th:text="answer.id">1</i><span th:text="answer.useranswer.subject.content">错题一</span><span class="hidespan">id<!--这里存题目的id--></span><span class="laji"></span></li>
                             </ul>
                         </div>
                         <div id="page"></div>
@@ -159,11 +159,12 @@
                         </div>
                     </div>
                 </div>
+                <span class="hidespan">123<!-- 这里放总页数 --></span>
                 <div class="clear"></div>
             </div>
         </div>
     </div>
-    <div class="menu">
+     <div class="menu">
         <div class="menu-in">
             <div class="menu-top">
                 <div class="pull-left">
@@ -177,7 +178,7 @@
             <div class="second-menu">
                 <div class="home">题库<span class="glyphicon glyphicon-menu-hamburger"></span></div>
                 <ul class="second-menu-home">
-                    <a href="student-random-test.html">
+                    <a href="student-santi.html">
                         <li>随机试卷</li>
                     </a>
                     <a href="student-alltest.html">
@@ -210,7 +211,6 @@
 </body>
 <script src="../static/js/bootstrap.min.js"  th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
-<script src="../static/js/student-error.js" th:src="@{/js/student-error.js}"></script>
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
-
+<script src="../static/js/student-error.js" th:src="@{/js/student-error.js}"></script>
 </html>

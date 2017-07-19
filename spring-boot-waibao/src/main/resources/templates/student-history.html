@@ -12,7 +12,6 @@
 </head>
 
 <body class="home">
-    <span class="hidespan"></span>
     <div class="move-right">
         <div class="header">
             <div class="box-left">
@@ -94,11 +93,13 @@
                 
                 </ul>
                 <br/>
-                <div id="page"></div>
+                <span class="hidespan">123<!-- 这里放总页数 --></span>
+               <div id="page" ></div>
             </div>
+                
         </div>
     </div>
-    <div class="menu">
+     <div class="menu">
         <div class="menu-in">
             <div class="menu-top">
                 <div class="pull-left">
@@ -112,7 +113,7 @@
             <div class="second-menu">
                 <div class="home">题库<span class="glyphicon glyphicon-menu-hamburger"></span></div>
                 <ul class="second-menu-home">
-                    <a href="student-random-test.html">
+                    <a href="student-santi.html">
                         <li>随机试卷</li>
                     </a>
                     <a href="student-alltest.html">
@@ -146,6 +147,6 @@
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script src="../static/js/jquery.jqpagination.js" th:src="@{/js/jquery.jqpagination.js}"></script>
-<script type="text/javascript" src="../static/js/student-history.js" th:src="@{/js/student-history.js}"></script>
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
+<script type="text/javascript" src="../static/js/student-history.js" th:src="@{/js/student-history.js}"></script>
 </html>
