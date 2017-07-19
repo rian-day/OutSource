@@ -83,7 +83,7 @@ $(".nav-tabs li").click(function() {
     $(id).css("display", "block");
 })
 
-window.onload = a;
+window.onload = a();
 
 function a() {
     name = $(".baseInfo .base ul li .name").text();
@@ -118,20 +118,27 @@ $('.img_show').each(function() {
 
 //密码修改
 
-
-$(".oldPwd").change(function(){
+//1.旧密码验证
+$(".oldPwd").on("input",function(){
     var oldPwd = $(".oldPwd").val();
-    var url = "";
+    var url = "login.do";
     var args = {
         "mail":mail,
-        "password":oldPwd
+        "password":oldPwd,
+        "boss":0
     }
-    $.post(url,args,function(data){
+   $.post(url,args,function(data){
         //成功找到用户
-        $(".old").css("background-image","url(../images/true.png");
-        //密码和账号不匹配
-        $(".old").css("background-image","url(../images/cha.png");
-    })
+    	if(data == 1){
+			$(".sos").attr("disabled",false);
+			$(".oldPwdSpan").css("background-image","url(../images/true.png");
+    	}else if(data == 0){
+    		//密码和账号不匹配
+    		$(".oldPwdSpan").css("background-image","url(../images/cha.png");
+    	}
+        
+        
+   })
 })
 
 $(".newPwd2").change(function(){
@@ -144,7 +151,7 @@ $(".newPwd2").change(function(){
     $(".newPwdSpan").html(words);
     
 })
-
+//密码修改
 $(".pwdButton").click(function(){
     var newPwd1 = $(".newPwd1").val();
     var newPwd2 = $(".newPwd2").val();
@@ -159,13 +166,18 @@ $(".pwdButton").click(function(){
     }else if (newPwd1.length < 6) {
         words = "密码至少含有6个字符";
     }else{
-        var url = "";
+        var url = "editPwd.do";
         var args = {
             "mail":mail,
-            "password": newPwd1
+            "password": newPwd1,
+            "boss":0
         }
         $.post(url,args,function(data){
-
+        	if(data == 1){
+        		$(".oldPwdSpan").html("修改成功");
+        	}else if(data == 1){
+        		$(".oldPwdSpan").html("修改失败");
+        	}
         })
     }
      $(".newPwdSpan").html(words);
@@ -180,15 +192,22 @@ $(".baseButton").click(function(){
     if(name.length == 0) {
         words = "姓名不能为空";
     }else{
-        var url = "";
+        var url = "editInfo.do";
         var args = {
             "mail":mail,
             "name": name,
             "pro":pro,
-            "sex":sex
+            "sex":sex,
+            "boss":0
         }
         $.post(url,args,function(data){
-
+        	if(data == 1){
+        		words = "修改成功";
+        		window,location.href="student-info.html";
+        	}
+        	else if(data == 0){
+        		words = "修改失败";
+        	}
         })
     }
     $(".ccc").html(words);
@@ -226,15 +245,3 @@ $(".baseButton").click(function(){
             }  
         });  
     });  
-
- window.onload=function(){
-    var studentuId = $(".spanhide").text();
-    var url = "";
-    var args = {
-        //学生的id
-        "id":studentuId
-    }
-    $.post(url,args,function(data){
-        
-    })
-}

@@ -13,6 +13,15 @@ $("table tr").mouseenter(function() {
     })
 })
 
+var page = 0;
+window.onload=function(){
+    var studentuId = $(".spanhide").text();
+    var url = "selectHistory.do";
+    $.post(url,args,function(data){
+        page = data;
+    })
+}
+
 $(function(){
 	$("#page").Page({
     totalPages: 9, //分页总数
@@ -26,19 +35,13 @@ var id = "";
 
 $(".chakan").on("click", function() {
     id = $(this).parent().prev().children(".hidespan").text();
-    var local = $(this).children("a").attr("href") + "?id=" + id;
-    $(this).children("a").attr("href", local);
+    var url = "selectTest.do";
+    var args = {
+    		"id":id
+    };
+    $.post(url,args,function(data){
+    	
+    })
 })
 })
 
-window.onload=function(){
-    var studentuId = $(".spanhide").text();
-    var url = "";
-    var args = {
-        //学生的id
-        "id":studentuId
-    }
-    $.post(url,args,function(data){
-        
-    })
-}
