@@ -26,7 +26,7 @@
 				<a class="login-font" href=""><span>submit your site</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
+				<img src="../static/images/logo.png"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -57,46 +57,35 @@
     <div class="showview">         
     	<div class="head-view">职业管理</div>
 		<div class="manage-pro">
-		<div class="box1">
-			<div class="pro-title1">
-				<div class="pro-name">职业</div>
-				<div class="pro-revise">修改</div>
-			</div>
-			<div class="pro-title2">
-				<div class="pro-name">
-					<ul>
-						<li>java工程师</li>
-						<li>web工程师</li>
-						<li>默认职业</li>
-					</ul>
+			<div class="box1">
+				<div class="pro-title1">
+					<div class="pro-name">职业</div>
+					<div class="pro-revise">修改</div>
 				</div>
-				<div class="pro-revise">
-					<ul>
-						<li>
-							
+				<div class="pro-title2">
+					<div class="pro-name">
+						<ul>
+							<li>java工程师</li>
+							<li>web工程师</li>
+						</ul>
+					</div>
+					<div class="pro-revise">
+						<ul>
+							<li>
 			      				<input type="text" name="" class="zhiye" value="java工程师"/>
 			      				<input type="submit" value="确认更改" class="btn btn-info prdemo"/>
-			      			
-			      		</li>
-						<li>
-							
+				      		</li>
+							<li>
 								<input type="text" name="" class="zhiye" value="web工程师"/>
 								<input type="submit" value="确认更改" class="btn btn-info prdemo"/>
-							
-						</li>
-						<li>
-							
-			      				<input type="text" name="" class="zhiye"/>
-			      				<input type="submit" value="确认更改" class="btn btn-info prdemo"/>
-			      			
-						</li>
-					</ul>
-				</div>
-				<div class="add-pro">
+							</li>
+						</ul>
+					</div>
+					<div class="add-pro">
 	      				<input type="button" value="添加新职业" class="btn btn-success"/>
 	      				<input type="submit" class="btn btn-success submitdemo" value="提交" id="submit"/>
+					</div>
 				</div>
-			</div>
 			</div>
 		</div>
 	</div>
@@ -150,6 +139,7 @@
 </div>
 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 </body>
 </html>

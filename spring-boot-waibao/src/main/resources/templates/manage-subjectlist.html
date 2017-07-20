@@ -25,7 +25,7 @@
 				<a class="login-font" href=""><span>submit your site</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
+				<img src="../static/images/logo.png"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -63,15 +63,24 @@
 					<th>题目信息</th>
 					<th><form action="" method="get"> 
 					<label>职业：</label> 
-						<select class="title-select" name=""> 
-							<option class="title0" value="0">全部职业</option> 
-							<option class="title1" value="1">职业1</option> 
-							<option class="title2" value="2">职业2</option> 
-							<option class="title3" value="3">职业3</option> 
-							<option class="title4" value="4">职业4</option> 
+						<select class="title-select" name="">
+							<option value="0">全部职业</option> 
+							<option value="1">职业1</option> 
+							<option value="2">职业2</option> 
+							<option value="3">职业3</option> 
+							<option value="4">职业4</option> 
 						</select> 
 					</form></th>
-					<th>难度</th>
+					<!-- <th><form action="" method="get"> 
+					<label>难度：</label> 
+						<select class="hard-select" name="">
+							<option value="0">全部难度</option> 
+							<option value="1">难度1</option> 
+							<option value="2">难度2</option> 
+							<option value="3">难度3</option> 
+							<option value="4">难度4</option> 
+						</select> 
+					</form></th> -->
 					<th>上传管理员</th>
 					<th>上传时间</th>
 					<th>修改</th>
@@ -82,11 +91,9 @@
 					<td>2</td>
 					<td>2</td>
 					<td>2</td>
-					<td>2</td>
 					<td><input type="submit" value="修改"/></td>
 				</tr>
 				<tr>
-					<td>3</td>
 					<td>3</td>
 					<td>3</td>
 					<td>3</td>
@@ -100,11 +107,9 @@
 					<td>4</td>
 					<td>4</td>
 					<td>4</td>
-					<td>4</td>
 					<td><input type="submit" value="修改"/></td>
 				</tr>
 				<tr>
-					<td>5</td>
 					<td>5</td>
 					<td>5</td>
 					<td>5</td>
@@ -118,11 +123,9 @@
 					<td>6</td>
 					<td>6</td>
 					<td>6</td>
-					<td>6</td>
 					<td><input type="submit" value="修改"/></td>
 				</tr>
 				<tr>
-					<td>7</td>
 					<td>7</td>
 					<td>7</td>
 					<td>7</td>
@@ -136,7 +139,6 @@
 					<td>8</td>
 					<td>8</td>
 					<td>8</td>
-					<td>8</td>
 					<td><input type="submit" value="修改"/></td>
 				</tr>
 				<tr>
@@ -145,7 +147,6 @@
 					<td>9</td>
 					<td>9</td>
 					<td>9</td>
-					<td>9</td>
 					<td><input type="submit" value="修改"/></td>
 				</tr>
 				<tr>
@@ -154,7 +155,6 @@
 					<td>10</td>
 					<td>10</td>
 					<td>10</td>
-					<td>10</td>
 					<td><input type="submit" value="修改"/></td>
 				</tr>
 				<tr>
@@ -163,12 +163,11 @@
 					<td>11</td>
 					<td>11</td>
 					<td>11</td>
-					<td>11</td>
 					<td><input type="submit" value="修改"/></td>
 				</tr>
 				<tr>
-					<th colspan="7">
- 						<div id="page"></div>
+					<th colspan="6">
+ 						<div id="page" class="sublist"></div>
 					</th>
 				</tr>
 			</table>
@@ -223,20 +222,41 @@
 	</div>
 </div>
 
-<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-<script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
 <script type="text/javascript">
-	$(function(){
-		$("#page").Page({
-			totalPages: 9,//分页总数
-			liNums: 7,//分页的数字按钮数(建议取奇数)
-			activeClass: 'activP', //active 类样式定义
-			callBack : function(page){
-				//console.log(page)
-			}
-	  	});
-	})
+$(document).ready(function() {
+	$(".sublist").Page({
+	    totalPages: 11,//分页总数
+	    liNums: 7,//分页的数字按钮数(建议取奇数)
+	    activeClass: 'activP', //active 类样式定义
+	    callBack : function(page){
+	        toSubPage(page);
+	    }
+	});
+	function toSubPage(page){
+        alert(page);
+        var zhiyeSel = $(".title-select").val();
+        var subjectlist = {
+            'zhiye' : zhiyeSel,
+            'page' : page
+        };
+        $.ajax({
+            type: "POST",
+            url: "subjectlist.do",
+            data: {
+                'subjectlist' : subjectlist
+            },
+            dataType: "json",
+            success: function(data){
+                if (data!=1) {
+                    alert('跳转失败');
+                }
+            }
+        }); 
+    }
+});
 </script>
 </body>
 </html>

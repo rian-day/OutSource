@@ -246,7 +246,7 @@ body{
 		.box-close:hover{
 			background-color: #555756;
 		}
-	.overlay-content,.add-timu-black,.insert-timu-black {
+	.overlay-content,.add-timu-black,.insert-timu-black ,.add-suiji-black{
 		opacity: 0;
 		position: fixed;
 		top: 0;
@@ -386,10 +386,11 @@ body{
 		line-height: 30px;
 		font-size: 30px;	
 	}
-	.list-view{
+	.showview .list-view{
 		height: calc(100vh - 200px);
 		padding: 0px;
 		text-align: center;
+		padding: 0px;
 	}
 		.list-view table{
 			height: 100%;
@@ -419,11 +420,11 @@ body{
 				margin-left: 70px;
 			}
 		.add-title form{
-			width: 40%;
+			width: 30%;
 			float: left;
 		}
 		.add-title select{
-			width: 120px;
+			width: 80px;
 			height: 30px;
 			border-radius: 3px;
 		}
@@ -548,12 +549,14 @@ body{
 	font-size: 18px;
 	background-color: #eaedf1;
 	box-shadow: none;
+	margin-top: 0px;
 }
 .showview #handle ul{
 	padding-left: 0px;
 	margin-bottom: 0px;
 }
 .showview #handle li{
+	width: 100%;
 	list-style: none;
 	background-color: #ffffff;
 	height: 200px;
@@ -575,16 +578,13 @@ body{
 	font-size: 18px;
 }
 .showview #handle li .timu-info{
-	width: 18%;
+	width: 25%;
 	font-size: 18px;
-	position: absolute;
 }
 	.showview #handle li .timu-info .glyphicon{
-		position: absolute;
-		right: 10px;
-		top: 5px;
 		color: red;
 		cursor: pointer;
+		float: right;
 	}
 	.showview #handle li .timu-info .select-timu,
 	.showview #handle li .timu-info .insert-timu{
@@ -599,12 +599,24 @@ body{
 		float: left;
 		margin-left: 5px;
 	}
-.showview #handle .add-project{
+.showview #handle .tp-button,.showview #handle .tp-suiji-button{
 	width: 100%;
+	display: flex; 
+}
+.showview #handle .tp-button div,.showview #handle .tp-suiji-button div{
 	height: 40px;
 	background-color: lightblue;
 	text-align: center;
 	line-height: 40px;
+	cursor: pointer;
+	border-radius: 0px 0px 5px 5px;
+}
+.showview #handle .tp-button .add-project,.showview #handle .tp-suiji-button .sub-project,.showview #handle .tp-suiji-button .sub-suiji-project{
+	width: 80%;
+	border-right: 1px solid gray;
+}
+.showview #handle .tp-button .sub-project,.showview #handle .tp-suiji-button .sub-cancel{
+	width: 20%;
 }
 .showview #handle li .timu-info input[type="text"]{
 	width: 30px;
@@ -665,24 +677,6 @@ body{
 	background-color: lightblue;
 	border-color: lightblue;
 }
-.showview .manage-pro{
-	min-height:  calc(100ch - 250px);
-	padding: 0px;
-}
-.showview .manage-pro ul{
-	width: 100%;
-	margin: 0px;
-}
-.showview .manage-pro input{
-	height: 30px;
-	line-height: 30px;
-	margin-top: 10px;
-}
-.showview .manage-pro li{
-	list-style-type: none;
-	height: 50px;
-	line-height: 50px;
-}
 .pro-name,.pro-revise{
 	width: 50%;
 	text-align: center;
@@ -723,31 +717,64 @@ body{
 	width: 20%;
 	margin-left: 40%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-.btn-info{
-	margin-top: 0px !important;
-	line-height: 100% !important;
-	height: initial !important;
-	height: auto !important;
+.showview .tp-head-info{
+	height: 60px;
+	font-size: 18px;
+	line-height: 30px;
+	margin-bottom: 0px;
 }
-.manage-pro{
-	min-height: 0px !important;
-	background-color: rgb(234,237,241) !important;
+.showview .tp-head-info input,.showview .tp-head-info select{
+	height: 28px;
+	border-radius: 3px;
+	border: 1px solid #c4c4c4
+}
+.showview .tp-head-info input{
+	width: 120px;
+}
+.showview .tp-head-info input[type=button]{
+	background-color: lightblue;
+	float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.showview .manage-pro{
+	min-height: 0px;
+	background-color: rgb(234,237,241);
 	border:none;
+	padding: 0px;
 }
-.box1{
+.showview .manage-pro ul{
+	width: 100%;
+	margin: 0px;
+}
+.showview .manage-pro input{
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+}
+.showview .manage-pro li{
+	list-style-type: none;
+	height: 50px;
+	line-height: 50px;
+}
+.showview .pro-revise .btn-info{
+	margin-top: -4px;
+	line-height: 100%;
+	height: initial;
+	height: auto;
+}
+.manage-pro .box1{
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
     padding: 10px;
@@ -760,7 +787,7 @@ body{
     -webkit-border-bottom-right-radius: 6px 50px; 
     height: 500px;
 }
-.box1:before{
+.manage-pro .box1:before{
     content: '';
     width: 50px;
     height: 100px;
@@ -772,7 +799,7 @@ body{
                         skew(0deg,30deg)
                         rotate(-25deg);
 }
-.box1:after{
+.manage-pro .box1:after{
     content: '';
     width: 100px;
     height: 100px;
@@ -785,7 +812,7 @@ body{
                         translate(20px,25px)
                         skew(20deg);
 }
-.zhiye{
+.manage-pro .zhiye{
 	padding-left: 10px;
 	margin-left: 10%;
 	overflow: hidden;
@@ -793,14 +820,36 @@ body{
 	border-radius: 4px;
 	margin-top: -3px !important;
 }
-.add-pro input{
-	height: 50px !important;
+.manage-pro .add-pro input{
+	height: 50px;
 	width: 10%;
 	margin-left: 30%;
-	margin-top: 20px !important;
+	margin-top: 20px;
+	min-width: 100px;
 }
-#submit{
+.manage-pro #submit{
 	margin-left: 20% !important;
+}
+.showview #handle #handle-2 li{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.showview #handle #handle-2 li .drag-handle2{
+	height: 40px;
+	line-height: 40px;
+    width: 5%;
+    text-align: center;
+    font-size: 24px;
+    cursor: move;
+}
+.showview #handle #handle-2 li .handle-timu{
+	height: 40px;
+	width: 95%;
+}
+.showview #handle #handle-2 li input[type=text]{
+	height: 30px;
+	width: 30px;
 }
 
 
