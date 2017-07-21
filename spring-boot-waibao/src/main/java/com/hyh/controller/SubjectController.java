@@ -25,7 +25,18 @@ public class SubjectController {
 	SubjectService ss;
 	@Resource
 	ExamService es;
-
+	@RequestMapping("/editAnalyse.do")
+	public String editAnalyse(Integer useranswerId,String analyse){
+		return ss.editAnalyse(useranswerId, analyse);
+	}
+	@RequestMapping("/collect.do")
+	public String collect(Integer useranswerId){
+		return ss.collect(useranswerId);
+	}
+	@RequestMapping("/cancelCollect.do")
+	public String cancelCollect(Integer useranswerId){
+		return ss.cancelCollect(useranswerId);
+	}
 	/**
 	 * 随机生成试卷
 	 * 
@@ -34,7 +45,7 @@ public class SubjectController {
 	 * @return
 	 */
 	@RequestMapping("/randomsubjects")
-	public ModelAndView randomSubjects(int professionId,int userId){
+	public ModelAndView randomSubjects(Integer professionId,Integer userId){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		String time=df.format(new Date());
 		List<Subject> list=ss.randomSubjects(professionId);
@@ -56,12 +67,12 @@ public class SubjectController {
 	 * @param list
 	 * @return
 	 */
-	@RequestMapping()
+	@RequestMapping("/123jkjkl")
 	public ModelAndView CorrectSubjects(
 			List<SubjectC> list
-			,int userId
-			,int professionId
-			,int examId){
+			,Integer userId
+			,Integer professionId
+			,Integer examId){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		String time=df.format(new Date());
 		int grade=ss.CorrectSubjects(examId,time,list);
@@ -72,7 +83,7 @@ public class SubjectController {
 	}
 	@RequestMapping("/searchsubject")
 	@ResponseBody
-	public ModelAndView SearchSubject(@RequestParam(value="id") int id){
+	public ModelAndView SearchSubject(@RequestParam(value="id") Integer id){
 		List<Subject> result=ss.SearchSubject(id);
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("index");

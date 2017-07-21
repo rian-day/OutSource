@@ -14,6 +14,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 /**
  * 用户信息表
  * @author 10513
@@ -42,6 +45,7 @@ public class UserInfo {
 	    @JoinTable(name="t_student_teacher",
 	            inverseJoinColumns=@JoinColumn(name="teacher_id"),
 	            joinColumns=@JoinColumn(name="student_id"))
+	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
 	private Set<Profession> profession;
 	
 	@OneToMany(mappedBy="user",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})

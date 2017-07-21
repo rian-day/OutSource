@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 /**
  * 职业表
  * @author 10513
@@ -23,6 +26,7 @@ public class Profession {
 	private String name;
 	
 	@ManyToMany(mappedBy = "profession",fetch=FetchType.LAZY)
+	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
 	private Set<UserInfo> user;
 
 	public String getName() {

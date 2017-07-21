@@ -1,10 +1,10 @@
 package com.hyh.service;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,6 +39,28 @@ public class SubjectService {
 	@Resource
 	RandomSubjectDao rd;
 	
+	@Transactional
+	public String editAnalyse(int id,String analyse){
+		UserAnswer useranswer=ad.findById(id);
+		useranswer.setAnalyse(analyse);
+		ad.save(useranswer);
+		return "1";
+	}
+	@Transactional
+	public String collect(int id){
+		UserAnswer useranswer=ad.findById(id);
+		useranswer.setCollect('1');
+		ad.save(useranswer);
+		return "1";
+	}
+	@Transactional
+	public String cancelCollect(int id){
+		UserAnswer useranswer=ad.findById(id);
+		useranswer.setCollect('0');
+		ad.save(useranswer);
+		return "1";
+	}
+	
 	public List<Subject> randomSubjects(int ProfessionId){
 		List<RandomSubject> list=rd.findAll();
 		List<Subject> result = null;
@@ -57,7 +79,7 @@ public class SubjectService {
 				int num=(int)(Math.random()*end);
 				arr[num]=arr[end];
 				end--;
-				result.add(subjects.get(num));
+				result.add(subjects.get(arr[num]));
 			}
 		}
 		return result;

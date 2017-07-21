@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.hyh.entity.Administrators;
-import com.hyh.entity.UserInfo;
 @Repository
 public interface AdministratorsDao extends JpaRepository<Administrators, Long> {
 	

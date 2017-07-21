@@ -13,16 +13,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hyh.entity.Exam;
+import com.hyh.entity.Profession;
 import com.hyh.entity.Subject;
 import com.hyh.entity.SubjectGroup;
 import com.hyh.entity.UserAnswer;
 import com.hyh.service.ExamService;
+import com.hyh.service.ProfessionService;
 import com.hyh.service.SubjectService;
 @Controller
 public class ViewController {
 	@Resource
 	ExamService xs;
-	
+	@Resource
+	ProfessionService ps;
 	@Resource
 	SubjectService ss;
 	@RequestMapping("/index.html")
@@ -30,8 +33,11 @@ public class ViewController {
 		return "index";
 	}
 	@RequestMapping("/login.html")
-	public String login(){
-		return "login";
+	public ModelAndView login(){
+		List<Profession> list=ps.searchAll();
+		ModelAndView mav=new ModelAndView("login");
+		mav.addObject("Professions",list);
+		return mav;
 	}
 	@RequestMapping("/forget.html")
 	public String forget(){

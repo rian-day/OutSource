@@ -32,7 +32,9 @@ public class Subject {
 	//题目类型（选择、填空、判断）
 	private String type;
 	//题目正确答案
-	private String realAnswer;
+	private String []realAnswer;
+	//注释
+	private String tip;
 	//职业ID
 	private int professionId;
 	
@@ -54,17 +56,17 @@ public class Subject {
 	public Subject(){
 		
 	}
-	public Subject(String content
-			,String type
-			,String answer
-			,int professionId
-			,Set<SubjectOptions> options){
-		this.content=content;
-		this.type=type;
-		this.realAnswer=answer;
-		this.professionId=professionId;
-		this.options=options;
-	}
+//	public Subject(String content
+//			,String type
+//			,String answer
+//			,int professionId
+//			,Set<SubjectOptions> options){
+//		this.content=content;
+//		this.type=type;
+//		this.realAnswer=answer;
+//		this.professionId=professionId;
+//		this.options=options;
+//	}
 
 	public int getId() {
 		return id;
@@ -90,14 +92,15 @@ public class Subject {
 		this.type = type;
 	}
 
-	
 
-	public String getRealAnswer() {
+	public String[] getRealAnswer() {
 		return realAnswer;
 	}
-	public void setRealAnswer(String realAnswer) {
+
+	public void setRealAnswer(String[] realAnswer) {
 		this.realAnswer = realAnswer;
 	}
+
 	public Set<UserAnswer> getUserAnswer() {
 		return userAnswer;
 	}
@@ -136,6 +139,12 @@ public class Subject {
 	}
 	public void setGrade(int grade) {
 		this.grade = grade;
+	}
+	public String getTip() {
+		return tip;
+	}
+	public void setTip(String tip) {
+		this.tip = tip;
 	}
 	
 	
