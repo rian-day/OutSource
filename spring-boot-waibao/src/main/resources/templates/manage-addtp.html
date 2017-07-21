@@ -25,7 +25,7 @@
 				<a class="login-font" href=""><span>submit your site</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
+				<img src="../static/images/logo.png"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -58,7 +58,7 @@
 
 
 
-<div class="insert-timu-black">
+<div class="insert-timu-black" style="z-index: -1;opacity: 0">
 	<div class="showview" style="background-color: rgba(0,0,0,0);">
 		<div class="add-title" style="margin-top: 150px;position: absolute;overflow-y: scroll;height: 550px;">
 			<span class="glyphicon glyphicon-remove" style="font-size:20px;color: red;cursor: pointer;position: absolute;right: 5px;top: 5px;" title="关闭"></span>
@@ -66,6 +66,7 @@
 				<form action="" method="get"> 
 					<label>请选择职业：</label> 
 					<select name=""> 
+						<option value="0">请选择职业!</option>
 						<option value="1">职业1</option> 
 						<option value="2">职业2</option> 
 					</select> 
@@ -77,7 +78,7 @@
 						<option class="title2" value="2">多选题</option> 
 						<option class="title3" value="3">填空题</option> 
 						<option class="title4" value="4">判断题</option> 
-						<option class="title5" value="5">开放题</option> 
+						<!-- <option class="title5" value="5">开放题</option> --> 
 					</select> 
 				</form>
 				<div class="clear"></div> 
@@ -161,7 +162,7 @@
 						<div id="danxuan-jiexi"></div>
 					</div>
 					<div class="q-submit">
-						<input type="submit" value="录入"/>
+						<input class="tijiao-danxuan" id="tijiao-danxuan" type="submit" value="录入"/>
 					</div>
 				</div>
 				<div class="box-title2">
@@ -241,7 +242,7 @@
 						<div id="duoxuan-jiexi"></div>
 					</div>
 					<div class="q-submit">
-						<input type="submit" value="录入"/>
+						<input class="tijiao-duoxuan" id="tijiao-duoxuan" type="submit" value="录入"/>
 					</div>
 				</div>
 				<div class="box-title3">
@@ -302,7 +303,7 @@
 						<div id="tiankong-jiexi"></div>
 					</div>
 					<div class="q-submit">
-						<input type="submit" value="录入"/>
+						<input class="tijiao-tiankong" id="tijiao-tiankong" type="submit" value="录入"/>
 					</div>
 				</div>
 				<div class="box-title4">
@@ -313,8 +314,8 @@
 						<div id="panduan-timu"></div>
 					</div>
 					<div style="margin-left: 70px;">
-						对：<input type="radio" class="radioOrCheck" name="panduan"/>
-						错：<input type="radio" class="radioOrCheck" name="panduan"/>
+						对：<input type="radio" class="radioOrCheck" name="panduan" value="T" />
+						错：<input type="radio" class="radioOrCheck" name="panduan" value="F" />
 					</div>
 					<br/>
 					<span class="box-tip">解析</span>
@@ -325,10 +326,10 @@
 					</div>
 					
 					<div class="q-submit">
-						<input type="submit" value="录入"/>
+						<input class="tijiao-panduan" id="tijiao-panduan" type="submit" value="录入"/>
 					</div>
 				</div>
-				<div class="box-title5">
+				<!-- <div class="box-title5">
 					<span class="box-tip">题目</span>
 					<span class="box-bewrite">这里填写题目描述</span>
 					<div class="textarea">
@@ -353,8 +354,7 @@
 					</div>
 					<div class="q-submit">
 						<input type="submit" value="录入"/>
-					</div>
-				</div>
+					</div> -->
 			</div>
 		</div>
 	</div>
@@ -363,19 +363,61 @@
 
 
 
+<div class="add-suiji-black" style="z-index: -1;opacity: 0">
+	<div class="showview" style="background-color: rgba(0,0,0,0);height: 100vh">
+		<div id="handle" style="margin-top: 150px;">
+			<div class="block__list_words">
+				<ul id="handle-2">
+					<li>
+						<div class="drag-handle2">
+							&#9776;
+						</div><div class="handle-timu">
+							<input type="hidden" value="danxuan">单选题<input type="text" name="">道，分值<input type="text" name="">（分）每道
+						</div>
+					</li>
+					<li>
+						<div class="drag-handle2">
+							&#9776;
+						</div><div class="handle-timu">
+							<input type="hidden" value="duoxuan">多选题<input type="text" name="">道，分值<input type="text" name="">（分）每道
+						</div>
+					</li>
+					<li>
+						<div class="drag-handle2">
+							&#9776;
+						</div><div class="handle-timu">
+							<input type="hidden" value="tiankong">填空题<input type="text" name="">道，分值<input type="text" name="">（分）每道
+						</div>
+					</li>
+					<li>
+						<div class="drag-handle2">
+							&#9776;
+						</div><div class="handle-timu" style="width: 95%">
+							<input type="hidden" value="panduan">判断题<input type="text" name="">道，分值<input type="text" name="">（分）每道
+						</div>
+					</li>
+					<div class="tp-suiji-button">
+						<div class="sub-suiji-project">创建试卷</div>
+						<div class="sub-cancel">取消创建</div>
+					</div>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
 
 
 
 
 
-
-	<div class="add-timu-black">
-		<div class="showview" style="background-color: rgba(0,0,0,0);">
-		<div class="list-view" style="margin-top: 150px;">
-			<div style="padding-bottom: 20px;height: 40px;display: flex;">
+<div class="add-timu-black" style="z-index: -1;opacity: 0">
+	<div class="showview" style="background-color: rgba(0,0,0,0);height: 100vh">
+		<div class="list-view" style="margin-top: 100px;">
+			<div style="padding-top:10px;padding-bottom: 20px;height: 40px;display: flex;">
 				<form style="width: 95%;">
-					<input type="text"/>
-					<input type="submit" value="搜索" title="搜索题目信息"/>
+					<input type="text" class="tp-search-sub" />
+					<input type="submit" class="tp-btn-sub" value="搜索" title="搜索题目信息"/>
 				</form>
 				<span class="glyphicon glyphicon-remove" style="font-size:20px;color: red;cursor: pointer;" title="关闭"></span>
 			</div>
@@ -383,7 +425,7 @@
 				<tr>
 					<th>ID</th>
 					<th>题目信息</th>
-					<th><form action="" method="get"> 
+					<!-- <th><form action="" method="get"> 
 					<label>难度：</label> 
 						<select class="title-select" name=""> 
 							<option class="title0" value="0">全部难度</option> 
@@ -392,17 +434,15 @@
 							<option class="title3" value="3">3</option> 
 							<option class="title4" value="4">4</option> 
 						</select> 
-					</form></th>
+					</form></th> -->
 					<th>添加</th>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>2</td>
-					<td>3</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr>
 				<tr>
-					<td>3</td>
 					<td>3</td>
 					<td>3</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
@@ -410,11 +450,9 @@
 				<tr>
 					<td>4</td>
 					<td>4</td>
-					<td>4</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr>
 				<tr>
-					<td>5</td>
 					<td>5</td>
 					<td>5</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
@@ -422,11 +460,9 @@
 				<tr>
 					<td>6</td>
 					<td>6</td>
-					<td>6</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr>
 				<tr>
-					<td>7</td>
 					<td>7</td>
 					<td>7</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
@@ -434,11 +470,9 @@
 				<tr>
 					<td>8</td>
 					<td>8</td>
-					<td>8</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr>
 				<tr>
-					<td>9</td>
 					<td>9</td>
 					<td>9</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
@@ -446,27 +480,43 @@
 				<tr>
 					<td>10</td>
 					<td>10</td>
-					<td>10</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr>
 				<tr>
 					<td>11</td>
 					<td>11</td>
-					<td>11</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr>
 				<tr>
-					<th colspan="4">
- 						<div id="page" style="height: 32px;"></div>
+					<th colspan="3">
+ 						<div id="page" class="tp-sublist"></div>
 					</th>
 				</tr>
 			</table>
 		</div> 
-		</div>
 	</div>
+</div>
 
 	<div class="showview">
 		<div class="head-view">添加试卷</div>
+		<div class="tp-head-info">
+			试卷名称<input type="text"/>
+			试卷难度
+			<select class="difficulty-select" name="">
+				<option value="0">请选择难度</option>
+				<option value="1">难度1</option> 
+				<option value="2">难度2</option> 
+				<option value="3">难度3</option> 
+				<option value="4">难度4</option> 
+			</select>
+			职业
+			<select class="pro-select" name="">
+				<option value="0">请选择职业</option> 
+				<option value="1">职业1</option> 
+				<option value="2">职业2</option>
+			</select>
+			<input class="creat-suijitp" type="button" value="随机创建试卷">
+		</div>
 		<div id="handle">
 			<div class="block__list_words">
 				<ul id="handle-1">
@@ -476,22 +526,25 @@
 						</div><div class="handle-timu">
 							
 						</div><div class="timu-info">
+							<span class="glyphicon glyphicon-remove" title="删除题目"></span>
 							题目分值：
-							<input type="text"/>分<br/>
+							<input type="text" class="timu-fenzhi" />分<br/>
 							题目类型：
-							<select class="title-select" name="">
-								<option class="title1" value="1">单选</option> 
-								<option class="title2" value="2">多选</option> 
-								<option class="title3" value="3">填空</option> 
-								<option class="title4" value="4">判断</option> 
-								<option class="title5" value="5">开放题</option> 
+							<select class="tp-title-select" name="">
+								<option value="1">单选</option> 
+								<option value="2">多选</option> 
+								<option value="3">填空</option> 
+								<option value="4">判断</option> 
 							</select><br/>
 							<div class="select-timu">选择题目</div>
 							<div class="insert-timu">录入题目</div>
-							<span class="glyphicon glyphicon-remove" title="删除题目"></span>
 						</div>
 					</li>
-					<div class="add-project">添加题目</div>
+					<div class="tp-button">
+						<div class="add-project">添加题目</div>
+						<div class="sub-project">创建试卷</div>
+					</div>
+					
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -552,16 +605,42 @@
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
 <script type="text/javascript" src="../static/wangEditor/wangEditor.min.js" th:src="@{/wangEditor/wangEditor.min.js}"></script>
 <script type="text/javascript">
-	$(function(){
-		$("#page").Page({
-			totalPages: 9,//分页总数
-			liNums: 7,//分页的数字按钮数(建议取奇数)
-			activeClass: 'activP', //active 类样式定义
-			callBack : function(page){
-				//console.log(page)
-			}
-	  	});
-	})
+$(document).ready(function() {
+	$(".tp-sublist").Page({
+	    totalPages: 11,//分页总数
+	    liNums: 7,//分页的数字按钮数(建议取奇数)
+	    activeClass: 'activP', //active 类样式定义
+	    callBack : function(page){
+	        toSubPage(page);
+	    }
+	});
+	$(".tp-btn-sub").click(function(event) {
+		toSubPage(1);
+	});;
+	function toSubPage(page){
+        var zhiyeSel = $(".pro-select").val();
+        var subSer = $(".tp-search-sub").val();
+        var subjectlist = {
+            'zhiye' : zhiyeSel,
+            'search' : subSer,
+            'page' : page
+        };
+		alert(page);
+        $.ajax({
+            type: "POST",
+            url: "tp-subjectlist.do",
+            data: {
+                'subjectlist' : subjectlist
+            },
+            dataType: "json",
+            success: function(data){
+                if (data!=1) {
+                    alert('跳转失败');
+                }
+            }
+        }); 
+    }
+});
 
 
     var E = window.wangEditor
@@ -649,14 +728,14 @@
     editor26.create()
 
 
-    var editor27 = new E('#kaifang-timu-1','#kaifang-timu')
+    /*var editor27 = new E('#kaifang-timu-1','#kaifang-timu')
     editor27.create()
 
     var editor28 = new E('#kaifang-daan1-1','#kaifang-daan1')
     editor28.create()
 
     var editor29 = new E('#kaifang-jiexi-1','#kaifang-jiexi')
-    editor29.create()
+    editor29.create()*/
 </script>
 </body>
 </html>

@@ -25,7 +25,7 @@
 				<a class="login-font" href=""><span>submit your site</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
+				<img src="../static/images/logo.png"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -56,36 +56,35 @@
 	<div class="black-out-curtain">
 		<div>
 			<h2>主页显示设置</h2>
-			<form action="" method="get"> 
-				<label><input name="fast-access" type="checkbox" value="yhlb" /><span class="glyphicon glyphicon-user"></span> 用户列表 </label> <br/>
-				<label><input name="fast-access" type="checkbox" value="tjyh" /><span class="glyphicon glyphicon-download"></span> 添加用户 </label> <br/>
-				<label><input name="fast-access" type="checkbox" value="tmlb" /><span class="glyphicon glyphicon-pencil"></span> 题目列表 </label> <br/>
-				<label><input name="fast-access" type="checkbox" value="tjtm" /><span class="glyphicon glyphicon-download"></span> 添加题目 </label> <br/>
-				<label><input name="fast-access" type="checkbox" value="sjlb" /><span class="glyphicon glyphicon-list-alt"></span> 试卷列表 </label> <br/>
-				<label><input name="fast-access" type="checkbox" value="cjsj" /><span class="glyphicon glyphicon-download"></span> 创建试卷 </label> <br/>
-				<label><input name="fast-access" type="checkbox" value="xxfb" /><span class="glyphicon glyphicon-envelope"></span> 信息发布 </label> <br/>
-				<label><input name="fast-access" type="checkbox" value="zygl" /><span class="glyphicon glyphicon-education"></span> 职业管理 </label> <br/>
-				<label><input name="fast-access" type="checkbox" value="grxxgl" /><span class="glyphicon glyphicon-edit"></span> 个人信息管理 </label> <br/>
-				<label><input type="submit"/></label>
+			<form action="" method="get" class="index-show-list"> 
+				<label><input name="fast-access" type="checkbox" value="用户列表" /><span class="glyphicon glyphicon-user"></span> 用户列表 </label> <br/>
+				<label><input name="fast-access" type="checkbox" value="添加用户" /><span class="glyphicon glyphicon-download"></span> 添加用户 </label> <br/>
+				<label><input name="fast-access" type="checkbox" value="题目列表" /><span class="glyphicon glyphicon-pencil"></span> 题目列表 </label> <br/>
+				<label><input name="fast-access" type="checkbox" value="添加题目" /><span class="glyphicon glyphicon-download"></span> 添加题目 </label> <br/>
+				<label><input name="fast-access" type="checkbox" value="试卷列表" /><span class="glyphicon glyphicon-list-alt"></span> 试卷列表 </label> <br/>
+				<label><input name="fast-access" type="checkbox" value="创建试卷" /><span class="glyphicon glyphicon-download"></span> 创建试卷 </label> <br/>
+				<label><input name="fast-access" type="checkbox" value="信息发布" /><span class="glyphicon glyphicon-envelope"></span> 信息发布 </label> <br/>
+				<label><input name="fast-access" type="checkbox" value="职业管理" /><span class="glyphicon glyphicon-education"></span> 职业管理 </label> <br/>
+				<label><input name="fast-access" type="checkbox" value="个人信息管理" /><span class="glyphicon glyphicon-edit"></span> 个人信息管理 </label> <br/>
+				<label><input type="submit" class="set-index-list" /></label>
 			</form>
 		</div>
 	</div>
 	<div class="showview">
 		<div class="head-view">首页</div>
 		<div class="mgmt-index">
-			<div class="fast-access"><span class="glyphicon glyphicon-user"></span> 用户列表</div>
-			<div class="fast-access"><span class="glyphicon glyphicon-download"></span> 添加用户</div>
-			<div class="fast-access"><span class="glyphicon glyphicon-pencil"></span> 题目列表</div>
-			<div class="fast-access"><span class="glyphicon glyphicon-download"></span> 添加题目</div>
-			<div class="fast-access"><span class="glyphicon glyphicon-list-alt"></span> 试卷列表</div>
-			<div class="fast-access"><span class="glyphicon glyphicon-download"></span> 创建试卷</div>
-			<div class="fast-access"><span class="glyphicon glyphicon-envelope"></span> 信息发布</div>
-			<div class="fast-access"><span class="glyphicon glyphicon-education"></span> 职业管理</div>
-			<div class="fast-access"><span class="glyphicon glyphicon-edit"></span> 个人信息管理</div>
+			<div class="fast-access"><a href="manage-userlist.html"><span class="glyphicon glyphicon-user"></span> 用户列表</a></div>
+			<div class="fast-access"><a href="manage-adduser.html"><span class="glyphicon glyphicon-download"></span> 添加用户</a></div>
+			<div class="fast-access"><a href="manage-subjectlist.html"><span class="glyphicon glyphicon-pencil"></span> 题目列表</a></div>
+			<div class="fast-access"><a href="manage-addsubject.html"><span class="glyphicon glyphicon-download"></span> 添加题目</a></div>
+			<div class="fast-access"><a href="manage-tplist.html"><span class="glyphicon glyphicon-list-alt"></span> 试卷列表</a></div>
+			<div class="fast-access"><a href="manage-addtp.html"><span class="glyphicon glyphicon-download"></span> 创建试卷</a></div>
+			<div class="fast-access"><a href="manage-bbs.html"><span class="glyphicon glyphicon-envelope"></span> 信息发布</a></div>
+			<div class="fast-access"><a href="manage-pro.html"><span class="glyphicon glyphicon-education"></span> 职业管理</a></div>
+			<div class="fast-access"><a href="manage-info.html"><span class="glyphicon glyphicon-edit"></span> 个人信息管理</a></div>
 			<div class="add-fast-access"><span class="glyphicon glyphicon-plus-sign"></span></div>
 		</div>
 	</div>
-
 </div>
 <div class="menu">
 	<div class="menu-in">

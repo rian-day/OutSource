@@ -25,7 +25,7 @@
 				<a class="login-font" href=""><span>submit your site</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
+				<img src="../static/images/logo.png"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -61,8 +61,24 @@
 				<tr>
 					<th>邮箱</th>
 					<th>姓名</th>
-					<th>性别</th>
-					<th>职业</th>
+					<th><form action="" method="get"> 
+					<label>性别：</label> 
+						<select class="sex-select" name="">
+							<option value="both">全部性别</option>
+							<option value="male">男</option> 
+							<option value="fmale">女</option>
+						</select> 
+					</form></th>
+					<th><form action="" method="get"> 
+					<label>职业：</label> 
+						<select class="title-select" name="">
+							<option value="title0">全部职业</option> 
+							<option value="title1">职业1</option>
+							<option value="title2">职业2</option> 
+							<option value="title3">职业3</option>
+							<option value="title4">职业4</option>
+						</select> 
+					</form></th>
 					<th>修改</th>
 				</tr>
 				<tr>
@@ -137,7 +153,7 @@
 				</tr>
 				<tr>
 					<th colspan="5">
- 						<div id="page"></div>
+ 						<div id="page" class="uselist"></div>
 					</th>
 				</tr>
 			</table>
@@ -196,16 +212,39 @@
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
 <script type="text/javascript">
-	$(function(){
-		$("#page").Page({
-			totalPages: 9,//分页总数
-			liNums: 7,//分页的数字按钮数(建议取奇数)
-			activeClass: 'activP', //active 类样式定义
-			callBack : function(page){
-				//console.log(page)
-			}
-	  	});
-	})
+$(document).ready(function() {
+	$(".uselist").Page({
+	    totalPages: 9,//分页总数
+	    liNums: 7,//分页的数字按钮数(建议取奇数)
+	    activeClass: 'activP', //active 类样式定义
+	    callBack : function(page){
+	        toUsePage(page);
+	    }
+	});
+	function toUsePage(page){
+        alert(page);
+        var zhiyeSel = $(".title-select").val();
+        var xingbieSel = $(".sex-select").val();
+        var userlist = {
+            'xingbieSel' : xingbieSel,
+            'zhiye' : zhiyeSel,
+            'page' : page
+        };
+        $.ajax({
+            type: "POST",
+            url: "userlist.do",
+            data: {
+                'userlist' : userlist
+            },
+            dataType: "json",
+            success: function(data){
+                if (data!=1) {
+                    alert('跳转失败');
+                }
+            }
+        });
+    }
+});
 </script>
 </body>
 </html>
