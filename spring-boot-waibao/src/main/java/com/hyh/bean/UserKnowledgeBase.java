@@ -3,7 +3,7 @@ package com.hyh.bean;
 public class UserKnowledgeBase {
 	
 	private String question;
-	private String answer;
+	private String[] answer;
 	
 	public String getQuestion() {
 		return question;
@@ -11,12 +11,13 @@ public class UserKnowledgeBase {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	public String getAnswer() {
+	public String[] getAnswer() {
 		return answer;
 	}
-	public void setAnswer(String answer) {
+	public void setAnswer(String[] answer) {
 		this.answer = answer;
 	}
+	
 	
 	
 }

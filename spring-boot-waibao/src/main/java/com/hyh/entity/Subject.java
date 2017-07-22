@@ -52,6 +52,9 @@ public class Subject {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private SubjectGroup subjectGroup;
 	
+	public void addOption(SubjectOptions option){
+		this.options.add(option);
+	}
 	
 	public Subject(){
 		

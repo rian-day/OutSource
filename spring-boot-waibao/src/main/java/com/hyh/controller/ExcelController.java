@@ -1,6 +1,7 @@
 package com.hyh.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.hyh.entity.Subject;
 import com.hyh.service.ExcelService;
 import com.hyh.utils.ExcelImportUtils;
 
@@ -25,8 +27,7 @@ public class ExcelController {
 	
 	//导入  
 	@PostMapping("/excel")
-	@ResponseBody
-	public String batchImportUserKnowledge(
+	public List<Subject> batchImportUserKnowledge(
 			@RequestParam(value="filename") MultipartFile file,  
 	        HttpServletRequest request
 	        ,HttpServletResponse response
@@ -57,11 +58,11 @@ public class ExcelController {
 	    }  
 	      
 	    //批量导入  
-	    String message = knowledgeService.batchImport(fileName
+	    List<Subject> list = knowledgeService.batchImport(fileName
 	    		,file
 	    		//,username
 	    		);  
 	    //session.setAttribute("msg",message);  
-	    return message;  
+	    return list;  
 	}  
 }

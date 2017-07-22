@@ -19,6 +19,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hyh.bean.UserKnowledgeBase;
+import com.hyh.entity.Subject;
+import com.hyh.entity.SubjectOptions;
 import com.hyh.utils.ExcelImportUtils;
 
 @Service
@@ -31,7 +33,7 @@ public class ExcelService {
 	 * @param userName 
 	 * @return 
 	 */  
-	public String batchImport(
+	public List<Subject> batchImport(
 			String fileName
 			,MultipartFile mfile
 			//,String userName
@@ -86,7 +88,7 @@ public class ExcelService {
 	   * @param wb 
 	   * @return 
 	   */  
-	  private String readExcelValue(Workbook wb
+	  private List<Subject> readExcelValue(Workbook wb
 			  //,String userName
 			  ,File tempFile){  
 	        
@@ -105,10 +107,10 @@ public class ExcelService {
 	       }  else{
 	    	   errorMsg+="表内没有数据";
 	       }
-	       List<UserKnowledgeBase> userKnowledgeBaseList=new ArrayList<UserKnowledgeBase>();  
-	       UserKnowledgeBase tempUserKB;      
+
 	         
 	       String br = "<br/>";  
+	       List<Subject> list = null;
 	         
 	       //循环Excel行数,从第二行开始。标题不入库  
 	       for(int r=1;r<totalRows;r++){  
@@ -118,42 +120,60 @@ public class ExcelService {
 	               errorMsg += br+"第"+(r+1)+"行数据有问题，请仔细检查！";  
 	               continue;  
 	           }  
-	           tempUserKB = new UserKnowledgeBase();  
 	             
 	           String question = "";  
 	           String answer = "";  
+	           String type="";
+	           int count=0;
+	           String []menu={"A","B","C","D","E","F","G","H","I","J","K","L","M","N"};
 	             
 	           //循环Excel的列  
+	           //创建实体类
+	           Subject subject=new Subject();
 	           for(int c = 0; c <totalCells; c++){  
 	               Cell cell = row.getCell(c);  
-	               if (null != cell){  
-	                   if(c==0){  
-	                       question = cell.getStringCellValue();  
+	               if (null != cell){ 
+	            	   if(c>3){
+	                	   SubjectOptions option=new SubjectOptions();
+	                	   option.setOptionName(menu[count]);
+	                	   option.setContent(cell.getStringCellValue());
+	                	   subject.addOption(option);
+	                	   count++;
+	                   } else if(c==0){  
+	                	   //第一列题目类型
+	                       type=cell.getStringCellValue();
 	                       if(StringUtils.isEmpty(question)){  
-	                           rowMessage += "问题不能为空；";  
-	                       }else if(question.length()>60){  
-	                           rowMessage += "问题的字数不能超过60；";  
+	                           rowMessage += "类别不能为空；";  
+	                       }else if(question.length()>10){  
+	                           rowMessage += "类别的字数不能超过10；";  
 	                       }  
-	                       tempUserKB.setQuestion(question);  
-	                   }else if(c==1){  
-	                       answer = cell.getStringCellValue();  
+	                       subject.setType(type); 
+	                   }else if(c==1){ 
+	                       question = cell.getStringCellValue();  
 	                       if(StringUtils.isEmpty(answer)){  
-	                           rowMessage += "答案不能为空；";  
-	                       }else if(answer.length()>1000){  
-	                           rowMessage += "答案的字数不能超过1000；";  
+	                           rowMessage += "题目不能为空；";  
+	                       }else if(answer.length()>225){  
+	                           rowMessage += "题目的字数不能超过225；";  
 	                       }  
-	                       tempUserKB.setAnswer(answer);  
-	                   }  
+	                       subject.setContent(question);
+	                   }else if(c==2){
+	                	   answer = cell.getStringCellValue(); 
+	                	   String []answers=answer.split("");
+	                	   subject.setRealAnswer(answers);
+	                   }else if(c==3){
+	                	   String tip=cell.getStringCellValue();
+	                	   subject.setTip(tip);
+	                   }
 	               }else{  
 	                   rowMessage += "第"+(c+1)+"列数据有问题，请仔细检查；";  
 	               }  
+	               count=0;
 	           }  
 	           //拼接每行的错误提示  
 	           if(!StringUtils.isEmpty(rowMessage)){  
 	               errorMsg += br+"第"+(r+1)+"行，"+rowMessage;  
-	           }else{  
-	               userKnowledgeBaseList.add(tempUserKB);  
-	           }  
+	           }
+	           list.add(subject);
 	       }  
 	         
 	       //删除上传的临时文件  
@@ -171,9 +191,7 @@ public class ExcelService {
 //	           }  
 //	           errorMsg = "导入成功，共"+userKnowledgeBaseList.size()+"条数据！";  
 //	       }  
-	       String result="";
-	       result+="question is :"+userKnowledgeBaseList.get(0).getQuestion();
-	       result+="<br/> answer is :"+userKnowledgeBaseList.get(0).getAnswer();
-	       return result;
+	       
+	       return list;
 	  }  
 }
