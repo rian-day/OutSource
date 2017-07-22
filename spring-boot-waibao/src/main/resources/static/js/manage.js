@@ -340,7 +340,7 @@ $(document).ready(function() {
         $(".w-e-text p").text('');
     });
     $(".add-project").click(function() {
-        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目分值：<input type="text"/>分<br>题目类型：<select class="title-select" name="">  <option class="title1" value="1">单选</option> <option class="title2" value="2">多选</option> <option class="title3" value="3">填空</option> <option class="title4" value="4">判断</option> </select><br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
+        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"><br>题目分值：<input type="text"/>分<br>题目类型：<select class="title-select" name="">  <option class="title1" value="1">单选</option> <option class="title2" value="2">多选</option> <option class="title3" value="3">填空</option> <option class="title4" value="4">判断</option> </select><br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
     });
     $(document).on("click",".timu-info .glyphicon",function(){
         $(this).parent().parent().remove();
@@ -402,11 +402,27 @@ $(document).ready(function() {
         }
     });*/
     $(".tijiao-danxuan").click(function() {
-        var zhiye = $(".zhiye option:selected").val();
+
+        var zhiye = $(".zhiye option:selected").val();         //顾名思义 这是职业
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
-            var title = $("#danxuan-timu div p").text();
+            var content = $("#danxuan-timu div p").text() + 
+                            "<br/>A:" + $("#danxuan-daan1 div p").text() +
+                            "<br/>B:" + $("#danxuan-daan2 div p").text();
+            if ($(".box-title1").children('.keyList:eq(2)').attr('class')!='keyList behide3') {
+                content = content +  "<br/>C:" + $("#danxuan-daan3 div p").text();
+                if ($(".box-title1").children('.keyList:eq(3)').attr('class')!='keyList behide4') {
+                    content = content +  "<br/>D:" + $("#danxuan-daan4 div p").text();
+                    if ($(".box-title1").children('.keyList:eq(4)').attr('class')!='keyList behide5') {
+                        content = content +  "<br/>E:" + $("#danxuan-daan5 div p").text();
+                        if ($(".box-title1").children('.keyList:eq(5)').attr('class')!='keyList behide6') {
+                            content = content +  "<br/>F:" + $("#danxuan-daan6 div p").text();
+                        }
+                    }
+                }
+            }
+            /*var title = $("#danxuan-timu div p").text();        //题目
             var option1={
                 'xuanxiangming' : 'A',
                 'content' : $("#danxuan-daan1 div p").text()
@@ -431,29 +447,45 @@ $(document).ready(function() {
                 'xuanxiangming' : 'F',
                 'content' : $("#danxuan-daan6 div p").text()
             }
-            var options = [option1,option2,option3,option4,option5,option6];
-            var answer = $(".box-title1 input[type='radio']:checked").val();
-            var analysis = $(".danxuan-jiexi").text();
-            var danxuantimu = {
-                'pro' : zhiye,
-                'title' : title,
-                'options' : options,
-                'answer' : answer,
-                'analysis' : analysis
-            }
+            var options = [option1,option2,option3,option4,option5,option6];        //选项*/
+            var obj = $(".box-title1 input[type='radio']");
+            var answer=[]; 
+            $(obj).each(function(index, el) {
+                if(obj[index].checked) answer.push($(this).val());
+            });
+            /*arr.push('a');*/
+            /*answer = $(".box-title1 input[type='radio']:checked").val();        //答案*/
+            var analysis = $(".danxuan-jiexi").text();      //解析
+            /*var danxuantimu = {
+                'content' : content,      //content内容
+                'type' : 1,     //type题目类型
+                'realAnswer' : answer,       //realAnswer正确答案
+                'tip' : analysis,      //tip注释
+                'professionId' : zhiye        //professionId职业ID
+            }*/
             $.ajax({
                 type: "POST",
-                url: "danxuan-timu.do",
+                url: "add-subject.do",
                 data: {
-                    'danxuantimu' : danxuantimu
+                    'content' : content,        //content内容
+                    'type' : 1,                 //type题目类型
+                    'realAnswer' : answer,      //realAnswer正确答案
+                    'tip' : analysis,           //tip注释
+                    'professionId' : zhiye      //professionId职业ID
                 },
                 dataType: "json",
                 success: function(data){
-                    //清空resText里面的所有内容  成功1 不成功0 存在-1
-                    if (data==1) {
-                        alert("上传成功");
-                    }else{
+                    //  成功id 不成功0
+                    if (data==0) {
                         alert("上传失败");
+                    }else{
+                        alert("上传成功");
+                        $("#handle-1 li:eq("+settimuindex+") .handle-timu").html(content);
+                        $("#handle-1 li:eq("+settimuindex+") .timu-id").val(data);
+                        $(".insert-timu-black").css({
+                            'z-index': '-1',
+                            'opacity': '0'
+                        });
                     }
                 }
             });
@@ -464,7 +496,22 @@ $(document).ready(function() {
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
-            var title = $("#duoxuan-timu div p").text();
+            var content = $("#duoxuan-timu div p").text() + 
+                            "<br/>A:" + $("#duoxuan-daan1 div p").text() +
+                            "<br/>B:" + $("#duoxuan-daan2 div p").text();
+            if ($(".box-title2").children('.keyList:eq(2)').attr('class')!='keyList behide3') {
+                content = content +  "<br/>C:" + $("#duoxuan-daan3 div p").text();
+                if ($(".box-title2").children('.keyList:eq(3)').attr('class')!='keyList behide4') {
+                    content = content +  "<br/>D:" + $("#duoxuan-daan4 div p").text();
+                    if ($(".box-title2").children('.keyList:eq(4)').attr('class')!='keyList behide5') {
+                        content = content +  "<br/>E:" + $("#duoxuan-daan5 div p").text();
+                        if ($(".box-title2").children('.keyList:eq(5)').attr('class')!='keyList behide6') {
+                            content = content +  "<br/>F:" + $("#duoxuan-daan6 div p").text();
+                        }
+                    }
+                }
+            }
+            /*var title = $("#duoxuan-timu div p").text();
             var option1={
                 'xuanxiangming' : 'A',
                 'content' : $("#duoxuan-daan1 div p").text()
@@ -489,32 +536,47 @@ $(document).ready(function() {
                 'xuanxiangming' : 'F',
                 'content' : $("#duoxuan-daan6 div p").text()
             }
-            var options = [option1,option2,option3,option4,option5,option6];
+            var options = [option1,option2,option3,option4,option5,option6];*/
             var obj = $(".box-title2 input[type='checkbox']");
             var answer=[]; 
             $(obj).each(function(index, el) {
-                if(obj[index].checked) answer[index]=$(this).val();
+                if(obj[index].checked) answer.push($(this).val());
             });
             var analysis = $(".duoxuan-jiexi").text();
-            var duoxuantimu = {
+            /*var duoxuantimu = {
                 'pro' : zhiye,
                 'title' : title,
                 'options' : options,
                 'answer' : answer,
                 'analysis' : analysis
             }
+            $("#handle-1 li:eq("+settimuindex+") .handle-timu").html(content);
+            $(".insert-timu-black").css({
+                'z-index': '-1',
+                'opacity': '0'
+            });*/
             $.ajax({
                 type: "POST",
-                url: "duoxuan-timu.do",
+                url: "add-subject.do",
                 data: {
-                    'duoxuantimu' : duoxuantimu
+                    'content' : content,        
+                    'type' : 2,                 
+                    'realAnswer' : answer,      
+                    'tip' : analysis,           
+                    'professionId' : zhiye      
                 },
                 dataType: "json",
                 success: function(data){
-                    if (data==1) {
-                        alert("上传成功");
-                    }else{
+                    if (data==0) {
                         alert("上传失败");
+                    }else{
+                        alert("上传成功");
+                        $("#handle-1 li:eq("+settimuindex+") .handle-timu").html(content);
+                        $("#handle-1 li:eq("+settimuindex+") .timu-id").val(data);
+                        $(".insert-timu-black").css({
+                            'z-index': '-1',
+                            'opacity': '0'
+                        });
                     }
                 }
             });
@@ -525,8 +587,8 @@ $(document).ready(function() {
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
-            var title = $("#tiankong-timu div p").text();
-            var option1={
+            var content = $("#tiankong-timu div p").text();
+            /*var option1={
                 'xuanxiangming' : '1',
                 'content' : $("#tiankong-daan1 div p").text()
             }
@@ -550,26 +612,59 @@ $(document).ready(function() {
                 'xuanxiangming' : '6',
                 'content' : $("#tiankong-daan6 div p").text()
             }
-            var answer = [option1,option2,option3,option4,option5,option6];
+            var answer = [option1,option2,option3,option4,option5,option6];*/
+            var answer = [];
+            answer.push($("#tiankong-daan1 div p").text());
+
+            if ($(".box-title3").children('.keyList:eq(0)').attr('class')!='keyList behide2') {
+                answer.push($("#tiankong-daan2 div p").text());
+                if ($(".box-title3").children('.keyList:eq(1)').attr('class')!='keyList behide3') {
+                    answer.push($("#tiankong-daan3 div p").text());
+                    if ($(".box-title3").children('.keyList:eq(2)').attr('class')!='keyList behide4') {
+                        answer.push($("#tiankong-daan4 div p").text());
+                        if ($(".box-title3").children('.keyList:eq(3)').attr('class')!='keyList behide5') {
+                            answer.push($("#tiankong-daan5 div p").text());
+                            if ($(".box-title3").children('.keyList:eq(4)').attr('class')!='keyList behide6') {
+                                answer.push($("#tiankong-daan6 div p").text());
+                            }
+                        }
+                    }
+                }
+            }
             var analysis = $(".tiankong-jiexi").text();
-            var tiankongtimu = {
+            /*var tiankongtimu = {
                 'pro' : zhiye,
                 'title' : title,
                 'answer' : answer,
                 'analysis' : analysis
             }
+            $("#handle-1 li:eq("+settimuindex+") .handle-timu").html(content);
+            $(".insert-timu-black").css({
+                'z-index': '-1',
+                'opacity': '0'
+            });*/
             $.ajax({
                 type: "POST",
-                url: "tiankong-timu.do",
+                url: "add-subject.do",
                 data: {
-                    'timu' : tiankongtimu
+                    'content' : content,        
+                    'type' : 3,                 
+                    'realAnswer' : answer,      
+                    'tip' : analysis,           
+                    'professionId' : zhiye      
                 },
                 dataType: "json",
                 success: function(data){
-                    if (data==1) {
-                        alert("上传成功");
-                    }else{
+                    if (data==0) {
                         alert("上传失败");
+                    }else{
+                        alert("上传成功");
+                        $("#handle-1 li:eq("+settimuindex+") .handle-timu").html(content);
+                        $("#handle-1 li:eq("+settimuindex+") .timu-id").val(data);
+                        $(".insert-timu-black").css({
+                            'z-index': '-1',
+                            'opacity': '0'
+                        });
                     }
                 }
             });
@@ -580,34 +675,52 @@ $(document).ready(function() {
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
-            var title = $("#panduan-timu div p").text();
-            var answer = $(".box-title4 input[type='radio']:checked").val();
+            var content = $("#panduan-timu div p").text();
+            var answer = [];
+            answer.push($(".box-title4 input[type='radio']:checked").val());
+            alert(answer);
             var analysis = $("#panduan-jiexi div p").text();
-            var panduantimu = {
+            /*var panduantimu = {
                 'pro' : zhiye,
                 'title' : title,
                 'answer' : answer,
                 'analysis' : analysis
             }
-            /*$.ajax({
+            $("#handle-1 li:eq("+settimuindex+") .handle-timu").html(content);
+            $(".insert-timu-black").css({
+                'z-index': '-1',
+                'opacity': '0'
+            });*/
+            $.ajax({
                 type: "POST",
-                url: "panduan-timu.do",
+                url: "add-subject.do",
                 data: {
-                    'panduantimu' : panduantimu
+                    'content' : content,        
+                    'type' : 4,                 
+                    'realAnswer' : answer,      
+                    'tip' : analysis,           
+                    'professionId' : zhiye      
                 },
                 dataType: "json",
                 success: function(data){
-                    if (data==1) {
-                        alert("上传成功");
-                    }else{
+                    if (data==0) {
                         alert("上传失败");
+                    }else{
+                        alert("上传成功");
+                        $("#handle-1 li:eq("+settimuindex+") .handle-timu").html(content);
+                        $("#handle-1 li:eq("+settimuindex+") .timu-id").val(data);
+                        $(".insert-timu-black").css({
+                            'z-index': '-1',
+                            'opacity': '0'
+                        });
                     }
                 }
-            });*/
+            });
         }
     });
     
 
+/*设置职业*/
     $(".submitdemo").click(function() {
         var zhiye = [];
         $(".pro-name li").each(function(index, el) {
@@ -630,6 +743,8 @@ $(document).ready(function() {
         });
     });
 
+
+/*设置快速访问列表*/
     $(".set-index-list").click(function(event) {
         var obj = $(".index-show-list input[type=checkbox]");
         var indexList = [];
@@ -659,7 +774,7 @@ $(document).ready(function() {
 
 
 
-
+    
     $(".sub-cancel").click(function() {
         $(".add-suiji-black").css({
             'z-index': '-1',
@@ -680,29 +795,37 @@ $(document).ready(function() {
             });
         }
     });
+    /*创建随机题目*/
     $(".sub-suiji-project").click(function() {
-        var tpname = $(".tp-head-info input[type=text]").val();
-        var tppro = $(".tp-head-info .pro-select option:selected").val();
-        var suijitp = {
-            'tpname' : tpname,
+        var tpname = $(".tp-head-info input[type=text]").val();    //试卷名称
+        var tppro = $(".tp-head-info .pro-select option:selected").val();       //职业
+        /*var suijitp = {
+            'tpname' : tpname,      
             'tppro' : tppro
-        };
+        };*/
+        var type = [];
+        var num = [];
+        var mark = [];
         $("#handle-2 li").each(function(index, el) {
-            var type = $(el).children('.handle-timu').children('input[type=hidden]').val();
-            var num = $(el).children('.handle-timu').children('input[type=text]:eq(0)').val();
-            var mark = $(el).children('.handle-timu').children('input[type=text]:eq(1)').val();
-            var suijitimu = {
+            type.pushi($(el).children('.handle-timu').children('input[type=hidden]').val());     //类型
+            num.push($(el).children('.handle-timu').children('input[type=text]:eq(0)').val());      //数量
+            mark.push($(el).children('.handle-timu').children('input[type=text]:eq(1)').val());     //分数
+            /*var suijitimu = {
                 'type' : type,
                 'num' : num,
                 'mark' : mark,
             };
-            suijitp[index] = suijitimu;
+            suijitp[index] = suijitimu;*/
         });
         $.ajax({
             type: "POST",
             url: "creat-suijitp.do",
             data: {
-                'suijitp' : suijitp
+                'tpname' : tpname,
+                'professionId' : tppro,
+                'type' : type,
+                'num' : num,
+                'mark' : mark,
             },
             dataType: "json",
             success: function(data){
@@ -714,8 +837,9 @@ $(document).ready(function() {
             }
         });
     });
+    /*提交试卷信息*/
     $(".sub-project").click(function() {
-        var tp = [];
+        /*var tp = [];*/
         var name = $(".tp-head-info input[type=text]").val();
         var pro = $(".tp-head-info .pro-select option:selected").val();
         var hrd = $(".tp-head-info .difficulty-select option:selected").val();
@@ -726,28 +850,26 @@ $(document).ready(function() {
         }else if(hrd=='0'){
             alert('请选择难度！');
         }else{
-            tp = {
+            /*tp = {
                 'name' : name,
                 'pro' : pro,
                 'hrd' : hrd
-            }
+            }*/
+            var timuid = [];
             $("#handle-1 li").each(function(index, el) {        //index是从零开始的
-                var timuInfo = $(this).children(".handle-timu").text();
-                var timuFenshu = $(this).children(".timu-info").children(".timu-fenzhi").val();
-                var timuType = $(this).children(".timu-info").children(".tp-title-select").val();
-                var timu = {
-                    'index' : index+1,
-                    'info' : timuInfo,
-                    'fenshu' : timuFenshu,
-                    'type' : timuType
+                timuid.push((this).children(".timu-info").children(".timu-id").val());
+                /*var timu = {
                 }
-                tp[index] = timu;
+                tp[index] = timu;*/
             });
             $.ajax({
                 type: "POST",
                 url: "sendtp.do",
                 data: {
-                    'tp' : tp
+                    'name' : name,      //名称
+                    'pro' : pro,        //职业
+                    'hrd' : hrd         //难度
+                    'timuid' : timuid,      //题目id(数组)
                 },
                 dataType: "json",
                 success: function(data){
@@ -761,7 +883,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#tijiao-danxuan").click(function() {
+    /*$("#tijiao-danxuan").click(function() {
         var pushtimu = "";
         pushitimu = $("#danxuan-timu div p").text() + "<br/>";
         pushitimu = pushitimu + "A:" + $("#danxuan-daan1 div p").text() + "<br/>" +
@@ -841,5 +963,5 @@ $(document).ready(function() {
             'z-index': '-1',
             'opacity': '0'
         });
-    });
+    });*/
 });

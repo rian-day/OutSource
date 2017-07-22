@@ -162,7 +162,7 @@
 						<div id="danxuan-jiexi"></div>
 					</div>
 					<div class="q-submit">
-						<input class="tijiao-danxuan" id="tijiao-danxuan" type="submit" value="录入"/>
+						<input class="tijiao-danxuan" type="submit" value="录入"/>
 					</div>
 				</div>
 				<div class="box-title2">
@@ -242,7 +242,7 @@
 						<div id="duoxuan-jiexi"></div>
 					</div>
 					<div class="q-submit">
-						<input class="tijiao-duoxuan" id="tijiao-duoxuan" type="submit" value="录入"/>
+						<input class="tijiao-duoxuan" type="submit" value="录入"/>
 					</div>
 				</div>
 				<div class="box-title3">
@@ -303,7 +303,7 @@
 						<div id="tiankong-jiexi"></div>
 					</div>
 					<div class="q-submit">
-						<input class="tijiao-tiankong" id="tijiao-tiankong" type="submit" value="录入"/>
+						<input class="tijiao-tiankong" type="submit" value="录入"/>
 					</div>
 				</div>
 				<div class="box-title4">
@@ -326,7 +326,7 @@
 					</div>
 					
 					<div class="q-submit">
-						<input class="tijiao-panduan" id="tijiao-panduan" type="submit" value="录入"/>
+						<input class="tijiao-panduan" type="submit" value="录入"/>
 					</div>
 				</div>
 				<!-- <div class="box-title5">
@@ -527,6 +527,7 @@
 							
 						</div><div class="timu-info">
 							<span class="glyphicon glyphicon-remove" title="删除题目"></span>
+							题目ID:<input type="text" class="timu-id" disabled="true"><br>
 							题目分值：
 							<input type="text" class="timu-fenzhi" />分<br/>
 							题目类型：
@@ -620,17 +621,19 @@ $(document).ready(function() {
 	function toSubPage(page){
         var zhiyeSel = $(".pro-select").val();
         var subSer = $(".tp-search-sub").val();
-        var subjectlist = {
+        /*var subjectlist = {
             'zhiye' : zhiyeSel,
             'search' : subSer,
             'page' : page
         };
-		alert(page);
+		alert(page);*/
         $.ajax({
             type: "POST",
             url: "tp-subjectlist.do",
             data: {
-                'subjectlist' : subjectlist
+                'zhiye' : zhiyeSel,
+                'search' : subSer,
+                'page' : page
             },
             dataType: "json",
             success: function(data){
