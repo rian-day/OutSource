@@ -79,7 +79,7 @@ public class ExcelService {
 	              }  
 	          }  
 	      }  
-	       return "导入出错！请检查数据格式！";  
+	       return null;  
 	   }  
 	  
 	  

@@ -38,7 +38,7 @@ public class ExcelController {
 	    //判断文件是否为空  
 	    if(file==null){  
 	     session.setAttribute("msg","文件不能为空！");  
-	     return "redirect:toUserKnowledgeImport";  
+	     return null;  
 	    }  
 	      
 	    //获取文件名  
@@ -47,14 +47,14 @@ public class ExcelController {
 	    //验证文件名是否合格  
 	    if(!ExcelImportUtils.validateExcel(fileName)){  
 	     session.setAttribute("msg","文件必须是excel格式！");  
-	     return "redirect:toUserKnowledgeImport";  
+	     return null;
 	    }  
 	      
 	    //进一步判断文件内容是否为空（即判断其大小是否为0或其名称是否为null）  
 	    long size=file.getSize();  
 	    if(StringUtils.isEmpty(fileName) || size==0){  
 	     session.setAttribute("msg","文件不能为空！");  
-	     return "redirect:toUserKnowledgeImport";  
+	     return null;
 	    }  
 	      
 	    //批量导入  

@@ -84,24 +84,12 @@ public class SubjectService {
 		}
 		return result;
 	}
-	
+	public String AddSingleSubject(Subject sj){
+		subjectdao.save(sj);
+		return "1";
+	}
 	public String AddSubject(List<Subject> list){
-		Subject sj;
-		String error="";
-		for(int i=0;i<list.size();i++){
-			sj=list.get(i);
-			if(sj.getContent().equals("")){
-				
-			}else if(sj.getUserAnswer().equals("")){
-				
-			}else if(sj.getType().equals("")){
-				if(sj.getType().equals("选择题")){
-					//error+= sj.getOptions().size()==0?i:i+1;
-				}
-			}
-			
-			sj=subjectdao.save(sj);
-		}
+		subjectdao.save(list);
 		return "1";
 	}
 	public List<Subject> SearchSubject(int id){
