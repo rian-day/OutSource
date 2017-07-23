@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8"/>
 	<title>管理员界面</title>
 	<link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" type="text/css" href="../static/css/manage.css" th:href="@{/css/manage.css}"/>
 	<script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+	
 </head>
 <body class="home">
 <div class="move-right">
@@ -58,8 +59,8 @@
 		<div class="head-view">添加题目
 			<div class="importTopic">
 				<form action="file.do" method="POST">
-					<input type="file">
-					<input type="submit">
+					<input type="file"/>
+					<input type="submit"/>
 				</form> 
 			</div>
 			<a href=""><div class="dldmould">下载模板</div></a>
@@ -68,8 +69,13 @@
 			<div style="text-align: center;">
 				<form action="" method="get"> 
 					<label>请选择职业：</label> 
-					<select name="" class="zhiye"> 
-						<option value="0">请选择职业!</option> 
+					<!-- <select th:remove="all-but-first" class="title-select">
+						<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}">Credit card</option>
+						<option>Another payment method</option>
+						<option>Another payment method</option>
+					</select> -->
+					<select name="" class="zhiye" th:remove="all-but-first" > 
+						<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}" value="0">请选择职业!</option> 
 						<option value="1">职业1</option> 
 						<option value="2">职业2</option> 
 					</select> 

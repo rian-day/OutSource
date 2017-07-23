@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8"/>
 	<title>管理员界面</title>
@@ -64,15 +64,22 @@
 				</div>
 				<div class="pro-title2">
 					<div class="pro-name">
-						<ul>
-							<li>java工程师</li>
+						<ul th:remove="all-but-first">
+							<li th:each="prolist : ${}"><span th:text="${prolist.}">java工程师</span></li>
 							<li>web工程师</li>
 						</ul>
 					</div>
 					<div class="pro-revise">
-						<ul>
-							<li>
-			      				<input type="text" name="" class="zhiye" value="java工程师"/>
+					<!-- <tr th:each="userlist : ${}">
+						<td th:text="${sublist.}">1</td>		邮箱
+						<td th:text="${sublist.}">2</td>		姓名
+						<td th:text="${sublist.}">3</td>		性别
+						<td th:text="${sublist.}">4</td>		职业
+						<td><input type="submit" value="修改信息"/></td>
+					</tr> -->
+						<ul th:remove="all-but-first">
+							<li th:each="prolist : ${}">
+			      				<input type="text" name="" class="zhiye"  th:value="${prolist.}" value="java工程师" />
 			      				<input type="submit" value="确认更改" class="btn btn-info prdemo"/>
 				      		</li>
 							<li>

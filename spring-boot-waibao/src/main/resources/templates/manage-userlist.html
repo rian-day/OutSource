@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8"/>
 	<title>管理员界面</title>
@@ -70,25 +70,30 @@
 						</select> 
 					</form></th>
 					<th><form action="" method="get"> 
-					<label>职业：</label> 
-						<select class="title-select" name="">
+						<label>职业：</label> 
+						<select th:remove="all-but-first" class="title-select">
+							<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}">Credit card</option>
+							<option>Another payment method</option>
+							<option>Another payment method</option>
+						</select>
+						<!-- <select class="title-select" name="">
 							<option value="title0">全部职业</option> 
 							<option value="title1">职业1</option>
 							<option value="title2">职业2</option> 
 							<option value="title3">职业3</option>
 							<option value="title4">职业4</option>
-						</select> 
+						</select>  -->
 					</form></th>
 					<th>修改</th>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>2</td>
-					<td>2</td>
-					<td>2</td>
+				<tr th:each="userlist : ${}">
+					<td th:text="${sublist.}">1</td>		<!-- 邮箱 -->
+					<td th:text="${sublist.}">2</td>		<!-- 姓名 -->
+					<td th:text="${sublist.}">3</td>		<!-- 性别 -->
+					<td th:text="${sublist.}">4</td>		<!-- 职业 -->
 					<td><input type="submit" value="修改信息"/></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td>3</td>
 					<td>3</td>
 					<td>3</td>
@@ -150,7 +155,7 @@
 					<td>11</td>
 					<td>11</td>
 					<td><input type="submit" value="修改信息"/></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<th colspan="5">
  						<div id="page" class="uselist"></div>
@@ -211,10 +216,10 @@
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
-<script type="text/javascript">
+<script th:inline="javascript">
 $(document).ready(function() {
 	$(".uselist").Page({
-	    totalPages: 9,//分页总数
+	    totalPages: [[${page.countpage}]],//分页总数
 	    liNums: 7,//分页的数字按钮数(建议取奇数)
 	    activeClass: 'activP', //active 类样式定义
 	    callBack : function(page){
@@ -222,19 +227,15 @@ $(document).ready(function() {
 	    }
 	});
 	function toUsePage(page){
-        alert(page);
         var zhiyeSel = $(".title-select").val();
         var xingbieSel = $(".sex-select").val();
-        var userlist = {
-            'xingbieSel' : xingbieSel,
-            'zhiye' : zhiyeSel,
-            'page' : page
-        };
         $.ajax({
             type: "POST",
             url: "userlist.do",
             data: {
-                'userlist' : userlist
+	            'xingbieSel' : xingbieSel,
+	            'zhiye' : zhiyeSel,
+	            'page' : page
             },
             dataType: "json",
             success: function(data){

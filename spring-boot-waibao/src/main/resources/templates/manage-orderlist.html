@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8"/>
 	<title>管理员界面</title>
@@ -64,11 +64,11 @@
 					<th>详情</th>
 					<th>操作时间</th>
 				</tr>
-				<tr th:each="prod : ${orderlist}">
-					<td th:text="${orderlist.id}">1</td>
-					<td th:text="${orderlist.name">2</td>
-					<td th:text="${orderlist.pro">3</td>
-					<td th:text="${orderlist.hrd">4</td>
+				<tr th:each="orderlist : ${}">
+					<td th:text="${orderlist.}">1</td>
+					<td th:text="${orderlist.}">2</td>
+					<td th:text="${orderlist.}">3</td>
+					<td th:text="${orderlist.}">4</td>
 				</tr>
 				<tr>
 					<th colspan="4">
@@ -130,10 +130,10 @@
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
-<script type="text/javascript">
+<script th:inline="javascript">
 $(document).ready(function() {
 	$(".tplist").Page({
-	    totalPages: 9,//分页总数
+	    totalPages: [[${page.countpage}]],//分页总数
 	    liNums: 7,//分页的数字按钮数(建议取奇数)
 	    activeClass: 'activP', //active 类样式定义
 	    callBack : function(page){

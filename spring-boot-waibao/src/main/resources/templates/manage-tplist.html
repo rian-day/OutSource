@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8"/>
 	<title>管理员界面</title>
@@ -62,14 +62,20 @@
 					<th>ID</th>
 					<th>名称</th>
 					<th><form action="" method="get"> 
-					<label>职业：</label> 
-						<select class="title-select" name=""> 
+						<label>职业：</label> 
+						<select th:remove="all-but-first" class="title-select">
+							<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}">Credit card</option>
+							<option>Another payment method</option>
+							<option>Another payment method</option>
+						</select>
+						<!-- <select class="title-select" name="" th:each="arrayS : ${tplist}"> 
+						
 							<option value="title0">全部职业</option> 
-							<option value="title1">职业1</option> 
-							<option value="title2">职业2</option> 
-							<option value="title3">职业3</option> 
-							<option value="title4">职业4</option> 
-						</select> 
+							<option value="title1" th:text="${tplist.id}">职业1</option> 
+							<option value="title2" th:text="${tplist.id}">职业2</option> 
+							<option value="title3" th:text="${tplist.id}">职业3</option> 
+							<option value="title4" th:text="${tplist.id}">职业4</option> 
+						</select>  -->
 					</form></th>
 					<th><form action="" method="get"> 
 					<label>难度：</label> 
@@ -85,94 +91,13 @@
 					<th>创建时间</th>
 					<th>修改</th>
 				</tr>
-				<tr>
-					<td th:text="${data}"></td>
-					<td>2</td>
-					<td>2</td>
-					<td>2</td>
-					<td>2</td>
-					<td>2</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>3</td>
-					<td>3</td>
-					<td>3</td>
-					<td>3</td>
-					<td>3</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>4</td>
-					<td>4</td>
-					<td>4</td>
-					<td>4</td>
-					<td>4</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>5</td>
-					<td>5</td>
-					<td>5</td>
-					<td>5</td>
-					<td>5</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>6</td>
-					<td>6</td>
-					<td>6</td>
-					<td>6</td>
-					<td>6</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>7</td>
-					<td>7</td>
-					<td>7</td>
-					<td>7</td>
-					<td>7</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>8</td>
-					<td>8</td>
-					<td>8</td>
-					<td>8</td>
-					<td>8</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>9</td>
-					<td>9</td>
-					<td>9</td>
-					<td>9</td>
-					<td>9</td>
-					<td>9</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td>10</td>
-					<td>10</td>
-					<td>10</td>
-					<td>10</td>
-					<td>10</td>
-					<td><input type="submit" value="修改"/></td>
-				</tr>
-				<tr>
-					<td>11</td>
-					<td>11</td>
-					<td>11</td>
-					<td>11</td>
-					<td>11</td>
-					<td>11</td>
+				<tr th:each="tplis : ${}">
+					<td th:text="${tplist.}">1</td>		<!-- 试卷id -->
+					<td th:text="${tplist.">2</td>		<!-- 名称 -->
+					<td th:text="${tplist.">3</td>		<!-- 职业 -->
+					<td th:text="${tplist.">4</td>		<!-- 难度 -->
+					<td th:text="${tplist.">5</td>		<!-- 创建人 -->
+					<td th:text="${tplist.">6</td>		<!-- 创建时间 -->
 					<td><input type="submit" value="修改"/></td>
 				</tr>
 				<tr>
@@ -235,10 +160,10 @@
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
-<script type="text/javascript">
+<script th:inline="javascript">
 $(document).ready(function() {
 	$(".tplist").Page({
-	    totalPages: 9,//分页总数
+	    totalPages: [[${page.countpage}]],//分页总数
 	    liNums: 7,//分页的数字按钮数(建议取奇数)
 	    activeClass: 'activP', //active 类样式定义
 	    callBack : function(page){
@@ -246,19 +171,15 @@ $(document).ready(function() {
 	    }
 	});
 	function toTpPage(page){
-		alert(page);
         var zhiyeSel = $(".title-select").val();
         var nanduSel = $(".hard-select").val();
-        var tplist = {
-            'zhiye' : zhiyeSel,
-            'nandu' : nanduSel,
-            'page' : page
-        };
         $.ajax({
             type: "POST",
             url: "tplist.do",
             data: {
-                'tplist' : tplist
+	            'zhiye' : zhiyeSel,
+	            'nandu' : nanduSel,
+	            'page' : page
             },
             dataType: "json",
             success: function(data){

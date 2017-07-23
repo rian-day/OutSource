@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8"/>
 	<title>管理员界面</title>
@@ -62,14 +62,19 @@
 					<th>ID</th>
 					<th>题目信息</th>
 					<th><form action="" method="get"> 
-					<label>职业：</label> 
-						<select class="title-select" name="">
+						<label>职业：</label> 
+						<select th:remove="all-but-first" class="title-select">
+							<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}">Credit card</option>
+							<option>Another payment method</option>
+							<option>Another payment method</option>
+						</select>
+						<!-- <select th:each="prolist:${}" class="title-select" name="">
 							<option value="0">全部职业</option> 
 							<option value="1">职业1</option> 
 							<option value="2">职业2</option> 
 							<option value="3">职业3</option> 
 							<option value="4">职业4</option> 
-						</select> 
+						</select>  -->
 					</form></th>
 					<!-- <th><form action="" method="get"> 
 					<label>难度：</label> 
@@ -85,7 +90,15 @@
 					<th>上传时间</th>
 					<th>修改</th>
 				</tr>
-				<tr>
+				<tr th:each="sublist : ${}">
+					<td th:text="${sublist.}">1</td>		<!-- 题目id -->
+					<td th:text="${sublist.}">2</td>		<!-- 信息 -->
+					<td th:text="${sublist.}">3</td>		<!-- 职业 -->
+					<td th:text="${sublist.}">4</td>		<!-- 上传管理员 -->
+					<td th:text="${sublist.}">5</td>		<!-- 上传时间 -->
+					<td th:text="${sublist.}"><input type="submit" value="修改"/></td>
+				</tr>
+				<!-- <tr>
 					<td>2</td>
 					<td>2</td>
 					<td>2</td>
@@ -164,7 +177,7 @@
 					<td>11</td>
 					<td>11</td>
 					<td><input type="submit" value="修改"/></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<th colspan="6">
  						<div id="page" class="sublist"></div>
@@ -225,10 +238,10 @@
 <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script type="text/javascript" src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
-<script type="text/javascript">
+<script th:inline="javascript">
 $(document).ready(function() {
 	$(".sublist").Page({
-	    totalPages: 11,//分页总数
+	    totalPages: [[${page.countpage}]],//分页总数
 	    liNums: 7,//分页的数字按钮数(建议取奇数)
 	    activeClass: 'activP', //active 类样式定义
 	    callBack : function(page){
@@ -236,17 +249,17 @@ $(document).ready(function() {
 	    }
 	});
 	function toSubPage(page){
-        alert(page);
         var zhiyeSel = $(".title-select").val();
-        var subjectlist = {
+        /*var subjectlist = {
             'zhiye' : zhiyeSel,
             'page' : page
-        };
+        };*/
         $.ajax({
             type: "POST",
             url: "subjectlist.do",
             data: {
-                'subjectlist' : subjectlist
+                'zhiye' : zhiyeSel,
+             	'page' : page
             },
             dataType: "json",
             success: function(data){
