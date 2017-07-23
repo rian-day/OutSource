@@ -28,10 +28,7 @@
     $(".sss").click(function() {
         $(".loginul").css("display", "none");
         $("#signup").css("display", "block");
-        $("#signup").css("-webkit-animation-name", "fadeIn");
-        $("#signup").css("-webkit-animation-duration", "2s");
-        $("#signup").css("-webkit-animation-iteration-count", "0");
-        $("#signup").css("-webkit-animation-delay", "1s");
+        
         if ($(".ss").text() == "注册") {
             $(".ss").children("span").text("登录");
             $(".ss").attr("href","javascript:void(0)");
@@ -40,10 +37,7 @@
     $(".ss").click(function(){
         $(".loginul").css("display", "none");
         $("#signup").css("display", "block");
-        $("#signup").css("-webkit-animation-name", "fadeIn");
-        $("#signup").css("-webkit-animation-duration", "2s");
-        $("#signup").css("-webkit-animation-iteration-count", "0");
-        $("#signup").css("-webkit-animation-delay", "1s");
+        
         if ($(this).text() == "注册") {
             $(this).children("span").text("登录");
             $(this).attr("href","javascript:void(0)");
