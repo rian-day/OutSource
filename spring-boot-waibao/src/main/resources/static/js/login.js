@@ -232,7 +232,7 @@
         })
         //注册
     $("#regSubmit").click(function() {
-        var mail = $(".email").val();
+        var mail = $(".Email").val();
         var pass = $('.pass').val();
         var name = $(".name").val();
         var pro = $("#myselect option:checked").val();
