@@ -868,7 +868,7 @@ $(document).ready(function() {
                 data: {
                     'name' : name,      //名称
                     'pro' : pro,        //职业
-                    'hrd' : hrd         //难度
+                    'hrd' : hrd,         //难度
                     'timuid' : timuid,      //题目id(数组)
                 },
                 dataType: "json",
@@ -964,4 +964,38 @@ $(document).ready(function() {
             'opacity': '0'
         });
     });*/
+    $(".subup").click(function() {
+        var comment = [];
+        var type = [];
+        var zhiye = [];
+        var daan = [];
+        var tip = [];
+        $(".details").each(function(index, el) {
+             comment.push($(el).find('.subcom .subl span').text());
+             type.push($(el).find('.subt .subl .typeid span').text());
+             daan.push($(el).find('.subcom .subr .subans span').text());
+             tip.push($(el).find('.subcom .subr .subtip span').text());
+             zhiye.push($(el).find('.subt .subl .proid span').text());
+        });
+        /*alert(zhiye);*/
+        $.ajax({
+            type: "POST",
+            url: "sendup.do",
+            data: {
+                'commentList' : comment,
+                'typeList' : type,
+                'realAnswerList' : daan,
+                'tipList' : tip,
+                'professionIdList' : zhiye
+            },
+            dataType: "json",
+            success: function(data){
+                if (data==1) {
+                    alert("上传成功");
+                }else{
+                    alert("上传失败");
+                }
+            }
+        });
+    });
 });
