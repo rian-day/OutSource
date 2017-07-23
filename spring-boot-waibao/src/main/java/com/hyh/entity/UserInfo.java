@@ -41,28 +41,23 @@ public class UserInfo {
 	
 	private int age;
 	
-	@ManyToMany(cascade={CascadeType.REFRESH},fetch=FetchType.LAZY)
-	    @JoinTable(name="t_student_teacher",
-	            inverseJoinColumns=@JoinColumn(name="teacher_id"),
-	            joinColumns=@JoinColumn(name="student_id"))
-	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
-	private Set<Profession> profession;
+//	@ManyToMany(cascade={CascadeType.REFRESH},fetch=FetchType.LAZY)
+//	    @JoinTable(name="t_student_teacher",
+//	            inverseJoinColumns=@JoinColumn(name="teacher_id"),
+//	            joinColumns=@JoinColumn(name="student_id"))
+//	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
+	private int professionId;
 	
 	@OneToMany(mappedBy="user",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	private Set<UserOperation> operations;//用户操作
 	
-	public void clearPro(){
-		this.profession.clear();
-	}
 	
-	public void addpro(Profession pro){
-		profession.add(pro);
+	public int getProfessionId() {
+		return professionId;
 	}
-	
-	public void removepro(Profession pro){
-		profession.remove(pro);
+	public void setProfessionId(int professionId) {
+		this.professionId = professionId;
 	}
-	
 	public UserInfo(){
 		
 	}
@@ -122,14 +117,6 @@ public class UserInfo {
 
 	public void setAge(int age) {
 		this.age = age;
-	}
-
-	public Set<Profession> getProfession() {
-		return profession;
-	}
-
-	public void setProfession(Set<Profession> profession) {
-		this.profession = profession;
 	}
 
 	public Set<UserOperation> getOperations() {

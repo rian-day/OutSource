@@ -108,13 +108,13 @@ public class SubjectService {
 		List<Subject> result=subjectdao.findById(id);
 		return result;
 	}
-	public Page<SubjectGroup> listAllSubjectGroup(int nowpage ,int size){
+	public Page<SubjectGroup> listAllSubjectGroup(int nowpage ,int size,int professionId){
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(nowpage, size, sort);
-		return sgd.findAll(pageable);
+		return sgd.findByProfessionId(professionId, pageable);
 	}
 	public Set<Subject> SearchSubjectByGroupId(int groupid){
-		return sgd.findById(groupid).get(0).getSubject();
+		return sgd.findById(groupid).getSubject();
 	}
 	//散题批改并存入数据库
 	public int CorrectSubjects(int examId,String time,List<SubjectC> list){

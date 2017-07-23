@@ -55,7 +55,7 @@ public class MainController {
 			return mav;
 		}
 		mav.setViewName("index");
-		UserInfo result=loginservice.Register(userinfo,user.getPro());
+		UserInfo result=loginservice.Register(userinfo,user.getProfessionId());
 		if(!result.equals("")){
 			mav.addObject("user",result);
 			return mav;

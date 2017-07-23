@@ -25,9 +25,9 @@ public class Profession {
 	//职业名
 	private String name;
 	
-	@ManyToMany(mappedBy = "profession",fetch=FetchType.LAZY)
-	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
-	private Set<UserInfo> user;
+//	@ManyToMany(mappedBy = "profession",fetch=FetchType.LAZY)
+//	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
+//	private Set<UserInfo> user;
 
 	public String getName() {
 		return name;

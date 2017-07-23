@@ -30,31 +30,30 @@ public class LoginService {
 	@Resource
 	ProfessionDao pd;
 	
-	public boolean CheckAdmin(String mail,String password){
+	public Administrators CheckAdmin(String mail,String password){
 		ArrayList<Administrators> list= ad.findByMailAndPassword(mail, password);
 		if(list.size()!=0)
-			return true;
+			return list.get(0);
 		else
-			return false;
+			return null;
 	}
 	
-	public boolean CheckLogin(String mail,String password){
+	public UserInfo CheckLogin(String mail,String password){
 		ArrayList<UserInfo> list= uir.findByMailAndPassword(mail, password);
 		if(list.size()!=0)
-			return true;
+			return list.get(0);
 		else
-			return false;
+			return null;
 	}
 	
 	public UserInfo Register(
 			//String mail,String password,String name,char sex
 			UserInfo user
-			,String pro
+			,int professionId
 			){
 		
 		String password=user.getPassword();
-		List<Profession> list=pd.findByName(pro);
-		user.addpro(list.get(0));
+		user.setProfessionId(professionId);
 		password=md5.encode(password);
 		user.setPassword(password);
 		user=uir.save(user);

@@ -4,7 +4,7 @@ public class User {
 	private String username; //mail
 	private String password;
 	private String name;
-	private String pro;
+	private int professionId;
 	private String yzm;
 	private int age;
 	private char sex;
@@ -27,11 +27,12 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPro() {
-		return pro;
+	
+	public int getProfessionId() {
+		return professionId;
 	}
-	public void setPro(String pro) {
-		this.pro = pro;
+	public void setProfessionId(int professionId) {
+		this.professionId = professionId;
 	}
 	public String getYzm() {
 		return yzm;

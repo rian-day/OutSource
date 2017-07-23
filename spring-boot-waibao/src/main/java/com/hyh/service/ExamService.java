@@ -23,11 +23,10 @@ public class ExamService {
 	ExamDao ed;
 	@Resource
 	UserInfoDao ud;
-	public Page<Exam> searchPersonAllExam(String mail ,int nowpage ,int size){
+	public Page<Exam> searchPersonAllExam(int userId ,int nowpage ,int size){
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(nowpage, size, sort);
-		UserInfo user=ud.findByMail(mail).get(0);
-		Page<Exam> page=ed.findByUserId(user.getId(),pageable);
+		Page<Exam> page=ed.findByUserId(userId,pageable);
 		return page;
 	}
 	public List<UserAnswer> searchUseranswerByExamid(int examid){

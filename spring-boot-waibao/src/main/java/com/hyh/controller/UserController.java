@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.hyh.bean.SessionUser;
 import com.hyh.bean.User;
+import com.hyh.entity.Administrators;
 import com.hyh.entity.Profession;
+import com.hyh.entity.UserInfo;
 import com.hyh.service.LoginService;
 import com.hyh.service.ProfessionService;
 import com.hyh.service.UserService;
@@ -59,15 +62,26 @@ public class UserController {
 			,@RequestParam(value = "password", defaultValue = "null") String password
 			,@RequestParam(value = "boss", defaultValue = "0") String boss
 			,HttpSession httpSession) throws IOException{
-		boolean IsUser;
+		UserInfo userinfo=null;
+		Administrators admin=null;
 		if(boss.equals("1")){
-			IsUser=loginservice.CheckAdmin(mail, password);
+			admin=loginservice.CheckAdmin(mail, password);
 		}else{
-			IsUser=loginservice.CheckLogin(mail, password);
+			userinfo=loginservice.CheckLogin(mail, password);
 		}
-		if(IsUser){
-			httpSession.setAttribute("Mail",mail);
+		if(userinfo!=null){
+			SessionUser su=new SessionUser();
+			su.setMail(mail);
+			su.setName(userinfo.getName());
+			su.setProfessionId(userinfo.getProfessionId());
+			su.setUserId(userinfo.getId());
+			httpSession.setAttribute("user",su);
 			return "1";
+		}else if(admin!=null){
+			SessionUser su=new SessionUser();
+			su.setMail(mail);
+			su.setName(admin.getName());
+			su.setUserId(admin.getId());
 		}
 			
 		return "0";

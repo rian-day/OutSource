@@ -23,8 +23,31 @@ public class SubjectGroup {
 	//试卷名字
 	private String name;
 	
+	private int totalgrade;
+	
+	private int professionId;
+	
+	
 	@OneToMany(mappedBy="subjectGroup",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	private Set<Subject> subject;
+
+	
+	
+	public int getTotalgrade() {
+		return totalgrade;
+	}
+
+	public void setTotalgrade(int totalgrade) {
+		this.totalgrade = totalgrade;
+	}
+
+	public int getProfessionId() {
+		return professionId;
+	}
+
+	public void setProfessionId(int professionId) {
+		this.professionId = professionId;
+	}
 
 	public int getId() {
 		return id;

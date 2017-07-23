@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hyh.bean.SessionUser;
 import com.hyh.entity.Exam;
 import com.hyh.entity.Profession;
 import com.hyh.entity.Subject;
@@ -61,8 +62,8 @@ public class ViewController {
 			@RequestParam(value = "size", defaultValue = "5") Integer size
 			, @RequestParam(value = "nowPage", defaultValue = "1") Integer nowpage
 			, HttpSession session){
-		String mail=session.getAttribute("mail").toString();
-		Page<Exam> page=xs.searchPersonAllExam(mail,nowpage,size);
+		SessionUser su=(SessionUser) session.getAttribute("user");
+		Page<Exam> page=xs.searchPersonAllExam(su.getUserId(),nowpage,size);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("totalPage",page.getTotalPages());
 		mav.addObject("nowPage",nowpage);
@@ -89,8 +90,8 @@ public class ViewController {
 			@RequestParam(value = "size", defaultValue = "6") Integer size
 			, @RequestParam(value = "nowPage", defaultValue = "1") Integer nowpage
 			, HttpSession session){
-		
-		Page<SubjectGroup> page=ss.listAllSubjectGroup(nowpage,size);
+		SessionUser su=(SessionUser) session.getAttribute("user");
+		Page<SubjectGroup> page=ss.listAllSubjectGroup(nowpage,size,su.getProfessionId());
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("totalPage",page.getTotalPages());
 		mav.addObject("nowPage",nowpage);

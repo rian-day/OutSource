@@ -10,4 +10,5 @@ import com.hyh.entity.Profession;
 public interface ProfessionDao extends JpaRepository<Profession, Long> {
 	
 	List<Profession> findByName(String Name);
+	Profession findById(int id);
 }

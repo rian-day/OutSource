@@ -50,10 +50,7 @@ public class UserService {
 		 UserInfo userinfo=list.get(0);
 		 userinfo.setName(user.getName());
 		 userinfo.setSex(user.getSex());
-		 String proName=user.getPro();
-		 Profession pro=pd.findByName(proName).get(0);
-		 userinfo.clearPro();
-		 userinfo.addpro(pro);
+		 userinfo.setProfessionId(user.getProfessionId());
 		 userdao.save(userinfo);
 		 return "1";
 		 
