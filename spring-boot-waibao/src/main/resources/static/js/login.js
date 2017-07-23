@@ -250,6 +250,7 @@
 	        	"yzm":yzm,
 	        	"sex":sex
 	         	}
+	        alert(args.username);
 	        url = "register.do";
 	        $.post(url,args,function(data){
          		if(data == 1){
