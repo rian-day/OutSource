@@ -243,7 +243,7 @@
             $(".prompt2").html(alertTxt[9]);
         }else{
 	        args = {
-	        	"username" : mail,
+	        	"username":mail,
 	        	"password":pass,
 	        	"name":name,
 	        	"pro":pro,
