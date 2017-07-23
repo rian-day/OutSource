@@ -965,28 +965,33 @@ $(document).ready(function() {
         });
     });*/
     $(".subup").click(function() {
-        var comment = [];
+        /*var comment = [];
         var type = [];
-        var zhiye = [];
         var daan = [];
         var tip = [];
+        var zhiye = [];*/
+        var timuList = [];
         $(".details").each(function(index, el) {
-             comment.push($(el).find('.subcom .subl span').text());
-             type.push($(el).find('.subt .subl .typeid span').text());
-             daan.push($(el).find('.subcom .subr .subans span').text());
-             tip.push($(el).find('.subcom .subr .subtip span').text());
-             zhiye.push($(el).find('.subt .subl .proid span').text());
+            var comment = $(el).find('.subcom .subl span').text();
+            var type = $(el).find('.subt .subl .typeid span').text();
+            var daan = $(el).find('.subcom .subr .subans span').text();
+            var tip = $(el).find('.subcom .subr .subtip span').text();
+            var zhiye = ($(el).find('.subt .subl .proid span').text();
+            var timu = {
+                'comment' : comment,
+                'type' : type,
+                'realAnswer' : daan,
+                'tip' : tip,
+                'professionId' : zhiye
+            }
+            timuList.push(timu);
         });
         /*alert(zhiye);*/
         $.ajax({
             type: "POST",
             url: "sendup.do",
             data: {
-                'commentList' : comment,
-                'typeList' : type,
-                'realAnswerList' : daan,
-                'tipList' : tip,
-                'professionIdList' : zhiye
+                'timuList' : timuList,
             },
             dataType: "json",
             success: function(data){
