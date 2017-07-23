@@ -974,16 +974,19 @@ $(document).ready(function() {
         $(".details").each(function(index, el) {
             var comment = $(el).find('.subcom .subl span').text();
             var type = $(el).find('.subt .subl .typeid span').text();
-            var daan = $(el).find('.subcom .subr .subans span').text();
+            var daan = [];
+            $(this).find("td").each(function(index, el) {
+                daan.push($(el).text());
+            });
             var tip = $(el).find('.subcom .subr .subtip span').text();
-            var zhiye = ($(el).find('.subt .subl .proid span').text();
+            var zhiye = $(el).find('.subt .subl .proid span').text();
             var timu = {
                 'comment' : comment,
                 'type' : type,
                 'realAnswer' : daan,
                 'tip' : tip,
                 'professionId' : zhiye
-            }
+            };
             timuList.push(timu);
         });
         /*alert(zhiye);*/
