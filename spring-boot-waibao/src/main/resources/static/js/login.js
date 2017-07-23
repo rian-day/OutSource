@@ -1,4 +1,4 @@
-$(document).ready(function() {
+﻿$(document).ready(function() {
 
 
 
@@ -224,7 +224,7 @@ $(document).ready(function() {
                 var url = "login.do";
                 $.post(url, args, function(data) {
                 	if(data==1){
-                        window.location.href="login.html"
+                        window.location.href="student_alltest.html"
                 	}else
                         $("#in").html(alertTxt[3]);
                 })
@@ -251,8 +251,12 @@ $(document).ready(function() {
 	        	"sex":sex
 	         	}
 	        url = "register.do";
-	         	$.post(url,args,function(data){
-	        	$(".prompt2").html(data);
+	        $.post(url,args,function(data){
+         		if(data == 1){
+         			alert("注册成功,请登录");		        	window.location.href="login.html";
+         		}else{
+         			$(".prompt2").html("注册失败");
+         		}
 	        })
 	    }
 
