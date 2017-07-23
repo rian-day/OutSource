@@ -44,6 +44,8 @@ public class MainController {
 //			,@RequestParam(value = "name", defaultValue = "null") String name
 //			,@RequestParam(value = "sex", defaultValue = "null") char sex
 			,HttpSession httpSession){
+//		Log.warn(user.getName());
+		Log.warn(user.getUsername());
 		ModelAndView mav=new ModelAndView();
 		UserInfo userinfo=new UserInfo(user.getUsername(), user.getName(), user.getPassword(), user.getSex());
 		String yzm=user.getYzm();

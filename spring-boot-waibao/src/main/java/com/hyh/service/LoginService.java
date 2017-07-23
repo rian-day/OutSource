@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.crsh.console.jline.internal.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +32,7 @@ public class LoginService {
 	ProfessionDao pd;
 	
 	public Administrators CheckAdmin(String mail,String password){
-		ArrayList<Administrators> list= ad.findByMailAndPassword(mail, password);
+		ArrayList<Administrators> list= ad.findByMailAndPassword(mail, md5.encode(password));
 		if(list.size()!=0)
 			return list.get(0);
 		else
@@ -39,11 +40,14 @@ public class LoginService {
 	}
 	
 	public UserInfo CheckLogin(String mail,String password){
-		ArrayList<UserInfo> list= uir.findByMailAndPassword(mail, password);
-		if(list.size()!=0)
+		//Log.warn(md5.encode(password));
+		ArrayList<UserInfo> list= uir.findByMailAndPassword(mail, md5.encode(password));
+		if(list.size()!=0){
+			//Log.warn("找到用户");
 			return list.get(0);
-		else
+		}else{
 			return null;
+		}
 	}
 	
 	public UserInfo Register(

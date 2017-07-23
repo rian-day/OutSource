@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.crsh.console.jline.internal.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,6 +63,9 @@ public class UserController {
 			,@RequestParam(value = "password", defaultValue = "null") String password
 			,@RequestParam(value = "boss", defaultValue = "0") String boss
 			,HttpSession httpSession) throws IOException{
+//		Log.warn("mail:"+mail);
+//		Log.warn("password"+password);
+//		Log.warn("boss:"+boss);
 		UserInfo userinfo=null;
 		Administrators admin=null;
 		if(boss.equals("1")){

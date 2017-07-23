@@ -7,24 +7,57 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hyh.entity.Subject;
 import com.hyh.service.ExcelService;
+import com.hyh.service.UserService;
 import com.hyh.utils.ExcelImportUtils;
 
 @Controller
 public class ExcelController {
+	static Logger log = Logger.getLogger (UserService.class.getName ());
 	
 	@Autowired
 	ExcelService knowledgeService;
-	
+	//获取模板
+	@Value("${web.excel.download}")
+	String web_path;
+	@PostMapping("/getexcel.do")
+    public ResponseEntity<InputStreamResource> downloadFile( Long id)  
+            throws IOException {  
+		
+		String path=ClassUtils.getDefaultClassLoader().getResource("").getPath();
+		log.error(path);
+		path=path.replace("/target/classes/", "");
+        String filePath =path+web_path;
+        FileSystemResource file = new FileSystemResource(filePath);  
+        HttpHeaders headers = new HttpHeaders();  
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");  
+        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getFilename()));  
+        headers.add("Pragma", "no-cache");  
+        headers.add("Expires", "0");  
+  
+        return ResponseEntity  
+                .ok()  
+                .headers(headers)  
+                .contentLength(file.contentLength())  
+                .contentType(MediaType.parseMediaType("application/octet-stream"))  
+                .body(new InputStreamResource(file.getInputStream()));  
+    }  
 	//导入  
 	@PostMapping("/excel")
 	public List<Subject> batchImportUserKnowledge(

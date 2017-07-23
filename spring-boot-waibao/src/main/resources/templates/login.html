@@ -135,7 +135,7 @@
                 <h2 class="fs-title">选择职业</h2>
                 <h3 class="fs-subtitle">Choosing a career</h3>
                 <select id="myselect" >
-                    <option th:each="profession : ${Professions}"><span th:text="${profession.name}" >web工程师</span></option>
+                    <option th:each="profession : ${Professions}"><span th:text="${profession.name}" th:value="${profession.id}">web工程师</span></option>
                 </select>				
                 <br/>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
