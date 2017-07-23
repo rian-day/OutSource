@@ -223,11 +223,10 @@ $(document).ready(function() {
                 }
                 var url = "login.do";
                 $.post(url, args, function(data) {
-                	alert(data);
                 	if(data==1){
-                		alert("登录成功");
-                	}
-                    $("#in").html(alertTxt[3]);
+                        window.location.href="login.html"
+                	}else
+                        $("#in").html(alertTxt[3]);
                 })
             }
         })
@@ -240,7 +239,6 @@ $(document).ready(function() {
         var sex = $("#sex option:checked").val();
         var yzm = $(".yzm").val();
         var args = "";
-        alert(sex);
         if (yzm == "" || yzm == null) {
             $(".prompt2").html(alertTxt[9]);
         }else{
