@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.crsh.console.jline.internal.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -92,11 +93,13 @@ public class ViewController {
 	@RequestMapping("/student-alltest.html")
 	public ModelAndView listAllTest(
 			@RequestParam(value = "size", defaultValue = "6") Integer size
-			, @RequestParam(value = "nowPage", defaultValue = "1") Integer nowpage
+			, @RequestParam(value = "nowPage", defaultValue = "0") Integer nowpage
 			, HttpSession session){
 		SessionUser su=(SessionUser) session.getAttribute("user");
+		Log.warn(su.getProfessionId());
 		Page<SubjectGroup> page=ss.listAllSubjectGroup(nowpage,size,su.getProfessionId());
 		ModelAndView mav=new ModelAndView();
+		Log.warn(page.getNumberOfElements());
 		mav.addObject("totalPage",page.getTotalPages());
 		mav.addObject("nowPage",nowpage);
 		mav.addObject("totalElements",page.getNumberOfElements());

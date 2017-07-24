@@ -37,6 +37,7 @@ public class MainController {
 	 * @return
 	 */
 	@PostMapping("/register.do")
+	@ResponseBody
 	public String Register( 
 			User user
 //			@RequestParam(value = "mail", defaultValue = "null") String mail
@@ -55,9 +56,9 @@ public class MainController {
 		}
 		UserInfo result=loginservice.Register(userinfo,user.getProfessionId());
 		if(!result.equals("")){
-			return "0";
+			return "1";
 		}
-		return "1";
+		return "0";
 	}
 	@PostMapping("/yzm.do")
 	@ResponseBody
