@@ -66,6 +66,7 @@ public class UserController {
 //		Log.warn("mail:"+mail);
 //		Log.warn("password"+password);
 //		Log.warn("boss:"+boss);
+		Log.warn(boss);
 		UserInfo userinfo=null;
 		Administrators admin=null;
 		if(boss.equals("1")){
