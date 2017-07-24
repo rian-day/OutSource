@@ -39,6 +39,18 @@ public class SubjectService {
 	@Resource
 	RandomSubjectDao rd;
 	
+	public Page<SubjectGroup> SearchAllSubjectGroup(int nowpage ,int size){
+		Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = new PageRequest(nowpage, size, sort);
+        return sgd.findAll(pageable);
+	}
+	
+	public Page<Subject> SearchAllInPage(int nowpage ,int size){
+		Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = new PageRequest(nowpage, size, sort);
+        return subjectdao.findAll(pageable);
+	}
+	
 	@Transactional
 	public String editAnalyse(int id,String analyse){
 		UserAnswer useranswer=ad.findById(id);

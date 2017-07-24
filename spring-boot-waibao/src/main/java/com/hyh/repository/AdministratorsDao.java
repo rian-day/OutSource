@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.hyh.entity.Administrators;
 @Repository
 public interface AdministratorsDao extends JpaRepository<Administrators, Long> {
-	
+	Administrators findById(int id);
 	ArrayList<Administrators> findByName(String Name);
 	
 	ArrayList<Administrators> findByMailAndPassword(String Mail,String Password);

@@ -87,6 +87,8 @@ public class UserController {
 			su.setMail(mail);
 			su.setName(admin.getName());
 			su.setUserId(admin.getId());
+			httpSession.setAttribute("user",su);
+			return "1";
 		}
 			
 		return "0";
@@ -133,5 +135,8 @@ public class UserController {
 	 }
 	 return data;
  }
- 
+ @PostMapping("checkEmailExist.do")
+ public String checkemailexist(@RequestParam("mail") String mail){
+	 return userService.isEmailExist(mail);
+ }
 }

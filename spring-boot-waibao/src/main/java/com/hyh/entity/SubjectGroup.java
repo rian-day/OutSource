@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,6 +19,8 @@ public class SubjectGroup {
 	private int id;
 	//创建时间
 	private String createTime;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Administrators createAdmin;
 	//限制时间
 	private int limitedTime;
 	//试卷名字
@@ -26,6 +29,7 @@ public class SubjectGroup {
 	private int totalgrade;
 	
 	private int professionId;
+	
 	
 	
 	@OneToMany(mappedBy="subjectGroup",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})

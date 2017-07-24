@@ -37,7 +37,7 @@ public class MainController {
 	 * @return
 	 */
 	@PostMapping("/register.do")
-	public ModelAndView Register( 
+	public String Register( 
 			User user
 //			@RequestParam(value = "mail", defaultValue = "null") String mail
 //			,@RequestParam(value = "password", defaultValue = "null") String password
@@ -46,23 +46,18 @@ public class MainController {
 			,HttpSession httpSession){
 //		Log.warn(user.getName());
 		Log.warn(user.getUsername());
-		ModelAndView mav=new ModelAndView();
 		UserInfo userinfo=new UserInfo(user.getUsername(), user.getName(), user.getPassword(), user.getSex());
 		String yzm=user.getYzm();
 		String msg="";
 		if(!yzm.equals(httpSession.getAttribute("yzm"))){
-			mav.setViewName("login");
 			msg+="验证码错误";
-			mav.addObject("msg",msg);
-			return mav;
+			return "0";
 		}
-		mav.setViewName("index");
 		UserInfo result=loginservice.Register(userinfo,user.getProfessionId());
 		if(!result.equals("")){
-			mav.addObject("user",result);
-			return mav;
+			return "0";
 		}
-		return mav;
+		return "1";
 	}
 	@PostMapping("/yzm.do")
 	@ResponseBody

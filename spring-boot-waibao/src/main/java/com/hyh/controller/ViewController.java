@@ -18,9 +18,11 @@ import com.hyh.entity.Profession;
 import com.hyh.entity.Subject;
 import com.hyh.entity.SubjectGroup;
 import com.hyh.entity.UserAnswer;
+import com.hyh.entity.UserInfo;
 import com.hyh.service.ExamService;
 import com.hyh.service.ProfessionService;
 import com.hyh.service.SubjectService;
+import com.hyh.service.UserService;
 @Controller
 public class ViewController {
 	@Resource
@@ -29,6 +31,8 @@ public class ViewController {
 	ProfessionService ps;
 	@Resource
 	SubjectService ss;
+	@Resource
+	UserService us;
 	@RequestMapping("/index.html")
 	public String index(){
 		return "index";
@@ -101,12 +105,23 @@ public class ViewController {
 		return mav;
 	}
 	@RequestMapping("/manage-addsubject.html")
-	public String manageaddsubject(){
-		return "manage-addsubject";
+	public ModelAndView manageaddsubject(){
+		ModelAndView mav=new ModelAndView("manage-addsubject");
+		List<Profession> pros=ps.searchAll();
+		mav.addObject("pros",pros);
+		return mav;
 	}
 	@RequestMapping("/manage-addtp.html")
-	public String manageaddtp(){
-		return "manage-addtp";
+	public ModelAndView manageaddtp(@RequestParam("nowpage") Integer nowpage
+			,@RequestParam("size") Integer size){
+		ModelAndView mav=new ModelAndView("manage-addsubject");
+		List<Profession> pros=ps.searchAll();
+		mav.addObject("pros",pros);
+		Page<Subject> result=ss.SearchAllInPage(nowpage,size);
+		mav.addObject("content",result.getContent());
+		mav.addObject("TotalElements",result.getNumberOfElements());
+		mav.addObject("TotalPages",result.getTotalPages());
+		return mav;
 	}
 	@RequestMapping("/manage-bbs.html")
 	public String managebbs(){
@@ -117,28 +132,70 @@ public class ViewController {
 		return "manage-adduser";
 	}
 	@RequestMapping("/manage-index.html")
-	public String manageindex(){
-		return "manage-index";
+	public ModelAndView manageindex(HttpSession session){
+		SessionUser admin=(SessionUser) session.getAttribute("user");
+		int[] order=us.getAdminPage(admin.getUserId());
+		ModelAndView mav=new ModelAndView("manage-index");
+		mav.addObject("order",order);
+		return mav;
 	}
 	@RequestMapping("/manage-info.html")
-	public String manageinfo(){
-		return "manage-info";
+	public ModelAndView manageinfo(HttpSession session){
+		SessionUser su=(SessionUser) session.getAttribute("user");
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("manage-info");
+		mav.addObject("user",su);
+		return mav;
 	}
 	@RequestMapping("/manage-pro.html")
-	public String managepro(){
-		return "manage-pro";
+	public ModelAndView managepro(){
+		List<Profession> list=ps.searchAll();
+		ModelAndView mav=new ModelAndView("manage-pro");
+		mav.addObject("content",list);
+		return mav;
 	}
 	@RequestMapping("/manage-subjectlist.html")
-	public String managesubjectlist(){
-		return "manage-subjectlist";
+	public ModelAndView managesubjectlist(
+			@RequestParam("nowpage") Integer nowpage
+			,@RequestParam("size") Integer size){
+		Page<Subject> result=ss.SearchAllInPage(nowpage, size);
+		List<Profession> pros=ps.searchAll();
+		ModelAndView mav=new ModelAndView("manage-subjectlist");
+		mav.addObject("content",result.getContent());
+		mav.addObject("TotalElements",result.getNumberOfElements());
+		mav.addObject("TotalPages",result.getTotalPages());
+		mav.addObject("pros",pros);
+		return mav;
 	}
 	@RequestMapping("/manage-tplist.html")
-	public String managetplist(){
-		return "manage-tplist";
+	public ModelAndView managetplist(
+			@RequestParam("nowpage") Integer nowpage
+			,@RequestParam("size") Integer size){
+		ModelAndView mav=new ModelAndView("manage-tplist");
+		Page<SubjectGroup> result=ss.SearchAllSubjectGroup(nowpage, size);
+		mav.addObject("content",result.getContent());
+		mav.addObject("TotalElements",result.getNumberOfElements());
+		mav.addObject("TotalPages",result.getTotalPages());
+		List<Profession> pros=ps.searchAll();
+		mav.addObject("pros",pros);
+		return mav;
 	}
 	@RequestMapping("/manage-userlist.html")
-	public String manageuserlist(){
-		return "manage-userlist";
+	public ModelAndView manageuserlist(
+			@RequestParam("nowpage") Integer nowpage
+			,@RequestParam("size") Integer size){
+		ModelAndView mav=new ModelAndView("manage-userlist");
+		List<Profession> pros=ps.searchAll();
+		mav.addObject("pros",pros);
+		Page<UserInfo> result=us.SearchAllInPage(nowpage,size);
+		mav.addObject("content",result.getContent());
+		mav.addObject("TotalElements",result.getNumberOfElements());
+		mav.addObject("TotalPages",result.getTotalPages());
+		return mav;
+	}
+	@RequestMapping("/manage-orderlist.html")
+	public String manageorderlist(){
+		return "manage-orderlist";
 	}
 	
 	

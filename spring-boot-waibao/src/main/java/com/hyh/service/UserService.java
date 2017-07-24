@@ -7,13 +7,16 @@ import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hyh.bean.User;
 import com.hyh.entity.Administrators;
-import com.hyh.entity.Profession;
 import com.hyh.entity.UserInfo;
 import com.hyh.repository.AdministratorsDao;
 import com.hyh.repository.ProfessionDao;
@@ -40,7 +43,24 @@ public class UserService {
 	 AdministratorsDao ad;
 	 @Resource
 	 ProfessionDao pd;
-	 
+	 //管理员界面按键顺序
+	 public int[] getAdminPage(int id){
+		 return ad.findById(id).getIndexOrder();
+	 }
+	 //查找所有用户
+	 public Page<UserInfo> SearchAllInPage(int nowpage ,int size){
+			Sort sort = new Sort(Sort.Direction.DESC, "id");
+	        Pageable pageable = new PageRequest(nowpage, size, sort);
+		 return userdao.findAll(pageable);
+	 }
+	 //检查邮箱
+	 public String isEmailExist(String mail){
+		 ArrayList<UserInfo> list=userdao.findByMail(mail);
+		 if(list.size()==0){
+			 return "0";
+		 }
+		 return "1";
+	 }
 	 //修改用户信息
 	 public String changeUserInfo(User user){
 		 String mail=user.getUsername();
