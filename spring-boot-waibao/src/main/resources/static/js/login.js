@@ -196,9 +196,9 @@
     $("#loginSubmit").click(function() {
             table = $("input[type='radio']:checked").next().text();
             if (table == '管理员')
-                table = "manager";
+                table = "1";
             else
-                table = "user";
+                table = "0";
             email = $(".Emails").val();
             password = $('.Passwords').val();
             if (email == null || email == "") {
@@ -213,14 +213,14 @@
                 args = {
                     "username": email,
                     "password": password,
-                    "table": table
+                    "boss": table
                 }
                 var url = "login.do";
                 $.post(url, args, function(data) {
                 	if(data==1){
-                        window.location.href="student_alltest.html"
+                        window.location.href="student-alltest.html"
                 	}else
-                        $("#in").html(alertTxt[3]);
+                        $(".loginalert").html(alertTxt[3]);
                 })
             }
         })
@@ -232,6 +232,7 @@
         var pro = $("#myselect option:checked").val();
         var sex = $("#sex option:checked").val();
         var yzm = $(".yzm").val();
+        console.log(pro);
         var args = "";
         if (yzm == "" || yzm == null) {
             $(".prompt2").html(alertTxt[9]);
@@ -244,7 +245,7 @@
 	        	"yzm":yzm,
 	        	"sex":sex
 	         	}
-	        alert(args.username);
+	       
 	        url = "register.do";
 	        $.post(url,args,function(data){
          		if(data == 1){
