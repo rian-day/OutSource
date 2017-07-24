@@ -53,29 +53,30 @@ $(document).ready(function () {
 
 
     //点击获取验证码事件
-    var wait = 60;
-    function time(o) {
-        if (wait == 0) {
-            o.removeAttribute("disabled");
-            o.value = "免费获取验证码";
-            wait = 60;
-        } else {
-            o.setAttribute("disabled", true);
-            o.value = "重新发送(" + wait + ")";
-            wait--;
-            setTimeout(function () {
-                time(o);
-            }, 1000);
-        };
-    }
-    $("input[name=captcha_text]").keyup(function () {
-        checkVerify($("input[name=captcha_text]"));
+//    var wait = 60;
+//    function time(o) {
+//        if (wait == 0) {
+//            o.removeAttribute("disabled");
+//            o.value = "免费获取验证码";
+//            wait = 60;
+//        } else {
+//            o.setAttribute("disabled", true);
+//            o.value = "重新发送(" + wait + ")";
+//            wait--;
+//            setTimeout(function () {
+//                time(o);
+//            }, 1000);
+//        };
+//    }
+//    $("input[name=captcha_text]").keyup(function () {
+//        checkVerify($("input[name=captcha_text]"));
+//
+//    })
 
-    })
-
-
+//点击提交
     $("#reset_pwd_btn").click(function () {
     	if (success=="1") {
+    		//这里是重置密码二次输入
             var resetPwd1 = $(".resetPwd1").val();
             var resetPwd2 = $(".resetPwd2").val();
             if(resetPwd1 == ""||resetPwd1 == null||resetPwd2 == ""||resetPwd2 == null)
@@ -97,7 +98,8 @@ $(document).ready(function () {
             			 window.location.href = 'student-info.html';
             	})
             }            
-        }else if(success == 0){
+        }else if(success == "0"){
+        	//校对验证码
         	 var yzm = $(".yanzheng").val();
         	 var url1 = "checkYzm.do";
         	 var args ={
@@ -105,6 +107,7 @@ $(document).ready(function () {
         	 }
         	 
         	 $.post(url1,args,function(data){
+        		 console.log(data);
         		 if(data == 1){
         			 $(".find_pwd_box").css("display","none");
         			 $(".find_pwd_box2").css("display","block");
@@ -125,7 +128,7 @@ $(document).ready(function () {
             }
         }
     });
-
+//点击发送验证码
     var mail = "";
     $(".yanzheng").click(function() {
         mail = $(".form-control").val();
@@ -134,21 +137,28 @@ $(document).ready(function () {
         }else if(!(mail).match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/))
             $("#account_check").html("邮箱格式不正确");
         else{
-            var url = "yzm.do";
-            var args = {
-                "mail":mail
-            }
-            $.post(url,args,function(data){
-                if(data == "0"){//不能找到该用户
-                    $("#account_check").html("该邮箱不存在");
-                }else if(data == 1){
-                    //找到该用户
-                    $("#account_check").html("验证码已经发送，请注意查收");
-                    success = "0";
-                    //一分钟倒计时
-                    countDown();
-                }
-            })
+        	//重置密码  判断是否存在该邮箱
+        	var url = "checkEmailExist.do";
+	        var args = {
+	            "mail":mail
+	        }
+	        console.log(mail);
+	        $.post(url,args,function(data){
+	            if(data == "0"){//不能找到该用户
+	                $("#account_check").html("该邮箱还未注册");
+	            }else if(data == 1){
+	                //找到该用户
+	                $("#account_check").html("验证码已经发送，请注意查收");
+	                success = "0";
+	                //一分钟倒计时
+	                countDown();
+	                //发送邮件
+	                url = "yzm.do";
+	                $.post(url,args,function(data){               
+	                })
+	            }
+	       })
+            
         }
          
     });
