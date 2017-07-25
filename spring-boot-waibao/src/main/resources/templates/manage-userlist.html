@@ -84,14 +84,14 @@
 							<option value="title4">职业4</option>
 						</select>  -->
 					</form></th>
-					<th>修改</th>
+					<th>重置</th>
 				</tr>
 				<tr th:each="userlist : ${}">
 					<td th:text="${sublist.}">1</td>		<!-- 邮箱 -->
 					<td th:text="${sublist.}">2</td>		<!-- 姓名 -->
 					<td th:text="${sublist.}">3</td>		<!-- 性别 -->
 					<td th:text="${sublist.}">4</td>		<!-- 职业 -->
-					<td><input type="submit" value="修改信息"/></td>
+					<td><input type="submit" value="重置密码"/></td>
 				</tr>
 				<!-- <tr>
 					<td>3</td>
@@ -218,8 +218,9 @@
 <script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
 <script th:inline="javascript">
 $(document).ready(function() {
+	var countpage = [[${page.countpage}]];
 	$(".uselist").Page({
-	    totalPages: [[${page.countpage}]],//分页总数
+	    totalPages: countpage,//分页总数
 	    liNums: 7,//分页的数字按钮数(建议取奇数)
 	    activeClass: 'activP', //active 类样式定义
 	    callBack : function(page){
@@ -235,7 +236,8 @@ $(document).ready(function() {
             data: {
 	            'xingbieSel' : xingbieSel,
 	            'zhiye' : zhiyeSel,
-	            'page' : page
+	            'nowPage' : page,
+	            'size' : '10'
             },
             dataType: "json",
             success: function(data){
