@@ -31,7 +31,7 @@ $(function() {
 
 $(".chakan").click(function(){
    time = $(this).parent().prev().children(".timelong:first").children('span').eq(1).text();
-   var local = $(this).children("a").attr("href") + "?time=" + time;
+   var local = $(this).children("a").attr("href") + "&time=" + time;
    $(this).children("a").attr("href",local);
    
 })

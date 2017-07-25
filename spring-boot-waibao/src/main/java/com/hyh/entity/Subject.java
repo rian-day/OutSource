@@ -1,5 +1,7 @@
 package com.hyh.entity;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -57,7 +59,7 @@ public class Subject {
 	}
 	
 	public Subject(){
-		
+		this.options=new HashSet<SubjectOptions>();
 	}
 //	public Subject(String content
 //			,String type
@@ -124,6 +126,7 @@ public class Subject {
 		this.professionId = professionId;
 	}
 
+	
 	public Set<SubjectOptions> getOptions() {
 		return options;
 	}
@@ -131,6 +134,7 @@ public class Subject {
 	public void setOptions(Set<SubjectOptions> options) {
 		this.options = options;
 	}
+
 	public Set<SubjectImg> getSubjectImg() {
 		return subjectImg;
 	}

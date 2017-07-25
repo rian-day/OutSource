@@ -21,7 +21,7 @@ public class Exam {
 	private int id;
 	
 	private String name;
-	private int grade;
+	private int[] singlegrade;
 	private int totalgrade;
 	private int professionId;
 	private String time;
@@ -70,17 +70,17 @@ public class Exam {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getGrade() {
-		return grade;
-	}
-	public void setGrade(int grade) {
-		this.grade = grade;
-	}
 	public int getTotalgrade() {
 		return totalgrade;
 	}
 	public void setTotalgrade(int totalgrade) {
 		this.totalgrade = totalgrade;
+	}
+	public int[] getSinglegrade() {
+		return singlegrade;
+	}
+	public void setSinglegrade(int[] singlegrade) {
+		this.singlegrade = singlegrade;
 	}
 
 	

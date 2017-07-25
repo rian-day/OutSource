@@ -2,6 +2,7 @@ package com.hyh.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -88,7 +89,7 @@ public class UserService {
 	 }
 	 //修改管理员密码
 	 public String updateAdimInfo(String mail,String password){
-		 ArrayList<Administrators> list=ad.findByMail(mail);
+		 List<Administrators> list=ad.findByMail(mail);
 		 if(list.size()==0){
 			 return "0";
 		 }

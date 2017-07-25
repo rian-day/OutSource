@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -14,6 +16,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.crsh.console.jline.internal.Log;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -110,7 +113,7 @@ public class ExcelService {
 
 	         
 	       String br = "<br/>";  
-	       List<Subject> list = null;
+	       List<Subject> list = new ArrayList<Subject>();
 	         
 	       //循环Excel行数,从第二行开始。标题不入库  
 	       for(int r=1;r<totalRows;r++){  
@@ -132,6 +135,7 @@ public class ExcelService {
 	           Subject subject=new Subject();
 	           for(int c = 0; c <totalCells; c++){  
 	               Cell cell = row.getCell(c);  
+	               cell.setCellType(Cell.CELL_TYPE_STRING);
 	               if (null != cell){ 
 	            	   if(c>3){
 	                	   SubjectOptions option=new SubjectOptions();
@@ -167,13 +171,13 @@ public class ExcelService {
 	               }else{  
 	                   rowMessage += "第"+(c+1)+"列数据有问题，请仔细检查；";  
 	               }  
-	               count=0;
 	           }  
 	           //拼接每行的错误提示  
 	           if(!StringUtils.isEmpty(rowMessage)){  
 	               errorMsg += br+"第"+(r+1)+"行，"+rowMessage;  
 	           }
 	           list.add(subject);
+	           count++;
 	       }  
 	         
 	       //删除上传的临时文件  
@@ -191,7 +195,10 @@ public class ExcelService {
 //	           }  
 //	           errorMsg = "导入成功，共"+userKnowledgeBaseList.size()+"条数据！";  
 //	       }  
-	       
+	       Iterator<SubjectOptions> it=list.get(0).getOptions().iterator();
+	       while(it.hasNext()){
+	    	   Log.warn(it.next().getOptionName());
+	       }
 	       return list;
 	  }  
 }

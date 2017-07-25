@@ -63,10 +63,6 @@ public class UserController {
 			,@RequestParam(value = "password", defaultValue = "null") String password
 			,@RequestParam(value = "boss", defaultValue = "0") String boss
 			,HttpSession httpSession) throws IOException{
-//		Log.warn("mail:"+mail);
-//		Log.warn("password"+password);
-//		Log.warn("boss:"+boss);
-		Log.warn(boss);
 		UserInfo userinfo=null;
 		Administrators admin=null;
 		if(boss.equals("1")){
@@ -80,13 +76,17 @@ public class UserController {
 			su.setName(userinfo.getName());
 			su.setProfessionId(userinfo.getProfessionId());
 			su.setUserId(userinfo.getId());
+			su.setHead(userinfo.getHead());
 			httpSession.setAttribute("user",su);
 			return "1";
 		}else if(admin!=null){
+			Log.warn("admin");
+			
 			SessionUser su=new SessionUser();
 			su.setMail(mail);
 			su.setName(admin.getName());
 			su.setUserId(admin.getId());
+			su.setHead(admin.getHead());
 			httpSession.setAttribute("user",su);
 			return "1";
 		}

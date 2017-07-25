@@ -1,6 +1,6 @@
 package com.hyh.repository;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,10 +11,10 @@ import com.hyh.entity.Administrators;
 @Repository
 public interface AdministratorsDao extends JpaRepository<Administrators, Long> {
 	Administrators findById(int id);
-	ArrayList<Administrators> findByName(String Name);
+	List<Administrators> findByName(String Name);
 	
-	ArrayList<Administrators> findByMailAndPassword(String Mail,String Password);
-	ArrayList<Administrators> findByMail(String Mail);
+	List<Administrators> findByMailAndPassword(String Mail,String Password);
+	List<Administrators> findByMail(String Mail);
 	//分页
 	Page<Administrators> findByName(String Name,Pageable pageable);
 }

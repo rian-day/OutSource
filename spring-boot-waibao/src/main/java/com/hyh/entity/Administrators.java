@@ -36,6 +36,8 @@ public class Administrators {
 	private char sex;
 	//是否为超级管理员
 	private char boss;
+	//头像
+	private String head;
 	@OneToMany(mappedBy="createAdmin",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
 	private Set<SubjectGroup> subjectGroup;
@@ -93,4 +95,11 @@ public class Administrators {
 	public void removeSingleSubjectGroup(SubjectGroup sg){
 		this.subjectGroup.remove(sg);
 	}
+	public String getHead() {
+		return head;
+	}
+	public void setHead(String head) {
+		this.head = head;
+	}
+	
 }

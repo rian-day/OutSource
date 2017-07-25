@@ -5,8 +5,16 @@ public class SessionUser {
 	private String mail;
 	private int professionId;
 	private String name;
+	private String head;
 	
 	
+	
+	public String getHead() {
+		return head;
+	}
+	public void setHead(String head) {
+		this.head = head;
+	}
 	public int getUserId() {
 		return userId;
 	}

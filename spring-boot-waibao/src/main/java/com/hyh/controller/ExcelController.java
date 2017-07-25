@@ -19,7 +19,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hyh.entity.Subject;
@@ -36,7 +38,7 @@ public class ExcelController {
 	//获取模板
 	@Value("${web.excel.download}")
 	String web_path;
-	@PostMapping("/getexcel.do")
+	@RequestMapping("/getexcel.do")
     public ResponseEntity<InputStreamResource> downloadFile( Long id)  
             throws IOException {  
 		
@@ -60,6 +62,7 @@ public class ExcelController {
     }  
 	//导入  
 	@PostMapping("/excel")
+	@ResponseBody
 	public List<Subject> batchImportUserKnowledge(
 			@RequestParam(value="filename") MultipartFile file,  
 	        HttpServletRequest request

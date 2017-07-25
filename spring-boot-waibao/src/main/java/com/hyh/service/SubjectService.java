@@ -124,7 +124,7 @@ public class SubjectService {
 			SubjectC sc=list.get(i);
 			Subject subject=exam.getUseranswer().get(i).getSubject();
 			char status=0;
-			if(subject.getType().equals("选择题")){
+			if(true){
 				if(subject.getRealAnswer().equals(sc.getUseranswer())){
 					totalgrade+=subject.getGrade();
 					status=1;

@@ -32,8 +32,9 @@ public class LoginService {
 	ProfessionDao pd;
 	
 	public Administrators CheckAdmin(String mail,String password){
-		ArrayList<Administrators> list= ad.findByMailAndPassword(mail, md5.encode(password));
-		if(list.size()!=0)
+		Log.warn("admin");
+		List<Administrators> list= ad.findByMailAndPassword(mail, password);
+		if(list.size()>0)
 			return list.get(0);
 		else
 			return null;
@@ -41,7 +42,7 @@ public class LoginService {
 	
 	public UserInfo CheckLogin(String mail,String password){
 		//Log.warn(md5.encode(password));
-		ArrayList<UserInfo> list= uir.findByMailAndPassword(mail, md5.encode(password));
+		List<UserInfo> list= uir.findByMailAndPassword(mail, md5.encode(password));
 		if(list.size()!=0){
 			//Log.warn("找到用户");
 			return list.get(0);

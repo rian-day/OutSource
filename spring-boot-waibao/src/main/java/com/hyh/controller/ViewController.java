@@ -55,11 +55,13 @@ public class ViewController {
 	}
 	@RequestMapping("/student-test.html")
 	public ModelAndView studenttest(
-			@RequestParam(value = "groupid") Integer groupid){
+			@RequestParam(value = "groupid") Integer groupid
+			,@RequestParam("time") Integer time){
 		Set<Subject> subjects=ss.SearchSubjectByGroupId(groupid);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("content",subjects);
 		mav.setViewName("student-test");
+		mav.addObject("time",time);
 		return mav;
 	}
 	@RequestMapping("/student-history.html")
@@ -78,8 +80,18 @@ public class ViewController {
 		return mav;
 	}
 	@RequestMapping("/student-info.html")
-	public String studentinfo(){
-		return "student-info";
+	public ModelAndView studentinfo(HttpSession session){
+		ModelAndView mav=new ModelAndView("student-info");
+		SessionUser su=(SessionUser) session.getAttribute("user");
+		List<Profession> pros=ps.searchAll();
+		String pro = null;
+		for(int i=0;i<pros.size();i++){
+			if(pros.get(i).getId()==su.getProfessionId())
+				pro=pros.get(i).getName();
+		}
+		mav.addObject("pro",pro);
+		mav.addObject("user",su);
+		return mav;
 	}
 	@RequestMapping("/student-history-test.html")
 	public ModelAndView studenthistorytest(
@@ -96,10 +108,10 @@ public class ViewController {
 			, @RequestParam(value = "nowPage", defaultValue = "0") Integer nowpage
 			, HttpSession session){
 		SessionUser su=(SessionUser) session.getAttribute("user");
-		Log.warn(su.getProfessionId());
+		//Log.warn(su.getProfessionId());
 		Page<SubjectGroup> page=ss.listAllSubjectGroup(nowpage,size,su.getProfessionId());
 		ModelAndView mav=new ModelAndView();
-		Log.warn(page.getNumberOfElements());
+		//Log.warn(page.getNumberOfElements());
 		mav.addObject("totalPage",page.getTotalPages());
 		mav.addObject("nowPage",nowpage);
 		mav.addObject("totalElements",page.getNumberOfElements());

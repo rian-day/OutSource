@@ -30,6 +30,7 @@ public class SubjectGroup {
 	
 	private int professionId;
 	
+	private int[] singlegrade;
 	
 	
 	@OneToMany(mappedBy="subjectGroup",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
@@ -37,6 +38,22 @@ public class SubjectGroup {
 
 	
 	
+	public Administrators getCreateAdmin() {
+		return createAdmin;
+	}
+
+	public void setCreateAdmin(Administrators createAdmin) {
+		this.createAdmin = createAdmin;
+	}
+
+	public int[] getSinglegrade() {
+		return singlegrade;
+	}
+
+	public void setSinglegrade(int[] singlegrade) {
+		this.singlegrade = singlegrade;
+	}
+
 	public int getTotalgrade() {
 		return totalgrade;
 	}
