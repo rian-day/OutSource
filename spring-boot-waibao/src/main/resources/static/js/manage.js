@@ -309,6 +309,8 @@ $(document).ready(function() {
     $(document).on("click",".add-button",function(){
         var thetext = $(this).parent().parent().find("td:eq(1)").text();
         $("#handle-1").find('li:eq('+timuindex+')').find('div:eq(1)').text(thetext);
+        var theid = $(this).parent().parent().find('td:eq(0)').text();
+        $("#handle-1").find('li:eq('+timuindex+')').find('div:eq(2) .timu-id').val(theid);
         $(".add-timu-black").css({
             'z-index': '-1',
             'opacity': '0'
@@ -1002,6 +1004,24 @@ $(document).ready(function() {
                     alert("上传成功");
                 }else{
                     alert("上传失败");
+                }
+            }
+        });
+    });
+    $(".sub-bbs").click(function() {
+        var bbs = $(".push-bbs").find('input[type=text]').val();
+        $.ajax({
+            type: "POST",
+            url: "pushbbs.do",
+            data: {
+                'bbs' : bbs,
+            },
+            dataType: "json",
+            success: function(data){
+                if (data==1) {
+                    alert("发布成功");
+                }else{
+                    alert("发布失败");
                 }
             }
         });

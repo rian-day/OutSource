@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8"/>
+	<title>超级管理员界面</title>
 	<link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" type="text/css" href="../static/css/manage.css" th:href="@{/css/manage.css}"/>
 	<script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
@@ -54,8 +55,7 @@
 	<div class="overlay-content" style="display: block;"></div>
 
 	<div class="showview">
-		<div class="head-view">添加考生</div>
-
+		<div class="head-view">创建管理员</div>
 		<div class="add-people">
             <div class="form-group">
                 <label for="user_name" class="control-label">邮箱:</label>
@@ -110,40 +110,19 @@
 			</div>
 		</div>
 		<div class="second-menu">
-			<a href="manage-index.html"><div class="link"><span class="glyphicon glyphicon-home"></span>管理员主页</div></a>
+			<a href="spmanage-manlist.html" th:href="@{/spmanage-manlist.html}"><div class="link"><span class="glyphicon glyphicon-user"></span>管理员列表</div></a>
 		</div>
 		<div class="second-menu">
-			<div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-			<ul class="second-menu-1">
-				<a href="manage-userlist.html"><li>用户列表</li></a>
-				<a href="manage-adduser.html"><li>添加用户</li></a>
-			</ul>
+			<a href="spmanage-applylist.html" th:href="@{/spmanage-applylist.html}"><div class="link"><span class="glyphicon glyphicon-list-alt"></span>申请管理员列表</div></a>
 		</div>
 		<div class="second-menu">
-			<div class="2">考题管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-			<ul class="second-menu-2">
-				<a href="manage-subjectlist.html"><li>题目列表</li></a>
-				<a href="manage-addsubject.html"><li>添加题目</li></a>
-			</ul>
+			<a href="spmanage-addman.html" th:href="@{/spmanage-addman.html}"><div class="link"><span class="glyphicon glyphicon-import"></span>创建管理员</div></a>
 		</div>
 		<div class="second-menu">
-			<div class="3">试卷管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-			<ul class="second-menu-3">
-				<a href="manage-tplist.html"><li>试卷列表</li></a>
-				<a href="manage-addtp.html"><li>创建试卷</li></a>
-			</ul>
-		</div>
-		<div class="second-menu">
-			<div class="4">后台管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-			<ul class="second-menu-4">
-				<a href="manage-bbs.html"><li>信息发布</li></a>
-				<a href="manage-pro.html"><li>职业管理</li></a>
-				<a href="manage-info.html"><li>个人信息管理</li></a>
-			</ul>
+			<a href="spmanage-orderlist.html" th:href="@{/spmanage-orderlist.html}"><div class="link"><span class="glyphicon glyphicon-sort"></span>管理员操作列表</div></a>
 		</div>
 		<div class="menu-foot"></div>
 	</div>
-</div>
 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
