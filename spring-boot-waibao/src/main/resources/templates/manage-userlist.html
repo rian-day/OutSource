@@ -5,6 +5,7 @@
 	<title>管理员界面</title>
 	<link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" type="text/css" href="../static/css/manage.css" th:href="@{/css/manage.css}"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/zh-page.css" th:href="@{/css/zh-page.css}"/>
 	<script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
 </head>
 <body class="home">
@@ -158,7 +159,19 @@
 				</tr> -->
 				<tr>
 					<th colspan="5">
- 						<div id="page" class="uselist"></div>
+ 						<div class="paging">
+ 							<div class="lastPage">«</div>
+ 							<div class="firstPage">首页</div>
+ 							<ul>
+ 								<li class="tbPage"></li>
+ 								<li class="obPage"></li>
+ 								<li class="nowPage"></li>
+ 								<li class="oaPage"></li>
+ 								<li class="taPage"></li>	
+ 							</ul>
+ 							<div class="finalPage">末页</div>
+ 							<div class="nextPage">»</div>
+ 						</div>
 					</th>
 				</tr>
 			</table>
@@ -215,39 +228,33 @@
 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
-<script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script>
+<script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script th:inline="javascript">
-$(document).ready(function() {
-	var countpage = [[${page.countpage}]];
-	$(".uselist").Page({
-	    totalPages: countpage,//分页总数
-	    liNums: 7,//分页的数字按钮数(建议取奇数)
-	    activeClass: 'activP', //active 类样式定义
-	    callBack : function(page){
-	        toUsePage(page);
-	    }
-	});
-	function toUsePage(page){
-        var zhiyeSel = $(".title-select").val();
-        var xingbieSel = $(".sex-select").val();
-        $.ajax({
-            type: "POST",
-            url: "userlist.do",
-            data: {
-	            'xingbieSel' : xingbieSel,
-	            'zhiye' : zhiyeSel,
-	            'nowPage' : page,
-	            'size' : '10'
-            },
-            dataType: "json",
-            success: function(data){
-                if (data!=1) {
-                    alert('跳转失败');
-                }
+var countPage = [[${page.countpage}]];
+var nowPage = [[${page.nowpage}]];
+function topage(page){
+	toTpPage(page);
+};
+function toUsePage(page){
+    var zhiyeSel = $(".title-select").val();
+    var xingbieSel = $(".sex-select").val();
+    $.ajax({
+        type: "POST",
+        url: "userlist.do",
+        data: {
+            'xingbieSel' : xingbieSel,
+            'zhiye' : zhiyeSel,
+            'nowPage' : page,
+            'size' : '10'
+        },
+        dataType: "json",
+        success: function(data){
+            if (data!=1) {
+                alert('跳转失败');
             }
-        });
-    }
-});
+        }
+    });
+}
 </script>
 </body>
 </html>
