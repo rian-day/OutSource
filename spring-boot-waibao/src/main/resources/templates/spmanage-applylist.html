@@ -67,10 +67,10 @@
 					<th>修改</th>
 				</tr>
 				<tr th:each="tplis : ${}">
-					<td th:text="${tplist.}">1</td>		<!-- 试卷id -->
+					<td th:text="${tplist.}">1</td>		<!-- 用户id -->
 					<td th:text="${tplist.}">2</td>		<!-- 名称 -->
-					<td th:text="${tplist.}">3</td>		<!-- 职业 -->
-					<td th:text="${tplist.}">4</td>		<!-- 难度 -->
+					<td th:text="${tplist.}">3</td>		<!-- 邮箱 -->
+					<td th:text="${tplist.}">4</td>		<!-- 性别 -->
 					<td><input type="submit" value="同意"/></td>
 				</tr>
 				<tr>
@@ -126,13 +126,14 @@
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script th:inline="javascript">
 var countPage = [[${page.countpage}]];
-var nowPage = [[${page.nowpage}]];
+var nowPage = [[${page.nowpage}]] + 1;
 function topage(page){
 	toTpPage(page);
 };
 function toTpPage(page){
     var zhiyeSel = $(".title-select").val();
     var nanduSel = $(".hard-select").val();
+	page = page - 1;
     $.ajax({
         type: "POST",
         url: "tplist.do",

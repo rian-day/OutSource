@@ -624,8 +624,8 @@
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script type="text/javascript" src="../static/wangEditor/wangEditor.min.js" th:src="@{/wangEditor/wangEditor.min.js}"></script>
 <script th:inline="javascript" >
-var countPage = [[${page.countpage}]];
-var nowPage = [[${page.nowpage}]];
+var countPage = 12;
+var nowPage = 4;
 function topage(page){
 	toSubPage(page);
 };
@@ -641,13 +641,15 @@ function toSubPage(page){
         'page' : page
     };
 	alert(page);*/
+	page = page - 1;
     $.ajax({
         type: "POST",
         url: "tp-subjectlist.do",
         data: {
             'zhiye' : zhiyeSel,
             'search' : subSer,
-            'page' : page
+            'nowPage' : page,
+            'size' : '10'
         },
         dataType: "json",
         success: function(data){

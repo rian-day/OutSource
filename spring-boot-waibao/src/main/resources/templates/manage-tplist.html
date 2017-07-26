@@ -175,13 +175,14 @@
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script th:inline="javascript">
 var countPage = [[${page.countpage}]];
-var nowPage = [[${page.nowpage}]];
+var nowPage = [[${page.nowpage}]] + 1;
 function topage(page){
 	toTpPage(page);
 };
 function toTpPage(page){
     var zhiyeSel = $(".title-select").val();
     var nanduSel = $(".hard-select").val();
+	page = page - 1;
     $.ajax({
         type: "POST",
         url: "tplist.do",
