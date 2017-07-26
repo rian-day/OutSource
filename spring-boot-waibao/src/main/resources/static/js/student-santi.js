@@ -57,3 +57,8 @@ $(".windowbutton2").click(function(){
       window.location.href=local;
    }
 })
+$(".release-content .glyphicon-remove").click(function() {
+    $(".release").css("-webkit-animation-name","bounceoutL");
+    $(".release").css("-webkit-animation-duration","1s");
+    $(".release").css("animation-fill-mode","forwards");
+});

@@ -1,0 +1,62 @@
+.pagebox{
+	width: 100%;
+	height: 40px;
+	padding-top: 10px;
+}
+/* 上面删了 */
+
+.paging{
+	text-align: center;
+	margin: auto;
+	width: 355px;
+	height: 30px;
+	line-height: 30px;
+	display: flex;
+	font-size: 12px;
+	font-weight: bold;
+}
+.paging > div {
+	width: 40px;
+}
+.paging > ul{
+	width: 175px;
+	height: 30px;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.paging > ul > li,.paging > div{
+	height: 30px;
+	background-color: #fff;
+	color: black;
+	margin-left: 2.5px;
+	margin-right: 2.5px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.paging > ul > li{
+	color: black;
+	width: 30px;
+	list-style-type: none;
+	float: left;
+}
+.paging > ul > li:hover,.paging > div:hover{
+	background-color: gray;
+	text-decoration: underline;
+	color: #fff;
+}
+.paging > div:hover{
+	text-decoration: none;
+}
+
+
+
+
+
+.paging ul #pactive{
+	background-color: gray;
+	color: #fff;
+}
+.paging ul #pactive:hover{
+	text-decoration: none;
+}
