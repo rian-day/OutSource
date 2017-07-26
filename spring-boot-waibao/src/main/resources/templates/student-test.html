@@ -91,27 +91,32 @@
 							<span>单选题</span> <span class="detail">共10题，合计100.0分</span>
 						</h5>
 					</div>
-					　　<dl id="danxuan">
+					　　<dl th:each="subject : ${content}"  th:id="${subject.type eq '多选题'} ? 'duoxuan' : 'danxuan'">
 						<!-- 题干+分值 -->
 						<dt>
 							<div class="icon-block">
 								<label class="indexLabel"> <span class="index">1</span> <!-- 试卷中题号 非常重要 ！！！-->
-									<span class="sqlIndex" th:text="subject.id">id1</span> <!--  数据库中题号id  非常重要！！！-->
+									<span class="sqlIndex" th:text="${subject.id}">id1</span> <!--  数据库中题号id  非常重要！！！-->
 								</label>
 							</div>
 							<span class="qc"> <span class="score">(5&nbsp;分)<!-- 分值 --></span>
-								<span class="content">
+								<span class="content" th:text="${subject.content}">
 									<!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
 								</span>
 							</span>
 						</dt>
 						<!-- A -->
-						<dd class="answer" th:each="option : ${subject.options}">
+						<dd th:each="option : ${subject.options}" th:class="${subject.type eq '多选题'} ? 'answerMuch' : 'answer' " class="answer" >
 	
 							<span class="radiu"> <span class="radiuSelect"></span>
-							</span> <label> <span class="words"> <span class='ABCD' th:text="${option.optionName}">A</span>
-									<!-- ABCD --> <span class="ABCDContent" th:text="${option.content}"> 一种 </span> <!-- 选项内容 -->
-								</span></label>
+							</span> 
+								<label> 
+									<span class="words"> 
+										<span class='ABCD' th:text="${option.optionName}">A</span>
+										<!-- ABCD --> 
+										<span class="ABCDContent" th:text="${option.content}"> 一种 </span> <!-- 选项内容 -->
+									</span>
+								</label>
 						</dd>
 						<!-- <dd class="answer">
 	

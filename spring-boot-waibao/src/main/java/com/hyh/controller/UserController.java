@@ -77,6 +77,7 @@ public class UserController {
 			su.setProfessionId(userinfo.getProfessionId());
 			su.setUserId(userinfo.getId());
 			su.setHead(userinfo.getHead());
+			su.setSex(userinfo.getSex());
 			httpSession.setAttribute("user",su);
 			return "1";
 		}else if(admin!=null){
@@ -87,6 +88,7 @@ public class UserController {
 			su.setName(admin.getName());
 			su.setUserId(admin.getId());
 			su.setHead(admin.getHead());
+			su.setSex(admin.getSex());
 			httpSession.setAttribute("user",su);
 			return "1";
 		}

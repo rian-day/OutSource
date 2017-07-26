@@ -1,5 +1,6 @@
 package com.hyh.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,7 +43,7 @@ public class Subject {
 	
 	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
-	private Set<SubjectOptions> options;
+	private List<SubjectOptions> options;
 	
 	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
@@ -59,7 +60,7 @@ public class Subject {
 	}
 	
 	public Subject(){
-		this.options=new HashSet<SubjectOptions>();
+		this.options=new ArrayList<SubjectOptions>();
 	}
 //	public Subject(String content
 //			,String type
@@ -127,11 +128,11 @@ public class Subject {
 	}
 
 	
-	public Set<SubjectOptions> getOptions() {
+	public List<SubjectOptions> getOptions() {
 		return options;
 	}
 
-	public void setOptions(Set<SubjectOptions> options) {
+	public void setOptions(List<SubjectOptions> options) {
 		this.options = options;
 	}
 

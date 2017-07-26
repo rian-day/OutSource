@@ -67,7 +67,7 @@ public class ViewController {
 	@RequestMapping("/student-history.html")
 	public ModelAndView studenthistory(
 			@RequestParam(value = "size", defaultValue = "5") Integer size
-			, @RequestParam(value = "nowPage", defaultValue = "1") Integer nowpage
+			, @RequestParam(value = "nowPage", defaultValue = "0") Integer nowpage
 			, HttpSession session){
 		SessionUser su=(SessionUser) session.getAttribute("user");
 		Page<Exam> page=xs.searchPersonAllExam(su.getUserId(),nowpage,size);
@@ -96,10 +96,9 @@ public class ViewController {
 	@RequestMapping("/student-history-test.html")
 	public ModelAndView studenthistorytest(
 			@RequestParam("examid") Integer examid){
-		ModelAndView mav=new ModelAndView();
+		ModelAndView mav=new ModelAndView("student-history-test");
 		List<UserAnswer> set=xs.searchUseranswerByExamid(examid);
 		mav.addObject("content",set);
-		mav.setViewName("student-history-test");
 		return mav;
 	}
 	@RequestMapping("/student-alltest.html")

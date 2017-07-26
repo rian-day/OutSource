@@ -5,10 +5,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -21,7 +22,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.hyh.bean.UserKnowledgeBase;
 import com.hyh.entity.Subject;
 import com.hyh.entity.SubjectOptions;
 import com.hyh.utils.ExcelImportUtils;
@@ -168,7 +168,7 @@ public class ExcelService {
 	                	   String tip=cell.getStringCellValue();
 	                	   subject.setTip(tip);
 	                   }
-	               }else{  
+	               }else{
 	                   rowMessage += "第"+(c+1)+"列数据有问题，请仔细检查；";  
 	               }  
 	           }  
@@ -195,10 +195,28 @@ public class ExcelService {
 //	           }  
 //	           errorMsg = "导入成功，共"+userKnowledgeBaseList.size()+"条数据！";  
 //	       }  
-	       Iterator<SubjectOptions> it=list.get(0).getOptions().iterator();
-	       while(it.hasNext()){
-	    	   Log.warn(it.next().getOptionName());
-	       }
+	       
+	       //排序
+//	       Comparator<SubjectOptions> c = new Comparator<SubjectOptions>() {  
+//	    	   @Override  
+//	    	   public int compare(SubjectOptions s1, SubjectOptions s2) {  
+//	    		   // TODO Auto-generated method stub  
+//	    		   if(Integer.valueOf(s1.getOptionName())<Integer.valueOf(s2.getOptionName()))  
+//	    			   return 1;  
+//	    	       //注意！！返回值必须是一对相反数，否则无效。jdk1.7以后就是这样。  
+//	    	       //      else return 0; //无效  
+//	    	       else return -1;  
+//	    	   }
+//	       };
+//	       for(int i=0;i<list.size();i++){
+//	    	   Subject subject=list.get(0);
+//	    	   List<SubjectOptions> set=subject.getOptions();
+//	    	   
+//	       }
+//	       Iterator<SubjectOptions> it=list.get(0).getOptions().iterator();
+//	       while(it.hasNext()){
+//	    	   Log.warn(it.next().getOptionName());
+//	       }
 	       return list;
 	  }  
 }

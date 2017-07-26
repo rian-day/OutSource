@@ -80,7 +80,7 @@
                                     <p>姓名:</p>
                                 </li>
                                 <li>
-                                    <div class="name">张三</div>
+                                    <div class="name" th:text="${user.name}">张三</div>
                                 </li>
                             </ul>
                         </div>
@@ -90,7 +90,7 @@
                                     <p>性别:</p>
                                 </li>
                                 <li>
-                                    <div class="sex">女</div>
+                                    <div class="sex" th:text="${user.sex}">女</div>
                                 </li>
                             </ul>
                         </div>
@@ -110,7 +110,7 @@
                                     <p>职业:</p>
                                 </li>
                                 <li>
-                                    <div class="pro">java工程师</div>
+                                    <div class="pro" th:text="${pro}">java工程师</div>
                                 </li>
                             </ul>
                         </div>

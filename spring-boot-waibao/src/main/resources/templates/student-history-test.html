@@ -75,7 +75,7 @@
 						单选题 <span class="detail">共10题，合计100.0分</span>
 					</h5>
 				</div>
-				<dl>
+				<dl th:each="useranswer:${content}">
 					<dt>
 						<div class="icon-block">
 							<label class="indexLabel"> <span class="index">1</span>
@@ -84,24 +84,24 @@
 
 
 						<span class="qc"> <span class="score">(0&nbsp;分)<!-- 分值 --></span>
-							<span class="content"> <!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
+							<span class="content" th:text="${useranswer.subject.content}"> <!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
 						</span>
 						<!-- 已经收藏过该题span中的class写成collected反之写成collect -->
-						</span> <span class="sqlIndex"> <!--  数据库中题号id -->
-						</span> <span class="collect" name="collect"> <!-- 是否收藏此题 -->
+						</span> <span class="sqlIndex" th:text="${useranswer.subject.id}"> <!--  数据库中题号id -->
+						</span> <span class="collect" name="collect" th:class="${useranswer.collect eq 1} ? collected : collect"> <!-- 是否收藏此题 -->
 						</span> <label class="star"> <!--  显示取消收藏的文字-->
 						</label>
 					</dt>
-					<dd class="answer">
+					<dd class="answer" th:each="option:${useranswer.subject.options}">
 						<span class="radiu"><span></span></span> <label>
-							<span class="words"> <span class='ABCD'>A</span><span
-								class="ABCDContent"> 一种 </span>
+							<span class="words"> <span class='ABCD' th:text="${option.optionName}">A</span><span
+								class="ABCDContent" th:text="${option.content}"> 一种 </span>
 						</span>
 						</label>
 					</dd>
 
 
-					<dd class="answer">
+					<!-- <dd class="answer">
 						 <label> <span class="words"> <span class='ABCD'>B</span><span
 								class="ABCDContent"> 两种 </span></span></label>
 					</dd>
@@ -112,15 +112,15 @@
 					<dd class="answer">
 						 <label> <span class="words"> <span class='ABCD'>D</span><span
 								class="ABCDContent"> 四种 </span></span></label>
-					</dd>
+					</dd> -->
 					
 					<div class="question_answer">
 						<div class="answerRight">
-							正确答案： <span class="a_rt">A</span> 考生答案： <span
-								class="a_wg hasError"> </span>
+							正确答案： <span class="a_rt" th:each="trueanswer : ${useranswer.subject.realAnswer}" th:text="${trueanswer}">A</span> 考生答案： <span
+								class="a_wg hasError" th:each="answer : ${useranswer.Answer}" th:text="${answer}"> </span>
 						</div>
 						<div class="answerAnalysis">
-							答案解析： <span class="analyse">无</span>
+							答案解析： <span class="analyse" th:text="${useranswer.analyse}">无</span>
 						</div>
 					</div>
 				</dl>

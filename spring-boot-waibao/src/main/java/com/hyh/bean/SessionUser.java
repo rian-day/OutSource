@@ -6,9 +6,17 @@ public class SessionUser {
 	private int professionId;
 	private String name;
 	private String head;
+	private char sex;
 	
 	
 	
+	
+	public char getSex() {
+		return sex;
+	}
+	public void setSex(char sex) {
+		this.sex = sex;
+	}
 	public String getHead() {
 		return head;
 	}

@@ -61,9 +61,22 @@
             <div class="head-view">考试记录</div>
             <div class="list-view">
                 <ul class="history-ul">
-                    <li class="history-li">
+                    <li class="history-li" th:each="exam : ${content}">
                         <div class="history-text">
-                        <span class="hidespan"><!--试卷id-->id1</span>
+                        <span class="hidespan" th:text="${exam.id}"><!--试卷id-->id1</span>
+                            <p th:text="${exam.name}">web基础练习</p>
+                             <span class="timelong"><span >考试时长：</span><span th:text="${exam.time}">2017-05-04 08:00</span></span>
+                            <span class="timelong"><span >试卷总分：</span><span th:text="${exam.totalgrade}">100分</span></span>
+                            <span class="timelong"><span >完成情况：</span>未完成</span>
+                        </div>
+                        <div class="history-bottom">
+                            <span class="grade" th:text="${exam.usergrade}">98分</span>
+                            <span class="chakan"><a href="student-history-test.html" th:href="@{/student-history-test.html(examid=${exam.id})}">查看</a></span>
+                        </div>
+                    </li>
+                   <!-- <li class="history-li">
+                        <div class="history-text">
+                        <span class="hidespan">id1</span>
                             <p>web基础练习</p>
                              <span class="timelong"><span >考试时长：</span>2017-05-04 08:00</span>
                             <span class="timelong"><span >试卷总分：</span>100分</span>
@@ -73,20 +86,7 @@
                             <span class="grade">98分</span>
                             <span class="chakan"><a href="student-history-test.html">查看</a></span>
                         </div>
-                    </li>
-                    <li class="history-li">
-                        <div class="history-text">
-                        <span class="hidespan"><!--试卷id-->id1</span>
-                            <p>web基础练习</p>
-                             <span class="timelong"><span >考试时长：</span>2017-05-04 08:00</span>
-                            <span class="timelong"><span >试卷总分：</span>100分</span>
-                            <span class="timelong"><span >完成情况：</span>未完成</span>
-                        </div>
-                        <div class="history-bottom">
-                            <span class="grade">98分</span>
-                            <span class="chakan"><a href="student-history-test.html">查看</a></span>
-                        </div>
-                    </li>
+                    </li> --> 
                     
                     
                     

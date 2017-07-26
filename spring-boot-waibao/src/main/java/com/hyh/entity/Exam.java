@@ -21,8 +21,12 @@ public class Exam {
 	private int id;
 	
 	private String name;
+	//单题
 	private int[] singlegrade;
+	//总分
 	private int totalgrade;
+	//用户分数
+	private int usergrade;
 	private int professionId;
 	private String time;
 	private int userId;
@@ -34,6 +38,12 @@ public class Exam {
 	
 	
 	
+	public int getUsergrade() {
+		return usergrade;
+	}
+	public void setUsergrade(int usergrade) {
+		this.usergrade = usergrade;
+	}
 	public List<UserAnswer> getUseranswer() {
 		return useranswer;
 	}
