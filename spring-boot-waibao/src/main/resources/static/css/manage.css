@@ -625,9 +625,9 @@ body{
 
 .showview .mgmt-index{padding: 0px;}
 .showview .mgmt-index{height: auto;min-height: calc(100vh - 200px);cursor: pointer;}
-.showview .mgmt-index > div{width: 25%;height: 242.8px;background-color: #fff;float:left;text-align: center;line-height: 242.8px;font-size: 24px;}
-.showview .mgmt-index > div:hover{background-color: lightgray;}
-.showview .mgmt-index .add-fast-access{font-size: 100px;}
+.showview .mgmt-index > div > div,.showview .mgmt-index .add-fast-access{width: 25%;height: 242.8px;background-color: #fff;float:left;text-align: center;line-height: 242.8px;font-size: 24px;}
+.showview .mgmt-index > div > div:hover{background-color: lightgray;}
+.showview .mgmt-index .add-fast-access{font-size: 100px;float: left;}
 .showview .mgmt-index > div,.showview .mgmt-index .add-fast-access span{
 	transform:all .5s;
 	-ms-transform:all .5s;

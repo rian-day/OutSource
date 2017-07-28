@@ -268,6 +268,12 @@ $(document).ready(function() {
             'z-index': '85000'
         });
     });
+    /*$(".black-out-curtain").click(function() {
+        $(".black-out-curtain").css({
+            'opacity': '0',
+            'z-index': '-1'
+        });
+    });*/
 
     /*$(".filter").change(function(){
         $.ajax({
@@ -766,9 +772,9 @@ $(document).ready(function() {
             dataType: "json",
             success: function(data){
                 if (data==1) {
-                    alert("修改成功");
+                    $(location).attr('href', 'manage-index.html');
                 }else{
-                    alert("修改失败");
+                    $(location).attr('href', 'manage-index.html');
                 }
             }
         });
@@ -1026,4 +1032,9 @@ $(document).ready(function() {
             }
         });
     });
+    /*$(".tp-btn-sub").click(function() {
+        var pro = $(".pro-select option:selected").val();
+        var 
+        alert(a);
+    });*/
 });
