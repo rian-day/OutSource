@@ -309,6 +309,9 @@ input[type='password']:focus {
     background: -moz-linear-gradient(top,#90dfa2,#84d494);
     background: linear-gradient(top,#90dfa2,#84d494);
 }
+.apply{
+    margin-left: 50% !important;
+}
 .button {
     width: 140px;
     line-height: 38px;
@@ -321,6 +324,7 @@ input[type='password']:focus {
     overflow: hidden;
 
 }
+
 
 .oldPwdSpan{
     background-size: 30px 30px;
@@ -437,4 +441,70 @@ input[type='password']:focus {
     padding-left: 5px;
     background-color: rgb(0,87,163);
     cursor:pointer
+}
+.alerts{
+    width: 25%;
+    height: 195px;
+    z-index: 1003;
+    background-color: white;
+    position: absolute;
+    margin-left: 37.5%;
+    margin-top: 200px;
+    display: none;
+/*    margin-top: -250px;*/
+}
+.alerts-title{
+    width: 100%;
+    position: absolute;
+    height: 45px;
+    background-color: rgb(113,210,255);
+    padding-top: 7px;
+    padding-left: 2%;
+    font-size: 22px;
+    color: white;
+}
+.alerts-content{
+    width:100%;
+    margin-top: 45px;
+    height: 80px;
+    position: absolute;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 30px;
+    font-weight: 550;
+    color: rgb(113,210,255);
+}
+.alerts-last{
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    margin-top: 125px;
+}
+.btn-info{
+    margin-left: 27%;
+    margin-top: 18px;
+    padding: 8px 25px;
+}
+.btn-warning{
+    margin-left: 10%;
+    margin-top: 18px;
+    padding: 8px 25px;
+}
+.mask {       
+    position: absolute; top: 0px; 
+    filter: alpha(opacity=60); 
+    background-color: #777;     
+    z-index: 1002; 
+    left: 0px;     
+    opacity:0.5; 
+    -moz-opacity:0.5;
+    width: 100%;
+    height: 100%;     
+    display: none;
+}
+.submits{
+    color: red !important;
+    margin-top: 20px !important;
+    margin-left: 100px !important;
+    display: none;
 }

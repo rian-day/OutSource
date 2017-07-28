@@ -252,3 +252,24 @@ $(".release-content .glyphicon-remove").click(function() {
     $(".release").css("-webkit-animation-duration","1s");
     $(".release").css("animation-fill-mode","forwards");
 });
+
+$(".apply").click(function() {
+    /* Act on the event */
+    if ($(".submits").css("display")=="block") {
+        alert("信息已发送，请勿重复发送");
+    }else{
+        $(".alerts").css("display","block");
+        $(".mask").css("display","block");
+    }
+});
+$(".btn-warning").click(function() {
+    /* Act on the event */
+    $(".alerts").css("display","none");
+    $(".mask").css("display","none");
+});
+$(".btn-info").click(function() {
+    /* Act on the event */
+    $(".submits").css("display","block");
+    $(".alerts").css("display","none");
+    $(".mask").css("display","none");
+});
