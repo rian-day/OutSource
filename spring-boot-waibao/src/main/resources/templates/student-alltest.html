@@ -59,7 +59,7 @@
         </div>
         <div class="overlay-content" style="display: block;"></div>
         <div class="release">
-            <span class="release-title"><img src="../static/images/tishi.png"></span>
+            <span class="release-title"><img src="../static/images/tishi.png"/></span>
             <span class="release-content">
             <span class="glyphicon glyphicon-remove"></span>
             最新公告</span>
@@ -71,7 +71,7 @@
                     <li class="history-li" th:each="singletest:${content}">
                         <div class="history-text">
                             <span class="hidespan"><!--试卷id-->123</span>
-                            <p>web基础练习</p>
+                            <p th:text="${singletest.name}">web基础练习</p>
                              <span class="timelong"><span>考试时长：</span><span th:text="${singletest.limitedTime}">90</span>分钟</span>
                             <span class="timelong"><span>试卷总分：</span><span th:text="${singletest.totalgrade}">100分</span></span>
                             <span class="timelong"><span >完成度：</span><span>未完成</span></span>

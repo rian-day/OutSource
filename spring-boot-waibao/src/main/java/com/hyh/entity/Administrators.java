@@ -25,7 +25,7 @@ public class Administrators {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	//主页顺序
-	private int[] indexOrder;
+	private char[] indexOrder;
 	//邮箱
 	private String mail;
 	//用户名
@@ -41,6 +41,10 @@ public class Administrators {
 	@OneToMany(mappedBy="createAdmin",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
 	private Set<SubjectGroup> subjectGroup;
+	
+	public Administrators(){
+		//this.indexOrder=new int[20];
+	}
 	public int getId() {
 		return id;
 	}
@@ -77,10 +81,11 @@ public class Administrators {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int[] getIndexOrder() {
+	
+	public char[] getIndexOrder() {
 		return indexOrder;
 	}
-	public void setIndexOrder(int[] indexOrder) {
+	public void setIndexOrder(char[] indexOrder) {
 		this.indexOrder = indexOrder;
 	}
 	public Set<SubjectGroup> getSubjectGroup() {

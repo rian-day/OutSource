@@ -33,7 +33,8 @@ public class UserAnswer {
 	//考试ID
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Exam examId;
-	
+	//用户id
+	private int userId;
 	public UserAnswer(){
 		this.collect=0;
 	}

@@ -33,11 +33,9 @@ public class LoginService {
 	
 	public Administrators CheckAdmin(String mail,String password){
 		Log.warn("admin");
-		List<Administrators> list= ad.findByMailAndPassword(mail, password);
-		if(list.size()>0)
-			return list.get(0);
-		else
-			return null;
+		Administrators list= ad.findByMailAndPassword(mail, password);
+		Log.warn("");
+		return list;
 	}
 	
 	public UserInfo CheckLogin(String mail,String password){

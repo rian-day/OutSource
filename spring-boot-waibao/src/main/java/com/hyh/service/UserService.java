@@ -44,10 +44,6 @@ public class UserService {
 	 AdministratorsDao ad;
 	 @Resource
 	 ProfessionDao pd;
-	 //管理员界面按键顺序
-	 public int[] getAdminPage(int id){
-		 return ad.findById(id).getIndexOrder();
-	 }
 	 //查找所有用户
 	 public Page<UserInfo> SearchAllInPage(int nowpage ,int size){
 			Sort sort = new Sort(Sort.Direction.DESC, "id");

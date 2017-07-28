@@ -51,27 +51,6 @@ public class SubjectService {
         return subjectdao.findAll(pageable);
 	}
 	
-	@Transactional
-	public String editAnalyse(int id,String analyse){
-		UserAnswer useranswer=ad.findById(id);
-		useranswer.setAnalyse(analyse);
-		ad.save(useranswer);
-		return "1";
-	}
-	@Transactional
-	public String collect(int id){
-		UserAnswer useranswer=ad.findById(id);
-		useranswer.setCollect('1');
-		ad.save(useranswer);
-		return "1";
-	}
-	@Transactional
-	public String cancelCollect(int id){
-		UserAnswer useranswer=ad.findById(id);
-		useranswer.setCollect('0');
-		ad.save(useranswer);
-		return "1";
-	}
 	
 	public List<Subject> randomSubjects(int ProfessionId){
 		List<RandomSubject> list=rd.findAll();

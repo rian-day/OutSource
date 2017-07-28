@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.crsh.console.jline.internal.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +19,11 @@ import com.hyh.entity.Subject;
 import com.hyh.entity.SubjectGroup;
 import com.hyh.entity.UserAnswer;
 import com.hyh.entity.UserInfo;
+import com.hyh.service.AdminService;
 import com.hyh.service.ExamService;
 import com.hyh.service.ProfessionService;
 import com.hyh.service.SubjectService;
+import com.hyh.service.UserCollectService;
 import com.hyh.service.UserService;
 @Controller
 public class ViewController {
@@ -34,6 +35,10 @@ public class ViewController {
 	SubjectService ss;
 	@Resource
 	UserService us;
+	@Resource
+	UserCollectService ucs;
+	@Resource
+	AdminService as;
 	@RequestMapping("/index.html")
 	public String index(){
 		return "index";
@@ -50,8 +55,19 @@ public class ViewController {
 		return "forget";
 	}
 	@RequestMapping("/student-error.html")
-	public String studenterror (){
-		return "student-error";
+	public ModelAndView studenterror (
+			@RequestParam(value = "size", defaultValue = "5") Integer size
+			, @RequestParam(value = "nowPage", defaultValue = "0") Integer nowpage
+			, HttpSession session){
+		SessionUser user=(SessionUser)session.getAttribute("user");
+		int userId=user.getUserId();
+		ModelAndView mav=new ModelAndView("student-error");
+		Page<UserAnswer> page=ucs.getAllCollection(userId, nowpage, size);
+		mav.addObject("totalPage",page.getTotalPages());
+		mav.addObject("nowPage",nowpage);
+		mav.addObject("totalElements",page.getNumberOfElements());
+		mav.addObject("content",page.getContent());
+		return mav;
 	}
 	@RequestMapping("/student-test.html")
 	public ModelAndView studenttest(
@@ -148,9 +164,9 @@ public class ViewController {
 	@RequestMapping("/manage-index.html")
 	public ModelAndView manageindex(HttpSession session){
 		SessionUser admin=(SessionUser) session.getAttribute("user");
-		int[] order=us.getAdminPage(admin.getUserId());
+		char[] order=as.getAdminPage(admin.getUserId());
 		ModelAndView mav=new ModelAndView("manage-index");
-		mav.addObject("order",order);
+		mav.addObject("indexlist",order);
 		return mav;
 	}
 	@RequestMapping("/manage-info.html")

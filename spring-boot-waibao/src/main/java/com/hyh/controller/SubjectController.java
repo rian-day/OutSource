@@ -2,7 +2,9 @@ package com.hyh.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -25,18 +27,6 @@ public class SubjectController {
 	SubjectService ss;
 	@Resource
 	ExamService es;
-	@RequestMapping("/editAnalyse.do")
-	public String editAnalyse(Integer useranswerId,String analyse){
-		return ss.editAnalyse(useranswerId, analyse);
-	}
-	@RequestMapping("/collect.do")
-	public String collect(Integer useranswerId){
-		return ss.collect(useranswerId);
-	}
-	@RequestMapping("/cancelCollect.do")
-	public String cancelCollect(Integer useranswerId){
-		return ss.cancelCollect(useranswerId);
-	}
 	/**
 	 * 随机生成试卷
 	 * 
@@ -67,8 +57,8 @@ public class SubjectController {
 	 * @param list
 	 * @return
 	 */
-	@RequestMapping("/123jkjkl")
-	public ModelAndView CorrectSubjects(
+	@PostMapping("/submitTest.do")
+	public Map CorrectSubjects(
 			List<SubjectC> list
 			,Integer userId
 			,Integer professionId
@@ -76,10 +66,10 @@ public class SubjectController {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		String time=df.format(new Date());
 		int grade=ss.CorrectSubjects(examId,time,list);
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("time",time);
-		mav.addObject("grade",grade);
-		return mav;
+		Map map=new HashMap();
+		map.put("time", time);
+		map.put("grade",grade);
+		return map;
 	}
 	@RequestMapping("/searchsubject")
 	@ResponseBody

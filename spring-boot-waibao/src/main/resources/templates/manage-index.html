@@ -25,7 +25,7 @@
 				<a class="login-font" href=""><span>submit your site</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png"/>
+				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -73,15 +73,17 @@
 	<div class="showview">
 		<div class="head-view">首页</div>
 		<div class="mgmt-index">		<!-- 这里还是拆开吧 好做一点,不然得修改超链接地址 class值 -->
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a th:each="indexlist : ${}" href="manage-userlist.html"><span class="glyphicon glyphicon-user"></span> 用户列表</a></div>
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a href="manage-adduser.html"><span class="glyphicon glyphicon-download"></span> 添加用户</a></div>
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a href="manage-subjectlist.html"><span class="glyphicon glyphicon-pencil"></span> 题目列表</a></div>
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a href="manage-addsubject.html"><span class="glyphicon glyphicon-download"></span> 添加题目</a></div>
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a href="manage-tplist.html"><span class="glyphicon glyphicon-list-alt"></span> 试卷列表</a></div>
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a href="manage-addtp.html"><span class="glyphicon glyphicon-download"></span> 创建试卷</a></div>
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a href="manage-bbs.html"><span class="glyphicon glyphicon-envelope"></span> 信息发布</a></div>
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a href="manage-pro.html"><span class="glyphicon glyphicon-education"></span> 职业管理</a></div>
-			<div class="fast-access" th:if="${indexlist.=='1'}"><a href="manage-info.html"><span class="glyphicon glyphicon-edit"></span> 个人信息管理</a></div> 
+			<div th:each="index,state : ${indexlist}" th:switch="${state.index}">
+				<div th:case="0" class="fast-access" th:if="${index eq '1'}"><a th:each="indexlist : ${}" href="manage-userlist.html"><span class="glyphicon glyphicon-user"></span> 用户列表</a></div>
+				<div th:case="1" class="fast-access" th:if="${index eq '1'}"><a href="manage-adduser.html"><span class="glyphicon glyphicon-download"></span> 添加用户</a></div>
+				<div th:case="2" class="fast-access" th:if="${index eq '1'}"><a href="manage-subjectlist.html"><span class="glyphicon glyphicon-pencil"></span> 题目列表</a></div>
+				<div th:case="3" class="fast-access" th:if="${index eq '1'}"><a href="manage-addsubject.html"><span class="glyphicon glyphicon-download"></span> 添加题目</a></div>
+				<div th:case="4" class="fast-access" th:if="${index eq '1'}"><a href="manage-tplist.html"><span class="glyphicon glyphicon-list-alt"></span> 试卷列表</a></div>
+				<div th:case="5" class="fast-access" th:if="${index eq '1'}"><a href="manage-addtp.html"><span class="glyphicon glyphicon-download"></span> 创建试卷</a></div>
+				<div th:case="6" class="fast-access" th:if="${index eq '1'}"><a href="manage-bbs.html"><span class="glyphicon glyphicon-envelope"></span> 信息发布</a></div>
+				<div th:case="7" class="fast-access" th:if="${index eq '1'}"><a href="manage-pro.html"><span class="glyphicon glyphicon-education"></span> 职业管理</a></div>
+				<div th:case="8" class="fast-access" th:if="${index eq '1'}"><a href="manage-info.html"><span class="glyphicon glyphicon-edit"></span> 个人信息管理</a></div> 
+			</div>
 			<div class="add-fast-access"><span class="glyphicon glyphicon-plus-sign"></span></div>
 		</div>
 	</div>

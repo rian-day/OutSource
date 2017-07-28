@@ -13,7 +13,7 @@ public interface AdministratorsDao extends JpaRepository<Administrators, Long> {
 	Administrators findById(int id);
 	List<Administrators> findByName(String Name);
 	
-	List<Administrators> findByMailAndPassword(String Mail,String Password);
+	Administrators findByMailAndPassword(String Mail,String Password);
 	List<Administrators> findByMail(String Mail);
 	//分页
 	Page<Administrators> findByName(String Name,Pageable pageable);

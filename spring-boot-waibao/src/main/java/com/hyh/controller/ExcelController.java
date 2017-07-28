@@ -18,11 +18,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.hyh.entity.Subject;
 import com.hyh.service.ExcelService;
@@ -61,14 +60,10 @@ public class ExcelController {
                 .body(new InputStreamResource(file.getInputStream()));  
     }  
 	//导入  
-	@PostMapping("/excel")
-	@ResponseBody
-	public List<Subject> batchImportUserKnowledge(
-			@RequestParam(value="filename") MultipartFile file,  
-	        HttpServletRequest request
-	        ,HttpServletResponse response
+	@RequestMapping("/excel")
+	public ModelAndView batchImportUserKnowledge(
+			@RequestParam(value="filename") MultipartFile file
 	        ,HttpSession session
-	        //,@SessionAttribute("username") String username
 	        ) throws IOException{  
 	  
 	    //判断文件是否为空  
@@ -98,7 +93,10 @@ public class ExcelController {
 	    		,file
 	    		//,username
 	    		);  
-	    //session.setAttribute("msg",message);  
-	    return list;  
+	    //session.setAttribute("msg",message); 
+	    ModelAndView mav=new ModelAndView();
+	    mav.setViewName("manage-showtp");
+	    mav.addObject("content",list);
+	    return mav;
 	}  
 }
