@@ -518,10 +518,9 @@
 				<option value="1">职业1</option> 
 				<option value="2">职业2</option>
 			</select> -->
-			<select name="" class="pro-select" th:remove="all-but-first" > 
-				<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}" value="0">请选择职业!</option> 
-				<option value="1">职业1</option> 
-				<option value="2">职业2</option> 
+			<select class="title-select">
+				<option value="0">全部职业</option>
+				<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
 			</select>
 			<input class="creat-suijitp" type="button" value="随机创建试卷"/>
 		</div>
@@ -564,9 +563,9 @@
 <div class="menu">
 	<div class="menu-in">
 		<div class="menu-top">
-			<div class="pull-left">
+			<!-- <div class="pull-left">
 				<span>setting</span>
-			</div>
+			</div> -->
 			<div class="pull-right">
 				<span>close</span>
 				<span class="glyphicon glyphicon-remove"></span>
@@ -579,7 +578,7 @@
 			<div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
 			<ul class="second-menu-1">
 				<a href="manage-userlist.html"><li>用户列表</li></a>
-				<a href="manage-adduser.html"><li>添加用户</li></a>
+				<!-- <a href="manage-adduser.html"><li>添加用户</li></a> -->
 			</ul>
 		</div>
 		<div class="second-menu">

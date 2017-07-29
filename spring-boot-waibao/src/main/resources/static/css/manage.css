@@ -246,7 +246,7 @@ body{
 		.box-close:hover{
 			background-color: #555756;
 		}
-	.overlay-content,.add-timu-black,.insert-timu-black ,.add-suiji-black{
+	.overlay-content,.add-timu-black,.insert-timu-black ,.add-suiji-black,.uld-overlay{
 		opacity: 0;
 		position: fixed;
 		top: 0;
@@ -258,7 +258,18 @@ body{
 		-webkit-transition: all .3s ease-in-out;
 	    transition: all .3s ease-in-out;
 	}
-
+		.uld-overlay > div{
+			width: 300px;
+			height: 50px;
+			margin-top: 300px;
+			margin-left: calc(50% - 160px);
+		}
+		.uld-overlay > div > .glyphicon{
+			color: red;
+			float: right;
+			cursor: pointer;
+			margin-top: 6px;
+		}
 
 
 .menu{
@@ -882,7 +893,7 @@ body{
 	font-size: 24px;
 	cursor: pointer;
 }
-.importTopic,.dldmould{
+.importTopic,.dldmould,.uldmould{
 	font-size: 18px;
 	width: 100px;
 	height: 30px;
@@ -894,6 +905,8 @@ body{
 	border-radius: 5px;
 }
 .importTopic{
+	border-radius: 0px;
+	height: 26px;
 	width: 250px;
 	background-color: #fff;
 }

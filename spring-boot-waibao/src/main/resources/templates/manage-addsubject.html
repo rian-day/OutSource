@@ -55,15 +55,28 @@
 	</div>
 	<div class="overlay-content" style="display: block;"></div>
 
-	<div class="showview">
-		<div class="head-view">添加题目
+	<div class="uld-overlay" style="display: block;">
+		<div>
+			<span class="glyphicon glyphicon-remove"></span>
 			<div class="importTopic">
 				<form action="file.do" method="POST">
 					<input type="file"/>
 					<input type="submit"/>
 				</form> 
 			</div>
+		</div>
+	</div>
+
+	<div class="showview">
+		<div class="head-view">添加题目
+			<!-- <div class="importTopic">
+				<form action="file.do" method="POST">
+					<input type="file"/>
+					<input type="submit"/>
+				</form> 
+			</div> -->
 			<a href=""><div class="dldmould">下载模板</div></a>
+			<div class="uldmould">上传模板</div>
 		</div>
 		<div class="add-title">
 			<div style="text-align: center;">
@@ -74,11 +87,10 @@
 						<option>Another payment method</option>
 						<option>Another payment method</option>
 					</select> -->
-					<select name="" class="zhiye" th:remove="all-but-first" > 
-						<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}" value="0">请选择职业!</option> 
-						<option value="1">职业1</option> 
-						<option value="2">职业2</option> 
-					</select> 
+					<select class="title-select">
+						<option value="0">请选择职业!</option>
+						<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
+					</select>
 				</form> 
 				<form action="" method="get"> 
 					<label>请选择题目类型：</label> 
@@ -373,9 +385,9 @@
 <div class="menu">
 	<div class="menu-in">
 		<div class="menu-top">
-			<div class="pull-left">
+			<!-- <div class="pull-left">
 				<span>setting</span>
-			</div>
+			</div> -->
 			<div class="pull-right">
 				<span>close</span>
 				<span class="glyphicon glyphicon-remove"></span>
@@ -388,7 +400,7 @@
 			<div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
 			<ul class="second-menu-1">
 				<a href="manage-userlist.html"><li>用户列表</li></a>
-				<a href="manage-adduser.html"><li>添加用户</li></a>
+				<!-- <a href="manage-adduser.html"><li>添加用户</li></a> -->
 			</ul>
 		</div>
 		<div class="second-menu">

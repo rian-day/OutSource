@@ -64,10 +64,9 @@
 					<th>题目信息</th>
 					<th><form action="" method="get"> 
 						<label>职业：</label> 
-						<select th:remove="all-but-first" class="title-select">
+						<select class="title-select">
+							<option value="0">全部职业</option>
 							<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
-							<option>Another payment method</option>
-							<option>Another payment method</option>
 						</select>
 						<!-- <select th:each="prolist:${}" class="title-select" name="">
 							<option value="0">全部职业</option> 
@@ -204,9 +203,9 @@
 <div class="menu">
 	<div class="menu-in">
 		<div class="menu-top">
-			<div class="pull-left">
+			<!-- <div class="pull-left">
 				<span>setting</span>
-			</div>
+			</div> -->
 			<div class="pull-right">
 				<span>close</span>
 				<span class="glyphicon glyphicon-remove"></span>
@@ -219,7 +218,7 @@
 			<div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
 			<ul class="second-menu-1">
 				<a href="manage-userlist.html"><li>用户列表</li></a>
-				<a href="manage-adduser.html"><li>添加用户</li></a>
+				<!-- <a href="manage-adduser.html"><li>添加用户</li></a> -->
 			</ul>
 		</div>
 		<div class="second-menu">

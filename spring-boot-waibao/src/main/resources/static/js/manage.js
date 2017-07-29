@@ -1056,4 +1056,17 @@ $(document).ready(function() {
             }
         });
     });
+
+    $(".uldmould").click(function() {
+        $(".uld-overlay").css({
+            'z-index': '85000',
+            'opacity': '1'
+        });
+    });
+    $(".uld-overlay .glyphicon").click(function() {
+        $(".uld-overlay").css({
+            'z-index': '-1',
+            'opacity': '0'
+        });
+    });
 });

@@ -242,50 +242,53 @@
             </div>
         </div>
     </div>
-    <div class="menu">
-        <div class="menu-in">
-            <div class="menu-top">
-                <div class="pull-left">
-                    <span></span>
-                </div>
-                <div class="pull-right">
-                    <span>close</span>
-                    <span class="glyphicon glyphicon-remove"></span>
-                </div>
+    
+<div class="menu">
+    <div class="menu-in">
+        <div class="menu-top">
+            <!-- <div class="pull-left">
+                <span>setting</span>
+            </div> -->
+            <div class="pull-right">
+                <span>close</span>
+                <span class="glyphicon glyphicon-remove"></span>
             </div>
-            <div class="second-menu">
-                <div class="home">题库<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-                <ul class="second-menu-home">
-                    <a href="student-santi.html">
-                        <li>随机试卷</li>
-                    </a>
-                    <a href="student-alltest.html">
-                        <li>套题</li>
-                    </a>
-                </ul>
-            </div>
-            <div class="second-menu">
-                <div class="winners">个人中心<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-                <ul class="second-menu-winners ">
-                    <a href="student-info.html">
-                        <li>基本信息</li>
-                    </a>
-                </ul>
-            </div>
-            <div class="second-menu">
-                <div class="history">历史记录<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-                <ul class="second-menu-history ">
-                    <a href="student-history.html">
-                        <li>考试历史记录</li>
-                    </a>
-                    <a href="student-error.html">
-                        <li>错题收集</li>
-                    </a>
-                </ul>
-            </div>
-            <div class="menu-foot"></div>
         </div>
+        <div class="second-menu">
+            <a href="manage-index.html"><div class="link"><span class="glyphicon glyphicon-home"></span>管理员主页</div></a>
+        </div>
+        <div class="second-menu">
+            <div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+            <ul class="second-menu-1">
+                <a href="manage-userlist.html"><li>用户列表</li></a>
+                <!-- <a href="manage-adduser.html"><li>添加用户</li></a> -->
+            </ul>
+        </div>
+        <div class="second-menu">
+            <div class="2">考题管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+            <ul class="second-menu-2">
+                <a href="manage-subjectlist.html"><li>题目列表</li></a>
+                <a href="manage-addsubject.html"><li>添加题目</li></a>
+            </ul>
+        </div>
+        <div class="second-menu">
+            <div class="3">试卷管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+            <ul class="second-menu-3">
+                <a href="manage-tplist.html"><li>试卷列表</li></a>
+                <a href="manage-addtp.html"><li>创建试卷</li></a>
+            </ul>
+        </div>
+        <div class="second-menu">
+            <div class="4">后台管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+            <ul class="second-menu-4">
+                <a href="manage-bbs.html"><li>信息发布</li></a>
+                <a href="manage-pro.html"><li>职业管理</li></a>
+                <a href="manage-info.html"><li>个人信息管理</li></a>
+            </ul>
+        </div>
+        <div class="menu-foot"></div>
     </div>
+</div>
 </body>
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
