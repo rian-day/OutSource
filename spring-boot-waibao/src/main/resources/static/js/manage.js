@@ -755,19 +755,20 @@ $(document).ready(function() {
 /*设置快速访问列表*/
     $(".set-index-list").click(function(event) {
         var obj = $(".index-show-list input[type=checkbox]");
-        var indexList = [];
+        var order=new Array()
         $(obj).each(function(index, el) {
             if (obj[index].checked) {
-                indexList[index] = 1;
+            	order[index] = '1';
             }else{
-                indexList[index] = 0;
+            	order[index] = '0';
             }
         });
+        alert(order);
         $.ajax({
             type: "POST",
             url: "set-index-list.do",
             data: {
-                'indexList' : indexList
+                'order' : order
             },
             dataType: "json",
             success: function(data){

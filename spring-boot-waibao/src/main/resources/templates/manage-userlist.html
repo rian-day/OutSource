@@ -73,7 +73,7 @@
 					<th><form action="" method="get"> 
 						<label>职业：</label> 
 						<select th:remove="all-but-first" class="title-select">
-							<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}">Credit card</option>
+							<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
 							<option>Another payment method</option>
 							<option>Another payment method</option>
 						</select>
@@ -87,11 +87,11 @@
 					</form></th>
 					<th>重置</th>
 				</tr>
-				<tr th:each="userlist : ${}">
-					<td th:text="${sublist.}">1</td>		<!-- 邮箱 -->
-					<td th:text="${sublist.}">2</td>		<!-- 姓名 -->
-					<td th:text="${sublist.}">3</td>		<!-- 性别 -->
-					<td th:text="${sublist.}">4</td>		<!-- 职业 -->
+				<tr th:each="userlist : ${content}">
+					<td th:text="${userlist.mail}">1</td>		<!-- 邮箱 -->
+					<td th:text="${userlist.name}">2</td>		<!-- 姓名 -->
+					<td th:text="${userlist.sex}">3</td>		<!-- 性别 -->
+					<td th:text="${userlist.professionId}">4</td>		<!-- 职业 -->
 					<td><input type="submit" value="重置密码"/></td>
 				</tr>
 				<!-- <tr>
@@ -230,10 +230,10 @@
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script th:inline="javascript">
-var countPage = [[${page.countpage}]];
-var nowPage = [[${page.nowpage}]] + 1;
+var countPage = [[${TotalPages}]];
+var nowPage = [[${nowpage}]] + 1;
 function topage(page){
-	toTpPage(page);
+	toUsePage(page);
 };
 function toUsePage(page){
     var zhiyeSel = $(".title-select").val();

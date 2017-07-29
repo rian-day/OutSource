@@ -34,11 +34,13 @@ public class AdministorController {
 	@PostMapping("set-index-list.do")
 	@ResponseBody
 	public String changeIndexList(
-			@RequestParam("indexList") char[] index
-			,HttpSession session){
-		for(char x: index){
-			Log.warn(x);
-		}
+			HttpSession session
+			,@RequestParam(value = "order[]", defaultValue = "null") char[] index
+			){
+		//char [] index={0,1};
+//		for(char x: index){
+//			Log.warn(x);
+//		}
 		SessionUser user=(SessionUser)session.getAttribute("user");
 		int id=user.getUserId();
 		return as.changeIndexList(index, id);

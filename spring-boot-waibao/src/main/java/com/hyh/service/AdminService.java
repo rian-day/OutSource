@@ -16,10 +16,6 @@ public class AdminService {
 		Administrators admin=ad.findById(id);
 		admin.setIndexOrder(index);
 		admin=ad.save(admin);
-		System.out.println();
-		for(char x:admin.getIndexOrder()){
-			System.out.println(x);
-		}
 		return "1";
 	}
 	

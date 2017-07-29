@@ -75,7 +75,7 @@
 						<option>Another payment method</option>
 					</select> -->
 					<select name="" class="zhiye" th:remove="all-but-first" > 
-						<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}" value="0">请选择职业!</option> 
+						<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}" value="0">请选择职业!</option> 
 						<option value="1">职业1</option> 
 						<option value="2">职业2</option> 
 					</select> 

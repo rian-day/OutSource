@@ -65,7 +65,7 @@
 					<th><form action="" method="get"> 
 						<label>职业：</label> 
 						<select th:remove="all-but-first" class="title-select">
-							<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}">Credit card</option>
+							<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
 							<option>Another payment method</option>
 							<option>Another payment method</option>
 						</select>
@@ -92,13 +92,13 @@
 					<th>创建时间</th>
 					<!-- <th>修改</th> -->
 				</tr>
-				<tr th:each="tplis : ${}">
-					<td th:text="${tplist.}">1</td>		<!-- 试卷id -->
-					<td th:text="${tplist.}">2</td>		<!-- 名称 -->
-					<td th:text="${tplist.}">3</td>		<!-- 职业 -->
-					<td th:text="${tplist.}">4</td>		<!-- 难度 -->
-					<td th:text="${tplist.}">5</td>		<!-- 创建人 -->
-					<td th:text="${tplist.}">6</td>		<!-- 创建时间 -->
+				<tr th:each="tplist : ${content}">
+					<td th:text="${tplist.id}">1</td>		<!-- 试卷id -->
+					<td th:text="${tplist.name}">2</td>		<!-- 名称 -->
+					<td th:text="${tplist.professionId}">3</td>		<!-- 职业 -->
+					<td>4</td>		<!-- 难度 -->
+					<td th:text="${tplist.createAdmin.name}">5</td>		<!-- 创建人 -->
+					<td th:text="${tplist.createTime}">6</td>		<!-- 创建时间 -->
 					<!-- <td><input type="submit" value="修改"/></td> -->
 				</tr>
 				<tr>
@@ -174,8 +174,8 @@
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script th:inline="javascript">
-var countPage = [[${page.countpage}]];
-var nowPage = [[${page.nowpage}]] + 1;
+var countPage = [[${TotalPages}]];
+var nowPage = [[${nowpage}]] + 1;
 function topage(page){
 	toTpPage(page);
 };

@@ -33,6 +33,8 @@ public class Subject {
 	//分值
 	private int grade;
 	//题目类型（选择、填空、判断）
+	private String createTime;
+	private String createAdmin;
 	private String type;
 	//题目正确答案
 	private String []realAnswer;
@@ -41,6 +43,23 @@ public class Subject {
 	//职业ID
 	private int professionId;
 	
+	
+	
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getCreateAdmin() {
+		return createAdmin;
+	}
+
+	public void setCreateAdmin(String createAdmin) {
+		this.createAdmin = createAdmin;
+	}
 	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
 	private List<SubjectOptions> options;

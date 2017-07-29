@@ -142,13 +142,15 @@ public class ViewController {
 		return mav;
 	}
 	@RequestMapping("/manage-addtp.html")
-	public ModelAndView manageaddtp(@RequestParam("nowpage") Integer nowpage
-			,@RequestParam("size") Integer size){
-		ModelAndView mav=new ModelAndView("manage-addsubject");
+	public ModelAndView manageaddtp(
+			@RequestParam(value="nowpage",defaultValue = "0") Integer nowpage
+			,@RequestParam(value="size",defaultValue= "5") Integer size){
+		ModelAndView mav=new ModelAndView("manage-addtp");
 		List<Profession> pros=ps.searchAll();
 		mav.addObject("pros",pros);
 		Page<Subject> result=ss.SearchAllInPage(nowpage,size);
 		mav.addObject("content",result.getContent());
+		mav.addObject("nowpage",nowpage);
 		mav.addObject("TotalElements",result.getNumberOfElements());
 		mav.addObject("TotalPages",result.getTotalPages());
 		return mav;
@@ -166,7 +168,7 @@ public class ViewController {
 		SessionUser admin=(SessionUser) session.getAttribute("user");
 		char[] order=as.getAdminPage(admin.getUserId());
 		ModelAndView mav=new ModelAndView("manage-index");
-		mav.addObject("indexlist",order);
+		mav.addObject("indexList",order);
 		return mav;
 	}
 	@RequestMapping("/manage-info.html")
@@ -186,25 +188,27 @@ public class ViewController {
 	}
 	@RequestMapping("/manage-subjectlist.html")
 	public ModelAndView managesubjectlist(
-			@RequestParam("nowpage") Integer nowpage
-			,@RequestParam("size") Integer size){
+			@RequestParam(value="nowpage",defaultValue = "0") Integer nowpage
+			,@RequestParam(value="size",defaultValue= "5") Integer size){
 		Page<Subject> result=ss.SearchAllInPage(nowpage, size);
 		List<Profession> pros=ps.searchAll();
 		ModelAndView mav=new ModelAndView("manage-subjectlist");
 		mav.addObject("content",result.getContent());
 		mav.addObject("TotalElements",result.getNumberOfElements());
 		mav.addObject("TotalPages",result.getTotalPages());
+		mav.addObject("nowpage",nowpage);
 		mav.addObject("pros",pros);
 		return mav;
 	}
 	@RequestMapping("/manage-tplist.html")
 	public ModelAndView managetplist(
-			@RequestParam("nowpage") Integer nowpage
-			,@RequestParam("size") Integer size){
+			@RequestParam(value="nowpage",defaultValue = "0") Integer nowpage
+			,@RequestParam(value="size",defaultValue= "5") Integer size){
 		ModelAndView mav=new ModelAndView("manage-tplist");
 		Page<SubjectGroup> result=ss.SearchAllSubjectGroup(nowpage, size);
 		mav.addObject("content",result.getContent());
 		mav.addObject("TotalElements",result.getNumberOfElements());
+		mav.addObject("nowpage",nowpage);
 		mav.addObject("TotalPages",result.getTotalPages());
 		List<Profession> pros=ps.searchAll();
 		mav.addObject("pros",pros);
@@ -212,8 +216,8 @@ public class ViewController {
 	}
 	@RequestMapping("/manage-userlist.html")
 	public ModelAndView manageuserlist(
-			@RequestParam("nowpage") Integer nowpage
-			,@RequestParam("size") Integer size){
+			@RequestParam(value="nowpage",defaultValue = "0") Integer nowpage
+			,@RequestParam(value="size",defaultValue= "5") Integer size){
 		ModelAndView mav=new ModelAndView("manage-userlist");
 		List<Profession> pros=ps.searchAll();
 		mav.addObject("pros",pros);
@@ -221,6 +225,7 @@ public class ViewController {
 		mav.addObject("content",result.getContent());
 		mav.addObject("TotalElements",result.getNumberOfElements());
 		mav.addObject("TotalPages",result.getTotalPages());
+		mav.addObject("nowpage",nowpage);
 		return mav;
 	}
 	@RequestMapping("/manage-orderlist.html")

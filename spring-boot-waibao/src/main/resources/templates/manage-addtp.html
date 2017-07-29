@@ -67,7 +67,7 @@
 				<form action="" method="get"> 
 					<label>请选择职业：</label> 
 					<select name="" class="zhiye" th:remove="all-but-first" > 
-						<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}" value="0">请选择职业!</option>  
+						<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}" value="0">请选择职业!</option>  
 						<option value="1">职业1</option> 
 						<option value="2">职业2</option> 
 					</select>
@@ -373,28 +373,28 @@
 						<div class="drag-handle2">
 							&#9776;
 						</div><div class="handle-timu">
-							<input type="hidden" value="danxuan">单选题<input type="text" name="">道，分值<input type="text" name="">（分）每道
+							<input type="hidden" value="danxuan"/>单选题<input type="text" name=""/>道，分值<input type="text" name=""/>（分）每道
 						</div>
 					</li>
 					<li>
 						<div class="drag-handle2">
 							&#9776;
 						</div><div class="handle-timu">
-							<input type="hidden" value="duoxuan">多选题<input type="text" name="">道，分值<input type="text" name="">（分）每道
+							<input type="hidden" value="duoxuan"/>多选题<input type="text" name=""/>道，分值<input type="text" name=""/>（分）每道
 						</div>
 					</li>
 					<li>
 						<div class="drag-handle2">
 							&#9776;
 						</div><div class="handle-timu">
-							<input type="hidden" value="tiankong">填空题<input type="text" name="">道，分值<input type="text" name="">（分）每道
+							<input type="hidden" value="tiankong"/>填空题<input type="text" name=""/>道，分值<input type="text" name=""/>（分）每道
 						</div>
 					</li>
 					<li>
 						<div class="drag-handle2">
 							&#9776;
 						</div><div class="handle-timu" style="width: 95%">
-							<input type="hidden" value="panduan">判断题<input type="text" name="">道，分值<input type="text" name="">（分）每道
+							<input type="hidden" value="panduan"/>判断题<input type="text" name=""/>道，分值<input type="text" name=""/>（分）每道
 						</div>
 					</li>
 					<div class="tp-suiji-button">
@@ -428,9 +428,9 @@
 					<th>题目信息</th>
 					<th>添加</th>
 				</tr>
-				<tr th:each="sublist : ${}">
-					<td th:text="${sublist.}">1</td>		<!-- 题目id -->
-					<td th:text="${sublist.}">2</td>		<!-- 题目信息(题目主体信息) -->
+				<tr th:each="sublist : ${content}">
+					<td th:text="${sublist.id}">1</td>		<!-- 题目id -->
+					<td th:text="${sublist.content}">2</td>		<!-- 题目信息(题目主体信息) -->
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr>
 				<!-- <tr>
@@ -519,11 +519,11 @@
 				<option value="2">职业2</option>
 			</select> -->
 			<select name="" class="pro-select" th:remove="all-but-first" > 
-				<option th:each="prolist : ${}" th:value="${prolist.}" th:text="${prolist.}" value="0">请选择职业!</option> 
+				<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}" value="0">请选择职业!</option> 
 				<option value="1">职业1</option> 
 				<option value="2">职业2</option> 
 			</select>
-			<input class="creat-suijitp" type="button" value="随机创建试卷">
+			<input class="creat-suijitp" type="button" value="随机创建试卷"/>
 		</div>
 		<div id="handle">
 			<div class="block__list_words">
@@ -535,7 +535,7 @@
 							
 						</div><div class="timu-info">
 							<span class="glyphicon glyphicon-remove" title="删除题目"></span>
-							题目ID:<input type="text" class="timu-id" disabled="true"><br>
+							题目ID:<input type="text" class="timu-id" disabled="true"/><br/>
 							题目分值：
 							<input type="text" class="timu-fenzhi" />分<br/>
 							题目类型：
@@ -614,8 +614,8 @@
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script type="text/javascript" src="../static/wangEditor/wangEditor.min.js" th:src="@{/wangEditor/wangEditor.min.js}"></script>
 <script th:inline="javascript" >
-var countPage = [[${page.countpage}]];
-var nowPage = [[${page.nowpage}]] + 1;
+var countPage = [[${TotalPages}]];
+var nowPage = [[${nowpage}]] + 1;
 function topage(page){
 	toSubPage(page);
 };
