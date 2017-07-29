@@ -33,14 +33,14 @@ var pp = ($(".hidespan:last").text()) * 1;
 var www = window.document.location.href;
 var myurl = www.substring(0, www.indexOf('?'));
 
-//截取地址
+//截取
 function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
     var r = window.location.search.substr(1).match(reg); //匹配目标参数
     if (r != null) return unescape(r[2]);
     return null; //返回参数值
 }
-ye = getUrlParam("page");
+ye = getUrlParam("nowPage");
 if(ye == null || ye ==""){
     ye = 1;
 }
@@ -51,7 +51,7 @@ $("#page").Page({
     liNums: limit, //分页的数字按钮数(建议取奇数)
     activeClass: 'activP', //active 类样式定义
     callBack: function(page) {
-        window.location.href = myurl + "?page=" + page + "";
+        window.location.href = myurl + "?nowPage=" + (page-1) + "";
     }
 })
 

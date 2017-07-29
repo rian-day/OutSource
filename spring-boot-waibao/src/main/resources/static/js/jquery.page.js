@@ -41,7 +41,7 @@
             var active = opts.activeClass;
             var str = '';
             var str1 = "";
-            if (ye == null || ye == 1 || ye == "") {
+            if (ye == null || ye <= 1 || ye == "") {
                 str1 = '<li><a href="javascript:" class="' + active + '">1</a></li>';
                 if (l > 1 && l < n + 1) {
                     for (i = 2; i < l + 1; i++) {

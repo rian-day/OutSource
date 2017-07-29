@@ -1,158 +1,175 @@
-$(function() {
-	$('.choose-value').click(function() {
-		if ($(this).hasClass("active")) {
-			$(this).removeClass('active');
-		} else {
-			$(this).addClass('active');
-		}
-		$(this).parent().find('.choose-list').toggle();
-	});
-	
-	// 选择选项后赋值
-	$('.choose-item').click(function() {
-		var _detail = $(this).text();
-		var _value = $(this).attr("data-index");
-		$(this).parent().parent().find(".choose-value").text(_detail);
-		$(this).parent().parent().find(".choose-value").attr("data-index", _value);
-		$(this).parent().hide();
-		$('.choose-value').removeClass('active');
-	});
-	
-	//点击其他区域隐藏下拉选项
-	$(document).bind("click",function(e){ 
-		var target = $(e.target); 
-		if(target.closest(".choose-problem").length == 0){ 
-			$(".choose-list").hide(); 
-			$(".choose-value").removeClass("active"); 
-		} 
-	});
-	
-    var str1 = '<button type="button" class="btn btn-success save">保存</button>';
-    var str2 = '<button type="button" class="btn btn-danger cancel">取消</button>';
-    var str3 = '<button type="button" class="btn btn-success edit">编辑</button>';
-    var value = "";
-    $(".btn").on("click",function(){
-    	$(".cuotibutton").css("display","none");   
-    	var value = "";
-    	if($(this).attr("class") == "btn btn-success edit"){
-    		//编辑
-    		$("#cuotibuttonId2").css("display","inline-block");
-    		value = $(".analyse").text();
-    		$(".analyse").css("display","none");
-    		$("#editTxt").css("display","inline-block");
-    		$("#editTxt").val(value);
-    	}
-    	else if($(this).attr("class") == "btn btn-danger cancel"){
-    		$(".analyse").css("display","none");
-    		$(".text").css("display","inline-block");
-    	}else{
-    		var analyse = $(".textarea1").val();
-    		var url = "editAnalyse.do";
-    		var args = {
-    				"analyse":analyse
-    		}
-    		$.post(url,args,function(data){
-    			
-    		})
-    		$(".analyse").css("display","none");
-    		$(".text").css("display","inline-block");
-    		$("#cuotibuttonId1").css("display","inline-block");
-    	}   	
-    })
-    var p ;
-    var array = new Array();
- 	   	   
-    //错题题查询 带条件查询
-    $(".rightDiv button").click(function(){
-    	$(".choose-value").each(function(i){
-     		array[i] = $(this).text();
-     	});   	
-     	var args = {
-     			"type":array[0],
-     			"pro":array[1]
-     	}
-     	var url = "selectError.do";
-     	$.post(url,args,function(data){
-        var pp = data;
-     		$("#page").Page({
-     	          totalPages: pp,//分页总数
-     	          liNums: 7,//分页的数字按钮数(建议取奇数)
-     	          activeClass: 'activP', //active 类样式定义
-     	          callBack : function(page){
-                   var a = {
-                      "type":array[0],
-                      "pro":array[1],
-                      "page":data
-                   }
-                    $.post(url,args,function(data){})
-                }
-     		}) 
-        })  	
-    })
-	window.onload=p();
-  function p(){
-    var pp = ($(".hidespan:last").text()) * 1;
-    $("#page").Page({
-        totalPages: pp,//分页总数
-        liNums: 7,//分页的数字按钮数(建议取奇数)
-        activeClass: 'activP', //active 类样式定义
-        callBack : function(page){            
-            var url = "selectError.do";
-            var args = {
-                "page":page
-            }
-            $.post(url, args, function(data) {
-                /*optional stuff to do after success */
-            });
-        }
-    });
-  }
-	var queId;
-   /******/
-	$(".error-contain ul li").click(function(){
-		var queId = $(this).children(".hidespan").text();
-		
-	})
-	
-	
-
+$('.choose-value').click(function() {
+    if ($(this).hasClass("active")) {
+        $(this).removeClass('active');
+    } else {
+        $(this).addClass('active');
+    }
+    $(this).parent().find('.choose-list').toggle();
 });
 
+// 选择选项后赋值
+$('.choose-item').click(function() {
+    var _detail = $(this).text();
+    var _value = $(this).attr("data-index");
+    $(this).parent().parent().find(".choose-value").text(_detail);
+    $(this).parent().parent().find(".choose-value").attr("data-index", _value);
+    $(this).parent().hide();
+    $('.choose-value').removeClass('active');
+});
+
+//点击其他区域隐藏下拉选项
+$(document).bind("click", function(e) {
+    var target = $(e.target);
+    if (target.closest(".choose-problem").length == 0) {
+        $(".choose-list").hide();
+        $(".choose-value").removeClass("active");
+    }
+});
+
+var str1 = '<button type="button" class="btn btn-success save">保存</button>';
+var str2 = '<button type="button" class="btn btn-danger cancel">取消</button>';
+var str3 = '<button type="button" class="btn btn-success edit">编辑</button>';
+var text = "";
+$(".btn").click(function() {
+    $(this).parent().css("display", "none");
+    if ($(this).attr("class") == "btn btn-success edit") {
+        //编辑
+        var c = $(this).parent().prev();
+        text = c.children("div").text();
+        c.children("div").css("display", "none");
+        c.children("textarea").val(text);
+        c.children("textarea").css("display","block");
+        $(this).parent().next().css("display","block");
+    } else if ($(this).attr("class") == "btn btn-danger cancel") {
+        var c = $(this).parent().prev().prev();
+        c.children("textarea").css("display", "none");
+        c.children("div").css("display", "block");
+        $(this).parent().prev().css("display","block");
+    } else {
+        var analyse = $(this).parent().prev().prev().children("textarea").val();
+        console.log("analyse"+analyse);
+        var url = "editAnalyse.do";
+        var args = {
+            "analyse": analyse
+        }
+        $.post(url, args, function(data) {
+
+        })
+        var c = $(this).parent().prev().prev();
+        c.children("textarea").css("display", "none");
+        c.children("div").css("display", "block");
+        c.children("div").text(analyse);
+        $(this).parent().prev().css("display","block");
+    }
+})
+var p;
+var array = new Array();
+
+//错题题查询 带条件查询
+$(".rightDiv button").click(function() {
+    $(".choose-value").each(function(i) {
+        array[i] = $(this).text();
+    });
+    var args = {
+        "type": array[0],
+        "pro": array[1]
+    }
+    var url = "selectError.do";
+    $.post(url, args, function(data) {})
+})
+
+var ye = 0; //当前页数
+var limit = 5; //分页的数字按钮数(建议取奇数)
+var pp = ($(".hidespan:last").text()) * 1;
+var www = window.document.location.href;
+var myurl = www.substring(0, www.indexOf('?'));
+
+//截取
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg); //匹配目标参数
+    if (r != null) return unescape(r[2]);
+    return null; //返回参数值
+}
+ye = getUrlParam("nowPage");
+if (ye == null || ye == "") {
+    ye = 1;
+}
+//获得总页数
+pp = ($(".hidespan:last").text()) * 1;
+$("#page").Page({
+    totalPages: pp, //分页总数
+    liNums: limit, //分页的数字按钮数(建议取奇数)
+    activeClass: 'activP', //active 类样式定义
+    callBack: function(page) {
+        window.location.href = myurl + "?nowPage=" + page + "";
+    }
+})
+var queId;
+/******/
+$(".error-contain ul li").click(function() {
+    var queId = $(this).children(".hidespan").text();
+
+})
+
+
+
+
+
 $(".release-content .glyphicon-remove").click(function() {
-    $(".release").css("-webkit-animation-name","bounceoutL");
-    $(".release").css("-webkit-animation-duration","1s");
-    $(".release").css("animation-fill-mode","forwards");
+    $(".release").css("-webkit-animation-name", "bounceoutL");
+    $(".release").css("-webkit-animation-duration", "1s");
+    $(".release").css("animation-fill-mode", "forwards");
 });
 
 
 $.fn.smartFloat = function() {
- var position = function(element) {
-  var top = element.position().top, pos = element.css("position");
-  $(window).scroll(function() {
-   var scrolls = $(this).scrollTop();
-   if (scrolls > top) {
-    if (window.XMLHttpRequest) {
-     element.css({
-      position: "fixed",
-      top: "30%"
-     }); 
-    } else {
-     element.css({
-      top: scrolls
-     }); 
-    }
-   }else {
-    element.css({
-     position: pos,
-     top: top
-    }); 
-   }
-  });
- };
- return $(this).each(function() {
-  position($(this));      
- });
+    var position = function(element) {
+        var top = element.position().top,
+            pos = element.css("position");
+        $(window).scroll(function() {
+            var scrolls = $(this).scrollTop();
+            if (scrolls > top) {
+                if (window.XMLHttpRequest) {
+                    element.css({
+                        position: "fixed",
+                        top: "30%"
+                    });
+                } else {
+                    element.css({
+                        top: scrolls
+                    });
+                }
+            } else {
+                element.css({
+                    position: pos,
+                    top: top
+                });
+            }
+        });
+    };
+    return $(this).each(function() {
+        position($(this));
+    });
 };
 
 
 $(".release").smartFloat($(this));
+
+
+var long = $(".error-contain li").length;
+console.log($(".error-contain li").length);
+
+$(".timu-fenxi:eq(0)").css({
+    "display": "block"
+})
+
+$(".error-contain li").click(function() {
+    console.log($(this).index());
+    var index = $(this).index();
+    $(".timu-fenxi").css("display","none");
+    var u = ".timu-fenxi:eq(" + index + ")";
+    $(u).css({
+        "display": "block"
+    })
+})

@@ -12,8 +12,8 @@ function getUrlParam(name) {
     if (r != null) return unescape(r[2]);
     return null; //返回参数值
 }
-ye = getUrlParam("page");
-if(ye == null || ye ==""){
+ye = getUrlParam("nowPage");
+if (ye == null || ye == "") {
     ye = 1;
 }
 //获得总页数
@@ -23,17 +23,8 @@ $("#page").Page({
     liNums: limit, //分页的数字按钮数(建议取奇数)
     activeClass: 'activP', //active 类样式定义
     callBack: function(page) {
-        window.location.href = myurl + "?page=" + page + "";
+        window.location.href = myurl + "?nowPage=" + page + "";
     }
-})
-
-//分页请求页面
-var url = "selectAlltest.do";
-var args = {
-    "page":ye - 1
-}
-$.post(url,args,function(data){
-
 })
 
 

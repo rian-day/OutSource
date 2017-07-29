@@ -40,6 +40,7 @@
     width: 40%;
     height: 100%;
     margin-left: 60%;
+    display: none;
 }
 
 .fenxitimu {
@@ -216,6 +217,7 @@
     float: left;
     height: 540px;
     margin-bottom: 20px;
+
 }
 
 .error-contain ul {
