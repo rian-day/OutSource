@@ -423,7 +423,7 @@
 				<span class="glyphicon glyphicon-remove" style="font-size:20px;color: red;cursor: pointer;" title="关闭"></span>
 			</div>
 			<table>
-				<tr>
+				<tr style="height: 30px;line-height: 30px;">
 					<th>ID</th>
 					<th>题目信息</th>
 					<th>添加</th>
@@ -630,8 +630,9 @@ function toSubPage(page){
         'page' : page
     };
 	alert(page);*/
-	page = page - 1;
-    $.ajax({
+	var theurl = "tp-subjectlist.do?zhiye=" + zhiyeSel + "&search=" + subSer + "&nowPage=" + page + "";
+	window.location.href="theurl";
+    /*$.ajax({
         type: "POST",
         url: "tp-subjectlist.do",
         data: {
@@ -646,7 +647,7 @@ function toSubPage(page){
                 alert('跳转失败');
             }
         }
-    }); 
+    }); */
 }
 
 $(document).ready(function() {

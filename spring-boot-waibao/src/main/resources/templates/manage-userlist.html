@@ -237,8 +237,9 @@ function topage(page){
 function toUsePage(page){
     var zhiyeSel = $(".title-select").val();
     var xingbieSel = $(".sex-select").val();
-	page = page - 1;
-    $.ajax({
+    var theurl = "userlist.do?xingbieSel=" + xingbieSel + "&zhiye=" + zhiyeSel + "&nowPage=" + page + "";
+	window.location.href="theurl";
+    /*$.ajax({
         type: "POST",
         url: "userlist.do",
         data: {
@@ -253,7 +254,7 @@ function toUsePage(page){
                 alert('跳转失败');
             }
         }
-    });
+    });*/
 }
 </script>
 </body>

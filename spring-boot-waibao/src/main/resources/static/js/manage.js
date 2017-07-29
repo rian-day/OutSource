@@ -864,12 +864,15 @@ $(document).ready(function() {
                 'pro' : pro,
                 'hrd' : hrd
             }*/
-            var timuid = [];
+            var timuinfo = [];
             $("#handle-1 li").each(function(index, el) {        //index是从零开始的
-                timuid.push((this).children(".timu-info").children(".timu-id").val());
-                /*var timu = {
+                var thisid = (this).children(".timu-info").children(".timu-id").val();
+                var thisfenshu = (this).children(".timu-info").children('.timu-fenzhi').val();
+                var timu = {
+                    'id' : thisid,
+                    'fenzhi' : thisfenshu
                 }
-                tp[index] = timu;*/
+                timuinfo.push(timu);
             });
             $.ajax({
                 type: "POST",
@@ -1050,7 +1053,7 @@ $(document).ready(function() {
             success: function(data){
                 var listInfo = "<tr><th>ID</th><th>题目信息</th><th>添加</th></tr>";
                 for (var i = 0; i < 10; i++) {
-                    listInfo = listInfo + "<tr><th>" + data.id[i] +"</th><th>" + data.content[i] +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
+                    listInfo = listInfo + "<tr><th>" + data[i].content +"</th><th>" + data[i].content +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
                 }
                 $(".list-view table").html(listInfo);
             }
