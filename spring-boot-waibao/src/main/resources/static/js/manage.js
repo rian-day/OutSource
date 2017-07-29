@@ -1033,9 +1033,27 @@ $(document).ready(function() {
             }
         });
     });
-    /*$(".tp-btn-sub").click(function() {
+    $(".tp-btn-sub").click(function() {
         var pro = $(".pro-select option:selected").val();
-        var 
-        alert(a);
-    });*/
+        var ser = $("tp-search-sub").val();
+        return false;
+        $.ajax({
+            type: "POST",
+            url: "addtp-search.do",
+            data: {
+                'zhiye' : pro,
+                'search' : ser,
+                'page' : '1',
+                'size' : '10'
+            },
+            dataType: "json",
+            success: function(data){
+                var listInfo = "<tr><th>ID</th><th>题目信息</th><th>添加</th></tr>";
+                for (var i = 0; i < 10; i++) {
+                    listInfo = listInfo + "<tr><th>" + data.id[i] +"</th><th>" + data.content[i] +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
+                }
+                $(".list-view table").html(listInfo);
+            }
+        });
+    });
 });

@@ -1,33 +1,41 @@
-$(function() {
-	
-    //分页
-    var pp= $(".hidespan:last").text() * 1;
-    window.onload=a();
-    function a(){
-        $("#page").Page({
-            totalPages: pp, //分页总数
-            liNums: 7, //分页的数字按钮数(建议取奇数)
-            activeClass: 'activP', //active 类样式定义
-            callBack: function(page) {
-                var url = "selectAlltest.do";
-                var args = {
-                    "page":page
-                }
-                $.post(url,args,function(data){
+//分页
+var ye = 0; //当前页数
+var limit = 5; //分页的数字按钮数(建议取奇数)
+var pp = ($(".hidespan:last").text()) * 1;
+var www = window.document.location.href;
+var myurl = www.substring(0, www.indexOf('?'));
 
-                })
-            }
-        });
+//截取
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg); //匹配目标参数
+    if (r != null) return unescape(r[2]);
+    return null; //返回参数值
+}
+ye = getUrlParam("page");
+if(ye == null || ye ==""){
+    ye = 1;
+}
+//获得总页数
+pp = ($(".hidespan:last").text()) * 1;
+$("#page").Page({
+    totalPages: pp, //分页总数
+    liNums: limit, //分页的数字按钮数(建议取奇数)
+    activeClass: 'activP', //active 类样式定义
+    callBack: function(page) {
+        window.location.href = myurl + "?page=" + page + "";
     }
-   
-
-
-
-    //点击页数跳转到指定页数
-
-    
-  
 })
+
+//分页请求页面
+var url = "selectAlltest.do";
+var args = {
+    "page":ye - 1
+}
+$.post(url,args,function(data){
+
+})
+
 
 $(".chakan").click(function(){
    time = $(this).parent().prev().children(".timelong:first").children('span').eq(1).text();

@@ -219,7 +219,10 @@ $(document).ready(function() {
                 var url = "login.do";
                 $.post(url, args, function(data) {
                 	if(data==1){
-                        window.location.href="student-alltest.html"
+                        if(table == "0")
+                            window.location.href="student-alltest.html";
+                        else
+                             window.location.href="manager-index.html"
                 	}else
                         $(".loginalert").html(alertTxt[3]);
                 })
