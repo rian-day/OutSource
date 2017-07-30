@@ -109,9 +109,7 @@
 
 .window-fenshu{
     width: 100%;
-    position: absolute;
-    text-align: center;
-    top:80px;
+    padding-top: 15px;
     font-size: 22px;
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }

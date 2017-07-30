@@ -49,7 +49,7 @@ $(".time").click(function(){
 	 time = ($(this).children('span').text());
 })
 
-$(".windowbutton2").click(function(){
+$(".btn-primary").click(function(){
   if(time==""||time==null){
     alert("请选择时间");
   }else{

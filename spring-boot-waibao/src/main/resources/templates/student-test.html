@@ -2,260 +2,198 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
-<meta charset="UTF-8" />
-<title>考试界面</title>
-<link rel="stylesheet" type="text/css"
-	href="../static/css/bootstrap.min.css"
-	th:href="@{/css/bootstrap.min.css}" />
-<link rel="stylesheet" type="text/css" href="../static/css/base.css"
-	th:href="@{/css/base.css}" />
-<link rel="stylesheet" type="text/css"
-	href="../static/css/student-history-test.css"
-	th:href="@{/css/student-history-test.css}" />
-<link rel="stylesheet" type="text/css"
-	href="../static/css/student-test.css"
-	th:href="@{/css/student-test.css}" />
-<script type="text/javascript" src="../static/js/jquery.js"
-	th:src="@{/js/jquery.js}"></script>
+    <meta charset="UTF-8" />
+    <title>考试界面</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/base.css" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/student-history-test.css" th:href="@{/css/student-history-test.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/student-test.css" th:href="@{/css/student-test.css}" />
+    <script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
 </head>
 
 <body class="home">
-	
-	<div class="move-right">
-		<div class="header">
-			<div class="box-left">
-				<span class="glyphicon glyphicon-th-list"></span> <span>menu</span>
-			</div>
-			<div class="box-right">
-				<div class="search-info">
-					<span class="glyphicon glyphicon-search"></span> <span>search
+    <div class="move-right">
+        <div class="header">
+            <div class="box-left">
+                <span class="glyphicon glyphicon-th-list"></span> <span>menu</span>
+            </div>
+            <div class="box-right">
+                <div class="search-info">
+                    <span class="glyphicon glyphicon-search"></span> <span>search
 						for inspiration</span>
-				</div>
-				<div class="co-logo"></div>
-				<div class="login-btn">
-					<a class="totop-img" href="javascript:void(0);"><span
-						class="glyphicon glyphicon-collapse-up"></span></a> <a
-						class="login-font" href=""><span>submit your site</span></a>
-				</div>
-				<div class="logo-header">
-					<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
-				</div>
-			</div>
-			<div class="box-right-search">
-				<div class="to-dropdown">
-					<span class="search-type">all</span><span
-						class="glyphicon glyphicon-triangle-bottom"></span>
-					<div class="menu-dropdown">
-						<ul>
-							<li><strong><a href="#">ALL</a></strong></li>
-							<li><strong><a href="#">Websites</a></strong></li>
-							<li><strong><a href="#">Collections</a></strong></li>
-							<li><strong><a href="#">Elements</a></strong></li>
-							<li><strong><a href="#">Magazine</a></strong></li>
-							<li><strong><a href="#">Jobs</a></strong></li>
-							<li><strong><a href="#">Users</a></strong></li>
-						</ul>
-					</div>
-				</div>
-				<input type="text" id="search-text"
-					placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)"
-					data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)"
-					data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off"
-					class="search-input" value=""/>
-				<div class="search-goto">
-					<strong><a href="" class="link-1">SHOW FILTERS</a></strong>
-				</div>
-				<div class="box-close">
-					<span class="glyphicon glyphicon-remove"></span>
-				</div>
-			</div>
-		</div>
-		<div class="overlay-content" style="display: block;"></div>
-		<div class="release">
-            <span class="release-title"><img src="../static/images/tishi.png" th:src="@{/images/tishi.png}"/></span>
-            <span class="release-content">
-            <span class="glyphicon glyphicon-remove"></span>
-            最新公告</span>
+                </div>
+                <div class="co-logo"></div>
+                <div class="login-btn">
+                    <a class="totop-img" href="javascript:void(0);"><span
+						class="glyphicon glyphicon-collapse-up"></span></a> <a class="login-font" href=""><span>submit your site</span></a>
+                </div>
+                <div class="logo-header">
+                    <img src="../static/images/logo.png" th:src="@{/images/logo.png}" />
+                </div>
+            </div>
+            <div class="box-right-search">
+                <div class="to-dropdown">
+                    <span class="search-type">all</span><span class="glyphicon glyphicon-triangle-bottom"></span>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li><strong><a href="#">ALL</a></strong></li>
+                            <li><strong><a href="#">Websites</a></strong></li>
+                            <li><strong><a href="#">Collections</a></strong></li>
+                            <li><strong><a href="#">Elements</a></strong></li>
+                            <li><strong><a href="#">Magazine</a></strong></li>
+                            <li><strong><a href="#">Jobs</a></strong></li>
+                            <li><strong><a href="#">Users</a></strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <input type="text" id="search-text" placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off" class="search-input" value="" />
+                <div class="search-goto">
+                    <strong><a href="" class="link-1">SHOW FILTERS</a></strong>
+                </div>
+                <div class="box-close">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </div>
+            </div>
         </div>
-		<div class="showview">
-			<div class="head-view">考试中</div>
-			<span class="hidespan"><!-- 试卷的id 重要！ --></span>
-			<div class="list-view">
-				<div class="window">
-					<div class="window-title">提&nbsp;醒</div>
-					<div class="window-fenshu">是否要提交试卷？</div>
-					<div class="window-select">
-						<span class="windowbutton1">
-						取消</span>
-						<span class="windowbutton1 windowbutton2">
-						提交</span>
-					</div>
-				</div>
-				<!-- 分隔线 -->
-					<div class="qh">
-						<h5>
-							<span>单选题</span> <span class="detail">共10题，合计100.0分</span>
-						</h5>
-					</div>
-					　　<dl th:each="subject : ${content}"  th:id="${subject.type eq '多选题'} ? 'duoxuan' : 'danxuan'">
-						<!-- 题干+分值 -->
-						<dt>
-							<div class="icon-block">
-								<label class="indexLabel"> <span class="index">1</span> <!-- 试卷中题号 非常重要 ！！！-->
-									<span class="sqlIndex" th:text="${subject.id}">id1</span> <!--  数据库中题号id  非常重要！！！-->
-								</label>
-							</div>
-							<span class="qc"> <span class="score">(5&nbsp;分)<!-- 分值 --></span>
-								<span class="content" th:text="${subject.content}">
+        <div class="overlay-content" style="display: block;"></div>
+        <div class="showview">
+            <div class="head-view">考试中</div>
+            <span class="hidespan"><!-- 试卷的id 重要！ --></span>
+            <div class="list-view">
+                <!-- 分隔线 -->
+                <dl th:each="subject : ${content}">
+                    <!-- 题干+分值 -->
+                    <dt>
+                        <div class="icon-block">
+                            <label class="indexLabel"> <span class="index">1</span>
+                                <span class="sqlIndex" th:text="${subject.id}">id1</span>
+                                <!--  数据库中题号id  非常重要！！！-->
+                            </label>
+                        </div>
+                        <span class="qc"> 
+                        	<span class="score type">单选题<!-- 分值 --></span>
+                        <span class="score">(5&nbsp;分)<!-- 分值 --></span>
+                        <span class="content">
 									<!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
-								</span>
 							</span>
-						</dt>
-						<!-- A -->
-						<dd th:each="option : ${subject.options}" th:class="${subject.type eq '多选题'} ? 'answerMuch' : 'answer' " class="answer" >
-	
-							<span class="radiu"> <span class="radiuSelect"></span>
-							</span> 
-								<label> 
-									<span class="words"> 
+                        </span>
+                    </dt>
+                    <!-- A -->
+                    <dd th:each="option : ${subject.options}" th:class="${subject.type eq '多选题'} ? 'answerMuch' : 'answer' " class="answer">
+                        <label>
+                            <span class="words"> 
 										<span class='ABCD' th:text="${option.optionName}">A</span>
-										<!-- ABCD --> 
-										<span class="ABCDContent" th:text="${option.content}"> 一种 </span> <!-- 选项内容 -->
-									</span>
-								</label>
-						</dd>
-						<!-- <dd class="answer">
-	
-							<span class="radiu"> <span class="radiuSelect"></span>
-							</span> <label> <span class="words"> <span class='ABCD'>B</span>
-									<span class="ABCDContent"> 一种 </span>
-								</span></label>
-						</dd>
-						<dd class="answer">
-	
-							<span class="radiu"> <span class="radiuSelect"></span>
-							</span> <label> <span class="words"> <span class='ABCD'>C</span>
-									<span class="ABCDContent"> 一种 </span>
-								</span></label>
-						</dd>
-						<dd class="answer">
-	
-							<span class="radiu"> <span class="radiuSelect"></span>
-							</span> <label> <span class="words"> <span class='ABCD'>D</span>
-									<span class="ABCDContent"> 一种 </span>
-								</span></label>
-						</dd> -->
-					</dl>
-				<!--分隔线-->
-				<div class="qh">
-					<h5>
-						多选题 <span class="detail">共10题，合计100.0分</span>
-					</h5>
-				</div>
-				<dl id="duoxuan">
-					<!-- 题干+分值 -->
-					<dt>
-						<div class="icon-block">
-							<label class="indexLabel"> <span class="index">2</span> <!-- 试卷中题号 非常重要 ！！！-->
-								<span class="sqlIndex">id2</span> <!--  数据库中题号id  非常重要！！！-->
-							</label>
-						</div>
-						<span class="qc"> <span class="score">(5&nbsp;分)<!-- 分值 --></span>
-							<span class="content">
-								<!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
-						</span>
-						</span>
-					</dt>
-					<!-- A -->
-					<dd class="answerMuch">
-
-						<span class="radiu"> <span class="radiuSelect"></span>
-						</span> <label> <span class="words"> <span class='ABCD'>A</span>
-								<!-- ABCD --> <span class="ABCDContent"> 一种 </span> <!-- 选项内容 -->
-							</span></label>
-					</dd>
-					<!-- B -->
-					<dd class="answerMuch">
-
-						<span class="radiu"> <span class="radiuSelect"></span>
-						</span> <label> <span class="words"> <span class='ABCD'>B</span>
-								<span class="ABCDContent"> 一种 </span>
-							</span></label>
-					</dd>
-					<!-- C -->
-					<dd class="answerMuch">
-
-						<span class="radiu"> <span class="radiuSelect"></span>
-						</span> <label> <span class="words"> <span class='ABCD'>C</span>
-								<span class="ABCDContent"> 一种 </span>
-							</span></label>
-					</dd>
-					<!-- D -->
-					<dd class="answerMuch">
-
-						<span class="radiu"> <span class="radiuSelect"></span>
-						</span> <label> <span class="words"> <span class='ABCD'>D</span>
-								<span class="ABCDContent"> 一种 </span>
-							</span></label>
-					</dd>
-				</dl>
-				<div class="qh">
-					<h5>
-						填空题 <span class="detail">共10题，合计100.0分</span>
-					</h5>
-				</div>
-				<dl id="tiankong">
-					<!-- 题干+分值 -->
-					<dt>
-						<div class="icon-block">
-							<label class="indexLabel"> <span class="index">3</span> <!-- 试卷中题号 非常重要 ！！！-->
-								<span class="sqlIndex">id3</span> <!--  数据库中题号id  非常重要！！！-->
-							</label>
-						</div>
-						<span class="qc"> <span class="score">(5&nbsp;分)<!-- 分值 --></span>
-							<span class="content">
-								<!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
-						</span>
-						</span>
-					</dt>
-					<!-- A -->
-					<dd class="answerInput">
-
-						<span class="radiu"> <span class="radiuSelect"></span>
-						</span> <label> <span class="words"> <span class='ABCD'></span>
-								<!-- ABCD --> 此处填写答案<span class="ABCDContent"><input
-									type="text" class="input"/>。</span> <!-- 选项内容 --> </span></label>
-					</dd>
-				</dl>
-			</div>
-			<div class="datikaImg">
-				<!-- 背景图片 -->
-			</div>
-			<div class="submitImg">
-				<!-- 背景图片 -->
-			</div>
-			<div class="datika">
-				<span class='gb'></span>
-				<div class="s">
-					<h3>单选题</h3>
-					<div class="div1"></div>
-				</div>
-				<div class="s">
-					<h3>多选题</h3>
-					<div class="div2"></div>
-				</div>
-				<div class="s">
-					<h3>填空题</h3>
-					<div class="div3"></div>
-				</div>
-			</div>
-
-			<div class="countdown">
-				<div id='tiles'></div>
-			</div>
-		</div>
-	</div>
-	 <div class="menu">
+                            <!-- ABCD -->
+                            <span class="ABCDContent" th:text="${option.content}"> 一种 </span>
+                            <!-- 选项内容 -->
+                            </span>
+                        </label>
+                    </dd>
+                </dl>
+                <!--分隔线-->
+                <dl>
+                    <!-- 题干+分值 -->
+                    <dt>
+                        <div class="icon-block">
+                            <label class="indexLabel">
+                                <span class="index">2</span>
+                                <!-- 试卷中题号 非常重要 ！！！-->
+                                <span class="sqlIndex">id2</span>
+                                <!--  数据库中题号id  非常重要！！！-->
+                            </label>
+                        </div>
+                        <span class="qc"> 
+                        	<span class="score type">多选题<!-- 分值 --></span>
+                        <span class="score">(5&nbsp;分)<!-- 分值 --></span>
+                        <span class="content">
+									<!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
+							</span>
+                        </span>
+                    </dt>
+                    <!-- A -->
+                    <dd class="answerMuch">
+                        <span class="radiu"> <span class="radiuSelect"></span>
+                        </span>
+                        <label> <span class="words"> <span class='ABCD'>A</span>
+                            <!-- ABCD --><span class="ABCDContent"> 一种 </span>
+                            <!-- 选项内容 -->
+                            </span>
+                        </label>
+                    </dd>
+                    <!-- B -->
+                    <dd class="answerMuch">
+                        <span class="radiu"> <span class="radiuSelect"></span>
+                        </span>
+                        <label> <span class="words"> <span class='ABCD'>B</span>
+                            <span class="ABCDContent"> 一种 </span>
+                            </span>
+                        </label>
+                    </dd>
+                    <!-- C -->
+                    <dd class="answerMuch">
+                        <span class="radiu"> <span class="radiuSelect"></span>
+                        </span>
+                        <label> <span class="words"> <span class='ABCD'>C</span>
+                            <span class="ABCDContent"> 一种 </span>
+                            </span>
+                        </label>
+                    </dd>
+                    <!-- D -->
+                    <dd class="answerMuch">
+                        <span class="radiu"> <span class="radiuSelect"></span>
+                        </span>
+                        <label> <span class="words"> <span class='ABCD'>D</span>
+                            <span class="ABCDContent"> 一种 </span>
+                            </span>
+                        </label>
+                    </dd>
+                </dl>
+                <dl>
+                    <!-- 题干+分值 -->
+                    <dt>
+                        <div class="icon-block">
+                            <label class="indexLabel"> <span class="index">3</span>
+                                <span class="sqlIndex">id3</span>
+                                <!--  数据库中题号id  非常重要！！！-->
+                            </label>
+                        </div>
+                         <span class="qc"> 
+                        	<span class="score type">填空题<!-- 分值 --></span>
+                        <span class="score">(5&nbsp;分)<!-- 分值 --></span>
+                        <span class="content">
+									<!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
+							</span>
+                        </span>
+                    </dt>
+                    <dd class="answerInput">
+                        <span class="radiu"> <span class="radiuSelect"></span>
+                        </span>
+                        <label> <span class="words"> <span class='ABCD'></span>
+                            <!-- ABCD -->此处填写答案<span class="ABCDContent"><input
+									type="text" class="input"/>。</span>
+                            <!-- 选项内容 -->
+                            </span>
+                        </label>
+                    </dd>
+                </dl>
+            </div>
+            <div class="datikaImg" title='答题卡'>
+                <!-- 背景图片 -->
+            </div>
+            <div class="submitImg" data-toggle="modal" data-target="#foo"  title='交卷'>
+                <!-- 背景图片 -->
+            </div>
+            <div class="datika">
+                <span class='gb'></span>
+                <div class="s">
+                </div>
+            </div>
+            <div class="countdown">
+                <div id='tiles'></div>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
         <div class="menu-in">
             <div class="menu-top">
                 <div class="pull-left">
@@ -299,15 +237,37 @@
             <div class="menu-foot"></div>
         </div>
     </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+								交卷提示
+					</h4>
+                </div>
+                <div class="modal-body">
+                	请确定交卷
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary submit">
+                        交卷
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
 </body>
-<script src="../static/js/bootstrap.min.js"
-	th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
-<script src="../static/js/jquery.jqpagination.js"
-	th:src="@{/js/jquery.jqpagination.js}"></script>
-<script type="text/javascript" src="../static/js/student-test.js"
-	th:src="@{/js/student-test.js}"></script>
-<script type="text/javascript" src="../static/js/daojishi.js"
-	th:src="@{/js/daojishi.js}"></script>
+<script src="../static/js/jquery.jqpagination.js" th:src="@{/js/jquery.jqpagination.js}"></script>
+<script type="text/javascript" src="../static/js/student-test.js" th:src="@{/js/student-test.js}"></script>
+<script type="text/javascript" src="../static/js/daojishi.js" th:src="@{/js/daojishi.js}"></script>
 
 </html>
