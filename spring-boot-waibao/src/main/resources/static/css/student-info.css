@@ -508,10 +508,6 @@ input[type='password']:focus {
     margin-left: 100px !important;
     display: none;
 }
-.changePwd{
-    width: 60px;
-    height: 40px;
-    margin-right:5%;
-    float: right;
-    margin-top: -25px;
+.btn-info{
+    margin-left: 60% !important;
 }
