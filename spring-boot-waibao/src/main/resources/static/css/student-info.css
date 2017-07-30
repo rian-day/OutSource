@@ -508,3 +508,6 @@ input[type='password']:focus {
     margin-left: 100px !important;
     display: none;
 }
+.btn-info{
+    margin-left: 60% !important;
+}
