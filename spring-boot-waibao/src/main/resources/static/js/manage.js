@@ -984,14 +984,14 @@ $(document).ready(function() {
         var zhiye = [];*/
         var timuList = [];
         $(".details").each(function(index, el) {
-            var comment = $(el).find('.subcom .subl span').text();
-            var type = $(el).find('.subt .subl .typeid span').text();
+            var comment = $(el).find('.subcom .subl span').text();      //内容
+            var type = $(el).find('.subt .subl .typeid span').text();       //类型
             var daan = [];
             $(this).find("td").each(function(index, el) {
-                daan.push($(el).text());
+                daan.push($(el).text());        //答案
             });
-            var tip = $(el).find('.subcom .subr .subtip span').text();
-            var zhiye = $(el).find('.subt .subl .proid span').text();
+            var tip = $(el).find('.subcom .subr .subtip span').text();      //解析
+            var zhiye = $(el).find('.subt .subl .proid span').text();       //职业
             var timu = {
                 'comment' : comment,
                 'type' : type,
@@ -1070,6 +1070,12 @@ $(document).ready(function() {
         $(".uld-overlay").css({
             'z-index': '-1',
             'opacity': '0'
+        });
+    });
+    $(".black-out-curtain .glyphicon-remove").click(function() {
+        $(".black-out-curtain").css({
+            'opacity': '0',
+            'z-index': '-1'
         });
     });
 });
