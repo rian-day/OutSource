@@ -26,7 +26,7 @@ $(document).ready(function() {
         	});
         }   
     }); 
-    $(".search-info").click(function() {
+    /*$(".search-info").click(function() {
     	$(".overlay-content").css({
     		'z-index': '50000',
     		'opacity': '1',
@@ -37,7 +37,7 @@ $(document).ready(function() {
     	$(".box-right-search").css({
     		'display': 'flex'
     	});
-    });
+    });*/
     $(".box-close,.overlay-content,.pull-right").click(function() {
     	$(".overlay-content").css({
     		'opacity': '0'
@@ -348,7 +348,7 @@ $(document).ready(function() {
         $(".w-e-text p").text('');
     });
     $(".add-project").click(function() {
-        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"><br>题目分值：<input type="text"/>分<br>题目类型：<select class="title-select" name="">  <option class="title1" value="1">单选</option> <option class="title2" value="2">多选</option> <option class="title3" value="3">填空</option> <option class="title4" value="4">判断</option> </select><br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
+        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"><br>题目分值：<input type="text"/>分<br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
     });
     $(document).on("click",".timu-info .glyphicon",function(){
         $(this).parent().parent().remove();

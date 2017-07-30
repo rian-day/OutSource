@@ -18,15 +18,15 @@
 		<div class="box-right">
 			<div class="search-info">
 				<span class="glyphicon glyphicon-search"></span>
-				<span>search for inspiration</span>
+				<span><!-- search for inspiration --></span>
 			</div>
 			<div class="co-logo"></div>
 			<div class="login-btn">
 				<a class="totop-img" href="javascript:void(0);"><span class="glyphicon glyphicon-collapse-up"></span></a>
-				<a class="login-font" href=""><span>submit your site</span></a>
+				<a class="login-font" href="index.html"><span>Home</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png"/>
+				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -537,13 +537,6 @@
 							题目ID:<input type="text" class="timu-id" disabled="true"/><br/>
 							题目分值：
 							<input type="text" class="timu-fenzhi" />分<br/>
-							题目类型：
-							<select class="tp-title-select" name="">
-								<option value="1">单选</option> 
-								<option value="2">多选</option> 
-								<option value="3">填空</option> 
-								<option value="4">判断</option> 
-							</select><br/>
 							<div class="select-timu">选择题目</div>
 							<div class="insert-timu">录入题目</div>
 						</div>
@@ -557,6 +550,21 @@
 			</div>
 			<div class="clear"></div>
 		</div>
+		<div class="footers">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="../static/images/1.png" th:src="@{/images/1.png}"/>
+                </div>
+                <div class="col-md-2">
+                    <ul class="list-inline">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 	</div>
 
 </div>
