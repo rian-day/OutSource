@@ -1,4 +1,4 @@
-$(document).ready(function () {
+
     var success="-1";
     var account_ok = false;
     var phone_ok = false;
@@ -7,72 +7,7 @@ $(document).ready(function () {
     var filter1 = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var filter2 = /^([a-zA-Z0-9_\.\-])+\@([0-9])+$/;
     var filter3 = /^([a-zA-Z0-9_\.\-@])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    //填写账号
-    // $("input[name=account]").blur(function () {
-    //     account = "";
-    //     if ($(this).val() == "") {
-    //         $("#account_check").text("请输入登录账号");
-    //         success=1;
-    //     } else {
-    // 	    if(domain){   
-    //             if(filter1.test($(this).val())||filter2.test($(this).val())){
-    //                 //独立入口
-    //                 account=$(this).val()
-    //             } else {
-    //                 account = $(this).val() + "@" + domain;
-    //             }
-    //         } else {
-    //                 //公共入口
-    //             if(filter1.test($(this).val())||filter2.test($(this).val())||(/^1(3|4|5|7|8)\d{9}$/.test($(this).val()))){
-    //                 $("#account_check").text("")
-    //                 account = $(this).val()
-    //             } else {
-    //                 success=1;
-    //                 $("#account_check").text("账号不存在")
-    //             }
-    //         }
-    //         $.ajax({
-    //             type: "GET",
-    //             cache: false,
-    //             headers: { "cache-control": "no-cache" },
-    //             dataType: "text",
-    //             url: "/account/check_account_exist?account=" + account,
-    //             success: function (msg) {
-    //                 if (msg == "0") {
-    //                     success=1;
-    //                     $("#account_check").text("账号不存在");
-    //                 } else {
-    //                     $("#account_check").text("");
-    //                     account_ok = true;
-    //                 };
-    //             }
-    //         });
-    //     };
-    // })
-
-
-
-    //点击获取验证码事件
-//    var wait = 60;
-//    function time(o) {
-//        if (wait == 0) {
-//            o.removeAttribute("disabled");
-//            o.value = "免费获取验证码";
-//            wait = 60;
-//        } else {
-//            o.setAttribute("disabled", true);
-//            o.value = "重新发送(" + wait + ")";
-//            wait--;
-//            setTimeout(function () {
-//                time(o);
-//            }, 1000);
-//        };
-//    }
-//    $("input[name=captcha_text]").keyup(function () {
-//        checkVerify($("input[name=captcha_text]"));
-//
-//    })
-
+    var countdown = 60;
 //点击提交
     $("#reset_pwd_btn").click(function () {
     	if (success=="1") {
@@ -113,7 +48,7 @@ $(document).ready(function () {
         			 $(".find_pwd_box2").css("display","block");
         			 success = "1";
         		 }else if(data == 0){
-        			 $("#account_check").html("验证码错误");
+        			 $("#account_check").html("邮箱验证码错误");
         		 }
         	})
         	 
@@ -163,7 +98,7 @@ $(document).ready(function () {
          
     });
 
-    var countdowm = 60;
+   
     function countDown(){
         if (countdown == 0) {
             $(".yanzheng").attr("disabled", "");
@@ -179,5 +114,15 @@ $(document).ready(function () {
             countDown()
         }, 1000)
     }
+    // var verifyCode = new GVerify("v_container");
+    // $("#reset_pwd_btn").click(function(){
+    //     var res = verifyCode.validate(document.getElementById("code_input").value);
+    //     if(res){
+    //         alert("验证正确");
+    //     }else{
+    //         alert("验证码错误");
+    //     }
+    // })
 
-})
+
+
