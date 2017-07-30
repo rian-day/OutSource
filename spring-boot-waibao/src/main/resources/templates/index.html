@@ -52,7 +52,16 @@
                         <a class="page-scroll" href="student-alltest.html">开始考试</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="login.html">登录|注册</a>
+                        <!-- <a class="page-scroll" href="login.html">登录|注册</a> -->
+                        <a href="index.html" class="page-scroll" data-dropdown="#dropdown-standard"><img src="../static/images/avatar-1.jpg"><span>用户1</span></a>
+                        <div class="dropdown-menu dropdown-anchor-top-left dropdown-has-anchor" id="dropdown-standard">
+						<ul>
+							<li><a href="#">考试中心</a></li>
+							<li><a href="#">个人信息</a></li>
+							<li class="divider"></li>
+							<li><a href="#">退出</a></li>
+						</ul>
+				</div>
                     </li>
                 </ul>
             </div>
@@ -488,6 +497,6 @@
 	<script src="../static/js/jquery.easing.min.js" th:src="@{/js/jquery.easing.min.js}"></script>
 	<!--Headerjs-->
 	<script src="../static/js/cbpAnimatedHeader.js" th:src="@{/js/cbpAnimatedHeader.js}"></script>
-
+	<script src="../static/js/jquery.sweet-dropdown.min.js" th:src="@{/js/jquery.sweet-dropdown.min.js}"></script>
 </body>
 </html>
