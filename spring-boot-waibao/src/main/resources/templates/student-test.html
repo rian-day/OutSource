@@ -97,22 +97,22 @@
 							<span>单选题</span> <span class="detail">共10题，合计100.0分</span>
 						</h5>
 					</div>
-					　　<dl th:each="subject : ${content}"  th:id="${subject.type eq '多选题'} ? 'duoxuan' : 'danxuan'">
+					　　<dl th:each="useranswer : ${content}"  th:id="${useranswer.subject.type eq '多选题'} ? 'duoxuan' : 'danxuan'">
 						<!-- 题干+分值 -->
 						<dt>
 							<div class="icon-block">
 								<label class="indexLabel"> <span class="index">1</span> <!-- 试卷中题号 非常重要 ！！！-->
-									<span class="sqlIndex" th:text="${subject.id}">id1</span> <!--  数据库中题号id  非常重要！！！-->
+									<span class="sqlIndex" th:text="${useranswer.subject.id}">id1</span> <!--  数据库中题号id  非常重要！！！-->
 								</label>
 							</div>
 							<span class="qc"> <span class="score">(5&nbsp;分)<!-- 分值 --></span>
-								<span class="content" th:text="${subject.content}">
+								<span class="content" th:text="${useranswer.subject.content}">
 									<!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
 								</span>
 							</span>
 						</dt>
 						<!-- A -->
-						<dd th:each="option : ${subject.options}" th:class="${subject.type eq '多选题'} ? 'answerMuch' : 'answer' " class="answer" >
+						<dd th:each="option : ${useranswer.subject.options}" th:class="${useranswer.subject.type eq '多选题'} ? 'answerMuch' : 'answer' " class="answer" >
 	
 							<span class="radiu"> <span class="radiuSelect"></span>
 							</span> 

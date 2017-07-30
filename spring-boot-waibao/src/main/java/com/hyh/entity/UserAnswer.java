@@ -35,6 +35,16 @@ public class UserAnswer {
 	private Exam examId;
 	//用户id
 	private int userId;
+	
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	public UserAnswer(){
 		this.collect=0;
 	}

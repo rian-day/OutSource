@@ -1,10 +1,10 @@
 package com.hyh.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,6 +38,9 @@ public class SubjectService {
 	ExamDao ed;
 	@Resource
 	RandomSubjectDao rd;
+	public SubjectGroup SearchSubjectGroupById(int id){
+		return sgd.findById(id);
+	}
 	
 	public Page<SubjectGroup> SearchAllSubjectGroup(int nowpage ,int size){
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
@@ -54,7 +57,7 @@ public class SubjectService {
 	
 	public List<Subject> randomSubjects(int ProfessionId){
 		List<RandomSubject> list=rd.findAll();
-		List<Subject> result = null;
+		List<Subject> result = new ArrayList<Subject>();
 		for(int i=0;i<list.size();i++){
 			RandomSubject rs=list.get(i);
 			List<Subject> subjects=subjectdao.findByTypeAndProfessionId(rs.getType(), ProfessionId);
@@ -94,31 +97,6 @@ public class SubjectService {
 	}
 	public Set<Subject> SearchSubjectByGroupId(int groupid){
 		return sgd.findById(groupid).getSubject();
-	}
-	//散题批改并存入数据库
-	public int CorrectSubjects(int examId,String time,List<SubjectC> list){
-		int totalgrade=0;
-		Exam exam=ed.findById(examId);
-		for(int i=0;i<list.size();i++){
-			SubjectC sc=list.get(i);
-			Subject subject=exam.getUseranswer().get(i).getSubject();
-			char status=0;
-			if(true){
-				if(subject.getRealAnswer().equals(sc.getUseranswer())){
-					totalgrade+=subject.getGrade();
-					status=1;
-				}
-				status=0;
-			}
-			
-			exam.setTime(time);
-			UserAnswer useranswer=new UserAnswer();
-			useranswer.setAnswer(sc.getUseranswer());
-			useranswer.setStatus(status);
-			useranswer.setExamId(exam);
-			ad.save(useranswer);
-		}
-		return totalgrade;
 	}
 	
 }

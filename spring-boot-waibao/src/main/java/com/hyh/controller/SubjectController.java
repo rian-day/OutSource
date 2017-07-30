@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hyh.bean.SubjectC;
-import com.hyh.entity.Exam;
 import com.hyh.entity.Subject;
 import com.hyh.service.ExamService;
 import com.hyh.service.SubjectService;
@@ -27,24 +26,6 @@ public class SubjectController {
 	SubjectService ss;
 	@Resource
 	ExamService es;
-	/**
-	 * 随机生成试卷
-	 * 
-	 * @param professionId
-	 * @param userId
-	 * @return
-	 */
-	@RequestMapping("/randomsubjects")
-	public ModelAndView randomSubjects(Integer professionId,Integer userId){
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-		String time=df.format(new Date());
-		List<Subject> list=ss.randomSubjects(professionId);
-		Exam exam=es.saveExam(time,userId,professionId,list);
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("exam",exam);
-		mav.setViewName("");
-		return mav;
-	}
 	
 	@PostMapping("/addsubject")
 	@ResponseBody
@@ -52,25 +33,7 @@ public class SubjectController {
 		ss.AddSubject(list);
 		return "success";
 	}
-	/**
-	 * 散题给分保存
-	 * @param list
-	 * @return
-	 */
-	@PostMapping("/submitTest.do")
-	public Map CorrectSubjects(
-			List<SubjectC> list
-			,Integer userId
-			,Integer professionId
-			,Integer examId){
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-		String time=df.format(new Date());
-		int grade=ss.CorrectSubjects(examId,time,list);
-		Map map=new HashMap();
-		map.put("time", time);
-		map.put("grade",grade);
-		return map;
-	}
+
 	@RequestMapping("/searchsubject")
 	@ResponseBody
 	public ModelAndView SearchSubject(@RequestParam(value="id") Integer id){

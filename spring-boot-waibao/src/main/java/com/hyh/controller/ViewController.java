@@ -1,7 +1,6 @@
 package com.hyh.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -57,25 +56,28 @@ public class ViewController {
 	@RequestMapping("/student-error.html")
 	public ModelAndView studenterror (
 			@RequestParam(value = "size", defaultValue = "5") Integer size
-			, @RequestParam(value = "nowPage", defaultValue = "0") Integer nowpage
+			, @RequestParam(value = "nowPage", defaultValue = "1") Integer nowPage
 			, HttpSession session){
+		nowPage--;
 		SessionUser user=(SessionUser)session.getAttribute("user");
 		int userId=user.getUserId();
 		ModelAndView mav=new ModelAndView("student-error");
-		Page<UserAnswer> page=ucs.getAllCollection(userId, nowpage, size);
+		Page<UserAnswer> page=ucs.getAllCollection(userId, nowPage, size);
 		mav.addObject("totalPage",page.getTotalPages());
-		mav.addObject("nowPage",nowpage);
+		nowPage++;
+		mav.addObject("nowPage",nowPage);
 		mav.addObject("totalElements",page.getNumberOfElements());
 		mav.addObject("content",page.getContent());
 		return mav;
 	}
 	@RequestMapping("/student-test.html")
 	public ModelAndView studenttest(
-			@RequestParam(value = "groupid") Integer groupid
+			@RequestParam(value = "groupid") Integer examid
 			,@RequestParam("time") Integer time){
-		Set<Subject> subjects=ss.SearchSubjectByGroupId(groupid);
+		Exam exam=xs.searchByExamid(examid);
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("content",subjects);
+		List<UserAnswer> content=exam.getUseranswer();
+		mav.addObject("content",content);
 		mav.setViewName("student-test");
 		mav.addObject("time",time);
 		return mav;
@@ -83,13 +85,15 @@ public class ViewController {
 	@RequestMapping("/student-history.html")
 	public ModelAndView studenthistory(
 			@RequestParam(value = "size", defaultValue = "5") Integer size
-			, @RequestParam(value = "nowPage", defaultValue = "0") Integer nowpage
+			, @RequestParam(value = "nowPage", defaultValue = "1") Integer nowPage
 			, HttpSession session){
+		nowPage--;
 		SessionUser su=(SessionUser) session.getAttribute("user");
-		Page<Exam> page=xs.searchPersonAllExam(su.getUserId(),nowpage,size);
+		Page<Exam> page=xs.searchPersonAllExam(su.getUserId(),nowPage,size);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("totalPage",page.getTotalPages());
-		mav.addObject("nowPage",nowpage);
+		nowPage++;
+		mav.addObject("nowPage",nowPage);
 		mav.addObject("totalElements",page.getNumberOfElements());
 		mav.addObject("content",page.getContent());
 		mav.setViewName("student-history");
@@ -120,18 +124,35 @@ public class ViewController {
 	@RequestMapping("/student-alltest.html")
 	public ModelAndView listAllTest(
 			@RequestParam(value = "size", defaultValue = "6") Integer size
-			, @RequestParam(value = "nowPage", defaultValue = "0") Integer nowpage
+			, @RequestParam(value = "nowPage", defaultValue = "1") Integer nowPage
 			, HttpSession session){
+		nowPage--;
 		SessionUser su=(SessionUser) session.getAttribute("user");
 		//Log.warn(su.getProfessionId());
-		Page<SubjectGroup> page=ss.listAllSubjectGroup(nowpage,size,su.getProfessionId());
+		Page<SubjectGroup> page=ss.listAllSubjectGroup(nowPage,size,su.getProfessionId());
 		ModelAndView mav=new ModelAndView();
 		//Log.warn(page.getNumberOfElements());
 		mav.addObject("totalPage",page.getTotalPages());
-		mav.addObject("nowPage",nowpage);
+		nowPage++;
+		mav.addObject("nowPage",nowPage);
 		mav.addObject("totalElements",page.getNumberOfElements());
 		mav.addObject("content",page.getContent());
 		mav.setViewName("student-alltest");
+		return mav;
+	}
+	@RequestMapping("/sutdent-random-test.html")
+	public ModelAndView randomtest(){
+		ModelAndView mav=new ModelAndView("sutdent-random-test");
+		return mav;
+	}
+	@RequestMapping("/student-santi.html")
+	public ModelAndView santi(){
+		ModelAndView mav=new ModelAndView("student-santi");
+		return mav;
+	}
+	@RequestMapping("/student-submit.html")
+	public ModelAndView submit(){
+		ModelAndView mav=new ModelAndView("student-submit");
 		return mav;
 	}
 	@RequestMapping("/manage-addsubject.html")
@@ -143,14 +164,16 @@ public class ViewController {
 	}
 	@RequestMapping("/manage-addtp.html")
 	public ModelAndView manageaddtp(
-			@RequestParam(value="nowpage",defaultValue = "0") Integer nowpage
+			@RequestParam(value="nowPage",defaultValue = "1") Integer nowPage
 			,@RequestParam(value="size",defaultValue= "5") Integer size){
+		nowPage--;
 		ModelAndView mav=new ModelAndView("manage-addtp");
 		List<Profession> pros=ps.searchAll();
 		mav.addObject("pros",pros);
-		Page<Subject> result=ss.SearchAllInPage(nowpage,size);
+		Page<Subject> result=ss.SearchAllInPage(nowPage,size);
 		mav.addObject("content",result.getContent());
-		mav.addObject("nowpage",nowpage);
+		nowPage++;
+		mav.addObject("nowPage",nowPage);
 		mav.addObject("TotalElements",result.getNumberOfElements());
 		mav.addObject("TotalPages",result.getTotalPages());
 		return mav;
@@ -186,29 +209,38 @@ public class ViewController {
 		mav.addObject("content",list);
 		return mav;
 	}
+	@RequestMapping("/manage-showtp.html")
+	public ModelAndView showtp(){
+		ModelAndView mav=new ModelAndView("manage-showtp");
+		return mav;
+	}
 	@RequestMapping("/manage-subjectlist.html")
 	public ModelAndView managesubjectlist(
-			@RequestParam(value="nowpage",defaultValue = "0") Integer nowpage
+			@RequestParam(value="nowPage",defaultValue = "1") Integer nowPage
 			,@RequestParam(value="size",defaultValue= "5") Integer size){
-		Page<Subject> result=ss.SearchAllInPage(nowpage, size);
+		nowPage--;
+		Page<Subject> result=ss.SearchAllInPage(nowPage, size);
 		List<Profession> pros=ps.searchAll();
 		ModelAndView mav=new ModelAndView("manage-subjectlist");
 		mav.addObject("content",result.getContent());
 		mav.addObject("TotalElements",result.getNumberOfElements());
 		mav.addObject("TotalPages",result.getTotalPages());
-		mav.addObject("nowpage",nowpage);
+		nowPage++;
+		mav.addObject("nowPage",nowPage);
 		mav.addObject("pros",pros);
 		return mav;
 	}
 	@RequestMapping("/manage-tplist.html")
 	public ModelAndView managetplist(
-			@RequestParam(value="nowpage",defaultValue = "0") Integer nowpage
+			@RequestParam(value="nowPage",defaultValue = "1") Integer nowPage
 			,@RequestParam(value="size",defaultValue= "5") Integer size){
+		nowPage--;
 		ModelAndView mav=new ModelAndView("manage-tplist");
-		Page<SubjectGroup> result=ss.SearchAllSubjectGroup(nowpage, size);
+		Page<SubjectGroup> result=ss.SearchAllSubjectGroup(nowPage, size);
 		mav.addObject("content",result.getContent());
 		mav.addObject("TotalElements",result.getNumberOfElements());
-		mav.addObject("nowpage",nowpage);
+		nowPage++;
+		mav.addObject("nowPage",nowPage);
 		mav.addObject("TotalPages",result.getTotalPages());
 		List<Profession> pros=ps.searchAll();
 		mav.addObject("pros",pros);
@@ -216,22 +248,42 @@ public class ViewController {
 	}
 	@RequestMapping("/manage-userlist.html")
 	public ModelAndView manageuserlist(
-			@RequestParam(value="nowpage",defaultValue = "0") Integer nowpage
+			@RequestParam(value="nowPage",defaultValue = "1") Integer nowPage
 			,@RequestParam(value="size",defaultValue= "5") Integer size){
+		nowPage--;
 		ModelAndView mav=new ModelAndView("manage-userlist");
 		List<Profession> pros=ps.searchAll();
 		mav.addObject("pros",pros);
-		Page<UserInfo> result=us.SearchAllInPage(nowpage,size);
+		Page<UserInfo> result=us.SearchAllInPage(nowPage,size);
 		mav.addObject("content",result.getContent());
 		mav.addObject("TotalElements",result.getNumberOfElements());
 		mav.addObject("TotalPages",result.getTotalPages());
-		mav.addObject("nowpage",nowpage);
+		nowPage++;
+		mav.addObject("nowPage",nowPage);
 		return mav;
 	}
 	@RequestMapping("/manage-orderlist.html")
 	public String manageorderlist(){
 		return "manage-orderlist";
 	}
-	
-	
+	@RequestMapping("/spmanage-addman.html")
+	public ModelAndView addman(){
+		ModelAndView mav=new ModelAndView("spmanage-addman");
+		return mav;
+	}
+	@RequestMapping("/spmanage-applylist.html")
+	public ModelAndView applylist(){
+		ModelAndView mav=new ModelAndView("spmanage-applylist.html");
+		return mav;
+	}
+	@RequestMapping("/spmanage-manlist.html")
+	public ModelAndView manlist(){
+		ModelAndView mav=new ModelAndView("spmanage-manlist.html");
+		return mav;
+	}
+	@RequestMapping("/spmanage-orderlist.html")
+	public ModelAndView orderlist(){
+		ModelAndView mav=new ModelAndView("spmanage-orderlist.html");
+		return mav;
+	}
 }

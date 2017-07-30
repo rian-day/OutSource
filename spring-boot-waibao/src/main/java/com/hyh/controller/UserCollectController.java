@@ -15,18 +15,20 @@ public class UserCollectController {
 	UserCollectService ucs;
 	
 	@RequestMapping("/collect.do")
-	public String collect(Integer useranswerId){
-		return ucs.collect(useranswerId);
+	public String collect(
+			@RequestParam("id") Integer id){
+		return ucs.collect(id);
 	}
 	@RequestMapping("/cancelCollect.do")
-	public String cancelCollect(Integer useranswerId){
-		return ucs.cancelCollect(useranswerId);
+	public String cancelCollect(
+			@RequestParam("id") Integer id){
+		return ucs.cancelCollect(id);
 	}
 	
 	@PostMapping("editAnalyse.do")
 	public String editAnalyse(
 			@RequestParam("analyse") String analyse
-			,@RequestParam("answerId") Integer answerId){
+			,@RequestParam("queId") Integer answerId){
 		return ucs.editAnalyse(answerId, analyse);
 	}
 	

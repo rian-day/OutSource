@@ -28,6 +28,7 @@ public class Exam {
 	//用户分数
 	private int usergrade;
 	private int professionId;
+	//创建时间
 	private String time;
 	private int userId;
 	@OneToMany(mappedBy="examId",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
@@ -35,9 +36,14 @@ public class Exam {
 	private List<UserAnswer> useranswer;
 	
 	
+	public Exam(){
+		this.name="未命名";
+	}
 	
 	
-	
+	public void adduseranswer(UserAnswer useranswer){
+		this.useranswer.add(useranswer);
+	}
 	public int getUsergrade() {
 		return usergrade;
 	}
