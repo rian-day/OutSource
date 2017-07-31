@@ -753,7 +753,7 @@ $(document).ready(function() {
 
 
 /*设置快速访问列表*/
-    $(".set-index-list").click(function(event) {
+    $("#set-index-list").click(function(event) {
         var obj = $(".index-show-list input[type=checkbox]");
         var order=new Array()
         $(obj).each(function(index, el) {
@@ -763,7 +763,7 @@ $(document).ready(function() {
             	order[index] = '0';
             }
         });
-        alert(order);
+        /*alert(order);*/
         $.ajax({
             type: "POST",
             url: "set-index-list.do",
