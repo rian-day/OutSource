@@ -18,15 +18,15 @@
 		<div class="box-right">
 			<div class="search-info">
 				<span class="glyphicon glyphicon-search"></span>
-				<span>search for inspiration</span>
+				<span><!-- search for inspiration --></span>
 			</div>
 			<div class="co-logo"></div>
 			<div class="login-btn">
 				<a class="totop-img" href="javascript:void(0);"><span class="glyphicon glyphicon-collapse-up"></span></a>
-				<a class="login-font" href=""><span>submit your site</span></a>
+				<a class="login-font" href="index.html"><span>Home</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png"/>
+				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -423,7 +423,7 @@
 				<span class="glyphicon glyphicon-remove" style="font-size:20px;color: red;cursor: pointer;" title="关闭"></span>
 			</div>
 			<table>
-				<tr>
+				<tr style="height: 30px;line-height: 30px;">
 					<th>ID</th>
 					<th>题目信息</th>
 					<th>添加</th>
@@ -478,7 +478,7 @@
 					<td>11</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr> -->
-				<tr>
+				<tr style="height: 50px;">
 					<th colspan="3">
  						<div class="paging">
  							<div class="lastPage">«</div>
@@ -518,7 +518,7 @@
 				<option value="1">职业1</option> 
 				<option value="2">职业2</option>
 			</select> -->
-			<select class="title-select">
+			<select class="pro-select">
 				<option value="0">全部职业</option>
 				<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
 			</select>
@@ -537,13 +537,6 @@
 							题目ID:<input type="text" class="timu-id" disabled="true"/><br/>
 							题目分值：
 							<input type="text" class="timu-fenzhi" />分<br/>
-							题目类型：
-							<select class="tp-title-select" name="">
-								<option value="1">单选</option> 
-								<option value="2">多选</option> 
-								<option value="3">填空</option> 
-								<option value="4">判断</option> 
-							</select><br/>
 							<div class="select-timu">选择题目</div>
 							<div class="insert-timu">录入题目</div>
 						</div>
@@ -557,6 +550,21 @@
 			</div>
 			<div class="clear"></div>
 		</div>
+		<div class="footers">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="../static/images/1.png" th:src="@{/images/1.png}"/>
+                </div>
+                <div class="col-md-2">
+                    <ul class="list-inline">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 	</div>
 
 </div>
@@ -630,8 +638,9 @@ function toSubPage(page){
         'page' : page
     };
 	alert(page);*/
-	page = page - 1;
-    $.ajax({
+	var theurl = "tp-subjectlist.do?zhiye=" + zhiyeSel + "&search=" + subSer + "&nowPage=" + page + "";
+	window.location.href="theurl";
+    /*$.ajax({
         type: "POST",
         url: "tp-subjectlist.do",
         data: {
@@ -646,7 +655,7 @@ function toSubPage(page){
                 alert('跳转失败');
             }
         }
-    }); 
+    }); */
 }
 
 $(document).ready(function() {

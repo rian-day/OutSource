@@ -19,15 +19,15 @@
 		<div class="box-right">
 			<div class="search-info">
 				<span class="glyphicon glyphicon-search"></span>
-				<span>search for inspiration</span>
+				<span><!-- search for inspiration --></span>
 			</div>
 			<div class="co-logo"></div>
 			<div class="login-btn">
 				<a class="totop-img" href="javascript:void(0);"><span class="glyphicon glyphicon-collapse-up"></span></a>
-				<a class="login-font" href=""><span>submit your site</span></a>
+				<a class="login-font" href="index.html"><span>Home</span></a>
 			</div>
 			<div class="logo-header">
-				<img src="../static/images/logo.png"/>
+				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
 			</div>
 		</div>
 		<div class="box-right-search">
@@ -60,7 +60,7 @@
 		<div class="head-view">操作列表</div>
 		<div class="list-view">
 			<table>
-				<tr>
+				<tr style="height: 30px;">
 					<th>管理员ID</th>
 					<th>操作类型</th>
 					<th>详情</th>
@@ -72,7 +72,7 @@
 					<td th:text="${orderlist.}">3</td>
 					<td th:text="${orderlist.}">4</td>
 				</tr>
-				<tr>
+				<tr style="height: 50px;">
 					<th colspan="4">
  						<div class="paging">
  							<div class="lastPage">«</div>
@@ -91,6 +91,21 @@
 				</tr>
 			</table>
 		</div>
+		<div class="footers">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="../static/images/1.png" th:src="@{/images/1.png}"/>
+                </div>
+                <div class="col-md-2">
+                    <ul class="list-inline">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 	</div>
 
 </div>
@@ -130,8 +145,9 @@ function topage(page){
 function toTpPage(page){
     var zhiyeSel = $(".title-select").val();
     var nanduSel = $(".hard-select").val();
-	page = page - 1;
-    $.ajax({
+    var theurl = "torderlist.do?nowPage=" + page + "";
+	window.location.href="theurl";
+    /*$.ajax({
         type: "POST",
         url: "tplist.do",
         data: {
@@ -146,7 +162,7 @@ function toTpPage(page){
                 alert('跳转失败');
             }
         }
-    });
+    });*/
 }
 </script>
 </body>

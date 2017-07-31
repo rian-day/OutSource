@@ -18,7 +18,7 @@
     padding: 15px;
     margin-top: 15px;
     background-color: white;
-    width: 80%锛�
+    width: 80%;
 }
 
 .list-timu {
@@ -28,6 +28,8 @@
     background-color: #fff;
     margin-right: 0px;
     float: left;
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .timu-list {
@@ -530,7 +532,7 @@
 	display:none
 }
 .release{
-    position: absolute;
+    position: fixed;
     bottom: 2%;
     width: 320px;
     height: 75px;

@@ -334,17 +334,19 @@ input[type='password']:focus {
 }
 
 .newPwdSpan,.ccc{
-    float: right;
+    margin-left: 50px;
     font-size: 12px !important;
     color: red !important;
     padding-top: 5px;
+    height:20px;
+    background-size: 20px;
 }
 
 .oldPwd,.newPwd1,.newPwd2{
     font-size: 13px;
 }
 .release{
-    position: absolute;
+    position: fixed;
     bottom: 2%;
     width: 320px;
     height: 75px;

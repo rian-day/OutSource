@@ -26,7 +26,7 @@ $(document).ready(function() {
         	});
         }   
     }); 
-    $(".search-info").click(function() {
+    /*$(".search-info").click(function() {
     	$(".overlay-content").css({
     		'z-index': '50000',
     		'opacity': '1',
@@ -37,7 +37,7 @@ $(document).ready(function() {
     	$(".box-right-search").css({
     		'display': 'flex'
     	});
-    });
+    });*/
     $(".box-close,.overlay-content,.pull-right").click(function() {
     	$(".overlay-content").css({
     		'opacity': '0'
@@ -348,7 +348,7 @@ $(document).ready(function() {
         $(".w-e-text p").text('');
     });
     $(".add-project").click(function() {
-        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"><br>题目分值：<input type="text"/>分<br>题目类型：<select class="title-select" name="">  <option class="title1" value="1">单选</option> <option class="title2" value="2">多选</option> <option class="title3" value="3">填空</option> <option class="title4" value="4">判断</option> </select><br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
+        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"><br>题目分值：<input type="text"/>分<br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
     });
     $(document).on("click",".timu-info .glyphicon",function(){
         $(this).parent().parent().remove();
@@ -864,12 +864,15 @@ $(document).ready(function() {
                 'pro' : pro,
                 'hrd' : hrd
             }*/
-            var timuid = [];
+            var timuinfo = [];
             $("#handle-1 li").each(function(index, el) {        //index是从零开始的
-                timuid.push((this).children(".timu-info").children(".timu-id").val());
-                /*var timu = {
+                var thisid = (this).children(".timu-info").children(".timu-id").val();
+                var thisfenshu = (this).children(".timu-info").children('.timu-fenzhi').val();
+                var timu = {
+                    'id' : thisid,
+                    'fenzhi' : thisfenshu
                 }
-                tp[index] = timu;*/
+                timuinfo.push(timu);
             });
             $.ajax({
                 type: "POST",
@@ -981,14 +984,14 @@ $(document).ready(function() {
         var zhiye = [];*/
         var timuList = [];
         $(".details").each(function(index, el) {
-            var comment = $(el).find('.subcom .subl span').text();
-            var type = $(el).find('.subt .subl .typeid span').text();
+            var comment = $(el).find('.subcom .subl span').text();      //内容
+            var type = $(el).find('.subt .subl .typeid span').text();       //类型
             var daan = [];
             $(this).find("td").each(function(index, el) {
-                daan.push($(el).text());
+                daan.push($(el).text());        //答案
             });
-            var tip = $(el).find('.subcom .subr .subtip span').text();
-            var zhiye = $(el).find('.subt .subl .proid span').text();
+            var tip = $(el).find('.subcom .subr .subtip span').text();      //解析
+            var zhiye = $(el).find('.subt .subl .proid span').text();       //职业
             var timu = {
                 'comment' : comment,
                 'type' : type,
@@ -1050,7 +1053,7 @@ $(document).ready(function() {
             success: function(data){
                 var listInfo = "<tr><th>ID</th><th>题目信息</th><th>添加</th></tr>";
                 for (var i = 0; i < 10; i++) {
-                    listInfo = listInfo + "<tr><th>" + data.id[i] +"</th><th>" + data.content[i] +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
+                    listInfo = listInfo + "<tr><th>" + data[i].content +"</th><th>" + data[i].content +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
                 }
                 $(".list-view table").html(listInfo);
             }
@@ -1067,6 +1070,12 @@ $(document).ready(function() {
         $(".uld-overlay").css({
             'z-index': '-1',
             'opacity': '0'
+        });
+    });
+    $(".black-out-curtain .glyphicon-remove").click(function() {
+        $(".black-out-curtain").css({
+            'opacity': '0',
+            'z-index': '-1'
         });
     });
 });

@@ -155,7 +155,7 @@
 	color: red
 }
 .release{
-    position: absolute;
+    position: fixed;
     bottom: 2%;
     width: 320px;
     height: 75px;

@@ -29,7 +29,7 @@ $(document).ready(function() {
 		$(".oaPage").attr({
 			'style' : 'display:none'
 		});
-		$(".taPage0").attr({
+		$(".taPage").attr({
 			'style' : 'display:none'
 		});
 		$(".paging ul").attr({
@@ -48,7 +48,7 @@ $(document).ready(function() {
 		$(".nowPage").attr({
 			'style' : 'display:none'
 		});
-		$(".taPage0").attr({
+		$(".taPage").attr({
 			'style' : 'display:none'
 		});
 		$(".paging ul").attr({
@@ -71,7 +71,7 @@ $(document).ready(function() {
 		$(".tbPage").attr({
 			'style' : 'display:none'
 		});
-		$(".taPage0").attr({
+		$(".taPage").attr({
 			'style' : 'display:none'
 		});
 		$(".paging ul").attr({
