@@ -27,10 +27,8 @@ public class ExamController {
 	SubjectService ss;
 	@Resource
 	ExamService es;
-	@Resource
 	
 	
-	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 	
 	
 	/**
@@ -64,6 +62,7 @@ public class ExamController {
 			Integer professionId
 			,HttpSession session
 			){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		String time=df.format(new Date());
 		SessionUser user=(SessionUser) session.getAttribute("user");
 		int userId=user.getUserId();
@@ -76,6 +75,7 @@ public class ExamController {
 			Integer id
 			,HttpSession session
 			){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		SessionUser user=(SessionUser) session.getAttribute("user");
 		int userId=user.getUserId();
 		String time=df.format(new Date());
