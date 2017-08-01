@@ -222,7 +222,7 @@ $(document).ready(function() {
                         if(table == "0")
                             window.location.href="student-alltest.html";
                         else
-                             window.location.href="manager-index.html"
+                             window.location.href="manage-index.html"
                 	}else
                         $(".loginalert").html(alertTxt[3]);
                 })
@@ -253,9 +253,9 @@ $(document).ready(function() {
 	        url = "register.do";
 	        $.post(url,args,function(data){
          		if(data == 1){
-         			alert("×¢²á³É¹¦,ÇëµÇÂ¼");		        	window.location.href="login.html";
+         			$("#myModal").modal('show');
          		}else{
-         			$(".prompt2").html("×¢²áÊ§°Ü");
+         			$("#errorModal").modal('show');
          		}
 	        })
 	    }

@@ -66,7 +66,7 @@
 			<div style="padding-bottom: 20px;height: 40px;display: flex;">
 				<form action="" method="get"> 
 					<label>请选择职业：</label> 
-					<select name="" class="zhiye"> 
+					<select name="" class="zhiye" th:remove="all-but-first" > 
 						<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}" value="0">请选择职业!</option>  
 						<option value="1">职业1</option> 
 						<option value="2">职业2</option> 
@@ -503,7 +503,7 @@
 	<div class="showview">
 		<div class="head-view">添加试卷</div>
 		<div class="tp-head-info">
-			试卷名称<input type="text" class="tpname" />
+			试卷名称<input type="text"/>
 			试卷难度
 			<select class="difficulty-select" name="">
 				<option value="0">请选择难度</option>
@@ -522,7 +522,6 @@
 				<option value="0">全部职业</option>
 				<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
 			</select>
-			考试时长<input type="text" class="tpmin" />
 			<input class="creat-suijitp" type="button" value="随机创建试卷"/>
 		</div>
 		<div id="handle">
@@ -546,6 +545,7 @@
 						<div class="add-project">添加题目</div>
 						<div class="sub-project">创建试卷</div>
 					</div>
+					
 				</ul>
 			</div>
 			<div class="clear"></div>

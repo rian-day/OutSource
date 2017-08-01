@@ -137,13 +137,14 @@
                     </div>
                 </div>
                 <div class="editInfo showInfo">
+                    <form method="post" action="editInfo.do">
                     <div class="touxiang">
                         <div class="img_show img_show1">
                             <div>
-                                <img src="../static/images/moren.png" width="103" height="103" alt="" id="upload" th:src="@{/images/moren.png}" />
+                                <img src="../static/images/moren.png" width="103" height="103" alt="" id="upload" th:src="@{/images/moren.png}"/>
                             </div>
                             <a href="javascript:;" class="a-upload">
-                                <input type="file" class="upfile" accept="*/*" id="fileToUpload" />点击上传头像
+                                <input type="file" class="upfile" accept="*/*" id="fileToUpload" name="Head" />点击上传头像
                             </a>
                         </div>
                     </div>
@@ -155,7 +156,7 @@
                                 </li>
                                 <li>
                                     <div class="name">
-                                        <input type="text" style="float: left;" />
+                                        <input type="text" style="float: left;" name="name" />
                                     </div>
                                 </li>
                             </ul>
@@ -167,7 +168,7 @@
                                 </li>
                                 <li>
                                     <div class="sex">
-                                        <select name="" id="">
+                                        <select name="sex" id="">
                                             <option value="男">男</option>
                                             <option value="女">女</option>
                                         </select>
@@ -192,8 +193,14 @@
                                 </li>
                                 <li>
                                     <div class="pro">
+<<<<<<< HEAD
+                                        <select name="pro" id="">
+                                            <option value="web工程师">web工程师</option>
+                                            <option value="java工程师">java工程师</option>
+=======
                                         <select name="" id="">
                                             <option value="web工程师" th:each="p :${pros}" th:text="${p.name}" th:value="${p.id}">web工程师</option>
+>>>>>>> 46f869d92571381164429c996dd39cc6c37357a5
                                         </select>
                                     </div>
                                 </li>
@@ -202,7 +209,7 @@
                         <div class="base wu">
                             <ul>
                                 <li>
-                                    <button type="button" class="button green baseButton">确定修改</button>
+                                    <button type="submit" class="button green baseButton">确定修改</button>
                                 </li>
                                 <li>
                                     <button type="button" class="button green apply">申请管理员</button>
@@ -213,6 +220,7 @@
                             </ul>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

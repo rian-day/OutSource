@@ -30,7 +30,6 @@
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
 						<li><a href="index.html">HOME</a></li>
-						<li><a href="#">移动端</a></li>
 						<li><a href="student-alltest.html">开始考试</a></li>
 						<li class="btn-cta"><a href="javascript:void(0);" class="ss"><span>注册</span></a></li>
 					</ul>
@@ -62,13 +61,13 @@
 							<div style="margin-left: 10%;padding:5px;color: red;font-size: 12px;height: 24px" class="loginalert"></div>
 							<div class="checkbox checkbox-success">
 		                        <input type="radio" name="radio4" id="radio8" checked="checked"/>
-		                        <label for="radio8">
+		                        <label for="radio8" class="radio8">
 		                            客户端
 		                        </label>
 		                    </div>
 		                    <div class="checkbox checkbox-danger">
 		                        <input type="radio" name="radio4" id="radio9"/>
-		                        <label for="radio9">
+		                        <label for="radio9" class="radio9">
 		                            管理员
 		                        </label>
 		                    </div>
@@ -163,6 +162,60 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
+		<!-- 代替alert -->
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	        <div class="modal-dialog" style="width: 450px;">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+	                        &times;
+	                    </button>
+	                    <h4 class="modal-title" id="myModalLabel">
+	                    注册信息
+	                	</h4>
+	                </div>
+	                <div class="modal-body">
+	                    注册成功，请进行登录
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-primary" onclick="window.location.href='login.html'">
+	                       登录
+	                    </button>
+	                </div>
+	            </div>
+	            <!-- /.modal-content -->
+	        </div>
+	        <!-- /.modal -->
+	    </div>
+	    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	        <div class="modal-dialog" style="width: 450px;">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+	                        &times;
+	                    </button>
+	                    <h4 class="modal-title" id="myModalLabel">
+	                    注册信息
+	                	</h4>
+	                </div>
+	                <div class="modal-body">
+	                    注册失败！请稍后尝试。
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn next">
+	                       确定
+	                    </button>
+	                </div>
+	            </div>
+	            <!-- /.modal-content -->
+	        </div>
+	        <!-- /.modal -->
+	    </div>
 	</header>
 
 	
