@@ -220,7 +220,7 @@ $(document).ready(function() {
                 $.post(url, args, function(data) {
                 	if(data==1){
                         if(table == "0")
-                            window.location.href="student-alltest.html";
+                            window.location.href="student-index.html";
                         else
                              window.location.href="manage-index.html"
                 	}else
