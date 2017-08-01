@@ -53,6 +53,11 @@ public class ViewController {
 	public String forget(){
 		return "forget";
 	}
+	@RequestMapping("/student-index.html")
+	public ModelAndView studentIndex(){
+		ModelAndView mav=new ModelAndView("student-index");
+		return mav;
+	}
 	@RequestMapping("/student-error.html")
 	public ModelAndView studenterror (
 			@RequestParam(value = "size", defaultValue = "5") Integer size
