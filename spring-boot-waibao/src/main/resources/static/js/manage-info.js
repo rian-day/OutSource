@@ -35,7 +35,7 @@ $('.img_show').each(function() {
     var $this = $(this),
         btn = $this.find('.upfile'),
         img = $this.find('img');
-        btn.on('change', function() {
+    btn.on('change', function() {
         var file = $(this)[0].files[0],
             imgSrc = $(this)[0].value,
             url = URL.createObjectURL(file);
@@ -44,7 +44,7 @@ $('.img_show').each(function() {
             return false;
         } else {
             img.attr('src', url);
-            img.css({ 'opacity': '1'});
+            img.css({ 'opacity': '1' });
         }
     });
 });
@@ -59,7 +59,7 @@ $(".next").on("click",function(){
     else{
         var url = "login.do";
         var args = {
-            "username":mail,
+            "mail":mail,
             "password":oldPwd,
             "boss":0
         }
@@ -103,7 +103,7 @@ $(".pwdButton").click(function(){
     }else if (newPwd1.length < 6) {
         words = "密码至少含有6个字符";
     }else{
-        var url = "editPwd.do";
+        var url = "admin-editPwd.do";
         var args = {
             "mail":mail,
             "password": newPwd1,
@@ -125,16 +125,14 @@ $(".pwdButton").click(function(){
 $(".baseButton").click(function(){
     name = $(".editInfo .base ul li .name input").val();
     sex = $(".editInfo .base ul li .sex select").val();
-    pro = $(".editInfo .base ul li .pro select").val();
     var words = "";
     if(name.length == 0) {
         words = "姓名不能为空";
     }else{
-        var url = "editInfo.do";
+        var url = "admin-editInfo.do";
         var args = {
-            "username":mail,
+            "mail":mail,
             "name": name,
-            "professionId":pro,
             "sex":sex,
             "boss":0
         }
@@ -157,31 +155,32 @@ $(".baseButton").click(function(){
  $("#upload").on('click', function() {  
         $('#fileToUpload').click();  
     }); 
- // $('#fileToUpload').on('change', function() {  
- //        $.ajaxFileUpload({  
- //            url:'',  
- //            secureuri:false,  
- //            fileElementId:'fileToUpload',//file标签的id  
- //            dataType: 'json',//返回数据的类型  
- //            data:{name:'logan'},//一同上传的数据  
- //            success: function (data, status) {  
- //                //把图片替换  
- //                var obj = jQuery.parseJSON(data);  
- //                $("#upload").attr("src", "../image/"+obj.fileName);  
+ $('#fileToUpload').on('change', function() {  
+    alert(1);
+        $.ajaxFileUpload({  
+            url:'',  
+            secureuri:false,  
+            fileElementId:'fileToUpload',//file标签的id  
+            dataType: 'json',//返回数据的类型  
+            data:{name:'logan'},//一同上传的数据  
+            success: function (data, status) {  
+                //把图片替换  
+                var obj = jQuery.parseJSON(data);  
+                $("#upload").attr("src", "../image/"+obj.fileName);  
       
- //                if(typeof(data.error) != 'undefined') {  
- //                    if(data.error != '') {  
- //                        alert(data.error);  
- //                    } else {  
- //                        alert(data.msg);  
- //                    }  
- //                }  
- //            },  
- //            error: function (data, status, e) {  
- //                alert(e);  
- //            }  
- //        });  
- //    });  
+                if(typeof(data.error) != 'undefined') {  
+                    if(data.error != '') {  
+                        alert(data.error);  
+                    } else {  
+                        alert(data.msg);  
+                    }  
+                }  
+            },  
+            error: function (data, status, e) {  
+                alert(e);  
+            }  
+        });  
+    });  
 $(".release-content .glyphicon-remove").click(function() {
     $(".release").css("-webkit-animation-name","bounceoutL");
     $(".release").css("-webkit-animation-duration","1s");
@@ -208,13 +207,3 @@ $(".btn-info").click(function() {
     $(".alerts").css("display","none");
     $(".mask").css("display","none");
 });
-// $(".changes").click(function() {
-//     name=$(".name>input").val();
-//     sex=$(".sex>select").val();
-//     pro=$(".pro>select").val();
-//     $.post(url,args,function(data){
-//         if (data==1) {
-//             alert("成功修改！")；
-//         }
-//     }
-// });
