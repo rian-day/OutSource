@@ -51,6 +51,7 @@ $(".btn").click(function() {
         var url = "editAnalyse.do";
         var args = {
             "analyse": analyse
+            "queId":queId
         }
         $.post(url, args, function(data) {
 
@@ -63,26 +64,31 @@ $(".btn").click(function() {
     }
 })
 var p;
-var array = new Array();
+var array = new Array("","");
+var www = window.document.location.href;
+var myurl = www.substring(0, www.indexOf('?'));
+
 
 //错题题查询 带条件查询
 $(".rightDiv button").click(function() {
     $(".choose-value").each(function(i) {
         array[i] = $(this).text();
+        if(array[i] == ""||array[i] == null||array[i] == undefined){
+            array[i] = "";
+        }
     });
     var args = {
         "type": array[0],
         "pro": array[1]
     }
-    var url = "selectError.do";
-    $.post(url, args, function(data) {})
+    // var url = "selectError.do";
+    // $.post(url, args, function(data) {})
+    window.location.href = myurl + "?type=" + array[0] + "&pro=" + array[1];
 })
 
 var ye = 0; //当前页数
 var limit = 5; //分页的数字按钮数(建议取奇数)
 var pp = ($(".hidespan:last").text()) * 1;
-var www = window.document.location.href;
-var myurl = www.substring(0, www.indexOf('?'));
 
 //截取
 function getUrlParam(name) {
@@ -92,6 +98,8 @@ function getUrlParam(name) {
     return null; //返回参数值
 }
 ye = getUrlParam("nowPage");
+var pro = getUrlParam("pro");
+var type = getUrlParam("type");
 if (ye == null || ye == "") {
     ye = 1;
 }
@@ -102,7 +110,7 @@ $("#page").Page({
     liNums: limit, //分页的数字按钮数(建议取奇数)
     activeClass: 'activP', //active 类样式定义
     callBack: function(page) {
-        window.location.href = myurl + "?nowPage=" + page + "";
+        window.location.href = myurl + "?nowPage=" + page + "&type=" + type + "&pro=" + pro;
     }
 })
 var queId;

@@ -113,7 +113,7 @@ $(".pwdButton").click(function(){
         	if(data == 1){
         		alert("修改成功");
                 setTimeout("history.go(0)" ,500);
-        	}else if(data == 1){
+        	}else if(data == 0){
         		$(".newPwdSpan").html("修改失败");
         	}
         })
