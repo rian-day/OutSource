@@ -50,7 +50,7 @@ $(".btn").click(function() {
         console.log("analyse"+analyse);
         var url = "editAnalyse.do";
         var args = {
-            "analyse": analyse
+            "analyse": analyse,
             "queId":queId
         }
         $.post(url, args, function(data) {
@@ -68,8 +68,8 @@ var array = new Array("","");
 var www = window.document.location.href;
 var myurl = www.substring(0, www.indexOf('?'));
 
-
 //错题题查询 带条件查询
+var queId = $(".error-contain li:eq(0) .hidespan").text();
 $(".rightDiv button").click(function() {
     $(".choose-value").each(function(i) {
         array[i] = $(this).text();
@@ -77,12 +77,6 @@ $(".rightDiv button").click(function() {
             array[i] = "";
         }
     });
-    var args = {
-        "type": array[0],
-        "pro": array[1]
-    }
-    // var url = "selectError.do";
-    // $.post(url, args, function(data) {})
     window.location.href = myurl + "?type=" + array[0] + "&pro=" + array[1];
 })
 
@@ -99,7 +93,11 @@ function getUrlParam(name) {
 }
 ye = getUrlParam("nowPage");
 var pro = getUrlParam("pro");
+if(pro == null)
+    pro="";
 var type = getUrlParam("type");
+if(type == null)
+    type="";
 if (ye == null || ye == "") {
     ye = 1;
 }
@@ -113,15 +111,6 @@ $("#page").Page({
         window.location.href = myurl + "?nowPage=" + page + "&type=" + type + "&pro=" + pro;
     }
 })
-var queId;
-/******/
-$(".error-contain ul li").click(function() {
-    var queId = $(this).children(".hidespan").text();
-
-})
-
-
-
 
 
 $(".release-content .glyphicon-remove").click(function() {
@@ -180,4 +169,5 @@ $(".error-contain li").click(function() {
     $(u).css({
         "display": "block"
     })
+    queId = $(".error-contain li:eq(" + index + ") .hidespan").text();
 })
