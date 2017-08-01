@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hyh.bean.User;
+import com.hyh.bean.UserBean;
 import com.hyh.entity.UserInfo;
 import com.hyh.repository.UserInfoDao;
 import com.hyh.service.LoginService;
@@ -39,7 +39,7 @@ public class MainController {
 	@PostMapping("/register.do")
 	@ResponseBody
 	public String Register( 
-			User user
+			UserBean user
 //			@RequestParam(value = "mail", defaultValue = "null") String mail
 //			,@RequestParam(value = "password", defaultValue = "null") String password
 //			,@RequestParam(value = "name", defaultValue = "null") String name

@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.hyh.bean.SubjectGroupBean;
 import com.hyh.entity.Administrators;
 import com.hyh.entity.Subject;
 import com.hyh.entity.SubjectGroup;
@@ -17,14 +18,15 @@ public class SubjectGroupService {
 	@Resource
 	SubjectDao sd;
 	
-	public String createGroup(
-			Administrators createAdmin
-			,String groupName
-			,int[] subjectId
-			,int[] grade
-			,String createTime
-			,int limitedTime
-			,int professionId){
+	public String createGroup(SubjectGroupBean sgb){
+		int[] subjectId=sgb.getSubjectId();
+		int[] grade=sgb.getGrade();
+		String groupName=sgb.getGroupName();
+		Administrators createAdmin=sgb.getCreateAdmin();
+		String createTime=sgb.getCreateTime();
+		int professionId=sgb.getProfessionId();
+		int limitedTime=sgb.getLimitedTime();
+		int level=sgb.getLevel();
 		SubjectGroup group=new SubjectGroup();
 		for(int i=0;i<subjectId.length;i++){
 			Subject subject=sd.findById(subjectId[i]);
@@ -41,6 +43,7 @@ public class SubjectGroupService {
 		group.setProfessionId(professionId);
 		group.setTotalgrade(totalgrade);
 		group.setLimitedTime(limitedTime);
+		group.setLevel(level);
 		sgd.save(group);
 		return "1";
 	}

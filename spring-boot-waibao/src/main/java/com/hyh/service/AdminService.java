@@ -23,4 +23,15 @@ public class AdminService {
 	public char[] getAdminPage(int id){
 		return ad.findById(id).getIndexOrder();
 	}
+	public Administrators searchById(int id){
+		return ad.findById(id);
+	}
+	
+	public String editAndminInfo(int adminId,String name,char sex){
+		Administrators admin=ad.findById(adminId);
+		admin.setName(name);
+		admin.setSex(sex);
+		ad.save(admin);
+		return "1";
+	}
 }

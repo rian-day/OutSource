@@ -29,32 +29,4 @@ public class SubjectController {
 		return "success";
 	}
 
-	@RequestMapping("/searchsubject")
-	@ResponseBody
-	public ModelAndView SearchSubject(@RequestParam(value="id") Integer id){
-		Subject result=ss.SearchSubject(id);
-		ModelAndView mav=new ModelAndView();
-		mav.setViewName("index");
-		mav.addObject("result", result);
-		mav.addObject("name", "hyh");
-		
-//		String out="";
-//		for(int i=0;i<result.size();i++){
-//			Set imgs=result.get(i).getSubjectImg();
-//			Set options=result.get(i).getOptions();
-//			Iterator it1=imgs.iterator();
-//			Iterator it=options.iterator();
-//			while(it.hasNext()){
-//				SubjectOptions option=(SubjectOptions) it.next();
-//				out+="<br/>content:"+option.getContent();
-//				out+="<br/>option:"+option.getOptionName();
-//			}
-//			while(it1.hasNext()){
-//				SubjectImg img=(SubjectImg) it1.next();
-//				out+="<br/>src:"+img.getSrc();
-//				out+="<br/>id:"+img.getId();
-//			}
-//		}
-		return mav;
-	}
 }

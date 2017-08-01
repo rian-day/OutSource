@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hyh.bean.SessionUser;
-import com.hyh.bean.User;
+import com.hyh.bean.UserBean;
 import com.hyh.entity.Administrators;
 import com.hyh.entity.Profession;
 import com.hyh.entity.UserInfo;
@@ -45,7 +45,7 @@ public class UserController {
 // }
  	@RequestMapping("/editInfo.do")
 	@ResponseBody
-	public String changeUserInfo(User user){
+	public String changeUserInfo(UserBean user){
  		return userService.changeUserInfo(user);
  		
  	}

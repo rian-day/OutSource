@@ -1,6 +1,6 @@
 package com.hyh.bean;
 
-public class User {
+public class UserBean {
 	private String username; //mail
 	private String password;
 	private String name;

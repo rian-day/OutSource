@@ -27,6 +27,8 @@ public class SubjectGroup {
 	private int limitedTime;
 	//试卷名字
 	private String name;
+	//难度
+	private int level;
 	
 	private int totalgrade;
 	
@@ -113,6 +115,12 @@ public class SubjectGroup {
 	}
 	public void setSubjects(Set<Subject> subjects) {
 		this.subjects = subjects;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
 	}
 	
 	

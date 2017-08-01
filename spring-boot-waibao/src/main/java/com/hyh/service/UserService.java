@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.hyh.bean.User;
+import com.hyh.bean.UserBean;
 import com.hyh.entity.Administrators;
 import com.hyh.entity.UserInfo;
 import com.hyh.repository.AdministratorsDao;
@@ -59,7 +59,7 @@ public class UserService {
 		 return "1";
 	 }
 	 //修改用户信息
-	 public String changeUserInfo(User user){
+	 public String changeUserInfo(UserBean user){
 		 String mail=user.getUsername();
 		 ArrayList<UserInfo> list=userdao.findByMail(mail);
 		 if(list.size()==0)
