@@ -59,7 +59,7 @@ $(".next").on("click",function(){
     else{
         var url = "login.do";
         var args = {
-            "mail":mail,
+            "username":mail,
             "password":oldPwd,
             "boss":0
         }
