@@ -1,7 +1,6 @@
 package com.hyh.entity;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -11,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.NotFound;
@@ -44,22 +43,7 @@ public class Subject {
 	private int professionId;
 	
 	
-	
-	public String getCreateTime() {
-		return createTime;
-	}
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
-
-	public String getCreateAdmin() {
-		return createAdmin;
-	}
-
-	public void setCreateAdmin(String createAdmin) {
-		this.createAdmin = createAdmin;
-	}
 	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	@NotFound(action=NotFoundAction.IGNORE)//代表可以为空，允许为null
 	private List<SubjectOptions> options;
@@ -71,8 +55,8 @@ public class Subject {
 	@OneToMany(mappedBy="subject",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
 	private Set<UserAnswer> userAnswer;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private SubjectGroup subjectGroup;
+	@ManyToMany(mappedBy = "subjects")
+	private Set<SubjectGroup> subjectGroup;
 	
 	public void addOption(SubjectOptions option){
 		this.options.add(option);
@@ -92,7 +76,22 @@ public class Subject {
 //		this.professionId=professionId;
 //		this.options=options;
 //	}
+	
+	public String getCreateTime() {
+		return createTime;
+	}
 
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getCreateAdmin() {
+		return createAdmin;
+	}
+
+	public void setCreateAdmin(String createAdmin) {
+		this.createAdmin = createAdmin;
+	}
 	public int getId() {
 		return id;
 	}
@@ -132,12 +131,15 @@ public class Subject {
 	public void setUserAnswer(Set<UserAnswer> userAnswer) {
 		this.userAnswer = userAnswer;
 	}
-	public SubjectGroup getSubjectGroup() {
+	
+	public Set<SubjectGroup> getSubjectGroup() {
 		return subjectGroup;
 	}
-	public void setSubjectGroup(SubjectGroup subjectGroup) {
+
+	public void setSubjectGroup(Set<SubjectGroup> subjectGroup) {
 		this.subjectGroup = subjectGroup;
 	}
+
 	public int getProfessionId() {
 		return professionId;
 	}

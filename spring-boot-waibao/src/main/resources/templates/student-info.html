@@ -113,7 +113,7 @@
                                     <p>邮箱:</p>
                                 </li>
                                 <li>
-                                    <div class="mail">1140746132@qq.com</div>
+                                    <div class="mail" th:text="${user.mail}">1140746132@qq.com</div>
                                 </li>
                             </ul>
                         </div>
@@ -193,8 +193,7 @@
                                 <li>
                                     <div class="pro">
                                         <select name="" id="">
-                                            <option value="web工程师">web工程师</option>
-                                            <option value="java工程师">java工程师</option>
+                                            <option value="web工程师" th:each="p :${pros}" th:text="${p.name}" th:value="${p.id}">web工程师</option>
                                         </select>
                                     </div>
                                 </li>

@@ -20,13 +20,6 @@ public class AppTest {
 	SubjectService subjectservice;
 	@Resource
 	SubjectDao sd;
-	@Test
-	public void cTest(){
-		System.out.println("开始单元测试");
-		List<Subject> list=subjectservice.SearchSubject(1);
-		Subject sj=list.get(0);
-		System.out.println("content:"+sj.getContent()+"answer:"+sj.getRealAnswer());
-	}
 	
 	@Test
 	public void MyTest(){

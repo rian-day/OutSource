@@ -47,6 +47,7 @@ public class UserController {
 	@ResponseBody
 	public String changeUserInfo(User user){
  		return userService.changeUserInfo(user);
+ 		
  	}
  	/**
  	 * 检查登录
@@ -107,7 +108,13 @@ public class UserController {
  public String changePassword(
 		 @RequestParam("mail") String mail
 		 , @RequestParam("password") String password
-		 , @RequestParam("boss") String boss){
+		 , @RequestParam("boss") String boss
+		 , HttpSession session){
+//	 SessionUser user=(SessionUser) session.getAttribute("user");
+//	 String mail=user.getMail();
+//	 Log.warn(password);
+//	 Log.warn(boss);
+//	 Log.warn(mail);
 	 if(boss.equals("1")){
 		 return userService.updateUserInfo(mail, password);
 	 }else{

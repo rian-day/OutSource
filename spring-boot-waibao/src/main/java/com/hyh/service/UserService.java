@@ -140,6 +140,8 @@ public class UserService {
 //			   }
 			   // 上传到指定目录
 			   file.transferTo(dest);
+			   UserInfo user=userdao.findById(userId);
+			   user.setHead(filePath.concat(newFileName));
 			 
 			   // 将图片流转换进行BASE64加码
 			   //BASE64Encoder encoder = new BASE64Encoder();

@@ -53,17 +53,20 @@
                     </li>
                     <li>
                     	<!-- 未登录状态 -->
-                        <!-- <a class="page-scroll" href="login.html">登录|注册</a> -->
+                        <a th:if="${ #httpSession.isEmpty(user)}" class="page-scroll" href="login.html">登录|注册</a>
                         <!-- 登陆状态 -->
-                        <!-- <a href="index.html" class="page-scroll" data-dropdown="#dropdown-standard"><img src="../static/images/avatar-1.jpg"><span>用户1</span></a>
+                        <a th:if="${not #httpSession.isEmpty(user)}" class="page-scroll" href="index.html" data-dropdown="#dropdown-standard">
+                        	<img src="../static/images/avatar-1.jpg" />
+                        	<span>用户1</span>
+                        </a>
                         <div class="dropdown-menu dropdown-anchor-top-left dropdown-has-anchor" id="dropdown-standard">
-						<ul>
-							<li><a href="#">考试中心</a></li>
-							<li><a href="#">个人信息</a></li>
-							<li class="divider"></li>
-							<li><a href="#">退出</a></li>
-						</ul> -->
-				</div>
+							<ul>
+								<li><a href="#">考试中心</a></li>
+								<li><a href="#">个人信息</a></li>
+								<li class="divider"></li>
+								<li><a href="#">退出</a></li>
+							</ul> 
+						</div>
                     </li>
                 </ul>
             </div>

@@ -111,6 +111,7 @@ public class ViewController {
 		}
 		mav.addObject("pro",pro);
 		mav.addObject("user",su);
+		mav.addObject("pros",pros);
 		return mav;
 	}
 	@RequestMapping("/student-history-test.html")

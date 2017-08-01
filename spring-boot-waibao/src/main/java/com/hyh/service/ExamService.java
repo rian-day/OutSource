@@ -76,7 +76,7 @@ public class ExamService {
 	 * @return
 	 */
 	public Exam buildByGroupId(int userId,SubjectGroup subjectgroup,String time){
-		Set<Subject> set=subjectgroup.getSubject();
+		Set<Subject> set=subjectgroup.getSubjects();
 		Exam exam =new Exam();
 		Iterator<Subject> iterator=set.iterator();
 		while(iterator.hasNext()){

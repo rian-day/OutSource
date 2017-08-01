@@ -1,10 +1,6 @@
 package com.hyh.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hyh.bean.SubjectC;
 import com.hyh.entity.Subject;
 import com.hyh.service.ExamService;
 import com.hyh.service.SubjectService;
@@ -37,10 +32,10 @@ public class SubjectController {
 	@RequestMapping("/searchsubject")
 	@ResponseBody
 	public ModelAndView SearchSubject(@RequestParam(value="id") Integer id){
-		List<Subject> result=ss.SearchSubject(id);
+		Subject result=ss.SearchSubject(id);
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("index");
-		mav.addObject("items", result);
+		mav.addObject("result", result);
 		mav.addObject("name", "hyh");
 		
 //		String out="";

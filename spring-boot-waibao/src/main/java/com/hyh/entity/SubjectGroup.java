@@ -8,8 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class SubjectGroup {
@@ -33,11 +35,16 @@ public class SubjectGroup {
 	private int[] singlegrade;
 	
 	
-	@OneToMany(mappedBy="subjectGroup",fetch=FetchType.LAZY,cascade={CascadeType.MERGE})
-	private Set<Subject> subject;
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "SubjectGroup_Subject", 
+            joinColumns = { @JoinColumn(name = "subjectGroupId", referencedColumnName = "id") }, 
+            inverseJoinColumns = { @JoinColumn(name = "subjectId", referencedColumnName = "id") })
+	private Set<Subject> subjects;
 
 	
-	
+	public void addSubject(Subject subject){
+		this.subjects.add(subject);
+	}
 	public Administrators getCreateAdmin() {
 		return createAdmin;
 	}
@@ -86,14 +93,6 @@ public class SubjectGroup {
 		this.name = name;
 	}
 
-	public Set<Subject> getSubject() {
-		return subject;
-	}
-
-	public void setSubject(Set<Subject> subject) {
-		this.subject = subject;
-	}
-
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -108,6 +107,12 @@ public class SubjectGroup {
 
 	public void setLimitedTime(int limitedTime) {
 		this.limitedTime = limitedTime;
+	}
+	public Set<Subject> getSubjects() {
+		return subjects;
+	}
+	public void setSubjects(Set<Subject> subjects) {
+		this.subjects = subjects;
 	}
 	
 	

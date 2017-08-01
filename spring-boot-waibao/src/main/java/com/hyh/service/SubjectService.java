@@ -86,8 +86,8 @@ public class SubjectService {
 		subjectdao.save(list);
 		return "1";
 	}
-	public List<Subject> SearchSubject(int id){
-		List<Subject> result=subjectdao.findById(id);
+	public Subject SearchSubject(int id){
+		Subject result=subjectdao.findById(id);
 		return result;
 	}
 	public Page<SubjectGroup> listAllSubjectGroup(int nowpage ,int size,int professionId){
@@ -96,7 +96,7 @@ public class SubjectService {
 		return sgd.findByProfessionId(professionId, pageable);
 	}
 	public Set<Subject> SearchSubjectByGroupId(int groupid){
-		return sgd.findById(groupid).getSubject();
+		return sgd.findById(groupid).getSubjects();
 	}
 	
 }

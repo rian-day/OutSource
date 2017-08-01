@@ -13,6 +13,7 @@ import com.hyh.entity.UserInfo;
 public interface UserInfoDao extends JpaRepository<UserInfo, Long> {
 	ArrayList<UserInfo> findByName(String Name);
 	ArrayList<UserInfo> findByMail(String mail);
+	UserInfo findById(int id);
 	
 	ArrayList<UserInfo> findByMailAndPassword(String Mail,String Password);
 	
