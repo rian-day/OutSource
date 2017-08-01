@@ -29,8 +29,11 @@
             	$.post(url,args,function(data){
             		if(data == 0){
             			$("#account_check").html("密码重置失败");
-            		}else if(data == 1)
-            			 window.location.href = 'student-info.html';
+            		}else if(data == 1){
+                        alert("修改成功，请登录。");
+                        window.location.href = 'login.html';
+                    }
+            			 
             	})
             }            
         }else if(success == "0"){
@@ -98,7 +101,7 @@
          
     });
 
-   
+   //发送了验证码开始倒计时
     function countDown(){
         if (countdown == 0) {
             $(".yanzheng").attr("disabled", "");

@@ -55,14 +55,6 @@ $("#page").Page({
     }
 })
 
-//分页请求页面
-var url = "selectHistory.do";
-var args = {
-    "page":ye - 1
-}
-$.post(url,args,function(data){
-
-})
 
 $(".release-content .glyphicon-remove").click(function() {
     $(".release").css("-webkit-animation-name","bounceoutL");

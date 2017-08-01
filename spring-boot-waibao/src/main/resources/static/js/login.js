@@ -245,7 +245,7 @@ $(document).ready(function() {
 	        	"username":mail,
 	        	"password":pass,
 	        	"name":name,
-	        	"pro":pro,
+	        	"professionId":pro,
 	        	"yzm":yzm,
 	        	"sex":sex
 	         	}
