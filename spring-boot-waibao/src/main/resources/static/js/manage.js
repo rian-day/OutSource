@@ -348,8 +348,7 @@ $(document).ready(function() {
         $(".w-e-text p").text('');
     });
     $(".add-project").click(function() {
-        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"><br>题目分值：<input type="text"/>分<br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
-    });
+        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"/><br/>题目分值：<input type="text" class="timu-fenzhi" />分<br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");});
     $(document).on("click",".timu-info .glyphicon",function(){
         $(this).parent().parent().remove();
     });
@@ -848,40 +847,38 @@ $(document).ready(function() {
     });
     /*提交试卷信息*/
     $(".sub-project").click(function() {
-        /*var tp = [];*/
-        var name = $(".tp-head-info input[type=text]").val();
+        var name = $(".tp-head-info input .tpname").val();
         var pro = $(".tp-head-info .pro-select option:selected").val();
         var hrd = $(".tp-head-info .difficulty-select option:selected").val();
+        var fenzhong = $(".tp-head-info input .tpmin").val();
         if (name=="") {
             alert('请输入试卷名！');
         }else if(pro=='0'){
             alert('请选择职业！');
         }else if(hrd=='0'){
             alert('请选择难度！');
+        }else if(fenzhong==""){
+            alert('请填加时长！');
         }else{
-            /*tp = {
-                'name' : name,
-                'pro' : pro,
-                'hrd' : hrd
-            }*/
-            var timuinfo = [];
+            var timuid = [];
+            var timufenshu = [];
             $("#handle-1 li").each(function(index, el) {        //index是从零开始的
-                var thisid = (this).children(".timu-info").children(".timu-id").val();
-                var thisfenshu = (this).children(".timu-info").children('.timu-fenzhi').val();
-                var timu = {
-                    'id' : thisid,
-                    'fenzhi' : thisfenshu
-                }
-                timuinfo.push(timu);
+                var thisid = $(el).find(".timu-info .timu-id").val();
+                var thisfenshu = $(el).find(".timu-info .timu-fenzhi").val();
+                timuid[index] = thisid;
+                timufenshu[index] = thisfenshu;
             });
+            alert(timufenshu);
             $.ajax({
                 type: "POST",
                 url: "sendtp.do",
                 data: {
-                    'name' : name,      //名称
-                    'pro' : pro,        //职业
-                    'hrd' : hrd,         //难度
-                    'timuid' : timuid,      //题目id(数组)
+                    'groupname' : name,      //名称
+                    'professionId' : pro,        //职业
+                    'level' : hrd,         //难度
+                    'subjectId' : timuid,      //题目id(数组)
+                    'grade' : timufenshu,
+                    'limitedTime' : fenzhong
                 },
                 dataType: "json",
                 success: function(data){

@@ -1,73 +1,4 @@
-// var length = "";
-// var name, sex, mail;
-// var info = new Array();
-// $("a").click(function() {
-//     var lo = $(this).attr("class");
-//     if (lo == 'editMark') {
-//         //进行修改操作(基本信息)
-//         info[0] = $(".name").text();
-//         info[1] = $(".sex").text();
-//         info[2] = $(".mail").text();
-//         info[3] = $(".pro").text();
-//         var i = 0;
-//         $(".tableEbi td input").each(function() {
-//             $(this).val(info[i]);
-//             i++;
-//         });
-//         //显示修改界面(基本信息)
-//         $(".studentInfo").fadeOut();
-//         setTimeout('$(".studentEdit").fadeIn();', 650)
-//     }else if(lo == "editPwd"){
-//         //进行修改操作(密码)       
-//         info[0] = $(".mail").text();
-//         $(".tableEpI tr td input[type='text']").each(function() {
-//             $(this).val(info[0]);
-//         });
-//         //显示修改界面(密码)
-//         $(".studentInfo").fadeOut();
-//         setTimeout('$(".editPassword").fadeIn();', 650)
-//     } 
-//     else {
-//         $(".editPassword").fadeOut();
-//         $(".studentEdit").fadeOut();
-//         setTimeout('$(".studentInfo").fadeIn();', 650)
-//     }
-// })
-// $(".jobSelect").mouseenter(function() {
-//     $(this).css({
-//         "background-color": "#DDDDDD"
-//     })
-// })
-// $(".jobSelect").mouseout(function() {
-//     $(this).css({
-//         "background-color": "#FFFFFF"
-//     })
-// })
-// $(".jobSelect").click(function() {
-//     var info = ($(this).text());
-//     if(info == '女'||info == '男')
-//         $("#sexShow").val($(this).text());
-//     else
-//         $("#jobShow").val($(this).text());
-// })
 
-// $("#PwdEdit").click(function(){
-//     var password1 = $(".password1").val();
-//     var password2 = $(".password2").val();
-//     if(password1 != password2){
-//        $(".pwdAlert").fadeIn();
-//        return false;
-//     }
-// })
-
-
-
-
-
-
-// $(".close").click(function(){
-//     $(".pwdAlert").fadeOut();
-// })
 var name, sex, mail, pro;
 $(".nav-tabs li").click(function() {
 
@@ -98,7 +29,7 @@ function a() {
 
 
 
-
+//图片格式
 
 $('.img_show').each(function() {
     var $this = $(this),
@@ -121,26 +52,30 @@ $('.img_show').each(function() {
 //密码修改
 
 //1.旧密码验证
-$(".oldPwd").on("input",function(){
+$(".next").on("click",function(){
     var oldPwd = $(".oldPwd").val();
-    var url = "login.do";
-    var args = {
-        "mail":mail,
-        "password":oldPwd,
-        "boss":1
-    }
-   $.post(url,args,function(data){
-        //成功找到用户
-        if(data == 1){
-            $(".sos").attr("disabled",false);
-            $(".oldPwdSpan").css("background-image","url(../images/true.png");
-        }else if(data == 0){
-            //密码和账号不匹配
-            $(".oldPwdSpan").css("background-image","url(../images/cha.png");
+    if(oldPwd == ""||oldPwd == null)
+        alert("密码不能为空");
+    else{
+        var url = "login.do";
+        var args = {
+            "mail":mail,
+            "password":oldPwd,
+            "boss":0
         }
-        
-        
-   })
+       $.post(url,args,function(data){
+            //成功找到用户
+        	if(data == 1){
+    			$("#myModal").modal('hide');
+                $("#editModal").modal('show');
+        	}else if(data == 0){
+        		//密码和账号不匹配
+                alert("密码错误,请重新输入");
+        		
+        	}            
+            
+       })
+   }
 })
 
 $(".newPwd2").change(function(){
@@ -168,18 +103,19 @@ $(".pwdButton").click(function(){
     }else if (newPwd1.length < 6) {
         words = "密码至少含有6个字符";
     }else{
-        var url = "editPwd.do";
+        var url = "admin-editPwd.do";
         var args = {
             "mail":mail,
             "password": newPwd1,
-            "boss":1
+            "boss":0
         }
-        $.post(url,args,function(data){
-            if(data == 1){
-                $(".oldPwdSpan").html("修改成功");
-            }else if(data == 1){
-                $(".oldPwdSpan").html("修改失败");
-            }
+       $.post(url,args,function(data){
+        	if(data == 1){
+        		alert("修改成功");
+                setTimeout("history.go(0)" ,500);
+        	}else if(data == 0){
+        		$(".newPwdSpan").html("修改失败");
+        	}
         })
     }
      $(".newPwdSpan").html(words);
@@ -189,27 +125,25 @@ $(".pwdButton").click(function(){
 $(".baseButton").click(function(){
     name = $(".editInfo .base ul li .name input").val();
     sex = $(".editInfo .base ul li .sex select").val();
-    pro = $(".editInfo .base ul li .pro select").val();
     var words = "";
     if(name.length == 0) {
         words = "姓名不能为空";
     }else{
-        var url = "editInfo.do";
+        var url = "admin-editInfo.do";
         var args = {
             "mail":mail,
             "name": name,
-            "pro":pro,
             "sex":sex,
-            "boss":1
+            "boss":0
         }
         $.post(url,args,function(data){
-            if(data == 1){
-                words = "修改成功";
-                window,location.href="student-info.html";
-            }
-            else if(data == 0){
-                words = "修改失败";
-            }
+        	if(data == 1){
+        		words = "修改成功";
+        		window,location.href="student-info.html";
+        	}
+        	else if(data == 0){
+        		words = "修改失败";
+        	}
         })
     }
     $(".ccc").html(words);
@@ -247,3 +181,29 @@ $(".baseButton").click(function(){
             }  
         });  
     });  
+$(".release-content .glyphicon-remove").click(function() {
+    $(".release").css("-webkit-animation-name","bounceoutL");
+    $(".release").css("-webkit-animation-duration","1s");
+    $(".release").css("animation-fill-mode","forwards");
+});
+
+$(".apply").click(function() {
+    /* Act on the event */
+    if ($(".submits").css("display")=="block") {
+        alert("信息已发送，请勿重复发送");
+    }else{
+        $(".alerts").css("display","block");
+        $(".mask").css("display","block");
+    }
+});
+$(".btn-warning").click(function() {
+    /* Act on the event */
+    $(".alerts").css("display","none");
+    $(".mask").css("display","none");
+});
+$(".btn-info").click(function() {
+    /* Act on the event */
+    $(".submits").css("display","block");
+    $(".alerts").css("display","none");
+    $(".mask").css("display","none");
+});
