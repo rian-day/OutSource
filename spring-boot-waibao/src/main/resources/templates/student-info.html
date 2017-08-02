@@ -11,15 +11,30 @@
 </head>
 
 <body class="home">
-    <div class="mask"></div>
-    <div class="alerts">
+   <!--  <div class="mask"></div> -->
+   <!--  <div class="alerts">
         <div class="alerts-title">信息</div>
         <div class="alerts-content">是否确认申请管理员账号权限？</div>
         <div class="alerts-last">
             <button type="button" class="btn btn-info">确认</button>
             <button type="button" class="btn btn-warning">取消</button>
         </div>
-    </div>
+    </div> -->
+    <div class="modal fade" id="shenqing" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">信息</h4>
+            </div>
+            <div class="modal-body">是否确认申请管理员账号权限？</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn shenqing">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
     <span class="hidespan"></span>
     <div class="move-right">
         <div class="header">
@@ -206,7 +221,7 @@
                                     <button type="submit" class="button green baseButton">确定修改</button>
                                 </li>
                                 <li>
-                                    <button type="button" class="button green apply">申请管理员</button>
+                                    <button type="button" class="button green apply"  data-target="#shenqing" data-toggle="modal">申请管理员</button>
                                 </li>
                                 <li>
                                     <div class="submits">已提交</div>

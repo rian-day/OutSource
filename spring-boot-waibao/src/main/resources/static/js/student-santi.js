@@ -62,3 +62,15 @@ $(".release-content .glyphicon-remove").click(function() {
     $(".release").css("-webkit-animation-duration","1s");
     $(".release").css("animation-fill-mode","forwards");
 });
+$(".left-shadow").mouseover(function() {
+    $(".left-shadow").css("display","none");
+});
+$(".left-shadow").mouseleave(function() {
+    $(".left-shadow").css("display","block");
+});
+$(".right-shadow").mouseover(function() {
+    $(".right-shadow").css("display","none");
+});
+$(".right-shadow").mouseleave(function() {
+    $(".right-shadow").css("display","block");
+});
