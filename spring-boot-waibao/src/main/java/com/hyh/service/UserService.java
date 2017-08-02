@@ -116,7 +116,7 @@ public class UserService {
 			   // 新的图片文件名 = 获取时间戳+"."图片扩展名
 			   String newFileName = 
 					   //String.valueOf(System.currentTimeMillis()) 获取时间(精准到秒)
-					   "userHead" + extensionName;
+					   "userHead" +userId+ extensionName;
 			   // 数据库保存的目录
 			   //String datdDirectory = temp.concat(String.valueOf(userId)).concat(File.separator);
 			   // 文件路径
@@ -141,7 +141,8 @@ public class UserService {
 			   // 上传到指定目录
 			   file.transferTo(dest);
 			   UserInfo user=userdao.findById(userId);
-			   user.setHead(filePath.concat(newFileName));
+			   user.setHead(filePath.substring(1).concat("/").concat(newFileName));
+			   userdao.save(user);
 			 
 			   // 将图片流转换进行BASE64加码
 			   //BASE64Encoder encoder = new BASE64Encoder();

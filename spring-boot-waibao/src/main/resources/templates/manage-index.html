@@ -136,15 +136,15 @@
 			<div class="modal-body">
 				<form class="index-show-list">
 					<div th:each="index,state : ${indexList}" th:switch="${state.index}">
-						<label th:case="0"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="用户列表" /><span class="glyphicon glyphicon-user"></span> 用户列表 </label> <br/>
-						<label th:case="1"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="添加用户" /><span class="glyphicon glyphicon-download"></span> 添加用户 </label> <br/>
-						<label th:case="2"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="题目列表" /><span class="glyphicon glyphicon-pencil"></span> 题目列表 </label> <br/>
-						<label th:case="3"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="添加题目" /><span class="glyphicon glyphicon-download"></span> 添加题目 </label> <br/>
-						<label th:case="4"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="试卷列表" /><span class="glyphicon glyphicon-list-alt"></span> 试卷列表 </label> <br/>
-						<label th:case="5"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="创建试卷" /><span class="glyphicon glyphicon-download"></span> 创建试卷 </label> <br/>
-						<label th:case="6"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="信息发布" /><span class="glyphicon glyphicon-envelope"></span> 信息发布 </label> <br/>
-						<label th:case="7"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="职业管理" /><span class="glyphicon glyphicon-education"></span> 职业管理 </label> <br/>
-						<label th:case="8"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="个人信息管理" /><span class="glyphicon glyphicon-edit"></span> 个人信息管理 </label> <br/>
+						<label th:case="0"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="用户列表" /><span class="glyphicon glyphicon-user"></span> 用户列表 </label>
+						<label th:case="1"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="添加用户" /><span class="glyphicon glyphicon-download"></span> 添加用户 </label>
+						<label th:case="2"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="题目列表" /><span class="glyphicon glyphicon-pencil"></span> 题目列表 </label>
+						<label th:case="3"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="添加题目" /><span class="glyphicon glyphicon-download"></span> 添加题目 </label>
+						<label th:case="4"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="试卷列表" /><span class="glyphicon glyphicon-list-alt"></span> 试卷列表 </label>
+						<label th:case="5"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="创建试卷" /><span class="glyphicon glyphicon-download"></span> 创建试卷 </label>
+						<label th:case="6"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="信息发布" /><span class="glyphicon glyphicon-envelope"></span> 信息发布 </label>
+						<label th:case="7"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="职业管理" /><span class="glyphicon glyphicon-education"></span> 职业管理 </label>
+						<label th:case="8"><input name="fast-access" type="checkbox" th:checked="${index} == '1' ? checked" value="个人信息管理" /><span class="glyphicon glyphicon-edit"></span> 个人信息管理 </label>
 					</div>
 				</form>
 			</div>

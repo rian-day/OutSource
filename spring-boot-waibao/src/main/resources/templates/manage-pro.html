@@ -78,14 +78,14 @@
 						<td><input type="submit" value="修改信息"/></td>
 					</tr> -->
 						<ul th:remove="all-but-first">
-							<li th:each="prolist : ${}">
-			      				<input type="text" name="" class="zhiye"  th:value="${prolist.}" value="java工程师" />
+							<li th:each="prolist : ${content}">
+			      				<input type="text" name="" class="zhiye"  th:value="${prolist.name}" value="java工程师" />
 			      				<input type="submit" value="确认更改" class="btn btn-info prdemo"/>
 				      		</li>
-							<li>
+							<!-- <li>
 								<input type="text" name="" class="zhiye" value="web工程师"/>
 								<input type="submit" value="确认更改" class="btn btn-info prdemo"/>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<div class="add-pro">

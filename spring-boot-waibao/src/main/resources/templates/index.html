@@ -49,11 +49,10 @@
                         <a class="page-scroll" href="student-alltest.html">开始考试</a>
                     </li>
                     <li>
-                    	<!-- 未登录状态 -->
-                        <a th:if="${#httpSession.getAttribute('user')} == null" class="page-scroll" href="login.html">登录|注册</a>
+             
                         <!-- 登陆状态 -->
-                        <a th:if="${#httpSession.getAttribute('user')} != null" class="page-scroll" href="index.html" data-dropdown="#dropdown-standard">
-                        	<img src="../static/images/avatar-1.jpg" />
+                        <a th:if="${#httpSession.getAttribute('user')} != null " class="page-scroll" href="index.html" data-dropdown="#dropdown-standard">
+                        	<img src="images/avatar-1.jpg" th:src="@{${#httpSession.getAttribute('user').head}}"/> <!--  -->
                         	<span th:text="${#httpSession.getAttribute('user').name}">用户1</span>
                         </a>
                         <div class="dropdown-menu dropdown-anchor-top-left dropdown-has-anchor" id="dropdown-standard">
@@ -64,6 +63,8 @@
 								<li><a href="#">退出</a></li>
 							</ul> 
 						</div>
+						<!-- 未登录状态 -->
+                        <a th:if="${#httpSession.getAttribute('user') == null }" class="page-scroll" href="login.html">登录|注册</a>
                     </li>
                 </ul>
             </div>

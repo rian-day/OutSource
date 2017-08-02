@@ -45,7 +45,12 @@ public class UserController {
 // }
  	@RequestMapping("/editInfo.do")
 	@ResponseBody
-	public String changeUserInfo(UserBean user){
+	public String changeUserInfo(
+			UserBean user
+			,HttpSession session
+			,@RequestParam("file") MultipartFile file){
+ 		SessionUser sessionuser=(SessionUser)session.getAttribute("user");
+ 		userService.UploadUserHead(file, sessionuser.getProfessionId());
  		return userService.changeUserInfo(user);
  		
  	}
@@ -123,6 +128,7 @@ public class UserController {
  }
  
  @PostMapping(value = "/fileUpload")
+ @ResponseBody
  public String fileUpload(@RequestParam("file") MultipartFile file
 		 , @RequestParam("userId") Integer userId) {
  //ResultVo resultVo = new ResultVo();
