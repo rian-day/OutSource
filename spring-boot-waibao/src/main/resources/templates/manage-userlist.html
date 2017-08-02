@@ -1,99 +1,112 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-	<meta charset="UTF-8"/>
-	<title>管理员界面</title>
-	<link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-	<link rel="stylesheet" type="text/css" href="../static/css/manage.css" th:href="@{/css/manage.css}"/>
-	<link rel="stylesheet" type="text/css" href="../static/css/zh-page.css" th:href="@{/css/zh-page.css}"/>
-	<script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+<meta charset="UTF-8" />
+<title>管理员界面</title>
+<link href="../static/css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/manage.css"
+	th:href="@{/css/manage.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/zh-page.css"
+	th:href="@{/css/zh-page.css}" />
+<script type="text/javascript" src="../static/js/jquery.js"
+	th:src="@{/js/jquery.js}"></script>
 </head>
 <body class="home">
-<div class="move-right">
-	<div class="header">
-		<div class="box-left">
-			<span class="glyphicon glyphicon-th-list"></span>
-			<span>menu</span>
+	<div class="move-right">
+		<div class="header">
+			<div class="box-left">
+				<span class="glyphicon glyphicon-th-list"></span> <span>menu</span>
+			</div>
+			<div class="box-right">
+				<div class="search-info">
+					<span class="glyphicon glyphicon-search"></span> <span>
+						<!-- search for inspiration -->
+					</span>
+				</div>
+				<div class="co-logo"></div>
+				<div class="login-btn">
+					<a class="totop-img" href="javascript:void(0);"><span
+						class="glyphicon glyphicon-collapse-up"></span></a> <a
+						class="login-font" href="index.html"><span>Home</span></a>
+				</div>
+				<div class="logo-header">
+					<img src="../static/images/logo.png" th:src="@{/images/logo.png}" />
+				</div>
+			</div>
+			<div class="box-right-search">
+				<div class="to-dropdown">
+					<span class="search-type">all</span><span
+						class="glyphicon glyphicon-triangle-bottom"></span>
+					<div class="menu-dropdown">
+						<ul>
+							<li><strong><a href="#">ALL</a></strong></li>
+							<li><strong><a href="#">Websites</a></strong></li>
+							<li><strong><a href="#">Collections</a></strong></li>
+							<li><strong><a href="#">Elements</a></strong></li>
+							<li><strong><a href="#">Magazine</a></strong></li>
+							<li><strong><a href="#">Jobs</a></strong></li>
+							<li><strong><a href="#">Users</a></strong></li>
+						</ul>
+					</div>
+				</div>
+				<input type="text" id="search-text"
+					placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)"
+					data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)"
+					data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off"
+					class="search-input" value="" />
+				<div class="search-goto">
+					<strong><a href="" class="link-1">SHOW FILTERS</a></strong>
+				</div>
+				<div class="box-close">
+					<span class="glyphicon glyphicon-remove"></span>
+				</div>
+			</div>
 		</div>
-		<div class="box-right">
-			<div class="search-info">
-				<span class="glyphicon glyphicon-search"></span>
-				<span><!-- search for inspiration --></span>
-			</div>
-			<div class="co-logo"></div>
-			<div class="login-btn">
-				<a class="totop-img" href="javascript:void(0);"><span class="glyphicon glyphicon-collapse-up"></span></a>
-				<a class="login-font" href="index.html"><span>Home</span></a>
-			</div>
-			<div class="logo-header">
-				<img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
-			</div>
-		</div>
-		<div class="box-right-search">
-			<div class="to-dropdown">
-				<span class="search-type">all</span><span class="glyphicon glyphicon-triangle-bottom"></span>
-				<div class="menu-dropdown">
-                    <ul>
-                        <li><strong><a href="#">ALL</a></strong></li>
-                        <li><strong><a href="#">Websites</a></strong></li>
-                        <li><strong><a href="#">Collections</a></strong></li>
-                        <li><strong><a href="#">Elements</a></strong></li>
-                        <li><strong><a href="#">Magazine</a></strong></li>
-                        <li><strong><a href="#">Jobs</a></strong></li>
-                        <li><strong><a href="#">Users</a></strong></li>
-                    </ul>
-                </div>
-			</div>
-			<input type="text" id="search-text" placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off" class="search-input" value=""/>
-			<div class="search-goto">
-	            <strong><a href="" class="link-1">SHOW FILTERS</a></strong>
-	        </div>
-	        <div class="box-close">
-			    <span class="glyphicon glyphicon-remove"></span>
-			</div>
-		</div>
-	</div>
-	<div class="overlay-content" style="display: block;"></div>
+		<div class="overlay-content" style="display: block;"></div>
 
-	<div class="showview">
-		<div class="head-view">用户列表</div>
-		<div class="list-view">
-			<table>
-				<tr style="height: 30px;">
-					<th>邮箱</th>
-					<th>姓名</th>
-					<th><form action="" method="get"> 
-					<label>性别：</label> 
-						<select class="sex-select" name="">
-							<option value="both">全部性别</option>
-							<option value="male">男</option> 
-							<option value="fmale">女</option>
-						</select> 
-					</form></th>
-					<th><form action="" method="get"> 
-						<label>职业：</label> 
-						<select class="title-select">
-							<option value="0">全部职业</option>
-							<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
-						</select>
-						<!-- <select class="title-select" name="">
+		<div class="showview">
+			<div class="head-view">用户列表</div>
+			<div class="list-view">
+				<table>
+					<tr style="height: 30px;">
+						<th>邮箱</th>
+						<th>姓名</th>
+						<th><form action="" method="get">
+								<label>性别：</label> <select class="sex-select" name="">
+									<option value="both">全部性别</option>
+									<option value="male">男</option>
+									<option value="fmale">女</option>
+								</select>
+							</form></th>
+						<th><form action="" method="get">
+								<label>职业：</label> <select class="title-select">
+									<option value="0">全部职业</option>
+									<option th:each="prolist : ${pros}" th:value="${prolist.id}"
+										th:text="${prolist.name}">Credit card</option>
+								</select>
+								<!-- <select class="title-select" name="">
 							<option value="title0">全部职业</option> 
 							<option value="title1">职业1</option>
 							<option value="title2">职业2</option> 
 							<option value="title3">职业3</option>
 							<option value="title4">职业4</option>
 						</select>  -->
-					</form></th>
-					<th>重置</th>
-				</tr>
-				<tr th:each="userlist : ${content}">
-					<td th:text="${userlist.mail}">1</td>		<!-- 邮箱 -->
-					<td th:text="${userlist.name}">2</td>		<!-- 姓名 -->
-					<td th:text="${userlist.sex}">3</td>		<!-- 性别 -->
-					<td th:text="${userlist.professionId}">4</td>		<!-- 职业 -->
-					<td><input type="submit" value="重置密码"/></td>
-				</tr>
-				<!-- <tr>
+							</form></th>
+						<th>重置</th>
+					</tr>
+					<tr th:each="userlist : ${content}">
+						<td th:text="${userlist.mail}">1</td>
+						<!-- 邮箱 -->
+						<td th:text="${userlist.name}">2</td>
+						<!-- 姓名 -->
+						<td th:text="${userlist.sex}">3</td>
+						<!-- 性别 -->
+						<td th:text="${userlist.professionId}">4</td>
+						<!-- 职业 -->
+						<td><input type="submit" value="重置密码" /></td>
+					</tr>
+					<!-- <tr>
 					<td>3</td>
 					<td>3</td>
 					<td>3</td>
@@ -156,121 +169,113 @@
 					<td>11</td>
 					<td><input type="submit" value="修改信息"/></td>
 				</tr> -->
-				<tr style="height: 50px;">
-					<th colspan="5">
- 						<div class="paging">
- 							<div class="lastPage">«</div>
- 							<div class="firstPage">首页</div>
- 							<ul>
- 								<li class="tbPage"></li>
- 								<li class="obPage"></li>
- 								<li class="nowPage"></li>
- 								<li class="oaPage"></li>
- 								<li class="taPage"></li>	
- 							</ul>
- 							<div class="finalPage">末页</div>
- 							<div class="nextPage">»</div>
- 						</div>
-					</th>
-				</tr>
-			</table>
-		</div>
-		<div class="footers">
-            <div class="row">
-                <div class="col-md-1">
-                    <img src="../static/images/1.png" th:src="@{/images/1.png}"/>
-                </div>
-                <div class="col-md-2">
-                    <ul class="list-inline">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-	</div>
-
-</div>
-<div class="menu">
-	<div class="menu-in">
-		<div class="menu-top">
-			<!-- <div class="pull-left">
-				<span>setting</span>
-			</div> -->
-			<div class="pull-right">
-				<span>close</span>
-				<span class="glyphicon glyphicon-remove"></span>
+					<tr style="height: 50px;">
+						<th colspan="5">
+							<div class="paging">
+								<div class="lastPage">«</div>
+								<div class="firstPage">首页</div>
+								<ul>
+									<li class="tbPage"></li>
+									<li class="obPage"></li>
+									<li class="nowPage"></li>
+									<li class="oaPage"></li>
+									<li class="taPage"></li>
+								</ul>
+								<div class="finalPage">末页</div>
+								<div class="nextPage">»</div>
+							</div>
+						</th>
+					</tr>
+				</table>
+			</div>
+			<div class="footers">
+				<div class="row">
+					<div class="col-md-1">
+						<img src="../static/images/1.png" th:src="@{/images/1.png}" />
+					</div>
+					<div class="col-md-2">
+						<ul class="list-inline">
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms of Use</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="second-menu">
-			<a href="manage-index.html"><div class="link"><span class="glyphicon glyphicon-home"></span>管理员主页</div></a>
-		</div>
-		<div class="second-menu">
-			<div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-			<ul class="second-menu-1">
-				<a href="manage-userlist.html"><li>用户列表</li></a>
-				<!-- <a href="manage-adduser.html"><li>添加用户</li></a> -->
-			</ul>
-		</div>
-		<div class="second-menu">
-			<div class="2">考题管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-			<ul class="second-menu-2">
-				<a href="manage-subjectlist.html"><li>题目列表</li></a>
-				<a href="manage-addsubject.html"><li>添加题目</li></a>
-			</ul>
-		</div>
-		<div class="second-menu">
-			<div class="3">试卷管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-			<ul class="second-menu-3">
-				<a href="manage-tplist.html"><li>试卷列表</li></a>
-				<a href="manage-addtp.html"><li>创建试卷</li></a>
-			</ul>
-		</div>
-		<div class="second-menu">
-			<div class="4">后台管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-			<ul class="second-menu-4">
-				<a href="manage-bbs.html"><li>信息发布</li></a>
-				<a href="manage-pro.html"><li>职业管理</li></a>
-				<a href="manage-info.html"><li>个人信息管理</li></a>
-			</ul>
-		</div>
-		<div class="menu-foot"></div>
-	</div>
-</div>
 
-<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-<script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
-<script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
-<script th:inline="javascript">
-var countPage = [[${TotalPages}]];
-var nowPage = [[${nowpage}]] + 1;
-function topage(page){
-	toUsePage(page);
-};
-function toUsePage(page){
-    var zhiyeSel = $(".title-select").val();
-    var xingbieSel = $(".sex-select").val();
-    var theurl = "userlist.do?xingbieSel=" + xingbieSel + "&zhiye=" + zhiyeSel + "&nowPage=" + page + "";
-	window.location.href="theurl";
-    /*$.ajax({
-        type: "POST",
-        url: "userlist.do",
-        data: {
-            'xingbieSel' : xingbieSel,
-            'zhiye' : zhiyeSel,
-            'nowPage' : page,
-            'size' : '10'
-        },
-        dataType: "json",
-        success: function(data){
-            if (data!=1) {
-                alert('跳转失败');
-            }
-        }
-    });*/
-}
-</script>
+	</div>
+	<div class="menu">
+		<div class="menu-in">
+			<div class="menu-top">
+				<!-- <div class="pull-left">
+				<span>setting</span>
+			</div> -->
+				<div class="pull-right">
+					<span>close</span> <span class="glyphicon glyphicon-remove"></span>
+				</div>
+			</div>
+			<div class="second-menu">
+				<a href="manage-index.html"><div class="link">
+						<span class="glyphicon glyphicon-home"></span>管理员主页
+					</div></a>
+			</div>
+			<div class="second-menu">
+				<div class="1">
+					用户管理<span class="glyphicon glyphicon-menu-hamburger"></span>
+				</div>
+				<ul class="second-menu-1">
+					<a href="manage-userlist.html"><li>用户列表</li></a>
+					<!-- <a href="manage-adduser.html"><li>添加用户</li></a> -->
+				</ul>
+			</div>
+			<div class="second-menu">
+				<div class="2">
+					考题管理<span class="glyphicon glyphicon-menu-hamburger"></span>
+				</div>
+				<ul class="second-menu-2">
+					<a href="manage-subjectlist.html"><li>题目列表</li></a>
+					<a href="manage-addsubject.html"><li>添加题目</li></a>
+				</ul>
+			</div>
+			<div class="second-menu">
+				<div class="3">
+					试卷管理<span class="glyphicon glyphicon-menu-hamburger"></span>
+				</div>
+				<ul class="second-menu-3">
+					<a href="manage-tplist.html"><li>试卷列表</li></a>
+					<a href="manage-addtp.html"><li>创建试卷</li></a>
+				</ul>
+			</div>
+			<div class="second-menu">
+				<div class="4">
+					后台管理<span class="glyphicon glyphicon-menu-hamburger"></span>
+				</div>
+				<ul class="second-menu-4">
+					<a href="manage-bbs.html"><li>信息发布</li></a>
+					<a href="manage-pro.html"><li>职业管理</li></a>
+					<a href="manage-info.html"><li>个人信息管理</li></a>
+				</ul>
+			</div>
+			<div class="menu-foot"></div>
+		</div>
+	</div>
+
+	<script src="../static/js/bootstrap.min.js"
+		th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
+	<script type="text/javascript" src="../static/js/zh-page.js"
+		th:src="@{/js/zh-page.js}"></script>
+	<script th:inline="javascript">
+		var countPage = 1;
+		var nowPage = 1;
+		function topage(page) {
+			toUsePage(page);
+		};
+		function toUsePage(page) {
+			var zhiyeSel = $(".title-select").val();
+			var xingbieSel = $(".sex-select").val();
+			window.location.href='manage-userlist.html?xingbieSel='+xingbieSel+'&zhiye='+zhiyeSel+'&nowPage='+page;
+		}
+	</script>
 </body>
 </html>
