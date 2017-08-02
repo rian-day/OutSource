@@ -253,3 +253,45 @@
     background-color: rgb(0,87,163);
     cursor:pointer
 }
+.rongqi{
+    width: 80%;
+    margin-left: 10%;
+    padding:0 !important; 
+}
+.left-show{
+    width: 50%;
+    height: 500px;
+    float: left;
+    z-index: 999;
+    pointer-events: none;
+}
+.right-show{
+    width:50%;
+    height: 500px;
+    float: right;  
+    z-index: 999;
+    pointer-events: none;
+}
+.left-shadow{
+    width: 35%;
+    height: 500px;
+    z-index: 1000;
+    position: absolute;
+    background:#000;
+    opacity:0.7;
+
+}
+.right-shadow{
+    width: 35%;
+    height: 500px;
+    z-index: 1000;
+    position: absolute;
+    margin-left: 35%;
+    background:#000;
+    opacity:0.7;
+
+}
+.button-rounded{
+    margin-left: 40%;
+    margin-top: 200px;
+}

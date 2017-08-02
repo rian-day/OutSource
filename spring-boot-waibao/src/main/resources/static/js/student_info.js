@@ -188,15 +188,15 @@ $(".release-content .glyphicon-remove").click(function() {
     $(".release").css("animation-fill-mode","forwards");
 });
 
-$(".apply").click(function() {
-    /* Act on the event */
-    if ($(".submits").css("display")=="block") {
-        alert("信息已发送，请勿重复发送");
-    }else{
-        $(".alerts").css("display","block");
-        $(".mask").css("display","block");
-    }
-});
+// $(".apply").click(function() {
+//     /* Act on the event */
+//     if ($(".submits").css("display")=="block") {
+//         alert("信息已发送，请勿重复发送");
+//     }else{
+//         $(".alerts").css("display","block");
+//         $(".mask").css("display","block");
+//     }
+// });
 $(".btn-warning").click(function() {
     /* Act on the event */
     $(".alerts").css("display","none");
@@ -208,13 +208,20 @@ $(".btn-info").click(function() {
     $(".alerts").css("display","none");
     $(".mask").css("display","none");
 });
-// $(".changes").click(function() {
-//     name=$(".name>input").val();
-//     sex=$(".sex>select").val();
-//     pro=$(".pro>select").val();
-//     $.post(url,args,function(data){
-//         if (data==1) {
-//             alert("成功修改！")；
-//         }
-//     }
-// });
+var 
+$(".shenqing").click(function() {
+    var url = "apply.do";
+    $("#shenqing .modal-body").text('是否确认申请管理员账号权限？');
+    $("#shenqing .modal-body").css('color','black');
+    $.post(url,args,function(data){
+        if(data == 1){
+            $("#shenqing .modal-body").text('申请信息提交成功，请等待回应。');
+            $("#shenqing .modal-body").css('color','green');
+            setTimeout("$('#shenqing').modal('hide')",1000);
+        }else{
+            $("#shenqing .modal-body").text('申请失败，请稍后再试。');
+            $("#shenqing .modal-body").css('color','red');
+        }
+
+    })
+});
