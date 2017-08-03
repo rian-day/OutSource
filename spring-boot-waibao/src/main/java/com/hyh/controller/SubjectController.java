@@ -28,5 +28,12 @@ public class SubjectController {
 		ss.AddSubject(list);
 		return "success";
 	}
+	@PostMapping("/add-subject.do")
+	@ResponseBody
+	public String addsingleSubject(
+			Subject subject){
+		return ss.AddSingleSubject(subject);
+	}
+	
 
 }

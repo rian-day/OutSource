@@ -30,6 +30,8 @@ public class ExamService {
 	UserInfoDao ud;
 	@Resource
 	UserAnswerDao ad;
+	@Resource
+	AspectService aspect;
 	
 	
 	

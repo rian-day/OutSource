@@ -18,6 +18,7 @@ import com.hyh.bean.SubjectC;
 import com.hyh.entity.Exam;
 import com.hyh.entity.Subject;
 import com.hyh.entity.SubjectGroup;
+import com.hyh.service.AspectService;
 import com.hyh.service.ExamService;
 import com.hyh.service.SubjectService;
 
@@ -27,7 +28,8 @@ public class ExamController {
 	SubjectService ss;
 	@Resource
 	ExamService es;
-	
+	@Resource
+	AspectService aspect;
 	
 	
 	
@@ -80,6 +82,7 @@ public class ExamController {
 		int userId=user.getUserId();
 		String time=df.format(new Date());
 		SubjectGroup subjectgroup=ss.SearchSubjectGroupById(id);
+		aspect.saveUserInfo(userId, "用户("+user.getName()+"):创建了一场考试("+subjectgroup.getName()+")", time);
 		return es.buildByGroupId(userId, subjectgroup,time);
 	}
 }

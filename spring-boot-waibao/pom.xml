@@ -179,6 +179,14 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
+       <!-- war 插件来定义打包以后的 war 包名称 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warName>demo</warName>
+                </configuration>
+            </plugin>-->
     </plugins>
   </build>
   <!-- <repositories>  

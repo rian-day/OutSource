@@ -11,6 +11,8 @@ public class AdminOperation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	private int adminId;
+	
 	private String operation;
 	
 	private String time;
@@ -37,6 +39,14 @@ public class AdminOperation {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public int getAdminId() {
+		return adminId;
+	}
+
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
 	}
 	
 	

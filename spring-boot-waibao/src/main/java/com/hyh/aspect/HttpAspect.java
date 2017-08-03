@@ -25,7 +25,6 @@ public class HttpAspect {
 	
 	@Before(value = "point()")
 	public void doBefore(JoinPoint joinPoint){
-		LOG.warn("Aspect do before");
 		ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = requestAttributes.getRequest();
 		//打印请求内容
@@ -41,6 +40,5 @@ public class HttpAspect {
 		LOG.info("--------------返回内容----------------");
 		LOG.info("Response内容:"+o);
 		LOG.info("--------------返回内容----------------");
-		LOG.warn("Aspect do AfterReturning");
 	}
 }
