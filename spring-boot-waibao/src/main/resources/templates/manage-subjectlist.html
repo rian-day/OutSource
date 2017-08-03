@@ -267,14 +267,14 @@
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script th:inline="javascript">
 var countPage = [[${TotalPages}]];
-var nowPage = [[${nowpage}]] + 1;
+var nowPage = [[${nowPage}]];
 function topage(page){
 	toTpPage(page);
 };
 function toSubPage(page){
     var zhiyeSel = $(".title-select").val();
     var theurl = "manage-subjectlist.html?zhiye=" + zhiyeSel + "&nowPage=" + page + "";
-	window.location.href="theurl";
+	window.location.href= theurl;
     /*var subjectlist = {
         'zhiye' : zhiyeSel,
         'page' : page

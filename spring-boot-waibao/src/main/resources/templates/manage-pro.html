@@ -65,7 +65,7 @@
 				<div class="pro-title2">
 					<div class="pro-name">
 						<ul th:remove="all-but-first">
-							<li th:each="prolist : ${}"><span th:text="${prolist.}">java工程师</span></li>
+							<li th:each="prolist : ${pros}"><span th:text="${prolist.name}">java工程师</span></li>
 							<li>web工程师</li>
 						</ul>
 					</div>
