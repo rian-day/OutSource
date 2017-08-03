@@ -61,11 +61,21 @@ $(".answer").click(function() {
 })
 
 $(".input").change(function() {
-    var ANSWER = ($(this).val());
+    var a = "";
+    var i = 0;
     $(this).parents(".answerInput").prev().find(".indexLabel").each(function() {
-        var i = $(this).children(".index").text() - 1; //试卷题号
-        answer[i] = ANSWER;
+        i = $(this).children(".index").text() - 1; //试卷题号
     })
+     $(this).parents().children(".input").each(function(c){
+        var ANSWER = ($(this).val());
+        if(c != 0){
+            a = a + "," +ANSWER ;
+        }else{
+            a = ANSWER;
+        }
+
+     })
+     answer[i] = a;
 })
 
 $(".input").click(function() {

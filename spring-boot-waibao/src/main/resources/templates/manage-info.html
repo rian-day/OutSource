@@ -2,15 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>个人中心</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/base.css"  th:href="@{/css/base.css}"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/student-info.css" th:href="@{/css/student-info.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/manage.css" th:href="@{/css/manage.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/manage-info.css" th:href="@{/css/manage-info.css}" />
     <script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
 </head>
 
 <body class="home">
+   <!--  <div class="mask"></div> -->
+   <!--  <div class="alerts">
+        <div class="alerts-title">信息</div>
+        <div class="alerts-content">是否确认申请管理员账号权限？</div>
+        <div class="alerts-last">
+            <button type="button" class="btn btn-info">确认</button>
+            <button type="button" class="btn btn-warning">取消</button>
+        </div>
+    </div> -->
+    <div class="modal fade" id="shenqing" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">信息</h4>
+            </div>
+            <div class="modal-body">是否确认申请管理员账号权限？</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn shenqing">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
     <span class="hidespan"></span>
     <div class="move-right">
         <div class="header">
@@ -20,16 +44,16 @@
             </div>
             <div class="box-right">
                 <div class="search-info">
-                    <span class="glyphicon glyphicon-search"></span>
-                    <span><!-- search for inspiration --></span>
+                    <!-- <span class="glyphicon glyphicon-search"></span>
+                    <span>search for inspiration</span> -->
                 </div>
                 <div class="co-logo"></div>
                 <div class="login-btn">
                     <a class="totop-img" href="javascript:void(0);"><span class="glyphicon glyphicon-collapse-up"></span></a>
-                    <a class="login-font" href="index.html"><span>Home</span></a>
+                    <a class="login-font" href="index.html"><span>Return To Home</span></a>
                 </div>
                 <div class="logo-header">
-                    <img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
+                    <img src="../static/images/logo.png" th:src="@{/images/logo.png}" />
                 </div>
             </div>
             <div class="box-right-search">
@@ -47,7 +71,7 @@
                         </ul>
                     </div>
                 </div>
-                <input type="text" id="search-text" placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off" class="search-input" value=""/>
+                <input type="text" id="search-text" placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder="SEARCH FOR INSPIRATION (HTML5, VR, RED, MINIMAL...)" data-placeholder-mobile="SEARCH FOR INSPIRATION" autocomplete="off" class="search-input" value="" />
                 <div class="search-goto">
                     <strong><a href="" class="link-1">SHOW FILTERS</a></strong>
                 </div>
@@ -57,15 +81,19 @@
             </div>
         </div>
         <div class="overlay-content" style="display: block;"></div>
+        <div class="release">
+            <span class="release-title"><img src="../static/images/tishi.png" th:src="@{/images/tishi.png}"/></span>
+            <span class="release-content">
+            <span class="glyphicon glyphicon-remove"></span> 最新公告
+            </span>
+        </div>
         <div class="showview">
-            <div class="head-view">基本信息</div>
             <div class="list-view">
                 <ul class="nav nav-tabs">
                     <li class="active" id="baseInfo">
                         <a href="#">基本信息</a>
                     </li>
                     <li id="editInfo"><a href="#">修改信息  </a></li>
-                    <li id="pwd"><a href="#">密码管理</a></li>
                 </ul>
                 <div class="baseInfo showInfo">
                     <div class="touxiang">
@@ -110,20 +138,28 @@
                                     <p>职业:</p>
                                 </li>
                                 <li>
-                                    <div class="pro" th:text="${}">java工程师</div>
+                                    <div class="pro" th:text="${pro}">java工程师</div>
                                 </li>
                             </ul>
                         </div> -->
+                        <div class="base wu">
+                            <ul>
+                                <li>
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">密码修改</button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="editInfo showInfo">
-                    <div class="touxiang" >
-                        <div class="img_show img_show1" >
+                    <form method="post" action="editInfo.do">
+                    <div class="touxiang">
+                        <div class="img_show img_show1">
                             <div>
-                                <img src="../static/images/moren.png" th:src="@{${user.head}}" width="103" height="103" alt="" id="upload" />
+                                <img src="../static/images/moren.png" th:src="@{${user.head}}" width="103" height="103" alt="" id="upload" /> <!-- th:src="@{/images/moren.png}" -->
                             </div>
-                            <a href="javascript:;" class="a-upload" >
-                                <input type="file" class="upfile" accept="*/*" id="fileToUpload"/>点击上传头像
+                            <a href="javascript:;" class="a-upload">
+                                <input type="file" class="upfile" accept="*/*" id="fileToUpload" name="Head" />点击上传头像
                             </a>
                         </div>
                     </div>
@@ -135,8 +171,7 @@
                                 </li>
                                 <li>
                                     <div class="name">
-                                        <input type="text" style="float: left;"/>
-                                        <div class="ccc"></div>
+                                        <input type="text" style="float: left;" name="name" />
                                     </div>
                                 </li>
                             </ul>
@@ -148,7 +183,7 @@
                                 </li>
                                 <li>
                                     <div class="sex">
-                                        <select name="" id="">
+                                        <select name="sex" id="">
                                             <option value="男">男</option>
                                             <option value="女">女</option>
                                         </select>
@@ -173,9 +208,8 @@
                                 </li>
                                 <li>
                                     <div class="pro">
-                                        <select name="" id="">
-                                            <option value="web工程师">web工程师</option>
-                                            <option value="java工程师">java工程师</option>
+                                        <select name="pro" id="">
+                                             <option value="web工程师" th:each="p :${pros}" th:text="${p.name}" th:value="${p.id}">web工程师</option>
                                         </select>
                                     </div>
                                 </li>
@@ -183,132 +217,184 @@
                         </div> -->
                         <div class="base wu">
                             <ul>
-                                <li></li>
                                 <li>
-                                    <button type="button" class="button green baseButton">确定修改</button>
+                                    <button type="submit" class="button green baseButton">确定修改</button>
                                 </li>
+                                <!-- <li>
+                                    <button type="button" class="button green apply"  data-target="#shenqing" data-toggle="modal">申请管理员</button>
+                                </li>
+                                <li>
+                                    <div class="submits">已提交</div>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="pwd showInfo">
-                    <div class="base">
-                        <ul>
-                            <li>
-                                <p>旧密码:</p>
-                            </li>
-                            <li>
-                                <div>
-                                    <input type="text" class="oldPwd" placeholder="请输入旧密码"/>
-                                    <div class="oldPwdSpan"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="base">
-                        <ul>
-                            <li>
-                                <p>新密码:</p>
-                            </li>
-                            <li>
-                                <div>
-                                    <input type="text" class="sos oldPwd newPwd1" disabled="true" placeholder="密码长度大于6"  />
-                                    <div class="newPwdSpan"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="base">
-                        <ul>
-                            <li>
-                                <p>确定新密码:</p>
-                            </li>
-                            <li>
-                                <div>
-                                    <input type="text" class="sos newPwd newPwd2" placeholder="密码长度大于6" disabled="true"/>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="base wu">
-                        <ul>
-                            <li></li>
-                            <li>
-                                <button type="button" class="button green pwdButton">确定修改</button>
-                            </li>
-                        </ul>
-                    </div>
+                    </form>
                 </div>
             </div>
-            <div class="footers">
-                <div class="row">
-                    <div class="col-md-1">
-                        <img src="../static/images/1.png" th:src="@{/images/1.png}"/>
-                    </div>
-                    <div class="col-md-2">
-                        <ul class="list-inline">
-                            <li><a href="#">Privacy Policy</a>
-                            </li>
-                            <li><a href="#">Terms of Use</a>
-                            </li>
-                        </ul>
-                    </div>
+        </div>
+        <div class="footers">
+            <div class="row">
+                <div class="col-md-1">
+                    <!-- <p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">http://www.lanou3g.com/</a></p> -->
+                    <img src="../static/images/1.png" th:src="@{/images/1.png}"/>
+                </div>
+                <div class="col-md-2">
+                    <ul class="list-inline">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    
-<div class="menu">
-    <div class="menu-in">
-        <div class="menu-top">
-            <!-- <div class="pull-left">
-                <span>setting</span>
-            </div> -->
-            <div class="pull-right">
-                <span>close</span>
-                <span class="glyphicon glyphicon-remove"></span>
+    <div class="menu">
+        <div class="menu-in">
+            <div class="menu-top">
+                <div class="pull-left">
+                    <span></span>
+                </div>
+                <div class="pull-right">
+                    <span>close</span>
+                    <span class="glyphicon glyphicon-remove"></span>
+                </div>
             </div>
+            <div class="second-menu">
+                <div class="home">题库<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                <ul class="second-menu-home">
+                    <a href="student-santi.html">
+                        <li>随机试卷</li>
+                    </a>
+                    <a href="student-alltest.html">
+                        <li>套题</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="second-menu">
+                <div class="winners">个人中心<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                <ul class="second-menu-winners ">
+                    <a href="student-info.html">
+                        <li>基本信息</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="second-menu">
+                <div class="history">历史记录<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                <ul class="second-menu-history ">
+                    <a href="student-history.html">
+                        <li>考试历史记录</li>
+                    </a>
+                    <a href="student-error.html">
+                        <li>错题收集</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="menu-foot"></div>
         </div>
-        <div class="second-menu">
-            <a href="manage-index.html"><div class="link"><span class="glyphicon glyphicon-home"></span>管理员主页</div></a>
-        </div>
-        <div class="second-menu">
-            <div class="1">用户管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-            <ul class="second-menu-1">
-                <a href="manage-userlist.html"><li>用户列表</li></a>
-                <!-- <a href="manage-adduser.html"><li>添加用户</li></a> -->
-            </ul>
-        </div>
-        <div class="second-menu">
-            <div class="2">考题管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-            <ul class="second-menu-2">
-                <a href="manage-subjectlist.html"><li>题目列表</li></a>
-                <a href="manage-addsubject.html"><li>添加题目</li></a>
-            </ul>
-        </div>
-        <div class="second-menu">
-            <div class="3">试卷管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-            <ul class="second-menu-3">
-                <a href="manage-tplist.html"><li>试卷列表</li></a>
-                <a href="manage-addtp.html"><li>创建试卷</li></a>
-            </ul>
-        </div>
-        <div class="second-menu">
-            <div class="4">后台管理<span class="glyphicon glyphicon-menu-hamburger"></span></div>
-            <ul class="second-menu-4">
-                <a href="manage-bbs.html"><li>信息发布</li></a>
-                <a href="manage-pro.html"><li>职业管理</li></a>
-                <a href="manage-info.html"><li>个人信息管理</li></a>
-            </ul>
-        </div>
-        <div class="menu-foot"></div>
     </div>
-</div>
+    <!-- 第二部修改 -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 450px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                    设置密码
+                </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="window-fenshu">
+                        <div class="base" style="border: 0px">
+                            <ul>
+                                <li>
+                                    <p>新密码:</p>
+                                </li>
+                                <li>
+                                    <div class="name">
+                                        <input type="password" style="float: left;" class="newPwd1" />
+                                    </div>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                        <div class="base" style="border: 0px">
+                            <ul>
+                                <li>
+                                    <p>确定密码:</p>
+                                </li>
+                                <li>
+                                    <div class="name">
+                                        <input type="password" style="float: left;" class="newPwd2" />
+                                    </div>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                        <div class="newPwdSpan"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn pwdButton">
+                        完成
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+    <!-- 第一步修改 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 450px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                    修改密码
+                </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="window-fenshu">
+                        <div class="base" style="border: 0px">
+                            <ul>
+                                <li>
+                                    <p>旧密码:</p>
+                                </li>
+                                <li>
+                                    <div class="name">
+                                        <input type="password" style="float: left;" class="oldPwd" />
+                                    </div>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn next">
+                        下一步
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
 </body>
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script src="../static/js/jquery.jqpagination.js" th:src="@{/js/jquery.jqpagination.js}"></script>
-<script type="text/javascript" src="../static/js/student_info.js" th:src="@{/js/student_info.js}"></script>
-<script src="../static/js/ajaxfileupload.js" th:src="@{/js/ajaxfileupload.js}"></script> 
+<script type="text/javascript" src="../static/js/manage-info.js" th:src="@{/js/manage-info.js}"></script>
+<script src="../static/js/ajaxfileupload.js" th:src="@{/js/ajaxfileupload.js}"></script>
 
 </html>
