@@ -66,9 +66,9 @@ $(".input").change(function() {
     $(this).parents(".answerInput").prev().find(".indexLabel").each(function() {
         i = $(this).children(".index").text() - 1; //试卷题号
     })
-     $(this).parents().children(".input").each(function(i){
+     $(this).parents().children(".input").each(function(c){
         var ANSWER = ($(this).val());
-        if(i != 0){
+        if(c != 0){
             a = a + "," +ANSWER ;
         }else{
             a = ANSWER;
