@@ -208,7 +208,6 @@ $(".btn-info").click(function() {
     $(".alerts").css("display","none");
     $(".mask").css("display","none");
 });
-var 
 $(".shenqing").click(function() {
     var url = "apply.do";
     $("#shenqing .modal-body").text('是否确认申请管理员账号权限？');
