@@ -63,6 +63,9 @@
     line-height: 24px;
     margin-left: 50px;
 }
+.base ul li div input{
+    float: left;
+}
 .base ul li p {
     font-size: 18px;
     display: inline-block;
@@ -75,12 +78,12 @@
 }
 .nav>li>a:focus, .nav>li>a:hover {
     text-decoration: none;
-    background-color: white; 
+     background-color: white; 
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
     text-decoration: none;
-    background-color: white; 
+     background-color: white; 
 }
 .camera {
     width: 28px;
@@ -306,6 +309,9 @@ input[type='password']:focus {
     background: -moz-linear-gradient(top,#90dfa2,#84d494);
     background: linear-gradient(top,#90dfa2,#84d494);
 }
+.apply{
+    margin-left: 50% !important;
+}
 .button {
     width: 140px;
     line-height: 38px;
@@ -316,7 +322,194 @@ input[type='password']:focus {
     margin: 0 20px 20px 0;
     position: relative;
     overflow: hidden;
+
 }
-.list-view .base{
-    text-align: left;
+
+
+.oldPwdSpan{
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+.newPwdSpan,.ccc{
+    margin-left: 50px;
+    font-size: 12px !important;
+    color: red !important;
+    padding-top: 5px;
+    height:20px;
+    background-size: 20px;
+}
+
+.oldPwd,.newPwd1,.newPwd2{
+    font-size: 13px;
+}
+.release{
+    position: fixed;
+    bottom: 2%;
+    width: 320px;
+    height: 75px;
+    z-index: 998;
+    margin-left: 1%;
+    -webkit-animation-name:'bounceinL';/*动画属性名，也就是我们前面keyframes定义的动画名*/
+    -webkit-animation-duration: 1s;/*动画持续时间*/
+    -webkit-animation-delay:0s;
+
+}
+@-webkit-keyframes bounceinL{
+    0%{opacity:0;-webkit-transform:translateX(-100px);}
+    60%{opacity:1;-webkit-transform:translateX(30px);}
+    80%{-webkit-transform:translateX(-10px);}
+    100%{-webkit-transform:translateX(0);}
+}
+@-moz-keyframes bounceinL{
+    0%{opacity:0;-moz-transform:translateX(-100px);}
+    60%{opacity:1;-moz-transform:translateX(30px);}
+    80%{-moz-transform:translateX(-10px);}
+    100%{-moz-transform:translateX(0);}
+}
+@-ms-keyframes bounceinL{
+    0%{opacity:0;-ms-transform:translateX(-100px);}
+    60%{opacity:1;-ms-transform:translateX(30px);}
+    80%{-ms-transform:translateX(-10px);}
+    100%{-ms-transform:translateX(0);}
+}
+@keyframes bounceinL{
+    0%{opacity:0;transform:translateX(-100px);}
+    60%{opacity:1;transform:translateX(30px);}
+    80%{transform:translateX(-10px);}
+    100%{transform:translateX(0);}
+}
+
+@-webkit-keyframes bounceoutL{
+    0%{-webkit-transform:translateX(0);}
+    20%{opacity:1;-webkit-transform:translateX(20px);}
+    100%{opacity:0;-webkit-transform:translateX(-100px);}
+}
+@-moz-keyframes bounceoutL{
+    0%{-moz-transform:translateX(0);}
+    20%{opacity:1;-moz-transform:translateX(20px);}
+    100%{opacity:0;-moz-transform:translateX(-100px);}
+}
+@-ms-keyframes bounceoutL{
+    0%{-ms-transform:translateX(0);}
+    20%{opacity:1;-ms-transform:translateX(20px);}
+    100%{opacity:0;-ms-transform:translateX(-100px);}
+}
+@keyframes bounceoutL{
+    0%{transform:translateX(0);}
+    20%{opacity:1;transform:translateX(20px);}
+    100%{opacity:0;transform:translateX(-200px);}
+}
+
+.release-title{
+    width:25%;
+    height: 100%;
+    background-color: rgb(0,87,163);
+    z-index: 999;
+    position: absolute;
+}
+.release-title img{
+    width: 30%;
+    height: 30%;
+    margin-left: 35%;
+    margin-top: 35%;
+}
+.release-content{
+    width: 75%;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+    background-color: rgb(0,116,217);
+    color: white;
+    margin-left: 25%;
+    padding-top: 20px;
+    font-size: 16px;
+    line-height:20px; 
+    padding-left: 10px;
+    padding-right: 25px;
+    white-space:normal;
+    word-break:break-all;
+    word-wrap:break-word; 
+}
+.release-content .glyphicon-remove{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    margin-left: 95%;
+    margin-left: 85%;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: rgb(0,87,163);
+    cursor:pointer
+}
+.alerts{
+    width: 25%;
+    height: 195px;
+    z-index: 1003;
+    background-color: white;
+    position: absolute;
+    margin-left: 37.5%;
+    margin-top: 200px;
+    display: none;
+/*    margin-top: -250px;*/
+}
+.alerts-title{
+    width: 100%;
+    position: absolute;
+    height: 45px;
+    background-color: rgb(113,210,255);
+    padding-top: 7px;
+    padding-left: 2%;
+    font-size: 22px;
+    color: white;
+}
+.alerts-content{
+    width:100%;
+    margin-top: 45px;
+    height: 80px;
+    position: absolute;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 30px;
+    font-weight: 550;
+    color: rgb(113,210,255);
+}
+.alerts-last{
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    margin-top: 125px;
+}
+.btn-info{
+    margin-left: 27%;
+    margin-top: 18px;
+    padding: 8px 25px;
+}
+.btn-warning{
+    margin-left: 10%;
+    margin-top: 18px;
+    padding: 8px 25px;
+}
+.mask {       
+    position: absolute; top: 0px; 
+    filter: alpha(opacity=60); 
+    background-color: #777;     
+    z-index: 1002; 
+    left: 0px;     
+    opacity:0.5; 
+    -moz-opacity:0.5;
+    width: 100%;
+    height: 100%;     
+    display: none;
+}
+.submits{
+    color: red !important;
+    margin-top: 20px !important;
+    margin-left: 100px !important;
+    display: none;
+}
+.btn-info{
+    margin-left: 60% !important;
 }
