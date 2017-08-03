@@ -141,7 +141,7 @@ public class UserService {
 			   // 上传到指定目录
 			   file.transferTo(dest);
 			   UserInfo user=userdao.findById(userId);
-			   user.setHead(filePath.substring(1).concat("/").concat(newFileName));
+			   user.setHead("/lanou/images".concat("/").concat(newFileName));
 			   userdao.save(user);
 			 
 			   // 将图片流转换进行BASE64加码

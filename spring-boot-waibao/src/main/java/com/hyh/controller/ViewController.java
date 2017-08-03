@@ -39,7 +39,11 @@ public class ViewController {
 	@Resource
 	AdminService as;
 	@RequestMapping("/index.html")
-	public String index(){
+	public String index(
+			HttpSession session){
+		if("".equals(session.getAttribute("user"))){
+			session.setAttribute("user",null);
+		}
 		return "index";
 	}
 	@RequestMapping("/login.html")

@@ -70,7 +70,7 @@
                 <div class="baseInfo showInfo">
                     <div class="touxiang">
                         <div class="img_show img_show1">
-                            <img src="../static/images/moren.png" width="103" height="103" alt="" th:src="@{/images/moren.png}"/>
+                            <img src="../static/images/moren.png" th:src="@{${user.head}}" width="103" height="103" alt=""  /> <!-- th:src="@{/images/moren.png}" -->
                         </div>
                     </div>
                     <div class="baseInfo-content">
@@ -120,7 +120,7 @@
                     <div class="touxiang" >
                         <div class="img_show img_show1" >
                             <div>
-                                <img src="../static/images/moren.png" width="103" height="103" alt="" id="upload" th:src="@{/images/moren.png}"/>
+                                <img src="../static/images/moren.png" th:src="@{${user.head}}" width="103" height="103" alt="" id="upload" />
                             </div>
                             <a href="javascript:;" class="a-upload" >
                                 <input type="file" class="upfile" accept="*/*" id="fileToUpload"/>点击上传头像
