@@ -1,5 +1,6 @@
 package com.hyh.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hyh.bean.SubjectC;
 import com.hyh.entity.Exam;
 import com.hyh.entity.Subject;
@@ -33,7 +37,7 @@ public class ExamService {
 	@Resource
 	AspectService aspect;
 	
-	
+	public final ObjectMapper mapper = new ObjectMapper(); 
 	
 	/**
 	 * 批改题目
@@ -41,8 +45,11 @@ public class ExamService {
 	 * @param time
 	 * @param list
 	 * @return
+	 * @throws IOException 
+	 * @throws JsonMappingException 
+	 * @throws JsonParseException 
 	 */
-	public int CorrectSubjects(int examId,String time,List<SubjectC> list){
+	public int CorrectSubjects(int examId,String time,List<SubjectC> list) throws JsonParseException, JsonMappingException, IOException{
 		int totalgrade=0;
 		Exam exam=ed.findById(examId);
 		int []singlegrade=exam.getSinglegrade();
@@ -50,26 +57,30 @@ public class ExamService {
 			SubjectC sc=list.get(i);
 			UserAnswer useranswer=exam.getUseranswer().get(i);
 			Subject subject=useranswer.getSubject();
+			//JavaType javaType=mapper.getTypeFactory().constructParametricType(ArrayList.class, String.class);
+			String[] userAnswer=sc.getAnswer().split(",");
 			char status=0;
 			if(subject.getType().equals("单选题")|subject.getType().equals("多选题")){
-				if(subject.getRealAnswer().equals(sc.getUseranswer())){
+				if(userAnswer.equals(subject.getRealAnswer())){
 					totalgrade+=singlegrade[i];
 					status=1;
 				}else{
 					status=0;
 				}
 			}else if(subject.getType().equals("填空题")){
-				if(subject.getRealAnswer().equals(sc.getUseranswer())){
+				if(subject.getRealAnswer().equals(userAnswer)){
 					totalgrade+=singlegrade[i];
 					status=1;
 				}else{
 					status=0;
 				}
 			}
-			useranswer.setAnswer(sc.getUseranswer());
+			useranswer.setAnswer(userAnswer);
 			useranswer.setStatus(status);
 			ad.save(useranswer);
 		}
+		exam.setUsergrade(totalgrade);
+		ed.save(exam);
 		return totalgrade;
 	}
 	/**

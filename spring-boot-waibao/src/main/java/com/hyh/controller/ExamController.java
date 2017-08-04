@@ -1,6 +1,8 @@
 package com.hyh.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +14,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hyh.bean.SessionUser;
 import com.hyh.bean.SubjectC;
 import com.hyh.entity.Exam;
@@ -31,7 +38,7 @@ public class ExamController {
 	@Resource
 	AspectService aspect;
 	
-	
+	public final ObjectMapper mapper = new ObjectMapper(); 
 	
 	/**
 	 * 题目批改
@@ -39,15 +46,20 @@ public class ExamController {
 	 * @param professionId
 	 * @param examId
 	 * @return
+	 * @throws IOException 
+	 * @throws JsonMappingException 
+	 * @throws JsonParseException 
 	 */
 	@PostMapping("/submitTest.do")
+	@ResponseBody
 	public Map CorrectSubjects(
-			List<SubjectC> list
-			,Integer professionId
-			,Integer examId){
+			String list
+			,Integer examId) throws JsonParseException, JsonMappingException, IOException{
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		String time=df.format(new Date());
-		int grade=es.CorrectSubjects(examId,time,list);
+		JavaType javaType=mapper.getTypeFactory().constructParametricType(ArrayList.class, SubjectC.class);
+		List<SubjectC> list1=(List<SubjectC>)mapper.readValue(list, javaType); 
+		int grade=es.CorrectSubjects(examId,time,list1);
 		Map map=new HashMap();
 		map.put("time", time);
 		map.put("grade",grade);

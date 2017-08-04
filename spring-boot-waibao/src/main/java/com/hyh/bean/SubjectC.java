@@ -1,19 +1,20 @@
 package com.hyh.bean;
 
 public class SubjectC {
-	private int subjectid;
-	private String[] useranswer;
-	public int getSubjectid() {
-		return subjectid;
+	private int id;
+	private String answer;
+	public int getId() {
+		return id;
 	}
-	public void setSubjectid(int subjectid) {
-		this.subjectid = subjectid;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String[] getUseranswer() {
-		return useranswer;
+	public String getAnswer() {
+		return answer;
 	}
-	public void setUseranswer(String[] useranswer) {
-		this.useranswer = useranswer;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
+	
 	
 }

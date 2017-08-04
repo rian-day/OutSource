@@ -101,39 +101,38 @@
                             </span>
                         </div>
                         <div class="rightDiv">
-                        	<button >筛选</button>
+                        	<button>筛选</button>
                         </div>
                         <div class="error-contain">
-                            <ul th:each="answer : ${answerlist}">
-                                <li><i th:text="answer.id">1</i><span th:text="answer.useranswer.subject.content">错题一</span><span class="hidespan">id1<!--这里存题目的id--></span><span class="laji"></span></li>
-                                 <li><i th:text="answer.id">2</i><span th:text="answer.useranswer.subject.content">错题二</span><span class="hidespan">id2<!--这里存题目的id--></span><span class="laji"></span></li>
+                            <ul th:each="answer : ${content}">
+                                <li><i th:text="${answer.id}">1</i><span th:text="${answer.subject.content}">错题一</span><span class="hidespan" th:text="${answer.subject.id}">id1<!--这里存题目的id--></span><span class="laji"></span></li>
                             </ul>
                         </div>
                         <div id="page"></div>
                     </div>
                 </div>
-                <div class="timu-fenxi">
+                <div class="timu-fenxi" th:each="answer: ${content}">
                     <div class="fenxitimu">
                         <div> 
                             <span class="fenxiHead">题目信息:</span>
                             <span class="fenxiHeadRight">参考答案:
-                                <span class="answerStan testAnswer">A</span>
+                                <span class="answerStan testAnswer" th:text="${answer.subject.realAnswer}">A</span>
                             </span>
                         </div>
                         <div class="danxuan">
                             <div class="timus">题目:</div>
-                            <div class="timus-content content">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
+                            <div class="timus-content content" th:text="${answer.subject.content}">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
                         </div>
                         <div class="danxuan">
                             <div class="timus">分析:</div>
-                            <div class="timus-content testAnalyse">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
+                            <div class="timus-content testAnalyse" th:text="${answer.subject.tip}">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
                         </div>
                     </div>
                     <div class="fenxitimu">
                         <div> 
                             <span class="fenxiHead">答题信息:</span>
                             <span class="fenxiHeadRight">我的答案:
-                                <span class="answerStan myAnswer">A</span>
+                                <span class="answerStan myAnswer" th:text="${answer.Answer[0]}">A</span>
                             </span>
                         </div>
                         <div class="danxuan">
@@ -141,7 +140,7 @@
                             <div class="timus">笔记:</div>
                             <div class="rep">
                             	 <textarea class='timus-content analyse textarea1' id="editTxt"></textarea>
-                                 <div class="timus-content analyse text" >我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
+                                 <div class="timus-content analyse text" th:text="${answer.analyse}">我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;我是一个粉刷匠，粉刷本领强，我要把那新房子刷的更漂亮;</div>
                             </div>
                            
                             <div class="cuotibutton cuotibutton1" id="cuotibuttonId1">

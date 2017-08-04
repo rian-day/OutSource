@@ -155,8 +155,10 @@ function submit() {
         list[i] = o;
     }
     var args = {
-        "list": list
+        "list" : JSON.stringify(list),
+        "examId" : "1"
     }
+    console.log(args);
     $.post(url, args, function(data) {
         var grade = data.grade;       
         var correct = data.correct;

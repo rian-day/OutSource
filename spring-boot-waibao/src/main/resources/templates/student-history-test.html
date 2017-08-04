@@ -93,7 +93,7 @@
 						</span>
 						<!-- 已经收藏过该题span中的class写成collected反之写成collect -->
 						</span> <span class="sqlIndex" th:text="${useranswer.subject.id}"> <!--  数据库中题号id -->
-						</span> <span class="collect" name="collect" th:class="${useranswer.collect eq 1} ? collected : collect"> <!-- 是否收藏此题 -->
+						</span> <span class="collect" name="collect" th:class="${useranswer.collect} == '1' ? collected : collect"> <!-- 是否收藏此题 -->
 						</span> <label class="star"> <!--  显示取消收藏的文字-->
 						</label>
 					</dt>
