@@ -463,7 +463,7 @@ $(document).ready(function() {
             });
             /*arr.push('a');*/
             /*answer = $(".box-title1 input[type='radio']:checked").val();        //答案*/
-            var analysis = $(".danxuan-jiexi").text();      //解析
+            var analysis = $("#danxuan-jiexi").text();      //解析
             /*var danxuantimu = {
                 'content' : content,      //content内容
                 'type' : 1,     //type题目类型
@@ -471,12 +471,13 @@ $(document).ready(function() {
                 'tip' : analysis,      //tip注释
                 'professionId' : zhiye        //professionId职业ID
             }*/
+            /*alert(analysis);*/
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",
                 data: {
                     'content' : content,        //content内容
-                    'type' : 1,                 //type题目类型
+                    'type' : '单选题',                 //type题目类型
                     'realAnswer' : answer,      //realAnswer正确答案
                     'tip' : analysis,           //tip注释
                     'professionId' : zhiye      //professionId职业ID
@@ -550,7 +551,7 @@ $(document).ready(function() {
             $(obj).each(function(index, el) {
                 if(obj[index].checked) answer.push($(this).val());
             });
-            var analysis = $(".duoxuan-jiexi").text();
+            var analysis = $("#duoxuan-jiexi").text();
             /*var duoxuantimu = {
                 'pro' : zhiye,
                 'title' : title,
@@ -568,7 +569,7 @@ $(document).ready(function() {
                 url: "add-subject.do",
                 data: {
                     'content' : content,        
-                    'type' : 2,                 
+                    'type' : '多选题',                 
                     'realAnswer' : answer,      
                     'tip' : analysis,           
                     'professionId' : zhiye      
@@ -639,7 +640,7 @@ $(document).ready(function() {
                     }
                 }
             }
-            var analysis = $(".tiankong-jiexi").text();
+            var analysis = $("#tiankong-jiexi").text();
             /*var tiankongtimu = {
                 'pro' : zhiye,
                 'title' : title,
@@ -656,7 +657,7 @@ $(document).ready(function() {
                 url: "add-subject.do",
                 data: {
                     'content' : content,        
-                    'type' : 3,                 
+                    'type' : '填空题',                 
                     'realAnswer' : answer,      
                     'tip' : analysis,           
                     'professionId' : zhiye      
@@ -704,7 +705,7 @@ $(document).ready(function() {
                 url: "add-subject.do",
                 data: {
                     'content' : content,        
-                    'type' : 4,                 
+                    'type' : '判断题',                 
                     'realAnswer' : answer,      
                     'tip' : analysis,           
                     'professionId' : zhiye      
