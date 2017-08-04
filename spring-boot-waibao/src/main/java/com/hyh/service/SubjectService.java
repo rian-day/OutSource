@@ -21,6 +21,7 @@ import com.hyh.repository.ExamDao;
 import com.hyh.repository.RandomSubjectDao;
 import com.hyh.repository.SubjectDao;
 import com.hyh.repository.SubjectGroupDao;
+import com.hyh.repository.SubjectOptionsDao;
 import com.hyh.repository.UserAnswerDao;
 
 
@@ -31,6 +32,8 @@ public class SubjectService {
 	SubjectDao subjectdao;
 	@Resource
 	SubjectGroupDao sgd;
+	@Resource
+	SubjectOptionsDao sod;
 	@Resource
 	UserAnswerDao ad;
 	@Resource
@@ -77,22 +80,31 @@ public class SubjectService {
 		}
 		return result;
 	}
-	public String AddSingleSubject(SubjectBean sj,String createAdmin,String createTime){
+	public String AddSingleSubject(SubjectBean sj,String createAdmin,String createTime,String []realAnswer,String []options){
+		String []arr={"A","B","C","D","E","F","G","H","I","J"};
 		Subject subject=new Subject();
 		subject.setContent(sj.getContent());
 		subject.setCreateAdmin(createAdmin);
 		subject.setCreateTime(createTime);
 		subject.setProfessionId(sj.getProfessionId());
-		subject.setRealAnswer(sj.getRealAnswer());
-		for(int i=0;i<sj.getOptions().size();i++){
-			SubjectOptions option=new SubjectOptions();
-			option.setOptionName(sj.getOptions().get(i).getOptionName());
-			option.setContent(sj.getOptions().get(i).getContent());
-			subject.addOption(option);
-		}
+		subject.setRealAnswer(realAnswer);
 		subject.setTip(sj.getTip());
 		subject.setType(sj.getType());
 		subjectdao.save(subject);
+		for(int i=0;i<options.length;i++){
+			SubjectOptions option=new SubjectOptions();
+			option.setOptionName(arr[i]);
+			option.setContent(options[i]);
+			option.setSubject(subject);
+			sod.save(option);
+		}
+//		for(int i=0;i<sj.getOptions().size();i++){
+//			SubjectOptions option=new SubjectOptions();
+//			option.setOptionName(sj.getOptions().get(i).getOptionName());
+//			option.setContent(sj.getOptions().get(i).getContent());
+//			subject.addOption(option);
+//		}
+
 		return "1";
 	}
 	public String AddSubject(List<Subject> list){

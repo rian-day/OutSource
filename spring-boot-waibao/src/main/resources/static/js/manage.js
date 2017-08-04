@@ -411,21 +411,21 @@ $(document).ready(function() {
     });*/
     $(".tijiao-danxuan").click(function() {
         var zhiye = $(".zhiye option:selected").val();         //顾名思义 这是职业
-        var SubjectOptions = [];
+        var SubjectOptionsBean;
         var optinoInfo = '';
-        var options = [];
+        var options =new Array();
         var content = $("#danxuan-timu div p").text(); 
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
             optionInfo = $("#danxuan-daan1 div p").text();
-            SubjectOptions = {
+            SubjectOptionsBean = {
                 'optionName' : 'A',
                 'content' : optionInfo
             }
             options.push(optionInfo);
             optionInfo = $("#danxuan-daan2 div p").text();
-            SubjectOptions = {
+            SubjectOptionsBean = {
                 'optionName' : 'B',
                 'content' : optionInfo
             }
@@ -433,7 +433,7 @@ $(document).ready(function() {
             if ($(".box-title1").children('.keyList:eq(2)').attr('class')!='keyList behide3') {
                 /*content = content +  "<br/>C:" + $("#danxuan-daan3 div p").text();*/
                 optionInfo = $("#danxuan-daan3 div p").text();
-                SubjectOptions = {
+                SubjectOptionsBean = {
                     'optionName' : 'C',
                     'content' : optionInfo
                 }
@@ -441,7 +441,7 @@ $(document).ready(function() {
                 if ($(".box-title1").children('.keyList:eq(3)').attr('class')!='keyList behide4') {
                     /*content = content +  "<br/>D:" + $("#danxuan-daan4 div p").text();*/
                     optionInfo = $("#danxuan-daan4 div p").text();
-                    SubjectOptions = {
+                    SubjectOptionsBean = {
                         'optionName' : 'D',
                         'content' : optionInfo
                     }
@@ -449,7 +449,7 @@ $(document).ready(function() {
                     if ($(".box-title1").children('.keyList:eq(4)').attr('class')!='keyList behide5') {
                         /*content = content +  "<br/>E:" + $("#danxuan-daan5 div p").text();*/
                         optionInfo = $("#danxuan-daan5 div p").text();
-                        SubjectOptions = {
+                        SubjectOptionsBean = {
                             'optionName' : 'E',
                             'content' : optionInfo
                         }
@@ -457,7 +457,7 @@ $(document).ready(function() {
                         if ($(".box-title1").children('.keyList:eq(5)').attr('class')!='keyList behide6') {
                             /*content = content +  "<br/>F:" + $("#danxuan-daan6 div p").text();*/
                             optionInfo = $("#danxuan-daan6 div p").text();
-                            SubjectOptions = {
+                            SubjectOptionsBean = {
                                 'optionName' : 'F',
                                 'content' : optionInfo
                             }
@@ -493,7 +493,7 @@ $(document).ready(function() {
             }
             var options = [option1,option2,option3,option4,option5,option6];        //选项*/
             var obj = $(".box-title1 input[type='radio']");
-            var answer=[]; 
+            var answer=new Array(); 
             $(obj).each(function(index, el) {
                 if(obj[index].checked) answer.push($(this).val());
             });
@@ -507,20 +507,22 @@ $(document).ready(function() {
                 'tip' : analysis,      //tip注释
                 'professionId' : zhiye        //professionId职业ID
             }*/
-            alert("content:"+content);
-            alert("realAnswer:"+answer);
-            alert("tip:"+analysis);
-            alert("professionId:"+zhiye);
+            console.log("content:"+content);
+            console.log("realAnswer:"+answer);
+            console.log("tip:"+analysis);
+            console.log("professionId:"+zhiye);
+            console.log("options:"+options);
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",
+                //contentType:"application/json", // 指定这个协议很重要  
                 data: {
                     'content' : content,        //content内容
                     'type' : '单选题',                 //type题目类型
                     'realAnswer' : answer,      //realAnswer正确答案
                     'tip' : analysis,           //tip注释
-                    'professionId' : Number(zhiye),     //professionId职业ID
-                    'options' : options
+                    'options' : options,
+                    'professionId' : Number(zhiye)
                 },
                 dataType: "json",
                 success: function(data){
@@ -542,21 +544,21 @@ $(document).ready(function() {
     });
     $(".tijiao-duoxuan").click(function() {
         var zhiye = $(".zhiye option:selected").val();
-        var SubjectOptions = [];
+        var SubjectOptionsBean = [];
         var optinoInfo = '';
-        var options = [];
+        var options = new Array();
         var content = $("#duoxuan-timu div p").text(); 
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
             optionInfo = $("#duoxuan-daan1 div p").text();
-            SubjectOptions = {
+            SubjectOptionsBean = {
                 'optionName' : 'A',
                 'content' : optionInfo
             }
             options.push(optionInfo);
             optionInfo = $("#duoxuan-daan2 div p").text();
-            SubjectOptions = {
+            SubjectOptionsBean = {
                 'optionName' : 'B',
                 'content' : optionInfo
             }
@@ -564,7 +566,7 @@ $(document).ready(function() {
             if ($(".box-title2").children('.keyList:eq(2)').attr('class')!='keyList behide3') {
                 /*content = content +  "<br/>C:" + $("#duoxuan-daan3 div p").text();*/
                 optionInfo = $("#duoxuan-daan3 div p").text();
-                SubjectOptions = {
+                SubjectOptionsBean = {
                     'optionName' : 'C',
                     'content' : optionInfo
                 }
@@ -572,7 +574,7 @@ $(document).ready(function() {
                 if ($(".box-title2").children('.keyList:eq(3)').attr('class')!='keyList behide4') {
                     /*content = content +  "<br/>D:" + $("#duoxuan-daan4 div p").text();*/
                     optionInfo = $("#duoxuan-daan4 div p").text();
-                    SubjectOptions = {
+                    SubjectOptionsBean = {
                         'optionName' : 'D',
                         'content' : optionInfo
                     }
@@ -580,7 +582,7 @@ $(document).ready(function() {
                     if ($(".box-title2").children('.keyList:eq(4)').attr('class')!='keyList behide5') {
                         /*content = content +  "<br/>E:" + $("#duoxuan-daan5 div p").text();*/
                         optionInfo = $("#duoxuan-daan5 div p").text();
-                        SubjectOptions = {
+                        SubjectOptionsBean = {
                             'optionName' : 'E',
                             'content' : optionInfo
                         }
@@ -588,7 +590,7 @@ $(document).ready(function() {
                         if ($(".box-title2").children('.keyList:eq(5)').attr('class')!='keyList behide6') {
                             /*content = content +  "<br/>F:" + $("#duoxuan-daan6 div p").text();*/
                             optionInfo = $("#duoxuan-daan6 div p").text();
-                            SubjectOptions = {
+                            SubjectOptionsBean = {
                                 'optionName' : 'F',
                                 'content' : optionInfo
                             }
@@ -624,7 +626,7 @@ $(document).ready(function() {
             }
             var options = [option1,option2,option3,option4,option5,option6];*/
             var obj = $(".box-title2 input[type='checkbox']");
-            var answer=[]; 
+            var answer=new Array();
             $(obj).each(function(index, el) {
                 if(obj[index].checked) answer.push($(this).val());
             });

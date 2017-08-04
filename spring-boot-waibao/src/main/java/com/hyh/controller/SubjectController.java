@@ -36,11 +36,14 @@ public class SubjectController {
 	@ResponseBody
 	public String addsingleSubject(
 			SubjectBean subject
-			,HttpSession session){
-		String time=df.format(new Date());
-		SessionUser user=(SessionUser)session.getAttribute("user");
-		return ss.AddSingleSubject(subject,user.getName(),time);
+			,@RequestParam("realAnswer[]") String[] answer
+			,HttpSession session
+			,@RequestParam("options[]") String[] options
+			){
+		SessionUser user=(SessionUser) session.getAttribute("user");
+		String createAdmin=user.getName();
+		String createTime=df.format(new Date());
+		return ss.AddSingleSubject(subject, createAdmin, createTime,answer,options);
 	}
-	
 
 }
