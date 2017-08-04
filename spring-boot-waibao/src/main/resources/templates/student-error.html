@@ -104,9 +104,11 @@
                         	<button>筛选</button>
                         </div>
                         <div class="error-contain">
-                            <ul th:each="answer : ${content}">
-                                <li><i th:text="${answer.id}">1</i><span th:text="${answer.subject.content}">错题一</span><span class="hidespan" th:text="${answer.subject.id}">id1<!--这里存题目的id--></span><span class="laji"></span></li>
+                            <ul >
+                                <li th:each="answer : ${content}"><i >1</i><span th:text="${answer.subject.content}">错题一</span><span class="hidespan" th:text="${answer.id}">id1<!--这里存用户答案id--></span><span class="laji"></span></li>
+                                 
                             </ul>
+
                         </div>
                         <div id="page"></div>
                     </div>
@@ -154,49 +156,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="timu-fenxi">
-                    <div class="fenxitimu">
-                        <div> 
-                            <span class="fenxiHead">题目信息:</span>
-                            <span class="fenxiHeadRight">参考答案:
-                                <span class="answerStan testAnswer">B</span>
-                            </span>
-                        </div>
-                        <div class="danxuan">
-                            <div class="timus">题目:</div>
-                            <div class="timus-content content">2</div>
-                        </div>
-                        <div class="danxuan">
-                            <div class="timus">分析:</div>
-                            <div class="timus-content testAnalyse">2</div>
-                        </div>
-                    </div>
-                    <div class="fenxitimu">
-                        <div> 
-                            <span class="fenxiHead">答题信息:</span>
-                            <span class="fenxiHeadRight">我的答案:
-                                <span class="answerStan myAnswer">A</span>
-                            </span>
-                        </div>
-                        <div class="danxuan">
-                            
-                            <div class="timus">笔记:</div>
-                            <div class="rep">
-                                 <textarea class='timus-content analyse textarea1' id="editTxt"></textarea>
-                                 <div class="timus-content analyse text" >2</div>
-                            </div>
-                           
-                            <div class="cuotibutton cuotibutton1" id="cuotibuttonId1">
-                                <button type="button" class="btn btn-success edit">编辑</button>
-                            </div>
-                            <div class="cuotibutton" id="cuotibuttonId2">
-                                <button type="button" class="btn btn-danger cancel">取消</button>
-                                &nbsp;
-                                <button type="button" class="btn btn-success save">保存</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <span class="hidespan">123<!-- 这里放总页数 --></span>
                 <div class="clear"></div>
             </div>

@@ -161,7 +161,7 @@ $(".timu-fenxi:eq(0)").css({
     "display": "block"
 })
 
-$(".error-contain li").click(function() {
+$(".error-contain ul li").click(function() {
     console.log($(this).index());
     var index = $(this).index();
     $(".timu-fenxi").css("display","none");
@@ -170,4 +170,13 @@ $(".error-contain li").click(function() {
         "display": "block"
     })
     queId = $(".error-contain li:eq(" + index + ") .hidespan").text();
+    console.log("123:"+queId);
 })
+
+
+
+$("i").each(function(j) {
+    $(this).text(j + 1);
+});
+
+
