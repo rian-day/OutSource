@@ -415,8 +415,8 @@ $(document).ready(function() {
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
-            var content = $("#danxuan-timu div p").text() + 
-                            "<br/>A:" + $("#danxuan-daan1 div p").text() +
+            var content = $("#danxuan-timu div p").text() 
+            				+ "<br/>A:" + $("#danxuan-daan1 div p").text() +
                             "<br/>B:" + $("#danxuan-daan2 div p").text();
             if ($(".box-title1").children('.keyList:eq(2)').attr('class')!='keyList behide3') {
                 content = content +  "<br/>C:" + $("#danxuan-daan3 div p").text();
@@ -471,6 +471,10 @@ $(document).ready(function() {
                 'tip' : analysis,      //tip注释
                 'professionId' : zhiye        //professionId职业ID
             }*/
+            alert("content:"+content);
+            alert("realAnswer:"+answer);
+            alert("tip:"+analysis);
+            alert("professionId:"+zhiye);
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",
@@ -479,7 +483,7 @@ $(document).ready(function() {
                     'type' : '单选题',                 //type题目类型
                     'realAnswer' : answer,      //realAnswer正确答案
                     'tip' : analysis,           //tip注释
-                    'professionId' : zhiye      //professionId职业ID
+                    'professionId' : Number(zhiye)     //professionId职业ID
                 },
                 dataType: "json",
                 success: function(data){
@@ -563,6 +567,10 @@ $(document).ready(function() {
                 'z-index': '-1',
                 'opacity': '0'
             });*/
+            alert("content:"+content);
+           	alert("realAnswer:"+answer[0]);
+           	alert("tip:"+analysis);
+           	alert("professionId:"+zhiye);
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",

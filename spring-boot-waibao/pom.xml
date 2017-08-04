@@ -1,10 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>spring-boot-jsp2</groupId>
   <artifactId>spring-boot-jsp2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>spring-boot-jsp2</name>
+  <url>http://maven.apache.org</url>
   <description/>
   
    	<parent>
@@ -20,7 +22,7 @@
   </properties>
   
 	<dependencies>
-		
+		<!-- MD5加密 -->
 		<dependency>
 	        <groupId>commons-codec</groupId>
 	        <artifactId>commons-codec</artifactId>
@@ -164,7 +166,7 @@
   			</configuration>
   		</plugin>
     
-      <plugin>
+      <!-- <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
@@ -178,7 +180,7 @@
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
-      </plugin>
+      </plugin>  -->
        <!-- war 插件来定义打包以后的 war 包名称 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -189,12 +191,6 @@
             </plugin>-->
     </plugins>
   </build>
-  <!-- <repositories>  
-        <repository>  
-            <id>spring-milestone</id>  
-            <url>http://repo.spring.io/libs-release</url>  
-        </repository>  
-  </repositories>   -->
   
   
 </project>
