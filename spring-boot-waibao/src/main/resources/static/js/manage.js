@@ -410,22 +410,58 @@ $(document).ready(function() {
         }
     });*/
     $(".tijiao-danxuan").click(function() {
-
         var zhiye = $(".zhiye option:selected").val();         //顾名思义 这是职业
+        var SubjectOptions = [];
+        var optinoInfo = '';
+        var options = [];
+        var content = $("#danxuan-timu div p").text(); 
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
-            var content = $("#danxuan-timu div p").text() 
-            				+ "<br/>A:" + $("#danxuan-daan1 div p").text() +
-                            "<br/>B:" + $("#danxuan-daan2 div p").text();
+            optionInfo = $("#danxuan-daan1 div p").text();
+            SubjectOptions = {
+                'optionName' : 'A',
+                'content' : optionInfo
+            }
+            options.push(optionInfo);
+            optionInfo = $("#danxuan-daan2 div p").text();
+            SubjectOptions = {
+                'optionName' : 'B',
+                'content' : optionInfo
+            }
+            options.push(optionInfo);
             if ($(".box-title1").children('.keyList:eq(2)').attr('class')!='keyList behide3') {
-                content = content +  "<br/>C:" + $("#danxuan-daan3 div p").text();
+                /*content = content +  "<br/>C:" + $("#danxuan-daan3 div p").text();*/
+                optionInfo = $("#danxuan-daan3 div p").text();
+                SubjectOptions = {
+                    'optionName' : 'C',
+                    'content' : optionInfo
+                }
+                options.push(optionInfo);
                 if ($(".box-title1").children('.keyList:eq(3)').attr('class')!='keyList behide4') {
-                    content = content +  "<br/>D:" + $("#danxuan-daan4 div p").text();
+                    /*content = content +  "<br/>D:" + $("#danxuan-daan4 div p").text();*/
+                    optionInfo = $("#danxuan-daan4 div p").text();
+                    SubjectOptions = {
+                        'optionName' : 'D',
+                        'content' : optionInfo
+                    }
+                    options.push(optionInfo);
                     if ($(".box-title1").children('.keyList:eq(4)').attr('class')!='keyList behide5') {
-                        content = content +  "<br/>E:" + $("#danxuan-daan5 div p").text();
+                        /*content = content +  "<br/>E:" + $("#danxuan-daan5 div p").text();*/
+                        optionInfo = $("#danxuan-daan5 div p").text();
+                        SubjectOptions = {
+                            'optionName' : 'E',
+                            'content' : optionInfo
+                        }
+                        options.push(optionInfo);
                         if ($(".box-title1").children('.keyList:eq(5)').attr('class')!='keyList behide6') {
-                            content = content +  "<br/>F:" + $("#danxuan-daan6 div p").text();
+                            /*content = content +  "<br/>F:" + $("#danxuan-daan6 div p").text();*/
+                            optionInfo = $("#danxuan-daan6 div p").text();
+                            SubjectOptions = {
+                                'optionName' : 'F',
+                                'content' : optionInfo
+                            }
+                            options.push(optionInfo);
                         }
                     }
                 }
@@ -483,7 +519,8 @@ $(document).ready(function() {
                     'type' : '单选题',                 //type题目类型
                     'realAnswer' : answer,      //realAnswer正确答案
                     'tip' : analysis,           //tip注释
-                    'professionId' : Number(zhiye)     //professionId职业ID
+                    'professionId' : Number(zhiye),     //professionId职业ID
+                    'options' : options
                 },
                 dataType: "json",
                 success: function(data){
@@ -505,20 +542,57 @@ $(document).ready(function() {
     });
     $(".tijiao-duoxuan").click(function() {
         var zhiye = $(".zhiye option:selected").val();
+        var SubjectOptions = [];
+        var optinoInfo = '';
+        var options = [];
+        var content = $("#duoxuan-timu div p").text(); 
         if (zhiye=="0") {
             alert('请选择职业!');
         }else{
-            var content = $("#duoxuan-timu div p").text() + 
-                            "<br/>A:" + $("#duoxuan-daan1 div p").text() +
-                            "<br/>B:" + $("#duoxuan-daan2 div p").text();
+            optionInfo = $("#duoxuan-daan1 div p").text();
+            SubjectOptions = {
+                'optionName' : 'A',
+                'content' : optionInfo
+            }
+            options.push(optionInfo);
+            optionInfo = $("#duoxuan-daan2 div p").text();
+            SubjectOptions = {
+                'optionName' : 'B',
+                'content' : optionInfo
+            }
+            options.push(optionInfo);
             if ($(".box-title2").children('.keyList:eq(2)').attr('class')!='keyList behide3') {
-                content = content +  "<br/>C:" + $("#duoxuan-daan3 div p").text();
+                /*content = content +  "<br/>C:" + $("#duoxuan-daan3 div p").text();*/
+                optionInfo = $("#duoxuan-daan3 div p").text();
+                SubjectOptions = {
+                    'optionName' : 'C',
+                    'content' : optionInfo
+                }
+                options.push(optionInfo);
                 if ($(".box-title2").children('.keyList:eq(3)').attr('class')!='keyList behide4') {
-                    content = content +  "<br/>D:" + $("#duoxuan-daan4 div p").text();
+                    /*content = content +  "<br/>D:" + $("#duoxuan-daan4 div p").text();*/
+                    optionInfo = $("#duoxuan-daan4 div p").text();
+                    SubjectOptions = {
+                        'optionName' : 'D',
+                        'content' : optionInfo
+                    }
+                    options.push(optionInfo);
                     if ($(".box-title2").children('.keyList:eq(4)').attr('class')!='keyList behide5') {
-                        content = content +  "<br/>E:" + $("#duoxuan-daan5 div p").text();
+                        /*content = content +  "<br/>E:" + $("#duoxuan-daan5 div p").text();*/
+                        optionInfo = $("#duoxuan-daan5 div p").text();
+                        SubjectOptions = {
+                            'optionName' : 'E',
+                            'content' : optionInfo
+                        }
+                        options.push(optionInfo);
                         if ($(".box-title2").children('.keyList:eq(5)').attr('class')!='keyList behide6') {
-                            content = content +  "<br/>F:" + $("#duoxuan-daan6 div p").text();
+                            /*content = content +  "<br/>F:" + $("#duoxuan-daan6 div p").text();*/
+                            optionInfo = $("#duoxuan-daan6 div p").text();
+                            SubjectOptions = {
+                                'optionName' : 'F',
+                                'content' : optionInfo
+                            }
+                            options.push(optionInfo);
                         }
                     }
                 }
@@ -579,7 +653,8 @@ $(document).ready(function() {
                     'type' : '多选题',                 
                     'realAnswer' : answer,      
                     'tip' : analysis,           
-                    'professionId' : zhiye      
+                    'professionId' : zhiye,
+                    'options' : options      
                 },
                 dataType: "json",
                 success: function(data){
@@ -659,6 +734,7 @@ $(document).ready(function() {
                 'z-index': '-1',
                 'opacity': '0'
             });*/
+            var options = [];
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",
@@ -667,7 +743,8 @@ $(document).ready(function() {
                     'type' : '填空题',                 
                     'realAnswer' : answer,      
                     'tip' : analysis,           
-                    'professionId' : zhiye      
+                    'professionId' : zhiye,
+                    'options' : options      
                 },
                 dataType: "json",
                 success: function(data){
@@ -706,6 +783,7 @@ $(document).ready(function() {
                 'z-index': '-1',
                 'opacity': '0'
             });*/
+            var options = [];
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",
@@ -714,7 +792,8 @@ $(document).ready(function() {
                     'type' : '判断题',                 
                     'realAnswer' : answer,      
                     'tip' : analysis,           
-                    'professionId' : zhiye      
+                    'professionId' : zhiye,
+                    'options' : options      
                 },
                 dataType: "json",
                 success: function(data){
