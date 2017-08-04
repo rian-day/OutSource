@@ -66,16 +66,16 @@ $(".input").change(function() {
     $(this).parents(".answerInput").prev().find(".indexLabel").each(function() {
         i = $(this).children(".index").text() - 1; //试卷题号
     })
-     $(this).parents().children(".input").each(function(c){
+    $(this).parents().children(".input").each(function(c) {
         var ANSWER = ($(this).val());
-        if(c != 0){
-            a = a + "," +ANSWER ;
-        }else{
+        if (c != 0) {
+            a = a + "," + ANSWER;
+        } else {
             a = ANSWER;
         }
 
-     })
-     answer[i] = a;
+    })
+    answer[i] = a;
 })
 
 $(".input").click(function() {
@@ -146,16 +146,21 @@ function sub() {
 }
 //$(".submitImg").on("click",submit());
 function submit() {
+    var list = new Array();
     var url = "submitTest.do";
+    for(var i = 0;i<length;i++){
+        var o = new Object();
+        o.id = id[i];
+        o.answer = answer[i];
+        list[i] = o;
+    }
     var args = {
-        "id": id,
-        "answer": answer
+        "list": list
     }
     $.post(url, args, function(data) {
-        var grade = data.grade;
+        var grade = data.grade;       
         var correct = data.correct;
         window.location.href = "student-submit.html?grade='" + grade + "'&correct='" + correct + "'";
-
 
     })
 }
