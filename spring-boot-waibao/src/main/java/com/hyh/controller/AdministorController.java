@@ -22,11 +22,11 @@ public class AdministorController {
 	@Resource
 	AdminService as;
 	
-	@PostMapping("/danxuan-timu.do")
-	@ResponseBody
-	public String addSubject(Subject subject){
-		return ss.AddSingleSubject(subject);
-	}
+//	@PostMapping("/danxuan-timu.do")
+//	@ResponseBody
+//	public String addSubject(Subject subject){
+//		return ss.AddSingleSubject(subject);
+//	}
 	@PostMapping("/sendup.do")
 	@ResponseBody
 	public String addManySubject(List<Subject> list){

@@ -12,12 +12,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.hyh.bean.SubjectC;
-import com.hyh.entity.Exam;
+import com.hyh.bean.SubjectBean;
 import com.hyh.entity.RandomSubject;
 import com.hyh.entity.Subject;
 import com.hyh.entity.SubjectGroup;
-import com.hyh.entity.UserAnswer;
+import com.hyh.entity.SubjectOptions;
 import com.hyh.repository.ExamDao;
 import com.hyh.repository.RandomSubjectDao;
 import com.hyh.repository.SubjectDao;
@@ -78,8 +77,22 @@ public class SubjectService {
 		}
 		return result;
 	}
-	public String AddSingleSubject(Subject sj){
-		subjectdao.save(sj);
+	public String AddSingleSubject(SubjectBean sj,String createAdmin,String createTime){
+		Subject subject=new Subject();
+		subject.setContent(sj.getContent());
+		subject.setCreateAdmin(createAdmin);
+		subject.setCreateTime(createTime);
+		subject.setProfessionId(sj.getProfessionId());
+		subject.setRealAnswer(sj.getRealAnswer());
+		for(int i=0;i<sj.getOptions().size();i++){
+			SubjectOptions option=new SubjectOptions();
+			option.setOptionName(sj.getOptions().get(i).getOptionName());
+			option.setContent(sj.getOptions().get(i).getContent());
+			subject.addOption(option);
+		}
+		subject.setTip(sj.getTip());
+		subject.setType(sj.getType());
+		subjectdao.save(subject);
 		return "1";
 	}
 	public String AddSubject(List<Subject> list){
