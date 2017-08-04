@@ -471,7 +471,6 @@ $(document).ready(function() {
                 'tip' : analysis,      //tip注释
                 'professionId' : zhiye        //professionId职业ID
             }*/
-            /*alert(analysis);*/
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",
@@ -687,7 +686,6 @@ $(document).ready(function() {
             var content = $("#panduan-timu div p").text();
             var answer = [];
             answer.push($(".box-title4 input[type='radio']:checked").val());
-            alert(answer);
             var analysis = $("#panduan-jiexi div p").text();
             /*var panduantimu = {
                 'pro' : zhiye,
