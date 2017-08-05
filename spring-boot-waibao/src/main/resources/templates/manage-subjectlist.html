@@ -88,7 +88,7 @@
 					</form></th> -->
 					<th>上传管理员</th>
 					<th>上传时间</th>
-					<th>修改</th>
+					<!-- <th>修改</th> -->
 				</tr>
 				<tr th:each="sublist : ${content}">
 					<td th:text="${sublist.id}">1</td>		<!-- 题目id -->
@@ -96,7 +96,7 @@
 					<td th:text="${sublist.professionId}">3</td>		<!-- 职业 -->
 					<td th:text="${sublist.createAdmin}">4</td>		<!-- 上传管理员 -->
 					<td th:text="${sublist.createTime}">5</td>		<!-- 上传时间 -->
-					<td><input type="submit" value="修改"/></td>
+					<!-- <td><input type="submit" value="修改"/></td> -->
 				</tr>
 				<!-- <tr>
 					<td>2</td>
@@ -192,6 +192,7 @@
  							</ul>
  							<div class="finalPage">末页</div>
  							<div class="nextPage">»</div>
+ 							<div class="searchPage">搜索</div>
  						</div>
 					</th>
 				</tr>
@@ -274,9 +275,7 @@ function topage(page){
 /*<![CDATA[*/
 function toSubPage(page){
     var zhiyeSel = $(".title-select").val();
-    var www = window.document.location.href;
-    var myurl = www.substring(0, www.indexOf('?'));
-	window.location.href= myurl + "?zhiye=" + zhiyeSel + "&nowPage=" + page + "";
+	window.location.href= "manage-subjectlist.html?zhiye=" + zhiyeSel + "&nowPage=" + page + "";
     /*var subjectlist = {
         'zhiye' : zhiyeSel,
         'page' : page
