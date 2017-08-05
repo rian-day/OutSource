@@ -59,17 +59,13 @@ public class UserService {
 		 return "1";
 	 }
 	 //修改用户信息
-	 public String changeUserInfo(UserBean user){
+	 public UserInfo changeUserInfo(UserBean user,int userId){
 		 String mail=user.getUsername();
-		 ArrayList<UserInfo> list=userdao.findByMail(mail);
-		 if(list.size()==0)
-			 return "0";
-		 UserInfo userinfo=list.get(0);
+		 UserInfo userinfo=userdao.findById(userId);
 		 userinfo.setName(user.getName());
 		 userinfo.setSex(user.getSex());
 		 userinfo.setProfessionId(user.getProfessionId());
-		 userdao.save(userinfo);
-		 return "1";
+		 return userdao.save(userinfo);
 		 
 	 }
 	 //修改用户密码

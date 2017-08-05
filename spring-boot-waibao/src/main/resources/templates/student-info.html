@@ -152,14 +152,14 @@
                     </div>
                 </div>
                 <div class="editInfo showInfo">
-                    <form method="post" action="editInfo.do">
+                    <form method="post" action="editInfo.do" enctype="multipart/form-data">
                     <div class="touxiang">
                         <div class="img_show img_show1">
                             <div>
                                 <img src="../static/images/moren.png" th:src="@{${user.head}}" width="103" height="103" alt="" id="upload" /> <!-- th:src="@{/images/moren.png}" -->
                             </div>
                             <a href="javascript:;" class="a-upload">
-                                <input type="file" class="upfile" accept="*/*" id="fileToUpload" name="Head" />点击上传头像
+                                <input type="file" class="upfile" accept="*/*" id="fileToUpload" name="file" />点击上传头像
                             </a>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
                                 </li>
                                 <li>
                                     <div class="pro">
-                                        <select name="pro" id="">
+                                        <select name="professionId" id="">
                                              <option value="web工程师" th:each="p :${pros}" th:text="${p.name}" th:value="${p.id}">web工程师</option>
                                         </select>
                                     </div>

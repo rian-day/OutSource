@@ -44,14 +44,22 @@ public class UserController {
 //	 return result;
 // }
  	@RequestMapping("/editInfo.do")
-	@ResponseBody
 	public String changeUserInfo(
 			UserBean user
 			,HttpSession session
 			,@RequestParam("file") MultipartFile file){
  		SessionUser sessionuser=(SessionUser)session.getAttribute("user");
  		userService.UploadUserHead(file, sessionuser.getProfessionId());
- 		return userService.changeUserInfo(user);
+ 		UserInfo userinfo=userService.changeUserInfo(user, sessionuser.getProfessionId());
+ 		SessionUser su=new SessionUser();
+		su.setMail(userinfo.getMail());
+		su.setName(userinfo.getName());
+		su.setProfessionId(userinfo.getProfessionId());
+		su.setUserId(userinfo.getId());
+		su.setHead(userinfo.getHead());
+		su.setSex(userinfo.getSex());
+		session.setAttribute("user",su);
+ 		return "index";
  		
  	}
  	/**
@@ -82,14 +90,11 @@ public class UserController {
 			su.setName(userinfo.getName());
 			su.setProfessionId(userinfo.getProfessionId());
 			su.setUserId(userinfo.getId());
-			Log.warn("userid:"+userinfo.getId());
 			su.setHead(userinfo.getHead());
 			su.setSex(userinfo.getSex());
 			httpSession.setAttribute("user",su);
 			return "1";
 		}else if(admin!=null){
-			Log.warn("admin");
-			
 			SessionUser su=new SessionUser();
 			su.setMail(mail);
 			su.setName(admin.getName());
@@ -122,9 +127,9 @@ public class UserController {
 //	 Log.warn(boss);
 //	 Log.warn(mail);
 	 if(boss.equals("1")){
-		 return userService.updateUserInfo(mail, password);
-	 }else{
 		 return userService.updateAdimInfo(mail, password);
+	 }else{
+		 return userService.updateUserInfo(mail, password);
 	 }
  }
  
