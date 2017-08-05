@@ -56,7 +56,7 @@
                 var pageshow = ye; //9
                 var nums = odevity(n); //8
                 // opts.callBack(pageshow);
-                if (l > n) {
+                if (l < n) {
                     if (pageshow > l - nums / 2 && pageshow < l + 1) {
                         //最后几项
                         fpageNext((n - 1) - (l - pageshow));

@@ -108,7 +108,7 @@ $("#page").Page({
     liNums: limit, //分页的数字按钮数(建议取奇数)
     activeClass: 'activP', //active 类样式定义
     callBack: function(page) {
-        window.location.href = myurl + "?nowPage=" + page + "&type=" + type + "&pro=" + pro;
+        window.location.href = myurl + "?nowPage=" + page + "&type=" + type + "&pro=" + pro +  "&size=10";
     }
 })
 
@@ -176,7 +176,7 @@ $(".error-contain ul li").click(function() {
 
 
 $("i").each(function(j) {
-    $(this).text(j + 1);
+    $(this).text((ye-1)*10+j+1);
 });
 
 

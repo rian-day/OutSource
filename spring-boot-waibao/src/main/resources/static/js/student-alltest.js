@@ -24,7 +24,7 @@ $("#page").Page({
     liNums: limit, //分页的数字按钮数(建议取奇数)
     activeClass: 'activP', //active 类样式定义
     callBack: function(page) {
-        window.location.href = myurl + "?nowPage=" + page + "";
+        window.location.href = myurl + "?nowPage=" + page + "&size=6";
     }
 })
 
