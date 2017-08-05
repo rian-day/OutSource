@@ -478,22 +478,22 @@
 					<td>11</td>
 					<td><input class="add-button" type="submit" value="添加"/></td>
 				</tr> -->
-				<tr style="height: 50px;">
-					<th colspan="3">
- 						<div class="paging">
- 							<div class="lastPage">«</div>
- 							<div class="firstPage">首页</div>
- 							<ul>
- 								<li class="tbPage"></li>
- 								<li class="obPage"></li>
- 								<li class="nowPage"></li>
- 								<li class="oaPage"></li>
- 								<li class="taPage"></li>	
- 							</ul>
- 							<div class="finalPage">末页</div>
- 							<div class="nextPage">»</div>
- 						</div>
-					</th>
+				<tr style="height: 0px;">
+					<!-- <th colspan="3">
+					 						<div class="paging">
+					 							<div class="lastPage">«</div>
+					 							<div class="firstPage">首页</div>
+					 							<ul>
+					 								<li class="tbPage"></li>
+					 								<li class="obPage"></li>
+					 								<li class="nowPage"></li>
+					 								<li class="oaPage"></li>
+					 								<li class="taPage"></li>	
+					 							</ul>
+					 							<div class="finalPage">末页</div>
+					 							<div class="nextPage">»</div>
+					 						</div>
+					</th> -->
 				</tr>
 			</table>
 		</div> 
@@ -567,7 +567,7 @@
             </div>
         </div>
 	</div>
-
+2
 </div>
 <div class="menu">
 	<div class="menu-in">
@@ -621,12 +621,7 @@
 <script src="../static/js/Sortable.min.js" th:src="@{/js/Sortable.min.js}"></script>
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script type="text/javascript" src="../static/wangEditor/wangEditor.min.js" th:src="@{/wangEditor/wangEditor.min.js}"></script>
-<script type="text/javascript" th:inline="javascript" >
-var countPage = [[${TotalPages}]];
-var nowPage = [[${nowpage}]] + 1;
-function topage(page){
-	toAtpPage(page);
-};
+<script type="text/javascript" th:inline="javascript" >22
 $(".tp-btn-sub").click(function(event) {
 	toAtpPage(1);
 });
@@ -639,11 +634,10 @@ function toAtpPage(page){
     /*alert(ser);*/
     $.ajax({
         type: "POST",
-        url: "addtp-search.do",
+        url: "mohu-search-subject.do",
         data: {
             'professionId' : pro,
             'content' : ser,
-            'nowPage' : page,
             'size' : '10'
         },
         dataType: "json",
@@ -653,7 +647,7 @@ function toAtpPage(page){
                 listInfo = listInfo + "<tr><th>" + data[i].content +"</th><th>" + data[i].content +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
             }
             $(".list-view table").html(listInfo);
-        }
+        }2
     });
     /*var www = window.document.location.href;
     var myurl = www.substring(0, www.indexOf('?'));
