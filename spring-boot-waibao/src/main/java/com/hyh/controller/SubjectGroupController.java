@@ -4,10 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.hyh.bean.SessionUser;
 import com.hyh.bean.SubjectGroupBean;
@@ -31,6 +33,7 @@ public class SubjectGroupController {
 	@PostMapping("sendtp.do")
 	public String createGroup(
 			SubjectGroupBean sgb
+			,HttpServletRequest request
 			,HttpSession session){
 		String time=df.format(new Date());
 		SessionUser user=(SessionUser) session.getAttribute("user");

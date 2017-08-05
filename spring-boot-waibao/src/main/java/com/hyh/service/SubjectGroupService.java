@@ -19,8 +19,8 @@ public class SubjectGroupService {
 	SubjectDao sd;
 	
 	public String createGroup(SubjectGroupBean sgb){
-		int[] subjectId=sgb.getSubjectId();
-		int[] grade=sgb.getGrade();
+		Integer[] subjectId=sgb.getSubjectId();
+		Integer[] grade=sgb.getGrade();
 		String groupName=sgb.getGroupName();
 		Administrators createAdmin=sgb.getCreateAdmin();
 		String createTime=sgb.getCreateTime();
@@ -37,7 +37,7 @@ public class SubjectGroupService {
 			totalgrade+=grade[i];
 		}
 		group.setName(groupName);
-		group.setSinglegrade(grade);
+		//group.setSinglegrade(grade);
 		group.setCreateAdmin(createAdmin);
 		group.setCreateTime(createTime);
 		group.setProfessionId(professionId);

@@ -42,12 +42,12 @@ public class ExcelService {
 			//,String userName
 			){  
 	      
-	       File uploadDir = new  File("E:\\fileupload");  
+	       File uploadDir = new  File("D:\\fileupload");  
 	       //创建一个目录 （它的路径名由当前 File 对象指定，包括任一必须的父路径。）  
 	       if (!uploadDir.exists()) 
 	    	   uploadDir.mkdirs();  
 	       //新建一个文件  
-	       File tempFile = new File("E:\\fileupload\\" + new Date().getTime() + ".xlsx");   
+	       File tempFile = new File("D:\\fileupload\\" + new Date().getTime() + ".xlsx");   
 	       //初始化输入流  
 	       InputStream is = null;    
 	       try{  
@@ -132,9 +132,12 @@ public class ExcelService {
 	             
 	           //循环Excel的列  
 	           //创建实体类
+	           int Cellnum=sheet.getRow(r).getPhysicalNumberOfCells(); 
 	           Subject subject=new Subject();
-	           for(int c = 0; c <totalCells; c++){  
+	           for(int c = 0; c <Cellnum; c++){  
 	               Cell cell = row.getCell(c);  
+	               if("".equals(cell))
+	            	   continue;
 	               cell.setCellType(Cell.CELL_TYPE_STRING);
 	               if (null != cell){ 
 	            	   if(c>3){
@@ -185,38 +188,6 @@ public class ExcelService {
 	           tempFile.delete();  
 	       }  
 	         
-	       
-	       //全部数据集合
-	       //userKnowledgeBaseList
-	       //全部验证通过才导入到数据库  
-//	       if(StringUtils.isEmpty(errorMsg)){  
-//	           for(UserKnowledgeBase userKnowledgeBase : userKnowledgeBaseList){  
-//	               this.saveUserKnowledge(userKnowledgeBase, userName);  
-//	           }  
-//	           errorMsg = "导入成功，共"+userKnowledgeBaseList.size()+"条数据！";  
-//	       }  
-	       
-	       //排序
-//	       Comparator<SubjectOptions> c = new Comparator<SubjectOptions>() {  
-//	    	   @Override  
-//	    	   public int compare(SubjectOptions s1, SubjectOptions s2) {  
-//	    		   // TODO Auto-generated method stub  
-//	    		   if(Integer.valueOf(s1.getOptionName())<Integer.valueOf(s2.getOptionName()))  
-//	    			   return 1;  
-//	    	       //注意！！返回值必须是一对相反数，否则无效。jdk1.7以后就是这样。  
-//	    	       //      else return 0; //无效  
-//	    	       else return -1;  
-//	    	   }
-//	       };
-//	       for(int i=0;i<list.size();i++){
-//	    	   Subject subject=list.get(0);
-//	    	   List<SubjectOptions> set=subject.getOptions();
-//	    	   
-//	       }
-//	       Iterator<SubjectOptions> it=list.get(0).getOptions().iterator();
-//	       while(it.hasNext()){
-//	    	   Log.warn(it.next().getOptionName());
-//	       }
 	       return list;
 	  }  
 }

@@ -960,16 +960,17 @@ $(document).ready(function() {
                     'id' : thisid,
                     'fenzhi' : thisfenshu
                 }
-                timuinfo.push(timu);
+                timuinfo.push(thisfenshu);
             });
             $.ajax({
                 type: "POST",
                 url: "sendtp.do",
                 data: {
-                    'name' : name,      //名称
-                    'pro' : pro,        //职业
-                    'hrd' : hrd,         //难度
-                    'timuid' : timuid,      //题目id(数组)
+                    'groupName' : name,      //名称
+                    'professionId' : pro,        //职业
+                    'level' : hrd,         //难度
+                    'subjectId' : timuid,//题目id(数组)
+                    'grade' : timuinfo
                 },
                 dataType: "json",
                 success: function(data){

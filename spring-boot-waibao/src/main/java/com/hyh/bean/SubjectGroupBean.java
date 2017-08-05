@@ -5,20 +5,13 @@ import com.hyh.entity.Administrators;
 public class SubjectGroupBean {
 	private Administrators createAdmin;
 	private String groupName;
-	private int[] subjectId;
-	private int[] grade;
+	private Integer[] subjectId;
+	private Integer[] grade;
 	private String createTime;
-	private int limitedTime;
-	private int professionId;
-	private int level;
+	private Integer limitedTime;
+	private Integer professionId;
+	private Integer level;
 	
-	
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
-	}
 	public Administrators getCreateAdmin() {
 		return createAdmin;
 	}
@@ -31,16 +24,16 @@ public class SubjectGroupBean {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
-	public int[] getSubjectId() {
+	public Integer[] getSubjectId() {
 		return subjectId;
 	}
-	public void setSubjectId(int[] subjectId) {
+	public void setSubjectId(Integer[] subjectId) {
 		this.subjectId = subjectId;
 	}
-	public int[] getGrade() {
+	public Integer[] getGrade() {
 		return grade;
 	}
-	public void setGrade(int[] grade) {
+	public void setGrade(Integer[] grade) {
 		this.grade = grade;
 	}
 	public String getCreateTime() {
@@ -49,18 +42,25 @@ public class SubjectGroupBean {
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
-	public int getLimitedTime() {
+	public Integer getLimitedTime() {
 		return limitedTime;
 	}
-	public void setLimitedTime(int limitedTime) {
+	public void setLimitedTime(Integer limitedTime) {
 		this.limitedTime = limitedTime;
 	}
-	public int getProfessionId() {
+	public Integer getProfessionId() {
 		return professionId;
 	}
-	public void setProfessionId(int professionId) {
+	public void setProfessionId(Integer professionId) {
 		this.professionId = professionId;
 	}
+	public Integer getLevel() {
+		return level;
+	}
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+	
 	
 	
 }

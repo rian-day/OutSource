@@ -71,7 +71,8 @@ public class ExamController {
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping("/randomsubjects")
+	@RequestMapping("/createExamRandom.do")
+	@ResponseBody
 	public Exam randomSubjects(
 			Integer professionId
 			,HttpSession session
@@ -84,7 +85,8 @@ public class ExamController {
 		Exam exam=es.saveExam(time,userId,professionId,list);
 		return exam;
 	}
-	
+	@RequestMapping("/createExamByGroup.do")
+	@ResponseBody
 	public Exam buildByGroupId(
 			Integer id
 			,HttpSession session

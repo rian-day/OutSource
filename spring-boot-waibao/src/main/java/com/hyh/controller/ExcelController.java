@@ -3,12 +3,10 @@ package com.hyh.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
@@ -18,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hyh.entity.Subject;
 import com.hyh.service.ExcelService;
+import com.hyh.service.SubjectService;
 import com.hyh.service.UserService;
 import com.hyh.utils.ExcelImportUtils;
 
@@ -32,11 +32,14 @@ import com.hyh.utils.ExcelImportUtils;
 public class ExcelController {
 	static Logger log = Logger.getLogger (UserService.class.getName ());
 	
-	@Autowired
+	@Resource
 	ExcelService knowledgeService;
 	//获取模板
 	@Value("${web.excel.download}")
 	String web_path;
+	@Resource
+	SubjectService ss;
+	
 	@RequestMapping("/getexcel.do")
     public ResponseEntity<InputStreamResource> downloadFile( Long id)  
             throws IOException {  
@@ -97,6 +100,12 @@ public class ExcelController {
 	    ModelAndView mav=new ModelAndView();
 	    mav.setViewName("manage-showtp");
 	    mav.addObject("content",list);
+	    session.setAttribute("excel", list);
 	    return mav;
 	}  
+	@PostMapping("/saveExcel.do")
+	public String saveExcel(HttpSession session){
+		List<Subject> list = (List<Subject>) session.getAttribute("excel");
+		return ss.AddSubject(list);
+	}
 }

@@ -413,9 +413,9 @@
 					请选择上传文件
 				</h4>
 			</div>
-			<form action="file.do" method="POST">
+			<form enctype="multipart/form-data" method="POST" action="/excel">
 				<div class="modal-body">
-					<input type="file"/>
+					<input type="file" name="filename"/>
 						<!-- <input type="submit"/> -->
 				</div>
 				<div class="modal-footer">
