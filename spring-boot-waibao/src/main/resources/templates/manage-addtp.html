@@ -418,7 +418,7 @@
 			<div style="padding-top:10px;padding-bottom: 20px;height: 40px;display: flex;">
 				<form style="width: 95%;">
 					<input type="text" class="tp-search-sub" />
-					<input type="submit" class="tp-btn-sub" value="搜索" title="搜索题目信息"/>
+					<span class="tp-btn-sub" >搜索</span>
 				</form>
 				<span class="glyphicon glyphicon-remove" style="font-size:20px;color: red;cursor: pointer;" title="关闭"></span>
 			</div>
@@ -625,25 +625,45 @@
 var countPage = [[${TotalPages}]];
 var nowPage = [[${nowpage}]] + 1;
 function topage(page){
-	toSubPage(page);
+	toAtpPage(page);
 };
 $(".tp-btn-sub").click(function(event) {
-	toSubPage(1);
+	toAtpPage(1);
 });
 /*<![CDATA[*/
-function toSubPage(page){
-    var zhiyeSel = $(".pro-select").val();
-    var subSer = $(".tp-search-sub").val();
-    var www = window.document.location.href;
+function toAtpPage(page){
+    /* var zhiyeSel = $(".pro-select").val();
+    var subSer = $(".tp-search-sub").val(); */
+    var pro = $(".pro-select option:selected").val();
+    var ser = $("tp-search-sub").val();
+    $.ajax({
+        type: "POST",
+        url: "addtp-search.do",
+        data: {
+            'zhiye' : pro,
+            'search' : ser,
+            'page' : page,
+            'size' : '10'
+        },
+        dataType: "json",
+        success: function(data){
+            var listInfo = "<tr><th>ID</th><th>题目信息</th><th>添加</th></tr>";
+            for (var i = 0; i < 10; i++) {
+                listInfo = listInfo + "<tr><th>" + data[i].content +"</th><th>" + data[i].content +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
+            }
+            $(".list-view table").html(listInfo);
+        }
+    });
+    /*var www = window.document.location.href;
     var myurl = www.substring(0, www.indexOf('?'));
-    /*var subjectlist = {
+    var subjectlist = {
         'zhiye' : zhiyeSel,
         'search' : subSer,
         'page' : page
     };
 	alert(page);*/
-	window.location.href = myurl+"?zhiye=" + zhiyeSel + "&search=" + subSer + "&nowPage=" + page;
-    /*$.ajax({
+	/*window.location.href = myurl+"?zhiye=" + zhiyeSel + "&search=" + subSer + "&nowPage=" + page;
+    $.ajax({
         type: "POST",
         url: "tp-subjectlist.do",
         data: {

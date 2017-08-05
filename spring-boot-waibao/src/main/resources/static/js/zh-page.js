@@ -36,7 +36,7 @@ $(document).ready(function() {
 			'style' : 'width:35px'		
 		});
 		$(".paging").attr({
-			'style' : 'width:215px'		
+			'style' : 'width:260px'		
 		});
 
 		$(".nowPage").text(1);
@@ -55,7 +55,7 @@ $(document).ready(function() {
 			'style' : 'width:70px'		
 		});
 		$(".paging").attr({
-			'style' : 'width:250px'		
+			'style' : 'width:295px'		
 		});
 
 
@@ -78,7 +78,7 @@ $(document).ready(function() {
 			'style' : 'width:105px'		
 		});
 		$(".paging").attr({
-			'style' : 'width:285px'		
+			'style' : 'width:330px'		
 		});
 
 		$(".obPage").text(1);
@@ -100,7 +100,7 @@ $(document).ready(function() {
 			'style' : 'width:140px'		//少一个-35px;
 		});
 		$(".paging").attr({
-			'style' : 'width:320px'		//少一个-35px;
+			'style' : 'width:365px'		//少一个-35px;
 		});
 
 		$(".tbPage").text(1);
@@ -210,7 +210,10 @@ $(document).ready(function() {
 			
 		}
 	});
-	$(".paging .firstPage").click(function() {
+	$(".paging .firstPage ").click(function() {
+		topage(1);
+	});
+	$(".paging .searchPage ").click(function() {
 		topage(1);
 	});
 	$(".paging .finalPage").click(function() {

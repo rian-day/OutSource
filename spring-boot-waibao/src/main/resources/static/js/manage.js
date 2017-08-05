@@ -1128,10 +1128,9 @@ $(document).ready(function() {
             }
         });
     });
-    $(".tp-btn-sub").click(function() {
+    /*$(".tp-btn-sub").click(function() {
         var pro = $(".pro-select option:selected").val();
         var ser = $("tp-search-sub").val();
-        return false;
         $.ajax({
             type: "POST",
             url: "addtp-search.do",
@@ -1150,7 +1149,7 @@ $(document).ready(function() {
                 $(".list-view table").html(listInfo);
             }
         });
-    });
+    });*/
 
     $(".uldmould").click(function() {
         $(".uld-overlay").css({
