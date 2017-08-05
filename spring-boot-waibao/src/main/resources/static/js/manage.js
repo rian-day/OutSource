@@ -348,7 +348,7 @@ $(document).ready(function() {
         $(".w-e-text p").text('');
     });
     $(".add-project").click(function() {
-        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"><br>题目分值：<input type="text"/>分<br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
+        $('<li><div class="drag-handle">&#9776;</div><div class="handle-timu"></div><div class="timu-info"><span class="glyphicon glyphicon-remove" title="删除题目"></span>题目ID:<input type="text" class="timu-id" disabled="true"/><br/>题目分值：<input type="text" class="timu-fenzhi" />分<br/><div class="select-timu">选择题目</div><div class="insert-timu">录入题目</div></div></li>').insertBefore(".tp-button");
     });
     $(document).on("click",".timu-info .glyphicon",function(){
         $(this).parent().parent().remove();
@@ -954,7 +954,7 @@ $(document).ready(function() {
             }*/
             var timuinfo = [];
             var timuid=[];
-            $("#handle-1 li").each(function(index, el) {        //index是从零开始的
+            $("#handle-1 li").each(function(index, el) {        //index是从零开始的*/
                 var thisid = $(this).children(".timu-info").children(".timu-id").val();
                 var thisfenshu = $(this).children(".timu-info").children('.timu-fenzhi').val();
                 timuinfo.push(thisfenshu);
