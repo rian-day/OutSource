@@ -904,7 +904,7 @@ $(document).ready(function() {
         var num = [];
         var mark = [];
         $("#handle-2 li").each(function(index, el) {
-            type.pushi($(el).children('.handle-timu').children('input[type=hidden]').val());     //类型
+            type.push($(el).children('.handle-timu').children('input[type=hidden]').val());     //类型
             num.push($(el).children('.handle-timu').children('input[type=text]:eq(0)').val());      //数量
             mark.push($(el).children('.handle-timu').children('input[type=text]:eq(1)').val());     //分数
             /*var suijitimu = {
@@ -918,7 +918,6 @@ $(document).ready(function() {
             type: "POST",
             url: "creat-suijitp.do",
             data: {
-                'tpname' : tpname,
                 'professionId' : tppro,
                 'type' : type,
                 'num' : num,

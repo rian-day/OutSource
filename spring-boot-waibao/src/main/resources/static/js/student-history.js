@@ -45,13 +45,13 @@ if(ye == null || ye ==""){
     ye = 1;
 }
 //获得总页数
-pp = ($(".hidespan:last").text()) * 1;
+
 $("#page").Page({
     totalPages: pp, //分页总数
     liNums: limit, //分页的数字按钮数(建议取奇数)
     activeClass: 'activP', //active 类样式定义
     callBack: function(page) {
-        window.location.href = myurl + "?nowPage=" + page + "";
+        window.location.href = myurl + "?nowPage=" + page + "&size=6";
     }
 })
 

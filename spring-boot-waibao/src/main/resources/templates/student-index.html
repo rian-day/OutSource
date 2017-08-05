@@ -119,10 +119,10 @@
 			<div class="mgmt-index">
                 <div>
                     <div class="fast-access"><a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-file"></span>随机试卷</a></div>
-                    <div class="fast-access"><a href="student-alltest.html"><span class="glyphicon glyphicon-file"></span> 套题</a></div>
+                    <div class="fast-access"><a href="student-alltest.html?size=6"><span class="glyphicon glyphicon-file"></span> 套题</a></div>
                     <div class="fast-access"><a href="student-info.html"><span class="glyphicon glyphicon-user"></span> 个人信息</a></div>
-                    <div class="fast-access"><a href="student-history.html"><span class="glyphicon glyphicon-edit"></span> 考试历史记录</a></div>
-                    <div class="fast-access"><a href="student-error.html"><span class="glyphicon glyphicon-list-alt"></span> 错题收集</a></div>
+                    <div class="fast-access"><a href="student-history.html?size=6"><span class="glyphicon glyphicon-edit"></span> 考试历史记录</a></div>
+                    <div class="fast-access"><a href="student-error.html?size=10"><span class="glyphicon glyphicon-list-alt"></span> 错题收集</a></div>
                     <div class="fast-access" style="color: gray">敬请期待...</div>
                 </div>
             </div>
@@ -154,56 +154,45 @@
 		</div>
 	</div>
 	<div class="menu">
-		<div class="menu-in">
-			<div class="menu-top">
-				<div class="pull-left">
-					<span></span>
-				</div>
-				<div class="pull-right">
-					<span>close</span> <span class="glyphicon glyphicon-remove"></span>
-				</div>
-			</div>
-			<div class="second-menu">
-				<a href="student-index.html">
-					<div class="link">
-						<span class="glyphicon glyphicon-home"></span>主页
-					</div>
-				</a>
-				<div class="home">
-					题库<span class="glyphicon glyphicon-menu-hamburger"></span>
-				</div>
-				<ul class="second-menu-home">
-					<a href="student-alltest.html">
-						<li>套题</li>
-					</a>
-				</ul>
-			</div>
-			<div class="second-menu">
-				<div class="winners">
-					个人中心<span class="glyphicon glyphicon-menu-hamburger"></span>
-				</div>
-				<ul class="second-menu-winners ">
-					<a href="student-info.html">
-						<li>基本信息</li>
-					</a>
-				</ul>
-			</div>
-			<div class="second-menu">
-				<div class="history">
-					历史记录<span class="glyphicon glyphicon-menu-hamburger"></span>
-				</div>
-				<ul class="second-menu-history ">
-					<a href="student-history.html">
-						<li>考试历史记录</li>
-					</a>
-					<a href="student-error.html">
-						<li>错题收集</li>
-					</a>
-				</ul>
-			</div>
-			<div class="menu-foot"></div>
-		</div>
-	</div>
+        <div class="menu-in">
+            <div class="menu-top">
+                <div class="pull-left">
+                    <span></span>
+                </div>
+                <div class="pull-right">
+                    <span>close</span>
+                    <span class="glyphicon glyphicon-remove"></span>
+                </div>
+            </div>
+            <div class="second-menu">
+                <div class="home">题库<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                <ul class="second-menu-home">
+                    <a href="student-alltest.html?size=6">
+                        <li>套题</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="second-menu">
+                <div class="winners">个人中心<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                <ul class="second-menu-winners ">
+                    <a href="student-info.html">
+                        <li>基本信息</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="second-menu">
+                <div class="history">历史记录<span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                <ul class="second-menu-history ">
+                    <a href="student-history.html?size=6">
+                        <li>考试历史记录</li>
+                    </a>
+                    <a href="student-error.html?size=10">
+                        <li>错题收集</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
 	<!--  <div class="modal-backdrop fade in"></div> -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
