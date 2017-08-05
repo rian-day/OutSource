@@ -636,13 +636,14 @@ function toAtpPage(page){
     var subSer = $(".tp-search-sub").val(); */
     var pro = $(".pro-select option:selected").val();
     var ser = $("tp-search-sub").val();
+    alert(ser);
     $.ajax({
         type: "POST",
         url: "addtp-search.do",
         data: {
-            'zhiye' : pro,
-            'search' : ser,
-            'page' : page,
+            'professionId' : pro,
+            'content' : ser,
+            'nowPage' : page,
             'size' : '10'
         },
         dataType: "json",

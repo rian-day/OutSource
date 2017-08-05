@@ -41,13 +41,13 @@ public class SubjectService {
 	@Resource
 	RandomSubjectDao rd;
 	
-	public Page<Subject> SearchSubjectLike(String content,int nowpage,int size){
+	public Page<Subject> SearchSubjectLike(String content,int nowpage,int size,int professionId){
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(nowpage, size, sort);
-		if("".equals(content)){
-			return subjectdao.findAll(pageable);
+		if("null".equals(content)){
+			return subjectdao.findByProfessionId(professionId,pageable);
 		}
-        return subjectdao.findByContentLike(content, pageable);
+        return subjectdao.findByProfessionIdAndContentLike(professionId,content,pageable);
 	}
 	public SubjectGroup SearchSubjectGroupById(int id){
 		return sgd.findById(id);

@@ -14,9 +14,11 @@ import com.hyh.entity.Subject;
 public interface SubjectDao extends JpaRepository<Subject, Long> {
 	
 	List<Subject> findByProfessionId(int professionId);
+	Page<Subject> findByProfessionId(int professionId,Pageable pageable);
 	
 	Subject findById(int id);
-	Page<Subject> findByContentLike(String content,Pageable pageable);
+	
+	Page<Subject> findByProfessionIdAndContentLike(int professionId,String content,Pageable pageable);
 	
 	List<Subject> findByTypeAndProfessionId(String type,int professionId);
 	Page<Subject> findAll(Pageable pageable);

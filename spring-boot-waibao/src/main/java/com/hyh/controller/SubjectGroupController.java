@@ -51,19 +51,20 @@ public class SubjectGroupController {
 	}
 	@PostMapping("addtp-search.do")
 	@ResponseBody
-	public void findSubject(
-			@RequestParam(value = "size", required=false) String content
+	public Model findSubject(
+			@RequestParam(value = "content",defaultValue = "null") String content
 			,@RequestParam(value = "size", defaultValue = "5") Integer size
-			, @RequestParam(value = "nowPage", defaultValue = "1") Integer nowPage
+			,@RequestParam(value = "nowPage", defaultValue = "1") Integer nowPage
+			,@RequestParam(value = "professionId") Integer professionId
 			,Model model
 			){
 		nowPage--;
-		Page<Subject> page=ss.SearchSubjectLike(content, nowPage, size);
+		Page<Subject> page=ss.SearchSubjectLike(content, nowPage, size,professionId);
 		model.addAttribute("content", page.getContent());
 		model.addAttribute("totalPage",page.getTotalPages());
 		nowPage++;
 		model.addAttribute("nowPage",nowPage);
 		model.addAttribute("totalElements",page.getNumberOfElements());
-		//return model;
+		return model;
 	}
 }
