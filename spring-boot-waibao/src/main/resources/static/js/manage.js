@@ -918,7 +918,6 @@ $(document).ready(function() {
             type: "POST",
             url: "creat-suijitp.do",
             data: {
-                'tpname' : tpname,
                 'professionId' : tppro,
                 'type' : type,
                 'num' : num,
