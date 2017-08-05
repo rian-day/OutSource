@@ -6,6 +6,7 @@ var www = window.document.location.href;
 var myurl = www.substring(0, www.indexOf('?'));
 
 //截取
+
 function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
     var r = window.location.search.substr(1).match(reg); //匹配目标参数
@@ -31,6 +32,14 @@ $("#page").Page({
 $(".chakan").click(function(){
    time = $(this).parent().prev().children(".timelong:first").children('span').eq(1).text();
    var local = $(this).children("a").attr("href") + "&time=" + time;
+   var examId = $(this).parent().prev().children(".hidespan").text();
+   var args = {
+    "id":examId
+   }
+   
+   $.post("createExamByGroup.do",args,function(data){
+
+   })
    $(this).children("a").attr("href",local);
    
 })

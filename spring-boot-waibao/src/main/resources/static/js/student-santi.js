@@ -53,6 +53,13 @@ $(".btn-primary").click(function(){
   if(time==""||time==null){
     alert("请选择时间");
   }else{
+    var args = {
+      "time":time
+    }
+    $.post("createExamRandom.do",args,function(data){
+
+    })
+
     var local = "student-test.html?time=" + time;
       window.location.href=local;
    }
