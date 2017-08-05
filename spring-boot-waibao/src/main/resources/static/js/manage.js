@@ -954,8 +954,8 @@ $(document).ready(function() {
             }*/
             var timuinfo = [];
             $("#handle-1 li").each(function(index, el) {        //index是从零开始的
-                var thisid = (this).children(".timu-info").children(".timu-id").val();
-                var thisfenshu = (this).children(".timu-info").children('.timu-fenzhi').val();
+                var thisid = $(this).children(".timu-info").children(".timu-id").val();
+                var thisfenshu = $(this).children(".timu-info").children('.timu-fenzhi').val();
                 var timu = {
                     'id' : thisid,
                     'fenzhi' : thisfenshu
@@ -963,6 +963,7 @@ $(document).ready(function() {
                 timuinfo.push(thisfenshu);
             });
             var shijian = $(".tp-head-info .tptime").val();
+            /*alert(shijian);*/
             $.ajax({
                 type: "POST",
                 url: "sendtp.do",

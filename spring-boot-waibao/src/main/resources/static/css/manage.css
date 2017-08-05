@@ -738,10 +738,8 @@ body{
 .showview .tp-head-info input,.showview .tp-head-info select{
 	height: 28px;
 	border-radius: 3px;
-	border: 1px solid #c4c4c4
-}
-.showview .tp-head-info input{
-	width: 120px;
+	border: 1px solid #c4c4c4;
+	width: 80px;
 }
 .showview .tp-head-info input[type=button]{
 	background-color: lightblue;
