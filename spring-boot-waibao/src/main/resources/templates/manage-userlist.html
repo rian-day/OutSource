@@ -266,15 +266,16 @@
 	<script type="text/javascript" src="../static/js/zh-page.js"
 		th:src="@{/js/zh-page.js}"></script>
 	<script th:inline="javascript">
-		var countPage = 1;
-		var nowPage = 1;
+		var countPage = [[${TotalPages}]];
+		var nowPage = [[${nowpage}]] + 1;
 		function topage(page) {
 			toUsePage(page);
 		};
 		function toUsePage(page) {
 			var zhiyeSel = $(".title-select").val();
 			var xingbieSel = $(".sex-select").val();
-			window.location.href='manage-userlist.html?xingbieSel='+xingbieSel+'&zhiye='+zhiyeSel+'&nowPage='+page;
+			var theurl = 'manage-userlist.html?xingbieSel='+xingbieSel+'&zhiye='+zhiyeSel+'&nowPage='+page + '';
+			window.location.href=theurl;
 		}
 	</script>
 </body>

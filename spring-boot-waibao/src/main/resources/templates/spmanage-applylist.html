@@ -140,8 +140,8 @@
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script th:inline="javascript">
-var countPage = [[${page.countpage}]];
-var nowPage = [[${page.nowpage}]] + 1;
+var countPage = [[${TotalPages}]];
+var nowPage = [[${nowpage}]] + 1;
 function topage(page){
 	toTpPage(page);
 };
@@ -149,7 +149,7 @@ function toTpPage(page){
     var zhiyeSel = $(".title-select").val();
     var nanduSel = $(".hard-select").val();
     var theurl = "spmanage-applylist.html?nowPage=" + page + "";
-	window.location.href="theurl";
+	window.location.href=theurl;
     /*$.ajax({
         type: "POST",
         url: "tplist.do",
