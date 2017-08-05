@@ -140,13 +140,15 @@
 var countPage = [[${page.countpage}]];
 var nowPage = [[${page.nowpage}]] + 1;
 function topage(page){
-	toTpPage(page);
+	toOrdPage(page);
 };
-function toTpPage(page){
+/*<![CDATA[*/
+function toOrdPage(page){
     var zhiyeSel = $(".title-select").val();
     var nanduSel = $(".hard-select").val();
-    var theurl = "spmanage-orderlist.html?nowPage=" + page + "";
-	window.location.href=theurl;
+    var www = window.document.location.href;
+    var myurl = www.substring(0, www.indexOf('?'));
+	window.location.href = myurl + "?nowPage=" + page;
     /*$.ajax({
         type: "POST",
         url: "tplist.do",
@@ -164,6 +166,7 @@ function toTpPage(page){
         }
     });*/
 }
+/*]]>*/
 </script>
 </body>
 </html>

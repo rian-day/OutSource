@@ -187,17 +187,19 @@
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
-<script th:inline="javascript">
+<script type="text/javascript" th:inline="javascript">
 var countPage = [[${TotalPages}]];
 var nowPage = [[${nowpage}]] + 1;
 function topage(page){
 	toTpPage(page);
 };
+/*<![CDATA[*/
 function toTpPage(page){
     var zhiyeSel = $(".title-select").val();
     var nanduSel = $(".hard-select").val();
-    var theurl = "manage-tplist.html?zhiye=" + zhiyeSel + "&nandu=" + nanduSel + "&nowPage=" + page + "";
-	window.location.href=theurl;
+    var www = window.document.location.href;
+    var myurl = www.substring(0, www.indexOf('?'));
+	window.location.href = myurl + "?zhiye=" + zhiyeSel + "&nandu=" + nanduSel + "&nowPage=" + page;
     /*$.ajax({
         type: "POST",
         url: "tplist.do",
@@ -215,6 +217,7 @@ function toTpPage(page){
         }
     });*/
 }
+/*]]>*/
 </script>
 </body>
 </html>

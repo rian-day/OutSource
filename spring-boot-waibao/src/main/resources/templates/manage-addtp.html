@@ -621,7 +621,7 @@
 <script src="../static/js/Sortable.min.js" th:src="@{/js/Sortable.min.js}"></script>
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script type="text/javascript" src="../static/wangEditor/wangEditor.min.js" th:src="@{/wangEditor/wangEditor.min.js}"></script>
-<script th:inline="javascript" >
+<script type="text/javascript" th:inline="javascript" >
 var countPage = [[${TotalPages}]];
 var nowPage = [[${nowpage}]] + 1;
 function topage(page){
@@ -629,18 +629,20 @@ function topage(page){
 };
 $(".tp-btn-sub").click(function(event) {
 	toSubPage(1);
-});;
+});
+/*<![CDATA[*/
 function toSubPage(page){
     var zhiyeSel = $(".pro-select").val();
     var subSer = $(".tp-search-sub").val();
+    var www = window.document.location.href;
+    var myurl = www.substring(0, www.indexOf('?'));
     /*var subjectlist = {
         'zhiye' : zhiyeSel,
         'search' : subSer,
         'page' : page
     };
 	alert(page);*/
-	var theurl = "manage-tplist.html?zhiye=" + zhiyeSel + "&search=" + subSer + "&nowPage=" + page + "";
-	window.location.href=theurl;
+	window.location.href = myurl+"?zhiye=" + zhiyeSel + "&search=" + subSer + "&nowPage=" + page;
     /*$.ajax({
         type: "POST",
         url: "tp-subjectlist.do",
@@ -746,6 +748,8 @@ $(document).ready(function() {
     editor26.create()
 
 });
+
+/*]]>*/
     /*var editor27 = new E('#kaifang-timu-1','#kaifang-timu')
     editor27.create()
 

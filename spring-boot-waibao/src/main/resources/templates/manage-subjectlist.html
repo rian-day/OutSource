@@ -265,16 +265,18 @@
 <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script type="text/javascript" src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
-<script th:inline="javascript">
+<script type="text/javascript" th:inline="javascript">
 var countPage = [[${TotalPages}]];
 var nowPage = [[${nowPage}]];
 function topage(page){
-	toTpPage(page);
+	toSubPage(page);
 };
+/*<![CDATA[*/
 function toSubPage(page){
     var zhiyeSel = $(".title-select").val();
-    var theurl = "manage-subjectlist.html?zhiye=" + zhiyeSel + "&nowPage=" + page + "";
-	window.location.href= theurl;
+    var www = window.document.location.href;
+    var myurl = www.substring(0, www.indexOf('?'));
+	window.location.href= myurl + "?zhiye=" + zhiyeSel + "&nowPage=" + page + "";
     /*var subjectlist = {
         'zhiye' : zhiyeSel,
         'page' : page
@@ -295,6 +297,8 @@ function toSubPage(page){
         }
     });*/
 }
+/*]]>*/
+
 </script>
 </body>
 </html>

@@ -265,18 +265,21 @@
 	<script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 	<script type="text/javascript" src="../static/js/zh-page.js"
 		th:src="@{/js/zh-page.js}"></script>
-	<script th:inline="javascript">
+	<script type="text/javascript" th:inline="javascript">
 		var countPage = [[${TotalPages}]];
 		var nowPage = [[${nowpage}]] + 1;
 		function topage(page) {
 			toUsePage(page);
 		};
+		/*<![CDATA[*/
 		function toUsePage(page) {
 			var zhiyeSel = $(".title-select").val();
 			var xingbieSel = $(".sex-select").val();
-			var theurl = 'manage-userlist.html?xingbieSel='+xingbieSel+'&zhiye='+zhiyeSel+'&nowPage='+page + '';
-			window.location.href=theurl;
+		    var www = window.document.location.href;
+		    var myurl = www.substring(0, www.indexOf('?'));
+			window.location.href = myurl + '?xingbieSel='+xingbieSel+'&zhiye='+zhiyeSel+'&nowPage='+page;
 		}
+		/*]]>*/
 	</script>
 </body>
 </html>
