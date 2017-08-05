@@ -69,14 +69,14 @@
                 <ul class="history-ul">
                     <li class="history-li" th:each="singletest:${content}">
                         <div class="history-text">
-                            <span class="hidespan"><!--试卷id-->123</span>
+                            <span class="hidespan" th:text="${singletest.id}"><!--试卷id-->123</span>
                             <p th:text="${singletest.name}">web基础练习</p>
                              <span class="timelong"><span>考试时长：</span><span th:text="${singletest.limitedTime}">90</span>分钟</span>
                             <span class="timelong"><span>试卷总分：</span><span th:text="${singletest.totalgrade}">100分</span></span>
                             <span class="timelong"><span >完成度：</span><span>未完成</span></span>
                         </div>
                         <div class="history-bottom">
-                            <span class="chakan"><a href='student-test.html' th:href="@{/student-test.html(groupid=${singletest.id})}">开始考试</a></span>
+                            <span class="chakan"><a href='student-test.html' th:href="@{#}">开始考试</a></span>
                         </div>
                     </li>
                     

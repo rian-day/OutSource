@@ -82,7 +82,7 @@ public class ViewController {
 	}
 	@RequestMapping("/student-test.html")
 	public ModelAndView studenttest(
-			@RequestParam(value = "groupid") Integer examid
+			@RequestParam(value = "examid") Integer examid
 			,@RequestParam("time") Integer time){
 		Exam exam=xs.searchByExamid(examid);
 		ModelAndView mav=new ModelAndView();
@@ -90,6 +90,7 @@ public class ViewController {
 		mav.addObject("content",content);
 		mav.setViewName("student-test");
 		mav.addObject("time",time);
+		mav.addObject("examId",examid);
 		return mav;
 	}
 	@RequestMapping("/student-history.html")

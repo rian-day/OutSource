@@ -31,16 +31,30 @@ $("#page").Page({
 
 $(".chakan").click(function(){
    time = $(this).parent().prev().children(".timelong:first").children('span').eq(1).text();
-   var local = $(this).children("a").attr("href") + "&time=" + time;
+
    var examId = $(this).parent().prev().children(".hidespan").text();
    var args = {
     "id":examId
    }
-   
-   $.post("createExamByGroup.do",args,function(data){
-
-   })
-   $(this).children("a").attr("href",local);
+   console.log(args);
+//   $.post("createExamByGroup.do",args,function(data){
+//	   	alert(data);
+//	   	examId=data;
+//   })
+   $.ajax({
+		url: 'createExamByGroup.do',
+		type: 'POST',
+		data: args,
+		success : function(json){
+			var data =JSON.parse(json);
+			//alert(data);
+		   	examId=data;
+//		   	var local = $(this).children("a").attr("href") + "?time=" + time+"&examid="+examId;
+//		    alert(local);
+//		    $(this).children("a").attr("href",local);
+		    window.location.href="/student-test.html?time="+time+"&examid="+examId;
+		}
+	});
    
 })
 

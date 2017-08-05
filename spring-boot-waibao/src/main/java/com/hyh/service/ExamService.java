@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.crsh.console.jline.internal.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -58,14 +59,49 @@ public class ExamService {
 			UserAnswer useranswer=exam.getUseranswer().get(i);
 			Subject subject=useranswer.getSubject();
 			//JavaType javaType=mapper.getTypeFactory().constructParametricType(ArrayList.class, String.class);
-			String[] userAnswer=sc.getAnswer().split(",");
+			String[] userAnswer=sc.getAnswer().split("");
+			String[] realAnswer=subject.getRealAnswer();
 			char status=0;
 			if(subject.getType().equals("单选题")|subject.getType().equals("多选题")){
-				if(userAnswer.equals(subject.getRealAnswer())){
-					totalgrade+=singlegrade[i];
-					status=1;
+				if(userAnswer.length==realAnswer.length){
+					int pass=0;
+					for(int h=0;h<realAnswer.length;h++){
+						if(realAnswer[h].equals(userAnswer[h])){
+							pass=1;
+						}else{
+							pass=0;
+							break;
+						}
+					}
+					if(pass==1){
+						//totalgrade+=singlegrade[i];
+						status=1;
+						Log.warn(i+"题对了");
+					}else{
+						status=0;
+						Log.warn(i+"题错了");
+					}
+				}else if(userAnswer.length<realAnswer.length){
+					boolean pass=false;
+					for(int h=0;h<userAnswer.length;h++){
+
+						if(userAnswer[h].equals(realAnswer[h])){
+							pass=true;
+						}else{
+							pass=false;
+							break;
+						}
+					}
+					if(pass){
+						status=2;
+						Log.warn(i+"题半对");
+						//totalgrade+=singlegrade[i]/2;
+					}else{
+						Log.warn(i+"题错了");
+					}
 				}else{
 					status=0;
+					Log.warn(i+"题错了");
 				}
 			}else if(subject.getType().equals("填空题")){
 				if(subject.getRealAnswer().equals(userAnswer)){
@@ -91,19 +127,23 @@ public class ExamService {
 	public Exam buildByGroupId(int userId,SubjectGroup subjectgroup,String time){
 		Set<Subject> set=subjectgroup.getSubjects();
 		Exam exam =new Exam();
+
+		exam.setUserId(userId);
+		exam.setSinglegrade(subjectgroup.getSinglegrade());
+		exam.setProfessionId(subjectgroup.getProfessionId());
+		exam.setTime(time);
+		exam.setTotalgrade(subjectgroup.getTotalgrade());
+		exam=ed.save(exam);
 		Iterator<Subject> iterator=set.iterator();
 		while(iterator.hasNext()){
 			Subject subject=iterator.next();
 			UserAnswer useranswer=new UserAnswer();
 			useranswer.setSubject(subject);
 			useranswer.setUserId(userId);
-			exam.adduseranswer(useranswer);
+			useranswer.setExamId(exam);
+			ad.save(useranswer);
 		}
-		exam.setSinglegrade(subjectgroup.getSinglegrade());
-		exam.setProfessionId(subjectgroup.getProfessionId());
-		exam.setTime(time);
-		exam.setTotalgrade(subjectgroup.getTotalgrade());
-		return ed.save(exam);
+		return exam;
 	}
 	/**
 	 * 查找所有考试记录

@@ -969,11 +969,11 @@ $(document).ready(function() {
                 url: "sendtp.do",
                 data: {
                     'groupName' : name,      //名称
-                    'professionId' : pro,        //职业
-                    'level' : hrd,         //难度
+                    'professionId' : Number(pro),        //职业
+                    'level' : Number(hrd),         //难度
                     'subjectId' : timuid,//题目id(数组)
                     'grade' : timuinfo,
-                    'shijian' : Number(shijian)
+                    'limitedTime' : Number(shijian)
                 },
                 dataType: "json",
                 success: function(data){

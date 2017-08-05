@@ -92,7 +92,7 @@
 							<span class="content" th:text="${useranswer.subject.content}"> <!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
 						</span>
 						<!-- 已经收藏过该题span中的class写成collected反之写成collect -->
-						</span> <span class="sqlIndex" th:text="${useranswer.subject.id}"> <!--  数据库中题号id -->
+						</span> <span class="sqlIndex" th:text="${useranswer.id}"> <!--  数据库中题号id -->
 						</span> <span class="collect" name="collect" th:class="${useranswer.collect} == '1' ? collected : collect"> <!-- 是否收藏此题 -->
 						</span> <label class="star"> <!--  显示取消收藏的文字-->
 						</label>
@@ -125,29 +125,29 @@
 								class="a_wg hasError" th:each="answer : ${useranswer.Answer}" th:text="${answer}"> </span>
 						</div>
 						<div class="answerAnalysis">
-							答案解析： <span class="analyse" th:text="${useranswer.analyse}">无</span>
+							答案解析： <span class="analyse" th:text="${useranswer.subject.tip}">无</span>
 						</div>
 					</div>
 				</dl>
-				<dl>
-					<!-- 题干加分值 -->
+				<!-- <dl>
+					
 					<dt>
 						<div class="icon-block">
-							<label class="indexLabel"> <span class="index">2</span> <!-- 试卷中题号 -->
+							<label class="indexLabel"> <span class="index">2</span> 
 
 							</label>
 						</div>
-						<span class="qc"> <span class="score">(0&nbsp;分)<!-- 分值 --></span>
-							<span class="content"> <!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
+						<span class="qc"> <span class="score">(0&nbsp;分)</span>
+							<span class="content">小明有一个苹果和一个梨子，那么他有几种水果
 						</span>
 						</span> <span class="sqlIndex">id</span>
-						<!--  数据库中题号id -->
-						<span class="collected" name="collect"> <!-- 是否收藏此题 -->
-						</span> <label class="star"> <!--  取消收藏-->
+						
+						<span class="collected" name="collect">
+						</span> <label class="star">
 						</label>
 
 					</dt>
-					<!-- A -->
+					
 					<dd class="answer">
 						<label> 
 							<span class="words"> 
@@ -157,7 +157,7 @@
 						</label>
 					</dd>
 
-					<!-- B -->
+					
 					<dd class="answer">
 						<label> 
 							<span class="words"> 
@@ -167,7 +167,7 @@
 						</label>
 					</dd>
 
-					<!-- c -->
+					
 					<dd class="answer">
 						<label> 
 							<span class="words"> 
@@ -177,7 +177,7 @@
 						</label>
 					</dd>
 
-					<!-- D -->
+					
 					<dd class="answer">
 						<label> 
 							<span class="words"> 
@@ -187,7 +187,7 @@
 						</label>
 					</dd>
 
-					<!-- 答案及其分析 -->
+					
 					<div class="question_answer">
 						<div class="answerRight">
 							正确答案： <span class="a_rt">A</span> 考生答案： <span
@@ -197,7 +197,7 @@
 							答案解析： <span class="analyse">无</span>
 						</div>
 					</div>
-				</dl>
+				</dl> -->
 			</div>
 		</div>
 	</div>

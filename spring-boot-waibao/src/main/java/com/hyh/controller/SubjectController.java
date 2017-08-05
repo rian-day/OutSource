@@ -34,7 +34,7 @@ public class SubjectController {
 	}
 	@PostMapping("/add-subject.do")
 	@ResponseBody
-	public String addsingleSubject(
+	public int addsingleSubject(
 			SubjectBean subject
 			,@RequestParam("realAnswer[]") String[] answer
 			,HttpSession session

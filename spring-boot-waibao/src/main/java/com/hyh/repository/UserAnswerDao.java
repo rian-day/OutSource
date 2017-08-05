@@ -8,5 +8,5 @@ import com.hyh.entity.UserAnswer;
 
 public interface UserAnswerDao extends JpaRepository<UserAnswer, Long> {
 	UserAnswer findById(int id);
-	Page<UserAnswer> findByUserId(int userId,Pageable pageable);
+	Page<UserAnswer> findByUserIdAndCollect(int userId,char collect,Pageable pageable);
 }

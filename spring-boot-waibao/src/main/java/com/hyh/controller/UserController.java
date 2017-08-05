@@ -82,6 +82,7 @@ public class UserController {
 			su.setName(userinfo.getName());
 			su.setProfessionId(userinfo.getProfessionId());
 			su.setUserId(userinfo.getId());
+			Log.warn("userid:"+userinfo.getId());
 			su.setHead(userinfo.getHead());
 			su.setSex(userinfo.getSex());
 			httpSession.setAttribute("user",su);

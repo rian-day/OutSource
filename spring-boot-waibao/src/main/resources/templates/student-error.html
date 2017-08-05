@@ -118,7 +118,7 @@
                         <div> 
                             <span class="fenxiHead">题目信息:</span>
                             <span class="fenxiHeadRight">参考答案:
-                                <span class="answerStan testAnswer" th:text="${answer.subject.realAnswer}">A</span>
+                                <span class="answerStan testAnswer"><span th:each="ra : ${answer.subject.realAnswer}" th:text="${ra}">A</span></span>
                             </span>
                         </div>
                         <div class="danxuan">
@@ -134,7 +134,7 @@
                         <div> 
                             <span class="fenxiHead">答题信息:</span>
                             <span class="fenxiHeadRight">我的答案:
-                                <span class="answerStan myAnswer" th:text="${answer.Answer[0]}">A</span>
+                                <span class="answerStan myAnswer" ><span th:each="ra : ${answer.Answer}" th:text="${ra}">A</span></span>
                             </span>
                         </div>
                         <div class="danxuan">

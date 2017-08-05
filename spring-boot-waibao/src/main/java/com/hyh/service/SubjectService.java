@@ -40,6 +40,15 @@ public class SubjectService {
 	ExamDao ed;
 	@Resource
 	RandomSubjectDao rd;
+	
+	public Page<Subject> SearchSubjectLike(String content,int nowpage,int size){
+		Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = new PageRequest(nowpage, size, sort);
+		if("".equals(content)){
+			return subjectdao.findAll(pageable);
+		}
+        return subjectdao.findByContentLike(content, pageable);
+	}
 	public SubjectGroup SearchSubjectGroupById(int id){
 		return sgd.findById(id);
 	}
@@ -80,7 +89,7 @@ public class SubjectService {
 		}
 		return result;
 	}
-	public String AddSingleSubject(SubjectBean sj,String createAdmin,String createTime,String []realAnswer,String []options){
+	public int AddSingleSubject(SubjectBean sj,String createAdmin,String createTime,String []realAnswer,String []options){
 		String []arr={"A","B","C","D","E","F","G","H","I","J"};
 		Subject subject=new Subject();
 		subject.setContent(sj.getContent());
@@ -90,7 +99,7 @@ public class SubjectService {
 		subject.setRealAnswer(realAnswer);
 		subject.setTip(sj.getTip());
 		subject.setType(sj.getType());
-		subjectdao.save(subject);
+		subject=subjectdao.save(subject);
 		for(int i=0;i<options.length;i++){
 			SubjectOptions option=new SubjectOptions();
 			option.setOptionName(arr[i]);
@@ -105,7 +114,7 @@ public class SubjectService {
 //			subject.addOption(option);
 //		}
 
-		return "1";
+		return subject.getId();
 	}
 	public String AddSubject(List<Subject> list){
 		subjectdao.save(list);

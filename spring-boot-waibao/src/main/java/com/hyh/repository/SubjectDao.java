@@ -16,6 +16,7 @@ public interface SubjectDao extends JpaRepository<Subject, Long> {
 	List<Subject> findByProfessionId(int professionId);
 	
 	Subject findById(int id);
+	Page<Subject> findByContentLike(String content,Pageable pageable);
 	
 	List<Subject> findByTypeAndProfessionId(String type,int professionId);
 	Page<Subject> findAll(Pageable pageable);

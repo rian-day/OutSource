@@ -18,12 +18,14 @@ public class SubjectGroupService {
 	@Resource
 	SubjectDao sd;
 	
-	public String createGroup(SubjectGroupBean sgb){
-		Integer[] subjectId=sgb.getSubjectId();
-		Integer[] grade=sgb.getGrade();
+	public String createGroup(
+			SubjectGroupBean sgb
+			,Administrators createAdmin
+			,String time
+			,Integer[] subjectId
+			,Integer[] grade
+			){
 		String groupName=sgb.getGroupName();
-		Administrators createAdmin=sgb.getCreateAdmin();
-		String createTime=sgb.getCreateTime();
 		int professionId=sgb.getProfessionId();
 		int limitedTime=sgb.getLimitedTime();
 		int level=sgb.getLevel();
@@ -39,7 +41,7 @@ public class SubjectGroupService {
 		group.setName(groupName);
 		//group.setSinglegrade(grade);
 		group.setCreateAdmin(createAdmin);
-		group.setCreateTime(createTime);
+		group.setCreateTime(time);
 		group.setProfessionId(professionId);
 		group.setTotalgrade(totalgrade);
 		group.setLimitedTime(limitedTime);

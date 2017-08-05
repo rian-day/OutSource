@@ -11,10 +11,13 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.crsh.console.jline.internal.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JavaType;
@@ -73,7 +76,7 @@ public class ExamController {
 	 */
 	@RequestMapping("/createExamRandom.do")
 	@ResponseBody
-	public Exam randomSubjects(
+	public String randomSubjects(
 			Integer professionId
 			,HttpSession session
 			){
@@ -83,20 +86,21 @@ public class ExamController {
 		int userId=user.getUserId();
 		List<Subject> list=ss.randomSubjects(professionId);
 		Exam exam=es.saveExam(time,userId,professionId,list);
-		return exam;
+		return String.valueOf(exam.getId());
 	}
 	@RequestMapping("/createExamByGroup.do")
 	@ResponseBody
-	public Exam buildByGroupId(
-			Integer id
+	public String buildByGroupId(
+			@RequestParam("id") Integer id
 			,HttpSession session
 			){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		SessionUser user=(SessionUser) session.getAttribute("user");
 		int userId=user.getUserId();
 		String time=df.format(new Date());
+		Log.warn("userId:"+userId);
 		SubjectGroup subjectgroup=ss.SearchSubjectGroupById(id);
 		aspect.saveUserInfo(userId, "用户("+user.getName()+"):创建了一场考试("+subjectgroup.getName()+")", time);
-		return es.buildByGroupId(userId, subjectgroup,time);
+		return String.valueOf(es.buildByGroupId(userId, subjectgroup,time).getId());
 	}
 }

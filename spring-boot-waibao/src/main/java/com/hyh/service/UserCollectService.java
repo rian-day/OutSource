@@ -21,7 +21,7 @@ public class UserCollectService {
 	public Page<UserAnswer> getAllCollection(int userId,int nowpage,int size){
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(nowpage, size, sort);
-		return uad.findByUserId(userId,pageable);
+		return uad.findByUserIdAndCollect(userId,'1',pageable);
 	}
 	
 	@Transactional
@@ -42,6 +42,7 @@ public class UserCollectService {
 	public String editAnalyse(int answerId,String analyse){
 		UserAnswer answer=uad.findById(answerId);
 		answer.setAnalyse(analyse);
+		uad.save(answer);
 		return "1";
 	}
 	

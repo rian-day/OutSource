@@ -146,6 +146,7 @@ function sub() {
 }
 //$(".submitImg").on("click",submit());
 function submit() {
+	var examId=$("#hyhExamId").text();
     var list = new Array();
     var url = "submitTest.do";
     for(var i = 0;i<length;i++){
@@ -156,7 +157,7 @@ function submit() {
     }
     var args = {
         "list" : JSON.stringify(list),
-        "examId" : "1"
+        "examId" : examId
     }
     console.log(args);
     $.post(url, args, function(data) {
