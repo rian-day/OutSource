@@ -2,6 +2,7 @@ package com.hyh.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -52,19 +53,26 @@ public class SubjectGroupController {
 	@PostMapping("addtp-search.do")
 	@ResponseBody
 	public Model findSubject(
-			@RequestParam(value = "content",defaultValue = "null") String content
-			,@RequestParam(value = "size", defaultValue = "5") Integer size
+			@RequestParam(value = "size", defaultValue = "5") Integer size
 			,@RequestParam(value = "nowPage", defaultValue = "1") Integer nowPage
 			,@RequestParam(value = "professionId") Integer professionId
 			,Model model
 			){
 		nowPage--;
-		Page<Subject> page=ss.SearchSubjectLike(content, nowPage, size,professionId);
+		Page<Subject> page=ss.SearchSubjectLike(nowPage, size,professionId);
 		model.addAttribute("content", page.getContent());
 		model.addAttribute("totalPage",page.getTotalPages());
 		nowPage++;
 		model.addAttribute("nowPage",nowPage);
 		model.addAttribute("totalElements",page.getNumberOfElements());
 		return model;
+	}
+	@PostMapping("mohu-search-subject.do")
+	@ResponseBody
+	public List<Subject> mohuSubject(
+			String content
+			,Integer professionId){
+		List<Subject> list=ss.MohuSearchSubject(content, professionId);
+		return list;
 	}
 }

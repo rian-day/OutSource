@@ -40,14 +40,22 @@ public class SubjectService {
 	ExamDao ed;
 	@Resource
 	RandomSubjectDao rd;
+	public List<Subject> MohuSearchSubject(String content,int professionId){
+		List<Subject> list=subjectdao.findByProfessionId(professionId);
+		List<Subject> result=new ArrayList<Subject>();
+		for(int i=0;i<list.size();i++){
+			Subject subject=list.get(i);
+			if(subject.getContent().indexOf(content)!=-1){
+				result.add(subject);
+			}
+		}
+		return result;
+	}
 	
-	public Page<Subject> SearchSubjectLike(String content,int nowpage,int size,int professionId){
+	public Page<Subject> SearchSubjectLike(int nowpage,int size,int professionId){
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(nowpage, size, sort);
-		if("null".equals(content)){
-			return subjectdao.findByProfessionId(professionId,pageable);
-		}
-        return subjectdao.findByProfessionIdAndContentLike(professionId,content,pageable);
+        return subjectdao.findByProfessionId(professionId,pageable);
 	}
 	public SubjectGroup SearchSubjectGroupById(int id){
 		return sgd.findById(id);
@@ -67,7 +75,7 @@ public class SubjectService {
 	
 	
 	public List<Subject> randomSubjects(int ProfessionId){
-		List<RandomSubject> list=rd.findAll();
+		List<RandomSubject> list=rd.findByProfessionId(ProfessionId);
 		List<Subject> result = new ArrayList<Subject>();
 		for(int i=0;i<list.size();i++){
 			RandomSubject rs=list.get(i);
@@ -100,12 +108,14 @@ public class SubjectService {
 		subject.setTip(sj.getTip());
 		subject.setType(sj.getType());
 		subject=subjectdao.save(subject);
-		for(int i=0;i<options.length;i++){
-			SubjectOptions option=new SubjectOptions();
-			option.setOptionName(arr[i]);
-			option.setContent(options[i]);
-			option.setSubject(subject);
-			sod.save(option);
+		if(!"".equals(options)&&options!=null){
+			for(int i=0;i<options.length;i++){
+				SubjectOptions option=new SubjectOptions();
+				option.setOptionName(arr[i]);
+				option.setContent(options[i]);
+				option.setSubject(subject);
+				sod.save(option);
+			}
 		}
 //		for(int i=0;i<sj.getOptions().size();i++){
 //			SubjectOptions option=new SubjectOptions();

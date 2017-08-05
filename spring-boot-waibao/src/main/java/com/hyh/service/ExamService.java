@@ -172,7 +172,7 @@ public class ExamService {
 	 * @param list
 	 * @return
 	 */
-	public Exam saveExam(String time,int userId,int professionId,List<Subject> list){
+	public Exam saveExam(String time,int userId,int professionId,List<Subject> list,int limitedTime){
 		List<UserAnswer> useranswerList=new ArrayList<UserAnswer>();
 		int totalgrade=0;
 		for(int i=0;i<list.size();i++){
@@ -187,6 +187,7 @@ public class ExamService {
 		exam.setProfessionId(professionId);
 		exam.setUseranswer(useranswerList);
 		exam.setTotalgrade(totalgrade);
+		exam.setLimitedTime(limitedTime);
 		return ed.save(exam);
 	}
 }

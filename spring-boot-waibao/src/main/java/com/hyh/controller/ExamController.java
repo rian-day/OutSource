@@ -77,15 +77,16 @@ public class ExamController {
 	@RequestMapping("/createExamRandom.do")
 	@ResponseBody
 	public String randomSubjects(
-			Integer professionId
+			@RequestParam("time") Integer limitedTime
 			,HttpSession session
 			){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		String time=df.format(new Date());
 		SessionUser user=(SessionUser) session.getAttribute("user");
 		int userId=user.getUserId();
+		int professionId=user.getProfessionId();
 		List<Subject> list=ss.randomSubjects(professionId);
-		Exam exam=es.saveExam(time,userId,professionId,list);
+		Exam exam=es.saveExam(time,userId,professionId,list,limitedTime);
 		return String.valueOf(exam.getId());
 	}
 	@RequestMapping("/createExamByGroup.do")

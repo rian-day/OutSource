@@ -14,6 +14,7 @@ public class RandomSubject {
 	private String Type;
 	private int num;
 	private int grade;
+	private int professionId;
 	public int getId() {
 		return id;
 	}
@@ -37,6 +38,12 @@ public class RandomSubject {
 	}
 	public void setGrade(int grade) {
 		this.grade = grade;
+	}
+	public int getProfessionId() {
+		return professionId;
+	}
+	public void setProfessionId(int professionId) {
+		this.professionId = professionId;
 	}
 	
 	

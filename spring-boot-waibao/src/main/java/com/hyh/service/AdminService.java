@@ -1,15 +1,22 @@
 package com.hyh.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.hyh.bean.RandomSubjectBean;
 import com.hyh.entity.Administrators;
+import com.hyh.entity.RandomSubject;
 import com.hyh.repository.AdministratorsDao;
+import com.hyh.repository.RandomSubjectDao;
 @Service
 public class AdminService {
 	@Resource
 	AdministratorsDao ad;
+	@Resource
+	RandomSubjectDao rsd;
 	
 	//修改按键顺序
 	public String changeIndexList(char[] index ,int id){
@@ -33,5 +40,21 @@ public class AdminService {
 		admin.setSex(sex);
 		ad.save(admin);
 		return "1";
+	}
+	public String updateRandomSubject(RandomSubjectBean rsb){
+		List<RandomSubject> result=rsd.findByProfessionIdAndType(rsb.getProfessionId(), rsb.getType());
+		if(result.size()==0){
+			RandomSubject random=new RandomSubject();
+			random.setGrade(rsb.getMark());
+			random.setNum(rsb.getNum());
+			random.setProfessionId(rsb.getProfessionId());
+			random.setType(rsb.getType());
+		}else{
+			RandomSubject random=result.get(0);
+			random.setGrade(rsb.getMark());
+			random.setNum(rsb.getNum());
+		}
+		return "1";
+		
 	}
 }

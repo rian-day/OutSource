@@ -77,7 +77,7 @@
 			<div class="list-view">
 				<div class="qh">
 					<h5>
-						单选题 <span class="detail">共10题，合计100.0分</span>
+						<span class="detail">共10题，合计100.0分</span>
 					</h5>
 				</div>
 				<dl th:each="useranswer:${content}">
@@ -88,7 +88,7 @@
 						</div>
 
 
-						<span class="qc"> <span class="score">(0&nbsp;分)<!-- 分值 --></span>
+						<span class="qc"> <span class="score">(5&nbsp;分)<!-- 分值 --></span>
 							<span class="content" th:text="${useranswer.subject.content}"> <!-- 题目 -->小明有一个苹果和一个梨子，那么他有几种水果
 						</span>
 						<!-- 已经收藏过该题span中的class写成collected反之写成collect -->

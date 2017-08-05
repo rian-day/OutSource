@@ -33,8 +33,7 @@ public class LoginService {
 	
 	public Administrators CheckAdmin(String mail,String password){
 		Log.warn("admin");
-		Administrators list= ad.findByMailAndPassword(mail, password);
-		Log.warn("");
+		Administrators list= ad.findByMailAndPassword(mail, md5.encode(password));
 		return list;
 	}
 	

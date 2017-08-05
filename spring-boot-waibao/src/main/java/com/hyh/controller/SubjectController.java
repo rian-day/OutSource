@@ -38,7 +38,7 @@ public class SubjectController {
 			SubjectBean subject
 			,@RequestParam("realAnswer[]") String[] answer
 			,HttpSession session
-			,@RequestParam("options[]") String[] options
+			,@RequestParam(value="options[]",required=false) String[] options
 			){
 		SessionUser user=(SessionUser) session.getAttribute("user");
 		String createAdmin=user.getName();

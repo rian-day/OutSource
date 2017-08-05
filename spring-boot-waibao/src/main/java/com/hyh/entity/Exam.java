@@ -28,6 +28,7 @@ public class Exam {
 	//用户分数
 	private int usergrade;
 	private int professionId;
+	private int limitedTime;
 	//创建时间
 	private String time;
 	private int userId;
@@ -97,6 +98,16 @@ public class Exam {
 	}
 	public void setSinglegrade(int[] singlegrade) {
 		this.singlegrade = singlegrade;
+	}
+
+
+	public int getLimitedTime() {
+		return limitedTime;
+	}
+
+
+	public void setLimitedTime(int limitedTime) {
+		this.limitedTime = limitedTime;
 	}
 
 	
