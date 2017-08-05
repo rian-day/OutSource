@@ -1,5 +1,6 @@
 package com.hyh.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -43,7 +44,9 @@ public class SubjectGroup {
             inverseJoinColumns = { @JoinColumn(name = "subjectId", referencedColumnName = "id") })
 	private Set<Subject> subjects;
 
-	
+	public SubjectGroup(){
+		this.subjects=new HashSet();
+	}
 	public void addSubject(Subject subject){
 		this.subjects.add(subject);
 	}

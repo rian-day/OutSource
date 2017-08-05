@@ -953,17 +953,16 @@ $(document).ready(function() {
                 'hrd' : hrd
             }*/
             var timuinfo = [];
+            var timuid=[];
             $("#handle-1 li").each(function(index, el) {        //index是从零开始的
                 var thisid = $(this).children(".timu-info").children(".timu-id").val();
                 var thisfenshu = $(this).children(".timu-info").children('.timu-fenzhi').val();
-                var timu = {
-                    'id' : thisid,
-                    'fenzhi' : thisfenshu
-                }
                 timuinfo.push(thisfenshu);
+                timuid.push(thisid);
             });
             var shijian = $(".tp-head-info .tptime").val();
             /*alert(shijian);*/
+            console.log(timuinfo);
             $.ajax({
                 type: "POST",
                 url: "sendtp.do",
