@@ -503,7 +503,7 @@
 	<div class="showview">
 		<div class="head-view">添加试卷</div>
 		<div class="tp-head-info">
-			试卷名称<input type="text"/>
+			试卷名称<input type="text" class="tpname" />
 			试卷难度
 			<select class="difficulty-select" name="">
 				<option value="0">请选择难度</option>
@@ -522,6 +522,7 @@
 				<option value="0">全部职业</option>
 				<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
 			</select>
+			考试时间<input type="text" class="tptime" />分钟
 			<input class="creat-suijitp" type="button" value="随机创建试卷"/>
 		</div>
 		<div id="handle">

@@ -937,7 +937,7 @@ $(document).ready(function() {
     /*提交试卷信息*/
     $(".sub-project").click(function() {
         /*var tp = [];*/
-        var name = $(".tp-head-info input[type=text]").val();
+        var name = $(".tp-head-info .tpname").val();
         var pro = $(".tp-head-info .pro-select option:selected").val();
         var hrd = $(".tp-head-info .difficulty-select option:selected").val();
         if (name=="") {
@@ -962,6 +962,7 @@ $(document).ready(function() {
                 }
                 timuinfo.push(thisfenshu);
             });
+            var shijian = $(".tp-head-info .tptime").val();
             $.ajax({
                 type: "POST",
                 url: "sendtp.do",
@@ -970,7 +971,8 @@ $(document).ready(function() {
                     'professionId' : pro,        //职业
                     'level' : hrd,         //难度
                     'subjectId' : timuid,//题目id(数组)
-                    'grade' : timuinfo
+                    'grade' : timuinfo,
+                    'shijian' : Number(shijian)
                 },
                 dataType: "json",
                 success: function(data){
