@@ -32,17 +32,25 @@ public class UserController {
  private ProfessionService ps;
  @Resource
  private LoginService loginservice;
- 
-// @PostMapping("/editInfo.do")
-// public User EditInfo(User user,HttpSession session){
-//	 String mail=session.getAttribute("Mail").toString();
-//	 if(user.getBoss()=='1'){
-//		 userService.updateUserInfo(mail, user);
-//	 }else{
-//		 userService.updateAdimInfo(mail, user);
-//	 }
-//	 return result;
-// }
+ 	/**
+ 	 * 消息推送
+ 	 * @return
+ 	 */
+ 	@PostMapping("/pushMessage.do")
+ 	public String messagePush(HttpSession session){
+ 		if("".equals(session.getAttribute("massage"))||session.getAttribute("massage")==null){
+ 			session.setAttribute("message", "exist");
+ 			return userService.messagePush();
+ 		}
+ 		return null;
+ 	}
+ 	/**
+ 	 * 修改用户信息含头像
+ 	 * @param user
+ 	 * @param session
+ 	 * @param file
+ 	 * @return
+ 	 */
  	@RequestMapping("/editInfo.do")
 	public String changeUserInfo(
 			UserBean user

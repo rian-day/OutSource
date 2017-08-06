@@ -1,3 +1,25 @@
+
+$(document).ready(function() {
+	alert("开始");
+	sendMessage();
+})
+function sendMessage(){
+	alert("调用函数")
+	$.ajax({
+		url: '/pushMessage.do',
+		type: 'POST',
+		success : function(data){
+			if(data!=null){
+				tip(data);
+			}
+			setTimeout(sendMessage(),2000);
+		}
+	});
+}
+
+
+
+
 //分页
 var ye = 0; //当前页数
 var limit = 5; //分页的数字按钮数(建议取奇数)

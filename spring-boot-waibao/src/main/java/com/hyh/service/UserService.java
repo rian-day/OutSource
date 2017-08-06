@@ -20,6 +20,7 @@ import com.hyh.bean.UserBean;
 import com.hyh.entity.Administrators;
 import com.hyh.entity.UserInfo;
 import com.hyh.repository.AdministratorsDao;
+import com.hyh.repository.MessageDao;
 import com.hyh.repository.ProfessionDao;
 import com.hyh.repository.UserInfoDao;
 import com.hyh.utils.MD5Util;
@@ -44,6 +45,12 @@ public class UserService {
 	 AdministratorsDao ad;
 	 @Resource
 	 ProfessionDao pd;
+	 @Resource
+	 MessageDao md;
+	 //消息推送
+	 public String messagePush(){
+		 return md.findAll().get(0).getContent();
+	 }
 	 //查找所有用户
 	 public Page<UserInfo> SearchAllInPage(int nowpage ,int size){
 			Sort sort = new Sort(Sort.Direction.DESC, "id");
