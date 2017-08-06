@@ -24,13 +24,13 @@ $(document).ready(function() {
 
 
 
-    //�л�login��sign
+    //切换login和sign
     $(".sss").click(function() {
         $(".loginul").css("display", "none");
         $("#signup").css("display", "block");
         
-        if ($(".ss").text() == "ע��") {
-            $(".ss").children("span").text("��¼");
+        if ($(".ss").text() == "注册") {
+            $(".ss").children("span").text("登录");
             $(".ss").attr("href","javascript:void(0)");
         }
     });
@@ -38,11 +38,11 @@ $(document).ready(function() {
         $(".loginul").css("display", "none");
         $("#signup").css("display", "block");
         
-        if ($(this).text() == "ע��") {
-            $(this).children("span").text("��¼");
+        if ($(this).text() == "注册") {
+            $(this).children("span").text("登录");
             $(this).attr("href","javascript:void(0)");
-        }else if($(this).text() == "��¼"){
-        	$(".ss").children("span").text("ע��");
+        }else if($(this).text() == "登录"){
+            $(".ss").children("span").text("注册");
             $(".ss").attr("login.html");
             $(".loginul").css("display", "block");
             $("#signup").css("display", "none");
@@ -51,8 +51,8 @@ $(document).ready(function() {
     $(".qqq").click(function() {
         $(".loginul").css("display", "block");
         $("#signup").css("display", "none");
-        if ($(".ss").text() == "��¼") {
-            $(".ss").children("span").text("ע��");
+        if ($(".ss").text() == "登录") {
+            $(".ss").children("span").text("注册");
             $(".ss").attr("login.html");
         }
     });
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 
 
-    //signup		
+    //signup        
     var current_fs, next_fs, previous_fs; //fieldsets
     var left, opacity, scale; //fieldset properties which we will animate
     var animating; //flag to prevent quick multi-click glitches
@@ -143,9 +143,9 @@ $(document).ready(function() {
     })
 
 
-    var alertTxt = new Array("�˺Ų���Ϊ��", "�����ʽ����ȷ", "���벻��Ϊ��", "�˺Ż����������", "�������ٺ���6���ַ�", "�����������벻һ��", "", "���䲻��Ϊ��", "��������Ϊ��", "��֤�벻��Ϊ��");
+    var alertTxt = new Array("账号不能为空", "邮箱格式不正确", "密码不能为空", "账号或者密码错误", "密码至少含有6个字符", "两次密码输入不一致", "", "邮箱不能为空", "姓名不能为空", "验证码不能为空");
     var table, email, password;
-    //��ȡinput
+    //获取input
     $("#s1").click(function() {
         $(".Email1").val(
             $(".Email").val()
@@ -192,10 +192,10 @@ $(document).ready(function() {
         $(".prompt1").html(alertTxt[i]);
         $(".prompt1").fadeIn();
     });
-    // ��¼
+    // 登录
     $("#loginSubmit").click(function() {
             table = $("input[type='radio']:checked").next().text();
-		if ($.trim(table)== "����Ա")
+        if ($.trim(table)== "管理员")
                 table = "1";
             else
                 table = "0";
@@ -215,23 +215,23 @@ $(document).ready(function() {
                     "password": password,
                     "boss": table
                 }
-		    console.log(args.boss);
+            console.log(args.boss);
                 var url = "login.do";
                 $.post(url, args, function(data) {
-                	if(data==2){
-                		window.location.href="spmanage-applylist.html";
-                	}
-                	if(data==1){
+                    if(data==2){
+                        window.location.href="spmanage-applylist.html";
+                    }
+                    if(data==1){
                         if(table == "0")
                             window.location.href="student-index.html";
                         else
                              window.location.href="manage-index.html"
-                	}else
+                    }else
                         $(".loginalert").html(alertTxt[3]);
                 })
             }
         })
-        //ע��
+        //注册
     $("#regSubmit").click(function() {
         var mail = $(".Email").val();
         var pass = $('.pass').val();
@@ -244,24 +244,24 @@ $(document).ready(function() {
         if (yzm == "" || yzm == null) {
             $(".prompt2").html(alertTxt[9]);
         }else{
-	        args = {
-	        	"username":mail,
-	        	"password":pass,
-	        	"name":name,
-	        	"professionId":pro,
-	        	"yzm":yzm,
-	        	"sex":sex
-	         	}
-	       
-	        url = "register.do";
-	        $.post(url,args,function(data){
-         		if(data == 1){
-         			$("#myModal").modal('show');
-         		}else{
-         			$("#errorModal").modal('show');
-         		}
-	        })
-	    }
+            args = {
+                "username":mail,
+                "password":pass,
+                "name":name,
+                "professionId":pro,
+                "yzm":yzm,
+                "sex":sex
+                }
+           
+            url = "register.do";
+            $.post(url,args,function(data){
+                if(data == 1){
+                    $("#myModal").modal('show');
+                }else{
+                    $("#errorModal").modal('show');
+                }
+            })
+        }
 
     })
     //
@@ -273,7 +273,7 @@ $(document).ready(function() {
         }
         $.post(url,args,function(data){});
     })
-    //ְҵ��ȡ
+    //职业读取
     window.onload=function(){
         var url = "";
 
@@ -288,22 +288,22 @@ var countdown = 60;
 function settime(obj,flag) {
     var al = "";
     if ($(".Email").val()==""||$(".Email").val()==null) {
-        al = "���䲻��Ϊ��";
+        al = "邮箱不能为空";
     }
     else if (!$(".Email").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
-        al = "�����ʽ����ȷ";
+        al = "邮箱格式不正确";
     }
     else{
         if(flag == "1"){
-                al = "��֤���ѷ��ͣ������ĵȴ�"
+                al = "验证码已发送，请耐心等待"
             if (countdown == 0) {
                 obj.removeAttribute("disabled");
-                obj.value = "���·���";
+                obj.value = "重新发送";
                 countdown = 60;
                 return;
             } else {
                 obj.setAttribute("disabled", true);
-                obj.value = "���·���(" + countdown + ")";
+                obj.value = "重新发送(" + countdown + ")";
                 countdown--;
             }
         }
