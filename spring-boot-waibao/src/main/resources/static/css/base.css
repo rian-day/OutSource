@@ -71,6 +71,9 @@ body{
     display: flex;
     z-index: 80000;
 }
+.second-menu>div{
+	font-weight: bold;
+}
 	.box-left{
 		width: 110px;
 		height: 70px;
