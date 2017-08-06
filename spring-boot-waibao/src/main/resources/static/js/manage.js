@@ -314,8 +314,10 @@ $(document).ready(function() {
     });
     $(document).on("click",".add-button",function(){
         var thetext = $(this).parent().parent().find("td:eq(1)").text();
+        console.log(thetext); 
         $("#handle-1").find('li:eq('+timuindex+')').find('div:eq(1)').text(thetext);
         var theid = $(this).parent().parent().find('td:eq(0)').text();
+        console.log(theid);
         $("#handle-1").find('li:eq('+timuindex+')').find('div:eq(2) .timu-id').val(theid);
         $(".add-timu-black").css({
             'z-index': '-1',
@@ -642,11 +644,11 @@ $(document).ready(function() {
             $(".insert-timu-black").css({
                 'z-index': '-1',
                 'opacity': '0'
-            });*/
+            });
             alert("content:"+content);
            	alert("realAnswer:"+answer[0]);
            	alert("tip:"+analysis);
-           	alert("professionId:"+zhiye);
+           	alert("professionId:"+zhiye);*/
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",

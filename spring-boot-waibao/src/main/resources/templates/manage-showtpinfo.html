@@ -5,7 +5,6 @@
 	<title>管理员界面</title>
 	<link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" type="text/css" href="../static/css/manage.css" th:href="@{/css/manage.css}"/>
-	<link rel="stylesheet" type="text/css" href="../static/css/zh-page.css" th:href="@{/css/zh-page.css}"/>
 	<script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
 </head>
 <body class="home">
@@ -56,70 +55,30 @@
 	<div class="overlay-content" style="display: block;"></div>
 
 	<div class="showview">
-		<div class="head-view">试卷列表</div>
-		<div class="list-view">
-			<table>
-				<tr style="height: 30px;">
-					<th>ID</th>
-					<th>名称</th>
-					<th><form action="" method="get"> 
-						<label>职业：</label> 
-						<select class="title-select">
-							<option value="0">全部职业</option>
-							<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
-						</select>
-						<!-- <select class="title-select" name="" th:each="arrayS : ${tplist}"> 
-						
-							<option value="title0">全部职业</option> 
-							<option value="title1" th:text="${tplist.id}">职业1</option> 
-							<option value="title2" th:text="${tplist.id}">职业2</option> 
-							<option value="title3" th:text="${tplist.id}">职业3</option> 
-							<option value="title4" th:text="${tplist.id}">职业4</option> 
-						</select>  -->
-					</form></th>
-					<th><form action="" method="get"> 
-					<label>难度：</label> 
-						<select class="hard-select" name="">
-							<option value="0">全部难度</option> 
-							<option value="1">难度1</option> 
-							<option value="2">难度2</option> 
-							<option value="3">难度3</option> 
-							<option value="4">难度4</option> 
-						</select> 
-					</form></th>
-					<th>创建人</th>
-					<th>创建时间</th>
-					<th>浏览</th>
-				</tr>
-				<tr th:each="tplist : ${content}">
-					<td th:text="${tplist.id}">1</td>		<!-- 试卷id -->
-					<td th:text="${tplist.name}">2</td>		<!-- 名称 -->
-					<td th:text="${tplist.professionId}">3</td>		<!-- 职业 -->
-					<td>4</td>		<!-- 难度 -->
-					<td th:text="${tplist.createAdmin.name}">5</td>		<!-- 创建人 -->
-					<td th:text="${tplist.createTime}">6</td>		<!-- 创建时间 -->
-					<td><a href="manage-showtpinfo.html?tpid=1"
-					th:href="@{/order/manage-showtpinfo.html?(tpId=${tplist.id})}">浏览</a></td>
-				</tr>
-				<tr style="height: 50px;">
-					<th colspan="7">
- 						<div class="paging">
- 							<div class="lastPage">«</div>
- 							<div class="firstPage">首页</div>
- 							<ul>
- 								<li class="tbPage"></li>
- 								<li class="obPage"></li>
- 								<li class="nowPage"></li>
- 								<li class="oaPage"></li>
- 								<li class="taPage"></li>	
- 							</ul>
- 							<div class="finalPage">末页</div>
- 							<div class="nextPage">»</div>
- 							<div class="searchPage">搜索</div>
- 						</div>
-					</th>
-				</tr>
-			</table>
+		<div class="show-tp">
+			<div class="details" th:each="prolist : ${content}">
+				<div class="subt">
+					<div class="subl">
+						试卷职业:<span th:text="${prolist.professionId}">XXX</span>
+						<div class="typeid">类型ID:<span th:text="${prolist.professionId}">2</span></div>
+						<div class="proid">职业ID:<span th:text="${prolist.type}">1</span></div>
+					</div>
+					<div class="subr">题目类型:<span th:text="${prolist.type}">选择题</span></div>
+				</div>
+				<div class="subcom">
+					<div class="subl">题目内容:<span th:text="${prolist.content}">测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据</span></div>
+					<div class="subr">
+						<div class="subans">题目答案:
+							<tr th:each="answer : ${prolist.realAnswer}">
+								<td th:text="${answer}">A</td>
+							</tr>
+						</div>
+						<div class="subtip">题目解析:<span th:text="${prolist.tip}">解析解析解析解析</span></div>
+						<div class="subtip">题目分数:<span th:text="${prolist.grade}">分数分数分数分数</span></div>
+					</div>
+				</div>
+			</div>
+			<a href="javascript:history.go(-1)" style="text-decoration-line: none;"><div class="subup">返回</div></a>
 		</div>
 		<div class="footers">
             <div class="row">
@@ -188,38 +147,5 @@
 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
-<script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
-<script type="text/javascript" th:inline="javascript">
-var countPage = [[${TotalPages}]];
-var nowPage = [[${nowpage}]] + 1;
-function topage(page){
-	toTpPage(page);
-};
-/*<![CDATA[*/
-function toTpPage(page){
-    var zhiyeSel = $(".title-select").val();
-    var nanduSel = $(".hard-select").val();
-    var www = window.document.location.href;
-    var myurl = www.substring(0, www.indexOf('?'));
-	window.location.href = myurl + "?zhiye=" + zhiyeSel + "&nandu=" + nanduSel + "&nowPage=" + page;
-    /*$.ajax({
-        type: "POST",
-        url: "tplist.do",
-        data: {
-            'zhiye' : zhiyeSel,
-            'nandu' : nanduSel,
-            'nowPage' : page,
-            'size' : '10'
-        },
-        dataType: "json",
-        success: function(data){
-            if (data!=1) {
-                alert('跳转失败');
-            }
-        }
-    });*/
-}
-/*]]>*/
-</script>
-</body>
+<script type="text/javascript" src="../static/js/jquery.page.js" th:src="@{/js/jquery.page.js}"></script></body>
 </html>
