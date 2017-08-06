@@ -1196,8 +1196,12 @@ $(document).ready(function() {
     });
     $(".dldmould").click(function(event) {
         $.ajax({
-            url: 'getexcel.do',
-            type: 'POST'
+        	type: "POST",
+            url: "getexcel.do",
+            dataType: "json",
+            success: function(data){
+            	
+            }
         })
     });
 });

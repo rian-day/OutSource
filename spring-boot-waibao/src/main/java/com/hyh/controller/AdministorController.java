@@ -41,7 +41,8 @@ public class AdministorController {
 	
 	@PostMapping("/sendup.do")
 	@ResponseBody
-	public String addManySubject(List<Subject> list){
+	public String addManySubject(HttpSession session){
+		List<Subject> list=(List<Subject>) session.getAttribute("excel");
 		return ss.AddSubject(list);
 	}
 	@PostMapping("set-index-list.do")

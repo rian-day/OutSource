@@ -192,6 +192,7 @@ public class ExamService {
 			UserAnswer useranswer=new UserAnswer();
 			useranswer.setSubject(list.get(i));
 			useranswer.setExamId(exam);
+			useranswer.setUserId(userId);
 			ad.save(useranswer);
 			totalgrade+=list.get(i).getGrade();
 		}

@@ -134,7 +134,9 @@ public class SubjectService {
 		return subject.getId();
 	}
 	public String AddSubject(List<Subject> list){
-		subjectdao.save(list);
+		for(int i=0;i<list.size();i++){
+			subjectdao.save(list.get(i));
+		}
 		return "1";
 	}
 	public Subject SearchSubject(int id){
