@@ -55,7 +55,7 @@ public class ExamController {
 	 */
 	@PostMapping("/submitTest.do")
 	@ResponseBody
-	public Map CorrectSubjects(
+	public String CorrectSubjects(
 			String list
 			,Integer examId) throws JsonParseException, JsonMappingException, IOException{
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
@@ -63,10 +63,7 @@ public class ExamController {
 		JavaType javaType=mapper.getTypeFactory().constructParametricType(ArrayList.class, SubjectC.class);
 		List<SubjectC> list1=(List<SubjectC>)mapper.readValue(list, javaType); 
 		int grade=es.CorrectSubjects(examId,time,list1);
-		Map map=new HashMap();
-		map.put("time", time);
-		map.put("grade",grade);
-		return map;
+		return String.valueOf(grade);
 	}
 	/**
 	 * 随机生成exam

@@ -37,8 +37,8 @@ public class UserController {
  	 * 消息推送
  	 * @return
  	 */
-// 	@PostMapping("/pushMessage.do")
-// 	@ResponseBody
+ 	@PostMapping("/pushMessage.do")
+ 	@ResponseBody
  	public String messagePush(HttpSession session){
  		if("".equals(session.getAttribute("message"))||session.getAttribute("message")==null){
  			Message result= userService.messagePush();

@@ -74,7 +74,7 @@ public class ExamService {
 						}
 					}
 					if(pass==1){
-						//totalgrade+=singlegrade[i];
+						totalgrade+=singlegrade[i];
 						status=1;
 						Log.warn(i+"题对了");
 					}else{
@@ -95,7 +95,7 @@ public class ExamService {
 					if(pass){
 						status=2;
 						Log.warn(i+"题半对");
-						//totalgrade+=singlegrade[i]/2;
+						totalgrade+=singlegrade[i]/2;
 					}else{
 						Log.warn(i+"题错了");
 					}
@@ -174,6 +174,13 @@ public class ExamService {
 	 */
 	public Exam saveExam(String time,int userId,int professionId,List<Subject> list,int limitedTime){
 		Exam exam=new Exam();
+		int[] singlegrade=new int[10];
+		for(int i=0;i<10;i++){
+			singlegrade[i]=10;
+		}
+		exam.setName("随机试卷");
+		exam.setTotalgrade(100);
+		exam.setSinglegrade(singlegrade);
 		exam.setTime(time);
 		exam.setUserId(userId);
 		exam.setProfessionId(professionId);

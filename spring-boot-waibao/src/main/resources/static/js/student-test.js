@@ -161,9 +161,8 @@ function submit() {
     }
     console.log(args);
     $.post(url, args, function(data) {
-        var grade = data.grade;       
-        var correct = data.correct;
-        window.location.href = "student-submit.html?grade='" + grade + "'&correct='" + correct + "'";
+        var grade = data;
+        window.location.href = "student-submit.html?grade='" + grade + "'&correct='20%'";
 
     })
 }
