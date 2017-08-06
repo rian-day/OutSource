@@ -304,9 +304,9 @@ public class ViewController {
 	@RequestMapping("/manage-showtpinfo.html")
 	public ModelAndView manageshowtpinfo(
 			Integer tpId){
-		sgs.searchById(tpId);
+		SubjectGroup result=sgs.searchById(tpId);
 		ModelAndView mav=new ModelAndView("manage-showtpinfo");
-		mav.addObject("content",tpId);
+		mav.addObject("content",result);
 		return mav;
 	}
 }

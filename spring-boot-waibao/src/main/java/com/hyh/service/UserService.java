@@ -50,6 +50,9 @@ public class UserService {
 	 MessageDao md;
 	 //消息推送
 	 public Message messagePush(){
+		 if(md.findAll().size()==0){
+			 return null;
+		 }
 		 return md.findAll().get(0);
 	 }
 	 //查找所有用户
