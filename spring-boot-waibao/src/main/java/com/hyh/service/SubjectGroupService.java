@@ -17,7 +17,11 @@ public class SubjectGroupService {
 	SubjectGroupDao sgd;
 	@Resource
 	SubjectDao sd;
-	
+	//查找
+	public SubjectGroup searchById(int id){
+		return sgd.findById(id);
+	}
+	//创建
 	public String createGroup(
 			SubjectGroupBean sgb
 			,Administrators createAdmin

@@ -41,7 +41,14 @@ public class SubjectGroupController {
 
 	public final ObjectMapper mapper = new ObjectMapper(); 
 	
-	
+	/**
+	 * 创建考试
+	 * @param sgb
+	 * @param subjectId
+	 * @param grade
+	 * @param session
+	 * @return
+	 */
 	@PostMapping("sendtp.do")
 	@ResponseBody
 	public String createGroup(
@@ -72,6 +79,13 @@ public class SubjectGroupController {
 		model.addAttribute("totalElements",page.getNumberOfElements());
 		return model;
 	}
+	/**
+	 * 模糊搜索
+	 * @param content
+	 * @param professionId
+	 * @return
+	 * @throws JsonProcessingException
+	 */
 	@PostMapping("mohu-search-subject.do")
 	@ResponseBody
 	public List<SubjectBean> mohuSubject(

@@ -21,6 +21,7 @@ import com.hyh.entity.UserInfo;
 import com.hyh.service.AdminService;
 import com.hyh.service.ExamService;
 import com.hyh.service.ProfessionService;
+import com.hyh.service.SubjectGroupService;
 import com.hyh.service.SubjectService;
 import com.hyh.service.UserCollectService;
 import com.hyh.service.UserService;
@@ -38,6 +39,8 @@ public class ViewController {
 	UserCollectService ucs;
 	@Resource
 	AdminService as;
+	@Resource
+	SubjectGroupService sgs;
 	@RequestMapping("/index.html")
 	public String index(
 			//HttpSession session
@@ -296,6 +299,14 @@ public class ViewController {
 	@RequestMapping("/spmanage-orderlist.html")
 	public ModelAndView orderlist(){
 		ModelAndView mav=new ModelAndView("spmanage-orderlist.html");
+		return mav;
+	}
+	@RequestMapping("/manage-showtpinfo.html")
+	public ModelAndView manageshowtpinfo(
+			Integer tpId){
+		sgs.searchById(tpId);
+		ModelAndView mav=new ModelAndView("manage-showtpinfo");
+		mav.addObject("content",tpId);
 		return mav;
 	}
 }

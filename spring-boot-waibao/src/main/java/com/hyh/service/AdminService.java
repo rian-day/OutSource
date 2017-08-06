@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.hyh.bean.RandomSubjectBean;
 import com.hyh.entity.Administrators;
+import com.hyh.entity.Message;
 import com.hyh.entity.RandomSubject;
 import com.hyh.repository.AdministratorsDao;
+import com.hyh.repository.MessageDao;
 import com.hyh.repository.RandomSubjectDao;
 @Service
 public class AdminService {
@@ -17,7 +19,15 @@ public class AdminService {
 	AdministratorsDao ad;
 	@Resource
 	RandomSubjectDao rsd;
-	
+	@Resource
+	MessageDao md;
+	//消息推送
+	public String saveMessage(String content){
+		Message msg=new Message();
+		msg.setContent(content);
+		md.save(msg);
+		return "1";
+	}
 	//修改按键顺序
 	public String changeIndexList(char[] index ,int id){
 		Administrators admin=ad.findById(id);

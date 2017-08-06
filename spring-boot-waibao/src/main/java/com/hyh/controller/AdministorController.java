@@ -23,6 +23,17 @@ public class AdministorController {
 	@Resource
 	AdminService as;
 	
+	/**
+	 * 消息推送
+	 * @param bbs
+	 * @return
+	 */
+	@PostMapping("/pushbbs.do ")
+	@ResponseBody
+	public String saveMessage(String bbs){
+		return as.saveMessage(bbs);
+	}
+	
 	@PostMapping("/sendup.do")
 	@ResponseBody
 	public String addManySubject(List<Subject> list){
@@ -47,6 +58,14 @@ public class AdministorController {
 		SessionUser user=(SessionUser) session.getAttribute("user");
 		return as.editAndminInfo(user.getUserId(), name, sex);
 	}
+	/**
+	 * 修改随机试卷模板
+	 * @param professionId
+	 * @param type
+	 * @param num
+	 * @param mark
+	 * @return
+	 */
 	@PostMapping("creat-suijitp.do")
 	@ResponseBody
 	public String UpdateRandomSubject(
