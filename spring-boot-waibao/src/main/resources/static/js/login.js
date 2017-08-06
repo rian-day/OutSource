@@ -195,7 +195,7 @@ $(document).ready(function() {
     // ��¼
     $("#loginSubmit").click(function() {
             table = $("input[type='radio']:checked").next().text();
-		if ($.trim(table)== "����Ա")
+		if ($.trim(table)== "管理员")
                 table = "1";
             else
                 table = "0";

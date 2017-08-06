@@ -987,18 +987,19 @@ $(document).ready(function() {
             });
             var shijian = $(".tp-head-info .tptime").val();
             /*alert(shijian);*/
-            console.log(timuinfo);
-            $.ajax({
-                type: "POST",
-                url: "sendtp.do",
-                data: {
+            var heyuheng={
                     'groupName' : name,      //名称
                     'professionId' : Number(pro),        //职业
                     'level' : Number(hrd),         //难度
                     'subjectId' : timuid,//题目id(数组)
                     'grade' : timuinfo,
                     'limitedTime' : Number(shijian)
-                },
+                }
+            console.log(heyuheng);
+            $.ajax({
+                type: "POST",
+                url: "sendtp.do",
+                data: heyuheng,
                 dataType: "json",
                 success: function(data){
                     if (data==1) {

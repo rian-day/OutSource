@@ -30,7 +30,7 @@ public class AdminService {
 		return rad.findByCorrect('0');
 	}
 	//消息推送
-	public String saveMessage(String content){
+	public String saveMessage1(String content){
 		Message msg=new Message();
 		msg.setContent(content);
 		md.save(msg);
