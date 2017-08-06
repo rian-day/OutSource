@@ -1172,4 +1172,10 @@ $(document).ready(function() {
             'z-index': '-1'
         });
     });
+    $(".dldmould").click(function(event) {
+        $.ajax({
+            url: 'getexcel.do',
+            type: 'POST'
+        })
+    });
 });
