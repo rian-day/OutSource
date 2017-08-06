@@ -12,7 +12,7 @@ function sendMessage(){
 			if(data!=null){
 				tip(data);
 			}
-			setTimeout(sendMessage(),2000);
+			//setTimeout(sendMessage(),50000);
 		}
 	});
 }
@@ -80,10 +80,12 @@ $(".chakan").click(function(){
    
 })
 function tip(content){
+	alert("进入tip");
   //传参
   if ($.trim(content)=="") {
     $(".release").css("display","none");
   }else{
+	$(".release").css("display","block");
     $(".release").text(content);
     $(".release-content .glyphicon-remove").click(function() {
     $(".release").css("-webkit-animation-name","bounceoutL");

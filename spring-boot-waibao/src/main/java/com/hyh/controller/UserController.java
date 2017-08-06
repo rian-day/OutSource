@@ -37,8 +37,9 @@ public class UserController {
  	 * @return
  	 */
  	@PostMapping("/pushMessage.do")
+ 	@ResponseBody
  	public String messagePush(HttpSession session){
- 		if("".equals(session.getAttribute("massage"))||session.getAttribute("massage")==null){
+ 		if("".equals(session.getAttribute("message"))||session.getAttribute("message")==null){
  			session.setAttribute("message", "exist");
  			return userService.messagePush();
  		}
