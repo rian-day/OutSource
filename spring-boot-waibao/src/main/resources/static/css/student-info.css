@@ -230,8 +230,8 @@ input[type='password']:focus {
 }
 .img_show img{
     border-radius: 50%;
-    width: 65%;
-    height: 65%;
+    width: 160px;
+    height: 160px;
     margin-left: 15%;
 }
 .upfile{
