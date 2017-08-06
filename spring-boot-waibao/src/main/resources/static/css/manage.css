@@ -869,7 +869,7 @@ body{
 
 .details{
 	width: 100%;
-	height: 200px;
+	min-height: 150px;
 }
 .details .subt{
 	height: 20px;
@@ -877,12 +877,19 @@ body{
 	display: flex;
 }
 .details .subcom{
-	height: 180px;
+	min-height: 150px;
 	display: flex;
 }
-.details .subt .subl,.details .subcom .subl{
+.details .subt .subl{
+	margin-left: 20px;
+	margin-right: calc(70% - 155px);
+}
+.details .subcom .subl{
 	width: 70%;
 	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 10px;
+	margin-right: 20px;
 }
 .details .subt .subr,.details .subcom .subr{
 	width: 30%;
