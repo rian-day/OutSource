@@ -16,13 +16,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.hyh.bean.SessionUser;
 import com.hyh.bean.UserBean;
 import com.hyh.entity.Administrators;
 import com.hyh.entity.Message;
+import com.hyh.entity.RequestAdmin;
 import com.hyh.entity.UserInfo;
 import com.hyh.repository.AdministratorsDao;
 import com.hyh.repository.MessageDao;
 import com.hyh.repository.ProfessionDao;
+import com.hyh.repository.RequestAdminDao;
 import com.hyh.repository.UserInfoDao;
 import com.hyh.utils.MD5Util;
 
@@ -48,6 +51,19 @@ public class UserService {
 	 ProfessionDao pd;
 	 @Resource
 	 MessageDao md;
+	 @Resource
+	 RequestAdminDao rad;
+	 
+	 public String sendMSGtoAdmin(SessionUser user){
+		 
+		 RequestAdmin ra=new RequestAdmin();
+		 ra.setUserId(user.getUserId());
+		 ra.setUserName(user.getName());
+		 ra.setUserEmail(user.getMail());
+		 ra.setCorrect('0');
+		 rad.save(ra);
+		 return "1";
+	 }
 	 //消息推送
 	 public Message messagePush(){
 		 if(md.findAll().size()==0){

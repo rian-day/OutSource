@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hyh.bean.SessionUser;
 import com.hyh.entity.Exam;
 import com.hyh.entity.Profession;
+import com.hyh.entity.RequestAdmin;
 import com.hyh.entity.Subject;
 import com.hyh.entity.SubjectGroup;
 import com.hyh.entity.UserAnswer;
@@ -289,6 +290,8 @@ public class ViewController {
 	@RequestMapping("/spmanage-applylist.html")
 	public ModelAndView applylist(){
 		ModelAndView mav=new ModelAndView("spmanage-applylist.html");
+		List<RequestAdmin> list=as.getAllRequest();
+		mav.addObject("content",list);
 		return mav;
 	}
 	@RequestMapping("/spmanage-manlist.html")

@@ -63,18 +63,16 @@
 					<th>ID</th>
 					<th>名称</th>
 					<th>邮箱</th>
-					<th>性别</th>
 					<th>修改</th>
 				</tr>
-				<tr th:each="tplis : ${}">
-					<td th:text="${tplist.}">1</td>		<!-- 用户id -->
-					<td th:text="${tplist.}">2</td>		<!-- 名称 -->
-					<td th:text="${tplist.}">3</td>		<!-- 邮箱 -->
-					<td th:text="${tplist.}">4</td>		<!-- 性别 -->
-					<td><input type="submit" value="同意"/></td>
+				<tr th:each="tplist : ${content}">
+					<td th:text="${tplist.userId}">1</td>		<!-- 用户id -->
+					<td th:text="${tplist.userName}">2</td>		<!-- 名称 -->
+					<td th:text="${tplist.userEmail}">3</td>		<!-- 邮箱 -->
+					<td><input class="applyture" type="submit" value="同意"/></td>
 				</tr>
 				<tr style="height: 50px;">
-					<th colspan="5">
+					<th colspan="4">
  						<div class="paging">
  							<div class="lastPage">«</div>
  							<div class="firstPage">首页</div>
@@ -146,6 +144,9 @@ function topage(page){
 	toAppPage(page);
 };
 /*<![CDATA[*/
+$(".applyture").click(function(){
+	alert('成功');
+});
 function toAppPage(page){
     var zhiyeSel = $(".title-select").val();
     var nanduSel = $(".hard-select").val();

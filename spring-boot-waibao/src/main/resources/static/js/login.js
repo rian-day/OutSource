@@ -24,13 +24,13 @@ $(document).ready(function() {
 
 
 
-    //ÇÐ»»loginºÍsign
+    //ï¿½Ð»ï¿½loginï¿½ï¿½sign
     $(".sss").click(function() {
         $(".loginul").css("display", "none");
         $("#signup").css("display", "block");
         
-        if ($(".ss").text() == "×¢²á") {
-            $(".ss").children("span").text("µÇÂ¼");
+        if ($(".ss").text() == "×¢ï¿½ï¿½") {
+            $(".ss").children("span").text("ï¿½ï¿½Â¼");
             $(".ss").attr("href","javascript:void(0)");
         }
     });
@@ -38,11 +38,11 @@ $(document).ready(function() {
         $(".loginul").css("display", "none");
         $("#signup").css("display", "block");
         
-        if ($(this).text() == "×¢²á") {
-            $(this).children("span").text("µÇÂ¼");
+        if ($(this).text() == "×¢ï¿½ï¿½") {
+            $(this).children("span").text("ï¿½ï¿½Â¼");
             $(this).attr("href","javascript:void(0)");
-        }else if($(this).text() == "µÇÂ¼"){
-        	$(".ss").children("span").text("×¢²á");
+        }else if($(this).text() == "ï¿½ï¿½Â¼"){
+        	$(".ss").children("span").text("×¢ï¿½ï¿½");
             $(".ss").attr("login.html");
             $(".loginul").css("display", "block");
             $("#signup").css("display", "none");
@@ -51,8 +51,8 @@ $(document).ready(function() {
     $(".qqq").click(function() {
         $(".loginul").css("display", "block");
         $("#signup").css("display", "none");
-        if ($(".ss").text() == "µÇÂ¼") {
-            $(".ss").children("span").text("×¢²á");
+        if ($(".ss").text() == "ï¿½ï¿½Â¼") {
+            $(".ss").children("span").text("×¢ï¿½ï¿½");
             $(".ss").attr("login.html");
         }
     });
@@ -143,9 +143,9 @@ $(document).ready(function() {
     })
 
 
-    var alertTxt = new Array("ÕËºÅ²»ÄÜÎª¿Õ", "ÓÊÏä¸ñÊ½²»ÕýÈ·", "ÃÜÂë²»ÄÜÎª¿Õ", "ÕËºÅ»òÕßÃÜÂë´íÎó", "ÃÜÂëÖÁÉÙº¬ÓÐ6¸ö×Ö·û", "Á½´ÎÃÜÂëÊäÈë²»Ò»ÖÂ", "", "ÓÊÏä²»ÄÜÎª¿Õ", "ÐÕÃû²»ÄÜÎª¿Õ", "ÑéÖ¤Âë²»ÄÜÎª¿Õ");
+    var alertTxt = new Array("ï¿½ËºÅ²ï¿½ï¿½ï¿½Îªï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·", "ï¿½ï¿½ï¿½ë²»ï¿½ï¿½Îªï¿½ï¿½", "ï¿½ËºÅ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùºï¿½ï¿½ï¿½6ï¿½ï¿½ï¿½Ö·ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»Ò»ï¿½ï¿½", "", "ï¿½ï¿½ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½", "ï¿½ï¿½Ö¤ï¿½ë²»ï¿½ï¿½Îªï¿½ï¿½");
     var table, email, password;
-    //»ñÈ¡input
+    //ï¿½ï¿½È¡input
     $("#s1").click(function() {
         $(".Email1").val(
             $(".Email").val()
@@ -192,10 +192,10 @@ $(document).ready(function() {
         $(".prompt1").html(alertTxt[i]);
         $(".prompt1").fadeIn();
     });
-    // µÇÂ¼
+    // ï¿½ï¿½Â¼
     $("#loginSubmit").click(function() {
             table = $("input[type='radio']:checked").next().text();
-		if ($.trim(table)== "¹ÜÀíÔ±")
+		if ($.trim(table)== "ï¿½ï¿½ï¿½ï¿½Ô±")
                 table = "1";
             else
                 table = "0";
@@ -218,6 +218,9 @@ $(document).ready(function() {
 		    console.log(args.boss);
                 var url = "login.do";
                 $.post(url, args, function(data) {
+                	if(data==2){
+                		window.location.href="spmanage-applylist.html";
+                	}
                 	if(data==1){
                         if(table == "0")
                             window.location.href="student-index.html";
@@ -228,7 +231,7 @@ $(document).ready(function() {
                 })
             }
         })
-        //×¢²á
+        //×¢ï¿½ï¿½
     $("#regSubmit").click(function() {
         var mail = $(".Email").val();
         var pass = $('.pass').val();
@@ -270,7 +273,7 @@ $(document).ready(function() {
         }
         $.post(url,args,function(data){});
     })
-    //Ö°Òµ¶ÁÈ¡
+    //Ö°Òµï¿½ï¿½È¡
     window.onload=function(){
         var url = "";
 
@@ -285,22 +288,22 @@ var countdown = 60;
 function settime(obj,flag) {
     var al = "";
     if ($(".Email").val()==""||$(".Email").val()==null) {
-        al = "ÓÊÏä²»ÄÜÎª¿Õ";
+        al = "ï¿½ï¿½ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½";
     }
     else if (!$(".Email").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
-        al = "ÓÊÏä¸ñÊ½²»ÕýÈ·";
+        al = "ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·";
     }
     else{
         if(flag == "1"){
-                al = "ÑéÖ¤ÂëÒÑ·¢ËÍ£¬ÇëÄÍÐÄµÈ´ý"
+                al = "ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÄµÈ´ï¿½"
             if (countdown == 0) {
                 obj.removeAttribute("disabled");
-                obj.value = "ÖØÐÂ·¢ËÍ";
+                obj.value = "ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½";
                 countdown = 60;
                 return;
             } else {
                 obj.setAttribute("disabled", true);
-                obj.value = "ÖØÐÂ·¢ËÍ(" + countdown + ")";
+                obj.value = "ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½(" + countdown + ")";
                 countdown--;
             }
         }

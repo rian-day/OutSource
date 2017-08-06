@@ -10,9 +10,11 @@ import com.hyh.bean.RandomSubjectBean;
 import com.hyh.entity.Administrators;
 import com.hyh.entity.Message;
 import com.hyh.entity.RandomSubject;
+import com.hyh.entity.RequestAdmin;
 import com.hyh.repository.AdministratorsDao;
 import com.hyh.repository.MessageDao;
 import com.hyh.repository.RandomSubjectDao;
+import com.hyh.repository.RequestAdminDao;
 @Service
 public class AdminService {
 	@Resource
@@ -21,6 +23,12 @@ public class AdminService {
 	RandomSubjectDao rsd;
 	@Resource
 	MessageDao md;
+	@Resource
+	RequestAdminDao rad;
+	//获取申请信息
+	public List<RequestAdmin> getAllRequest(){
+		return rad.findByCorrect('0');
+	}
 	//消息推送
 	public String saveMessage(String content){
 		Message msg=new Message();

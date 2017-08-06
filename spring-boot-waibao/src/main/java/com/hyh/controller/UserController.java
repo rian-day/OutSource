@@ -117,6 +117,8 @@ public class UserController {
 			su.setHead(admin.getHead());
 			su.setSex(admin.getSex());
 			httpSession.setAttribute("user",su);
+			if(admin.getBoss()=='1')
+				return "2";
 			return "1";
 		}
 			
@@ -174,5 +176,10 @@ public class UserController {
  @PostMapping("checkEmailExist.do")
  public String checkemailexist(@RequestParam("mail") String mail){
 	 return userService.isEmailExist(mail);
+ }
+ @PostMapping("/apply.do")
+ public String sendMSGtoAdmin(HttpSession session){
+	 SessionUser user=(SessionUser) session.getAttribute("user");
+	 return userService.sendMSGtoAdmin(user);
  }
 }

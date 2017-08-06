@@ -30,6 +30,11 @@ public class AdministorController {
 	 */
 	@PostMapping("/pushbbs.do")
 	@ResponseBody
+	public String correctRequest(){
+		return "1";
+	}
+	@PostMapping("/pushbbs.do")
+	@ResponseBody
 	public String saveMessage(String bbs){
 		return as.saveMessage(bbs);
 	}
