@@ -28,7 +28,7 @@ public class AdministorController {
 	 * @param bbs
 	 * @return
 	 */
-	@PostMapping("/pushbbs.do ")
+	@PostMapping("/pushbbs.do")
 	@ResponseBody
 	public String saveMessage(String bbs){
 		return as.saveMessage(bbs);

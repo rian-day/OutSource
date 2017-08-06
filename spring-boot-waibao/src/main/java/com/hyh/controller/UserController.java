@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.hyh.bean.SessionUser;
 import com.hyh.bean.UserBean;
 import com.hyh.entity.Administrators;
+import com.hyh.entity.Message;
 import com.hyh.entity.Profession;
 import com.hyh.entity.UserInfo;
 import com.hyh.service.LoginService;
@@ -40,8 +41,12 @@ public class UserController {
  	@ResponseBody
  	public String messagePush(HttpSession session){
  		if("".equals(session.getAttribute("message"))||session.getAttribute("message")==null){
+ 			Message result= userService.messagePush();
+ 			if("".equals(result)||result==null){
+ 				return null;
+ 			}
  			session.setAttribute("message", "exist");
- 			return userService.messagePush();
+ 			return result.getContent();
  		}
  		return null;
  	}

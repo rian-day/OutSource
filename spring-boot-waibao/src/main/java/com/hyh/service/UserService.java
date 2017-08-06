@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.hyh.bean.UserBean;
 import com.hyh.entity.Administrators;
+import com.hyh.entity.Message;
 import com.hyh.entity.UserInfo;
 import com.hyh.repository.AdministratorsDao;
 import com.hyh.repository.MessageDao;
@@ -48,8 +49,8 @@ public class UserService {
 	 @Resource
 	 MessageDao md;
 	 //消息推送
-	 public String messagePush(){
-		 return md.findAll().get(0).getContent();
+	 public Message messagePush(){
+		 return md.findAll().get(0);
 	 }
 	 //查找所有用户
 	 public Page<UserInfo> SearchAllInPage(int nowpage ,int size){
