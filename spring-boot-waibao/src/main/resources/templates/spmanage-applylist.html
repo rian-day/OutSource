@@ -138,14 +138,15 @@
 <script src="../static/js/manage.js" th:src="@{/js/manage.js}"></script>
 <script type="text/javascript" src="../static/js/zh-page.js" th:src="@{/js/zh-page.js}"></script>
 <script type="text/javascript" th:inline="javascript">
-var countPage = [[${TotalPages}]];
-var nowPage = [[${nowpage}]] + 1;
+var countPage =12;
+var nowPage = 1;
 function topage(page){
 	toAppPage(page);
 };
 /*<![CDATA[*/
 $(".applyture").click(function(){
 	alert('成功');
+	$(this).parent().parent().remove();
 });
 function toAppPage(page){
     var zhiyeSel = $(".title-select").val();
