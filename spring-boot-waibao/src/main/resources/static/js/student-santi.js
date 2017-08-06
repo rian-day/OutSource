@@ -41,10 +41,12 @@ $(".windowbutton1").click(function() {
 
 $(".time").click(function(){
 	$(".time").css({
-		"background-image": ''
+		"background-image": '',
+    "color": 'black'
 	});
 	$(this).css({
-		"background-image": 'url(../static/images/true.png)'
+		"background-image": 'url(../static/images/true.png)',
+    "color": 'red'
 	});	
 	 time = ($(this).children('span').text());
 })
