@@ -364,7 +364,10 @@
 
 
 
-<div class="add-suiji-black" style="z-index: -1;opacity: 0">
+
+
+
+<!-- <div class="add-suiji-black" style="z-index: -1;opacity: 0">
 	<div class="showview" style="background-color: rgba(0,0,0,0);height: 100vh">
 		<div id="handle" style="margin-top: 150px;">
 			<div class="block__list_words">
@@ -406,7 +409,7 @@
 			<div class="clear"></div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 
@@ -523,7 +526,7 @@
 				<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
 			</select>
 			考试时间<input type="text" class="tptime" />分钟
-			<input class="creat-suijitp" type="button" value="随机创建试卷"/>
+			<input class="creat-suijitp" data-toggle="modal" data-target="#chuagnjiansuiji" type="button" value="随机试卷"/>
 		</div>
 		<div id="handle">
 			<div class="block__list_words">
@@ -567,8 +570,42 @@
             </div>
         </div>
 	</div>
-2
 </div>
+<div class="modal fade" id="chuagnjiansuiji" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					修改试卷模板
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div>
+					职业
+					<select class="pro-select">
+						<option value="0">全部职业</option>
+						<option th:each="prolist : ${pros}" th:value="${prolist.id}" th:text="${prolist.name}">Credit card</option>
+					</select>
+				</div>
+				<div><input type="hidden" value="单选题"/>单选题<input type="text" name="" class="suijishuliang" value="0" />道，分值<input type="text" name="" class="suijifenzhi" value="0" />（分）每道<span class="sub-suiji-model">修改</span></div>
+				<div><input type="hidden" value="多选题"/>多选题<input type="text" name="" class="suijishuliang" value="0" />道，分值<input type="text" name="" class="suijifenzhi" value="0" />（分）每道<span class="sub-suiji-model">修改</span></div>
+				<div><input type="hidden" value="填空题"/>填空题<input type="text" name="" class="suijishuliang" value="0" />道，分值<input type="text" name="" class="suijifenzhi" value="0" />（分）每道<span class="sub-suiji-model">修改</span></div>
+				<div><input type="hidden" value="判断题"/>判断题<input type="text" name="" class="suijishuliang" value="0" />道，分值<input type="text" name="" class="suijifenzhi" value="0" />（分）每道<span class="sub-suiji-model">修改</span></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<!-- <button type="button" class="btn btn-primary">
+					提交模板
+				</button> -->
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
 <div class="menu">
 	<div class="menu-in">
 		<div class="menu-top">

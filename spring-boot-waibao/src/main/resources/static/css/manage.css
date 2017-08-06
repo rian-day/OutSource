@@ -753,6 +753,25 @@ body{
 }
 
 
+#chuagnjiansuiji .modal-body{
+	line-height: 30px;
+}
+#chuagnjiansuiji .modal-body .suijishuliang,#chuagnjiansuiji .modal-body .suijifenzhi{
+	width: 50px;
+	height: 26px;
+}
+.sub-suiji-model{
+	width: 50px;
+	text-align: center;
+	background-color: lightgray;
+	margin-left: 20px;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 5px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 
 
 

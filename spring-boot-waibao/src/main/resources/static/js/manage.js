@@ -874,14 +874,34 @@ $(document).ready(function() {
 
 
 
-    
-    $(".sub-cancel").click(function() {
+    $(".sub-suiji-model").click(function(event) {
+        var tppro = $(".modal-body .pro-select").val();
+        var leixing = $(this).parent().children('input[type=hidden]').val();     //类型
+        var shuliang = $(this).prev().prev().val();     //数量
+        var fenshu = $(this).prev().val();     //分数
+        console.log(leixing);
+        console.log(shuliang);
+        console.log(fenshu);
+        console.log(tppro);
+        $.ajax({
+            url: 'creat-suijitp.do',
+            type: 'POST',
+            data: {
+                'professionId' : tppro,
+                'type': leixing,
+                'num' : shuliang,
+                'mark' : fenshu,
+            },
+        })
+        
+    });
+   /* $(".sub-cancel").click(function() {
         $(".add-suiji-black").css({
             'z-index': '-1',
             'opacity': '0',
         });
-    });
-    $(".creat-suijitp").click(function() {
+    });*/
+    /*$(".creat-suijitp").click(function() {
         var tpname = $(".tp-head-info input[type=text]").val();
         var tppro = $(".tp-head-info .pro-select option:selected").val();
         if (tpname=="") {
@@ -894,7 +914,7 @@ $(document).ready(function() {
                 'opacity': '1',
             });
         }
-    });
+    });*/
     /*创建随机题目*/
     $(".sub-suiji-project").click(function() {
         var tpname = $(".tp-head-info input[type=text]").val();    //试卷名称
