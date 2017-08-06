@@ -133,6 +133,7 @@ public class ExamService {
 		exam.setProfessionId(subjectgroup.getProfessionId());
 		exam.setTime(time);
 		exam.setTotalgrade(subjectgroup.getTotalgrade());
+		exam.setName(subjectgroup.getName());
 		exam=ed.save(exam);
 		Iterator<Subject> iterator=set.iterator();
 		while(iterator.hasNext()){
