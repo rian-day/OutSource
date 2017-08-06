@@ -1,21 +1,33 @@
-
 $(document).ready(function() {
-	alert("开始");
-	sendMessage();
+  sendMessage();
 })
 function sendMessage(){
-	alert("调用函数")
-	$.ajax({
-		url: '/pushMessage.do',
-		type: 'POST',
-		success : function(data){
-			if(data!=null){
-				tip(data);
-			}
-			//setTimeout(sendMessage(),50000);
-		}
-	});
+  $.ajax({
+    url: '/pushMessage.do',
+    type: 'POST',
+    success : function(data){
+      if(data!=null){
+        tip(data);
+      }
+      setTimeout(function(){sendMessage()},5000);
+    }
+  });
 }
+function tip(content){
+  //传参
+  if ($.trim(content)=="") {
+    $(".release").css("display","none");
+  }else{
+  $(".release").css("display","block");
+    $(".release-content").html('<span class="glyphicon glyphicon-remove"></span>'+content);
+    $(".release-content .glyphicon-remove").click(function() {
+    $(".release").css("-webkit-animation-name","bounceoutL");
+    $(".release").css("-webkit-animation-duration","1s");
+    $(".release").css("animation-fill-mode","forwards");
+    });
+  }
+}
+
 
 
 
@@ -79,22 +91,7 @@ $(".chakan").click(function(){
 	});
    
 })
-function tip(content){
-	alert("进入tip");
-  //传参
-  if ($.trim(content)=="") {
-    $(".release").css("display","none");
-  }else{
-	$(".release").css("display","block");
-    $(".release").text(content);
-    $(".release-content .glyphicon-remove").click(function() {
-    $(".release").css("-webkit-animation-name","bounceoutL");
-    $(".release").css("-webkit-animation-duration","1s");
-    $(".release").css("animation-fill-mode","forwards");
-    });
-  }
-}
-$(".release").smartFloat($(this));
+
 
 $.fn.smartFloat = function() {
  var position = function(element) {
