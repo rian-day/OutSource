@@ -6,6 +6,9 @@
 	正常页面元素是100
 	texteditor及其其中的高度是10001
  */
+ .release{
+ 	display: none;
+ }
 body{
 	width: 100%;
 	margin: 0px;
