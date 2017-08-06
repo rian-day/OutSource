@@ -173,19 +173,21 @@ public class ExamService {
 	 * @return
 	 */
 	public Exam saveExam(String time,int userId,int professionId,List<Subject> list,int limitedTime){
-		int totalgrade=0;
-		for(int i=0;i<list.size();i++){
-			UserAnswer useranswer=new UserAnswer();
-			useranswer.setSubject(list.get(i));
-			ad.save(useranswer);
-			totalgrade+=list.get(i).getGrade();
-		}
 		Exam exam=new Exam();
 		exam.setTime(time);
 		exam.setUserId(userId);
 		exam.setProfessionId(professionId);
-		exam.setTotalgrade(totalgrade);
 		exam.setLimitedTime(limitedTime);
+		exam=ed.save(exam);
+		int totalgrade=0;
+		for(int i=0;i<list.size();i++){
+			UserAnswer useranswer=new UserAnswer();
+			useranswer.setSubject(list.get(i));
+			useranswer.setExamId(exam);
+			ad.save(useranswer);
+			totalgrade+=list.get(i).getGrade();
+		}
+		exam.setTotalgrade(totalgrade);
 		return ed.save(exam);
 	}
 }

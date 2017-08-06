@@ -56,12 +56,23 @@ $(".btn-primary").click(function(){
     var args = {
       "time":time
     }
-    $.post("createExamRandom.do",args,function(data){
+    $.ajax({
+		url: 'createExamRandom.do',
+		type: 'POST',
+		data: args,
+		success : function(json){
+			var data =JSON.parse(json);
+			//alert(data);
+		   	examId=data;
+//		   	var local = $(this).children("a").attr("href") + "?time=" + time+"&examid="+examId;
+//		    alert(local);
+//		    $(this).children("a").attr("href",local);
+		    window.location.href="/student-test.html?time="+time+"&examid="+examId;
+		}
+	});
 
-    })
-
-    var local = "student-test.html?time=" + time;
-      window.location.href=local;
+//    var local = "student-test.html?time=" + time;
+//      window.location.href=local;
    }
 })
 $(".release-content .glyphicon-remove").click(function() {

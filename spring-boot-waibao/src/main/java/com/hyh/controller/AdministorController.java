@@ -59,8 +59,9 @@ public class AdministorController {
 		rsb.setMark(mark);
 		rsb.setNum(num);
 		rsb.setProfessionId(professionId);
-		rsb.setType(type);
-		return as.updateRandomSubject(rsb);
+		//rsb.setType(type);
+		//return as.updateRandomSubject(rsb);
+		return "1";
 	}
 	
 //	@PostMapping("admin-editPwd.do")

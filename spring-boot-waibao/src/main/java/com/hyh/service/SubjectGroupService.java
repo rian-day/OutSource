@@ -38,8 +38,12 @@ public class SubjectGroupService {
 		for(int i=0;i<grade.length;i++){
 			totalgrade+=grade[i];
 		}
+		int[] grade2=new int[grade.length];
+		for(int i=0;i<grade.length;i++){
+			grade2[i]=grade[i];
+		}
 		group.setName(groupName);
-		//group.setSinglegrade(grade);
+		group.setSinglegrade(grade2);
 		group.setCreateAdmin(createAdmin);
 		group.setCreateTime(time);
 		group.setProfessionId(professionId);

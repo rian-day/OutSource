@@ -34,7 +34,7 @@ $(".chakan").click(function(){
 
    var examId = $(this).parent().prev().children(".hidespan").text();
    var args = {
-    "id":examId
+    "time":time
    }
    console.log(args);
 //   $.post("createExamByGroup.do",args,function(data){
@@ -48,7 +48,7 @@ $(".chakan").click(function(){
 		success : function(json){
 			var data =JSON.parse(json);
 			//alert(data);
-		   	examId=data;
+		   	var examId=data;
 //		   	var local = $(this).children("a").attr("href") + "?time=" + time+"&examid="+examId;
 //		    alert(local);
 //		    $(this).children("a").attr("href",local);
