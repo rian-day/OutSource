@@ -56,25 +56,28 @@
 
 	<div class="showview">
 		<div class="show-tp">
-			<div class="details" th:each="prolist : ${content}">
+			<div class="details" th:each="prolist : ${content}" style="line-height: 24px;">
 				<div class="subt">
-					<div class="subl">
+					<div class="subl" style="border: 2px solid gray;border-radius: 3px;">
 						试卷职业:<span th:text="${prolist.professionId}">XXX</span>
 						<div class="typeid">类型ID:<span th:text="${prolist.professionId}">2</span></div>
-						<div class="proid">职业ID:<span th:text="${prolist.type}">1</span></div>
 					</div>
-					<div class="subr">题目类型:<span th:text="${prolist.type}">选择题</span></div>
+					<div class="subr" style="border: 2px solid gray;border-radius: 3px;">类型:<span th:text="${prolist.type}">选择题</span></div>
 				</div>
 				<div class="subcom">
-					<div class="subl">题目内容:<span th:text="${prolist.content}">测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据</span></div>
+					<div class="subl">内容:<span style="background-color: lightgray;border-radius: 5px;padding: 5px;display: block;" th:text="${prolist.content}">测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据</span><br/>
+						<span th:each="prolist : ${pros}" style="background-color: lightgray;border-radius: 5px;padding: 5px;display: block;">
+							<span th:text = "${prolist.select}">A</span> : <span th:text = "${prolist.select}">选项A选项A选项A选项A选项A</span>
+						</span>
+					</div>
 					<div class="subr">
-						<div class="subans">题目答案:
+						<div class="subans" style="border: 2px solid gray;border-radius: 3px;margin-top: 5px;margin-bottom: 5px;">答案:
 							<tr th:each="answer : ${prolist.realAnswer}">
 								<td th:text="${answer}">A</td>
 							</tr>
 						</div>
-						<div class="subtip">题目解析:<span th:text="${prolist.tip}">解析解析解析解析</span></div>
-						<div class="subtip">题目分数:<span th:text="${prolist.grade}">分数分数分数分数</span></div>
+						<div class="subtip" style="border: 2px solid gray;border-radius: 3px;margin-top: 5px;margin-bottom: 5px;">解析:<span th:text="${prolist.tip}">解析解析解析解析</span></div>
+						<div class="subtip" style="border: 2px solid gray;border-radius: 3px;margin-top: 5px;margin-bottom: 5px;">分数:<span th:text="${prolist.grade}">分数分数分数分数</span></div>
 					</div>
 				</div>
 			</div>
