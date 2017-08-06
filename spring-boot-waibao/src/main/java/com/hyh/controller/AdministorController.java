@@ -47,10 +47,16 @@ public class AdministorController {
 		SessionUser user=(SessionUser) session.getAttribute("user");
 		return as.editAndminInfo(user.getUserId(), name, sex);
 	}
-	@PostMapping("create-suijitp.do")
+	@PostMapping("creat-suijitp.do")
 	@ResponseBody
-	public String UpdateRandomSubject(RandomSubjectBean rsb){
-		return as.updateRandomSubject(rsb);
+	public String UpdateRandomSubject(
+			//RandomSubjectBean rsb
+			Integer professionId
+			,@RequestParam("type")String[] type
+			,@RequestParam("num")Integer[] num
+			,@RequestParam("mark")Integer[] mark){
+		//return as.updateRandomSubject(rsb);
+		return "1";
 	}
 	
 //	@PostMapping("admin-editPwd.do")

@@ -905,8 +905,8 @@ $(document).ready(function() {
         var mark = [];
         $("#handle-2 li").each(function(index, el) {
             type.push($(el).children('.handle-timu').children('input[type=hidden]').val());     //类型
-            num.push($(el).children('.handle-timu').children('input[type=text]:eq(0)').val());      //数量
-            mark.push($(el).children('.handle-timu').children('input[type=text]:eq(1)').val());     //分数
+            num.push($(el).children('.handle-timu').children('input[type=text]:eq(0)').text());      //数量
+            mark.push($(el).children('.handle-timu').children('input[type=text]:eq(1)').text());     //分数
             /*var suijitimu = {
                 'type' : type,
                 'num' : num,

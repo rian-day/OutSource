@@ -11,7 +11,7 @@ public class RandomSubject {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	private String Type;
+	private String type;
 	private int num;
 	private int grade;
 	private int professionId;
@@ -22,10 +22,10 @@ public class RandomSubject {
 		this.id = id;
 	}
 	public String getType() {
-		return Type;
+		return type;
 	}
 	public void setType(String type) {
-		Type = type;
+		this.type = type;
 	}
 	public int getNum() {
 		return num;

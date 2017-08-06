@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hyh.bean.SessionUser;
+import com.hyh.bean.SubjectBean;
 import com.hyh.bean.SubjectGroupBean;
 import com.hyh.entity.Administrators;
 import com.hyh.entity.Subject;
@@ -36,6 +39,8 @@ public class SubjectGroupController {
 	
 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 
+	public final ObjectMapper mapper = new ObjectMapper(); 
+	
 	
 	@PostMapping("sendtp.do")
 	@ResponseBody
@@ -69,10 +74,11 @@ public class SubjectGroupController {
 	}
 	@PostMapping("mohu-search-subject.do")
 	@ResponseBody
-	public List<Subject> mohuSubject(
+	public List<SubjectBean> mohuSubject(
 			String content
-			,Integer professionId){
-		List<Subject> list=ss.MohuSearchSubject(content, professionId);
-		return list;
+			,Integer professionId) throws JsonProcessingException{
+		List<SubjectBean> list=ss.MohuSearchSubject(content, professionId);
+
+		return 	list;
 	}
 }

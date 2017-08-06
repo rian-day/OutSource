@@ -638,11 +638,13 @@ function toAtpPage(page){
             'professionId' : pro,
             'content' : ser
         },
-        dataType: "json",
+       	dataType:"json",   //用的text的数据类型
         success: function(data){
+        	//var data=JSON.parse(json);
+        	console.log(data);
             var listInfo = "<tr><th>ID</th><th>题目信息</th><th>添加</th></tr>";
             for (var i = 0; i < 10; i++) {
-                listInfo = listInfo + "<tr><th>" + data[i].content +"</th><th>" + data[i].content +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
+                listInfo = listInfo + "<tr><th>" + data[i] +"</th><th>" + data[i] +"</th><th><input class='add-button' type='submit' value='添加'/></th></tr>";
             }
             $(".list-view table").html(listInfo);
         }

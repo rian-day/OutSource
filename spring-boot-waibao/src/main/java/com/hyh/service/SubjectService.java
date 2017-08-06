@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.crsh.console.jline.internal.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -40,15 +41,19 @@ public class SubjectService {
 	ExamDao ed;
 	@Resource
 	RandomSubjectDao rd;
-	public List<Subject> MohuSearchSubject(String content,int professionId){
+	public List<SubjectBean> MohuSearchSubject(String content,int professionId){
 		List<Subject> list=subjectdao.findByProfessionId(professionId);
-		List<Subject> result=new ArrayList<Subject>();
+		List<SubjectBean> result=new ArrayList<SubjectBean>();
 		for(int i=0;i<list.size();i++){
 			Subject subject=list.get(i);
 			if(subject.getContent().indexOf(content)!=-1){
-				result.add(subject);
+				SubjectBean subjectbean=new SubjectBean();
+				subjectbean.setContent(subject.getContent());
+				subjectbean.setProfessionId(subject.getId());
+				result.add(subjectbean);
 			}
 		}
+		
 		return result;
 	}
 	
@@ -89,9 +94,11 @@ public class SubjectService {
 				arr[j]=j;
 			}
 			for(int j=0;j<rs.getNum();j++){
+				Log.warn(end);
 				int num=(int)(Math.random()*end);
 				arr[num]=arr[end];
 				end--;
+				
 				result.add(subjects.get(arr[num]));
 			}
 		}
