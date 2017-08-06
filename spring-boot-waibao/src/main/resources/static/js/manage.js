@@ -649,6 +649,7 @@ $(document).ready(function() {
            	alert("realAnswer:"+answer[0]);
            	alert("tip:"+analysis);
            	alert("professionId:"+zhiye);*/
+            console.log("answer:"+answer);
             $.ajax({
                 type: "POST",
                 url: "add-subject.do",
