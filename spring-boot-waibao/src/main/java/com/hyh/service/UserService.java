@@ -62,6 +62,7 @@ public class UserService {
 	 public UserInfo changeUserInfo(UserBean user,int userId){
 		 String mail=user.getUsername();
 		 UserInfo userinfo=userdao.findById(userId);
+		 log.warn(userId);
 		 userinfo.setName(user.getName());
 		 userinfo.setSex(user.getSex());
 		 userinfo.setProfessionId(user.getProfessionId());

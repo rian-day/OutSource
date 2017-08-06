@@ -50,7 +50,7 @@ public class UserController {
 			,@RequestParam("file") MultipartFile file){
  		SessionUser sessionuser=(SessionUser)session.getAttribute("user");
  		userService.UploadUserHead(file, sessionuser.getProfessionId());
- 		UserInfo userinfo=userService.changeUserInfo(user, sessionuser.getProfessionId());
+ 		UserInfo userinfo=userService.changeUserInfo(user, sessionuser.getUserId());
  		SessionUser su=new SessionUser();
 		su.setMail(userinfo.getMail());
 		su.setName(userinfo.getName());
@@ -89,6 +89,7 @@ public class UserController {
 			su.setMail(mail);
 			su.setName(userinfo.getName());
 			su.setProfessionId(userinfo.getProfessionId());
+			Log.warn(userinfo.getId());
 			su.setUserId(userinfo.getId());
 			su.setHead(userinfo.getHead());
 			su.setSex(userinfo.getSex());
