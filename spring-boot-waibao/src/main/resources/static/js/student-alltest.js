@@ -68,7 +68,7 @@ $(".chakan").click(function(){
 
    var examId = $(this).parent().prev().children(".hidespan").text();
    var args = {
-    "time":time
+    "id":examId
    }
    console.log(args);
 //   $.post("createExamByGroup.do",args,function(data){
