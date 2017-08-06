@@ -55,8 +55,12 @@ public class AdministorController {
 			,@RequestParam("type")String[] type
 			,@RequestParam("num")Integer[] num
 			,@RequestParam("mark")Integer[] mark){
-		//return as.updateRandomSubject(rsb);
-		return "1";
+		RandomSubjectBean rsb=new RandomSubjectBean();
+		rsb.setMark(mark);
+		rsb.setNum(num);
+		rsb.setProfessionId(professionId);
+		rsb.setType(type);
+		return as.updateRandomSubject(rsb);
 	}
 	
 //	@PostMapping("admin-editPwd.do")

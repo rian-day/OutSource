@@ -42,17 +42,19 @@ public class AdminService {
 		return "1";
 	}
 	public String updateRandomSubject(RandomSubjectBean rsb){
-		List<RandomSubject> result=rsd.findByProfessionIdAndType(rsb.getProfessionId(), rsb.getType());
-		if(result.size()==0){
-			RandomSubject random=new RandomSubject();
-			random.setGrade(rsb.getMark());
-			random.setNum(rsb.getNum());
-			random.setProfessionId(rsb.getProfessionId());
-			random.setType(rsb.getType());
-		}else{
-			RandomSubject random=result.get(0);
-			random.setGrade(rsb.getMark());
-			random.setNum(rsb.getNum());
+		for(int i=0;i<rsb.getMark().length;i++){
+			List<RandomSubject> result=rsd.findByProfessionIdAndType(rsb.getProfessionId(), rsb.getType()[i]);
+			if(result.size()==0){
+				RandomSubject random=new RandomSubject();
+				random.setGrade(rsb.getMark()[i]);
+				random.setNum(rsb.getNum()[i]);
+				random.setProfessionId(rsb.getProfessionId());
+				random.setType(rsb.getType()[i]);
+			}else{
+				RandomSubject random=result.get(0);
+				random.setGrade(rsb.getMark()[i]);
+				random.setNum(rsb.getNum()[i]);
+			}
 		}
 		return "1";
 		

@@ -1,14 +1,15 @@
 package com.hyh.bean;
 
 public class RandomSubjectBean {
-	private Integer[] professionId;
+	private int professionId;
 	private String[] type;
 	private Integer[] num;
 	private Integer[] mark;
-	public Integer[] getProfessionId() {
+	
+	public int getProfessionId() {
 		return professionId;
 	}
-	public void setProfessionId(Integer[] professionId) {
+	public void setProfessionId(int professionId) {
 		this.professionId = professionId;
 	}
 	public String[] getType() {
@@ -29,6 +30,8 @@ public class RandomSubjectBean {
 	public void setMark(Integer[] mark) {
 		this.mark = mark;
 	}
+	
+
 	
 	
 }
