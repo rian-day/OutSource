@@ -64,12 +64,28 @@ $("span[name='collect']").click(function(){
 // }
 
 
+$(document).ready(function() {
+	sendMessage();
+})
+function sendMessage(){
+	$.ajax({
+		url: '/pushMessage.do',
+		type: 'POST',
+		success : function(data){
+			if(data!=null){
+				tip(data);
+			}
+			setTimeout(function(){sendMessage()},5000);
+		}
+	});
+}
 function tip(content){
   //传参
   if ($.trim(content)=="") {
     $(".release").css("display","none");
   }else{
-    $(".release").text(content);
+  $(".release").css("display","block");
+    $(".release-content").html('<span class="glyphicon glyphicon-remove"></span>'+content);
     $(".release-content .glyphicon-remove").click(function() {
     $(".release").css("-webkit-animation-name","bounceoutL");
     $(".release").css("-webkit-animation-duration","1s");
@@ -77,4 +93,4 @@ function tip(content){
     });
   }
 }
-$(".release").smartFloat($(this));
+
