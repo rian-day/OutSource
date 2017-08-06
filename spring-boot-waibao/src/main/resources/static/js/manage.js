@@ -904,9 +904,9 @@ $(document).ready(function() {
         var num = [];
         var mark = [];
         $("#handle-2 li").each(function(index, el) {
-            type.push($(el).children('.handle-timu').children('input[type=hidden]').val());     //类型
-            num.push($(el).children('.handle-timu').children('input[type=text]:eq(0)').text());      //数量
-            mark.push($(el).children('.handle-timu').children('input[type=text]:eq(1)').text());     //分数
+            type.push($(this).children('.handle-timu').children('input[type=hidden]').val());     //类型
+            num.push($(this).find('.suijishuliang').val());     //数量
+            mark.push($(this).find('.suijifenzhi').val());     //分数
             /*var suijitimu = {
                 'type' : type,
                 'num' : num,
@@ -914,6 +914,9 @@ $(document).ready(function() {
             };
             suijitp[index] = suijitimu;*/
         });
+        console.log(type);  
+        console.log(num);   
+        console.log(mark);  
         $.ajax({
             type: "POST",
             url: "creat-suijitp.do",
